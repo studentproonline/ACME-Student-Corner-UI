@@ -95,7 +95,7 @@
                 <div fxLayout="column" fxFlexFill>
                     <ng-scrollbar thumbClass="white-scrollbars">
                         <div fxLayout="column" fxFlexFill fxLayoutGap="8px">
-                            <acme-sc-room-topic *ngFor="let topic of roomTopicsList" [topic]="topic"
+                            <acme-sc-room-topic *ngFor="let topic of filteredRoomTopicsList" [topic]="topic"
                             [roomType]="roomType">
                             </acme-sc-room-topic>
                         </div>

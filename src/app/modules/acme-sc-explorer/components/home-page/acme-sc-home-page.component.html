@@ -6,6 +6,7 @@
         <div fxFlexFill fxLayout="column" fxLayoutGap="16px">
             <div fxFlex="48px">
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
+                    [placeHolder]="'Start searching for a room by name'"
                     (userNameClicked)="userNameClicked($event)"
                     (searchTextchange)="searchTextchange($event)"></acme-sc-main-header>
             </div>

@@ -7,7 +7,8 @@
             <!--main header-->
             <div fxFlex="48px">
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
-                    (userNameClicked)="userNameClicked($event)" (searchTextchange)="searchTextchange($event)">
+                    (userNameClicked)="userNameClicked($event)" (searchTextchange)="searchTextchange($event)"
+                    [placeHolder]="'Start searching for a topic by title'">
                 </acme-sc-main-header>
             </div>
             <!--progress-->
@@ -88,7 +89,7 @@
             </div>
             <!--Topic list container-->
             <div *ngIf="!isProgress && isSuccessFull" fxFlex>
-                <acme-sc-room-topics-list [room]="roomDetailsEntity" [roomType]="roomType"></acme-sc-room-topics-list>
+                <acme-sc-room-topics-list [filterText]="filterText" [room]="roomDetailsEntity" [roomType]="roomType"></acme-sc-room-topics-list>
             </div>
         </div>
     </div>

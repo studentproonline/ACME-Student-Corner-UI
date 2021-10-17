@@ -9,6 +9,7 @@ import { FormBuilder } from '@angular/forms';
 export class AcmeSCMainHeaderComponent {
     @Input() userNickName = '';
     @Input() userFullName = '';
+    @Input() placeHolder = '';
     @Output() userNameClicked = new EventEmitter();
     @Output() searchTextchange = new EventEmitter<string>();
 

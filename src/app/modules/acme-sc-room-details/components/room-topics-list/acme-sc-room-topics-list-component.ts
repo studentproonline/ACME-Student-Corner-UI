@@ -17,12 +17,14 @@ import { AcmeRoomTopicsService } from '../../services/acme-sc-room-topics.servic
 export class AcmeSCRoomTopicsListComponent {
     @Input() room: any;
     @Input() roomType: string;
+    @Input() filterText = '';
 
     isProgress = true;
     isSuccessFull = false;
     topicsResponseMessage = '';
 
     roomTopicsList:ITopicEntity[]=[];
+    filteredRoomTopicsList: ITopicEntity[] = [];
     
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
@@ -37,6 +39,11 @@ export class AcmeSCRoomTopicsListComponent {
             if(this.room) {
                 this.getRoomTopicsList();
             }
+        }
+
+        const filterSearchText: SimpleChange = changes.filterText;
+        if(filterSearchText) {
+            this.filteredRoomTopicsList=this.filterTopic(filterSearchText.currentValue);
         }
 
     }
@@ -60,6 +67,15 @@ export class AcmeSCRoomTopicsListComponent {
         this.getRoomTopicsList();
     }
 
+    private filterTopic(value: string): ITopicEntity[] {
+        const filterValue = value.toLowerCase();
+        if (filterValue.toLowerCase().trim() === '') {
+            return this.roomTopicsList;
+        } else {
+            return this.roomTopicsList.filter(roomsTopicsList => roomsTopicsList.title.toLowerCase().includes(filterValue));
+        }
+    }
+
     getRoomTopicsList() {
         this.isProgress = true;
         this.isSuccessFull = false;
@@ -69,6 +85,7 @@ export class AcmeSCRoomTopicsListComponent {
                 this.isProgress = false;
                 this.isSuccessFull = true;
                 this.roomTopicsList=response.data;
+                this.filteredRoomTopicsList= this.roomTopicsList;
             },
             err => {
                 this.isProgress = false;

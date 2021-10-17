@@ -27,6 +27,7 @@ export class AcmeSCRoomDetailsHomePageComponent {
     isSuccessFull = false;
     isRoomOwner = false;
     roomDetailsResponseMessage = '';
+    filterText: string = '';
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
          private route: ActivatedRoute, private acmeRoomDetailsService: AcmeRoomDetailsService,
@@ -83,6 +84,6 @@ export class AcmeSCRoomDetailsHomePageComponent {
         this.router.navigateByUrl ( '/home?roomType='+ this.roomType);
     }
     searchTextchange($event) {
-     
+      this.filterText = $event;
     }
 }
