@@ -1,0 +1,20 @@
+<div fxFlexFill fxLayout="row">
+    <div fxFlex="15%" fxFlex.md="20%">
+        <acme-sc-navigation-sidebar (navigationItemSelected)="navigationItemSelected($event)"></acme-sc-navigation-sidebar>
+    </div>
+    <div fxFlex  class="acme-sc-container">
+        <div fxFlexFill fxLayout="column" fxLayoutGap="16px">
+            <div fxFlex="48px">
+                <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
+                    (userNameClicked)="userNameClicked($event)"
+                    (searchTextchange)="searchTextchange($event)"></acme-sc-main-header>
+            </div>
+            <div fxFlex="32px" fxLayoutAlign="start center" class="acme-sc-navigation-item-title">
+                {{selectedNavigationItem}}
+            </div>
+            <div fxFlex>
+                <acme-sc-rooms-list [filterText]="filterText" [roomType]="selectedNavigationItem"></acme-sc-rooms-list>
+            </div>
+        </div>
+    </div>
+</div>

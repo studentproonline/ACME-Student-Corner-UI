@@ -1,0 +1,13 @@
+.acme-sc-resend-activation-email-button{
+    background-color: lightgrey;
+}
+
+.acme-sc-small-message {
+    font-size: small;
+}
+
+::ng-deep {
+    .mat-dialog-container {
+        border-radius: 20px !important;
+    }
+}

@@ -1,0 +1,21 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between">
+    <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
+        <span>Review your action </span>
+    </div>
+    <div fxFlex="32px" fxLayoutAlign="center center" class="acme-sc-user-confirmation-message">
+        <span>{{data.message}}</span>
+    </div>
+    <div fxFlex="32px" fxLayoutAlign="center center" class="acme-sc-user-confirmation-text">
+        <span>Are you sure, you want to continue?</span>
+    </div>
+    <div fxFlex>
+        <div fxFlexFill fxLayout="row">
+            <div fxFlex fxLayoutAlign="start end">
+                <button (click)="close()" mat-raised-button color="warn" class="acme-sc-user-confirmation-close-button">Cancel</button>
+            </div>
+            <div fxLayoutAlign="end end">
+                <button (click)="confirm()"  mat-raised-button color="warn" class="acme-sc-user-confirmation-confirm-button">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

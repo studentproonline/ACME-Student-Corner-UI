@@ -1,0 +1,27 @@
+.acme-sc-topic-comment-container {
+    background-color: whitesmoke;
+    border-radius: 16px;
+    padding:8px;
+    font-size: small;
+    
+}
+
+.acme-sc-topic-comment-container-footer {
+    height: 32px;
+}
+
+.acme-sc-topic-comment-container-footer-createdOn {
+    font-size: x-small;
+    padding-left: 8px;
+}
+
+
+.acme-sc-topic-comment-vote {
+    cursor: pointer;
+}
+.acme-sc-topic-comment-delete {
+    cursor: pointer;
+}
+.acme-sc-topic-comment-vote-count {
+    font-size: small;
+}

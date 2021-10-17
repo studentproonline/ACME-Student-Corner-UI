@@ -1,0 +1,51 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between">
+    <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
+        <span>Create new discussion Topic</span>
+    </div>
+    <div fxFlex>
+        <form [formGroup]="topicFormGroup">
+            <!--Title-->
+            <mat-form-field class="form-field" fxFill>
+                <mat-label>
+                    Title
+                </mat-label>
+                <input matInput placeholder="Title" formControlName="titleControl" autocomplete="off">
+                <mat-error *ngIf="topicFormGroup.controls['titleControl'].errors?.required">
+                    Title is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            
+            <!--Topic Tags-->
+            <mat-form-field class="form-field" fxFill>
+                <mat-label>Associated Tags</mat-label>
+                <mat-chip-list #chipList aria-label="Topic tags">
+                    <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+                        (removed)="removeTag(tag)" fxLayoutAlign="center center" class="acme-sc-topic-chip">
+                        {{tag}}
+                        <mat-icon class="acme-cs-mat-icon acme-sc-topic-chip-close-icon">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Associated tags" #fruitInput formControlName="tagControl"
+                        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="addTag($event)">
+                </mat-chip-list>
+            </mat-form-field>
+        </form>
+    </div>
+    <div fxFlex="48px" fxLayoutAlign="end end">
+        <div fxFlexFill fxLayout="row">
+            <div fxFlex fxLayoutAlign="start end">
+                <button mat-raised-button color="accent" class="acme-sc-topic-creation-confirm-button"
+                    (click)="createTopic()" [disabled]="!topicFormGroup.controls['titleControl'].valid">
+                    Create
+                </button>
+            </div>
+            <div fxLayoutAlign="end end">
+                <button mat-raised-button color="warn" class="acme-sc-topic-creation-close-button"
+                    (click)="cancelTopicCreation()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+</div>

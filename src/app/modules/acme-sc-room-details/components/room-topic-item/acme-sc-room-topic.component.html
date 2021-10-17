@@ -1,0 +1,78 @@
+<div fxLayout="row"  fxLayoutGap="8px">
+    <div fxFlex="70px">
+        <div fxLayout="column" fxFlexFill fxLayoutGap="8px">
+            <div fxFlex="50%" fxFlexFill>
+                <acme-sc-room-topic-votes [topic]="topic"></acme-sc-room-topic-votes>
+            </div> 
+            <div fxFlexFill fxFlex="50%">
+                <acme-sc-room-topic-views [topic]="topic"></acme-sc-room-topic-views>
+            </div>       
+        </div>
+    </div>
+    <div fxFlex>
+        <div fxLayout="column" class="acme-sc-room-topic-item">
+            <div fxFlex="32px" fxFlexFill>
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <!--question icon-->
+                    <div fxFlex="24px" class="acme-sc-room-topic-row">
+                        <mat-icon fxLayoutAlign="center center" style="height:24px;width:24px;"
+                            class="acme-cs-mat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                fill="#000000">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                            </svg>
+                        </mat-icon>
+                    </div>
+                    <!--Topic title-->
+                    <div  (click) = "lauchTopic()" fxFlex fxLayoutAlign="start center" style="cursor:pointer;">
+                        <span class="acme-sc-room-topic-title">{{topic.title}}</span>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="24px" fxFlexFill>
+                <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="end center" class="acme-sc-room-topic-row">
+                    <!--created by-->
+                    <div fxFlex="70%" fxLayoutAlign="start center">
+                        <span class="acme-sc-room-topic-details-label-bold">Created by:</span><span
+                            class="acme-sc-room-topic-details-label"
+                            style="padding-left:8px">{{topic.ownerFirstName}}</span>
+                        <span class="acme-sc-room-topic-details-label"
+                            style="padding-left:8px">{{topic.ownerLastName}}</span>
+                    </div>
+                    <div fxFlex="30%" fxLayoutAlign="end center">
+                        <span class="acme-sc-room-topic-details-label-xsmall-bold">Started on:</span><span
+                            class="acme-sc-room-topic-details-label-xsmall"
+                            style="padding-left:8px">{{topic.createdAt|date:'medium'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="24px" class="acme-sc-room-topic-row" style="padding-top:8px">
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="90%">
+                        <mat-chip-list #chipList aria-label="Topic tags">
+                            <mat-chip [removable]="tagRemove" *ngFor="let tag of topic.tags"
+                                fxLayoutAlign="center center" class="acme-sc-topic-chip">
+                                {{tag}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                    <div *ngIf="isRoomOwner" fxFlex fxLayoutAlign="end center">
+                        <div fxLayout="column">
+                            <div fxFlex>
+                                <mat-slide-toggle (change)="updateTopic($event)" class="acme-sc-room-topic-close-toggle"
+                                    [color]="closeColor" [checked]="topicClosed" [disabled]="!topicClosedEnabled">Stop
+                                    discussion
+                                </mat-slide-toggle>
+                            </div>
+                            <div fxFlex *ngIf="isProgress">
+                                <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.acme-sc-room-card {
+    height: 250px;
+    width: 350px;
+    background-color: whitesmoke; 
+    color: #222;
+    clip-path: polygon(0 23%, 0 7%, 4% 0, 29% 0, 32% 7%, 60% 7%, 98% 7%, 100% 10%, 100% 100%, 15% 100%, 0 100%, 0% 85%);
+}
+
+.acme-sc-room-title {
+    font-weight: bold;
+    padding: 8px;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+.acme-sc-room-description {
+    padding: 8px;
+    font-weight: lighter;
+    font-size: smaller;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+}
+.acme-sc-room-card-action {
+    cursor: pointer;
+}
+.acme-sc-room-image {
+    cursor: pointer;
+}
+.acme-sc-room-readonly {
+    font-size: small;
+    color: slategray;
+    padding-bottom: 8px;
+}

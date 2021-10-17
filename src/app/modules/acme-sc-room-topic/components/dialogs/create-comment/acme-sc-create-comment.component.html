@@ -1,0 +1,33 @@
+<div fxFlexFill fxLayout="column">
+    <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
+        <span>Add new Comment</span>
+    </div>
+
+    <div fxFlex="80%">
+        <div fxFlexFill fxLayout="column">
+            <div fxFlex="80%">
+                <quill-editor fxFlexFill [(ngModel)]="model" [modules]="modules" placeholder="Insert comment here ..."
+                    [required]="true"></quill-editor>
+            </div>
+        </div>
+        <!--<quill-view [content]="model"   [format]="'object'" theme="bubble" [modules]="modules"></quill-view>-->
+    </div>
+
+    <div fxFlex="48px" fxLayoutAlign="end end">
+        <div fxFlexFill fxLayout="row">
+            <div fxFlex fxLayoutAlign="start end">
+                <button mat-raised-button color="accent" class="acme-sc-comment-creation-confirm-button"
+                    (click)="createComment()" [disabled]="!model || model.length === 0">
+                    Add
+                </button>
+            </div>
+            <div fxLayoutAlign="end end">
+                <button mat-raised-button color="warn" class="acme-sc-comment-creation-close-button"
+                    (click)="cancelCommentCreation()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+</div>

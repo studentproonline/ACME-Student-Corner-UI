@@ -1,0 +1,27 @@
+.UserInfoCircle {
+    width: 32px;
+    height: 32px;
+    line-height: 500px;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    background: #333230;
+    cursor:pointer
+}
+.searchBox {
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 4px;
+}
+.searchInput {
+    border-style: none;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+
+/*::ng-deep .mat-form-field-underline {
+    display: none;
+    height:32px;
+}*/

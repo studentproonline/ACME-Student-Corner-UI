@@ -1,0 +1,26 @@
+.acme-sc-navigation-item-container{
+    background-color: #f1f1f1;
+    cursor:pointer;
+}
+.acme-sc-navigation-item-container-default{
+    background-color: #fafafa;
+    cursor:pointer
+}
+.acme-sc-navigation-item-selection-bar{
+    background-color: #191919;
+}
+.acme-sc-navigation-item-selection-bar-default{
+    background-color: #fafafa;
+}
+.acme-sc-navigation-item-text {
+    color: black;
+    opacity: 0.7;
+}
+.acme-sc-navigation-item-text-default {
+    opacity:0.5;
+    color: black;
+}
+.acme-sc-navigation-item-icon-selected {
+    color: black;
+    opacity:0.7
+}

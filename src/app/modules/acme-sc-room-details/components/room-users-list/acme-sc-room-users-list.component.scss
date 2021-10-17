@@ -1,0 +1,37 @@
+.acme-sc-room-users-container {
+    border-width: 0.5px;
+    border-right-style: solid;
+    background-color:#fafafa;
+    border-color: lightgray;
+}
+
+.acme-sc-room-users-list{
+    border-top-style: outset;
+    padding:8px;
+}
+
+.acme-sc-title-heading {
+    font-weight: bold;
+    font-size:small;
+}
+
+.acme-sc-add-room-user {
+    cursor: pointer;
+}
+
+::ng-deep {
+    ng-scrollbar.virtual-scroll {
+      --scrollbar-size: 8px;
+      --scrollbar-thumb-color: gray;
+      --scrollbar-hover-size: 12px;
+      --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+      --scrollbar-border-radius: 10px;
+  
+      margin: 1em;
+      height: 200px;
+      max-height: 200px;
+      border-radius: 6px;
+      border: 1px solid gray;
+      overflow: hidden;
+    }
+  }

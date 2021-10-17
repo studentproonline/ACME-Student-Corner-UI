@@ -1,0 +1,14 @@
+<div fxFlexFill fxLayout="row" fxLayoutGap="8px"  (click)="navigationItemClicked()"
+    [ngClass]="selected===true?'acme-sc-navigation-item-container' : 'acme-sc-navigation-item-container-default'">
+    <div fxFlex="2px" [ngClass]="{'acme-sc-navigation-item-selection-bar':selected}">
+
+    </div>
+    <div fxFlex="24px" fxLayoutAlign="center center"
+        [ngClass]="selected===true?'acme-sc-navigation-item-icon-selected' : 'acme-cs-mat-icon'">
+        <mat-icon fontSet="material-icons-outlined" aria-hidden="false" aria-label="home icon">{{iconName}}</mat-icon>
+    </div>
+    <div fxFlex fxLayoutAlign="start center"
+        [ngClass]="selected===true?'acme-sc-navigation-item-text' : 'acme-sc-navigation-item-text-default'">
+        <span>{{itemName}}</span>
+    </div>
+</div>

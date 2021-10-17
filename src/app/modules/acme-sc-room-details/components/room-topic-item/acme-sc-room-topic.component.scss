@@ -1,0 +1,56 @@
+.acme-sc-room-topic-item {
+    width:100%;
+    height:108px;
+    padding-top:4px;
+    padding-bottom: 4px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+.acme-sc-topic-chip {
+    padding-left:8px;
+    font-size: x-small;
+}
+
+.acme-sc-room-topic-row {
+    padding:8px;
+}
+.acme-sc-room-topic-details-label {
+    font-size: smaller;
+    opacity: 0.7;
+}
+
+.acme-sc-room-topic-details-label-bold {
+    font-size: smaller;
+    opacity: 0.7;
+    font-weight: bold;
+}
+
+.acme-sc-room-topic-details-label-xsmall-bold {
+    font-size: x-small;
+    opacity: 0.7;
+    font-weight: bold;
+}
+
+.acme-sc-room-topic-details-label-xsmall {
+    font-size: x-small;
+    opacity: 0.7;
+    padding-right: 4px;
+}
+.acme-sc-room-topic-title {
+    color: steelblue;
+    font-size: medium;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    
+}
+
+.acme-sc-room-topic-close-toggle {
+    font-size: x-small;
+    font-weight: bold;
+    padding-right: 4px;
+};
+.acme-sc-room-topic-title:hover{
+   color:blue;
+ }

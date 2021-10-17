@@ -1,0 +1,56 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between">
+    <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
+        <span>Share your Room </span>
+    </div>
+    <div fxFlex>
+        <form [formGroup]="shareRoomFormGroup">
+            <!--Email-->
+            <mat-form-field class="form-field" fxFill>
+                <mat-label>
+                    <mat-icon class="acme-cs-mat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </mat-icon>
+                    Email
+                </mat-label>
+                <input matInput placeholder="Email" formControlName="emailControl" autocomplete="off">
+                <mat-error *ngIf="shareRoomFormGroup.controls['emailControl'].errors?.email">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="shareRoomFormGroup.controls['emailControl'].errors?.required">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <!--name-->
+            <mat-form-field class="form-field" fxFill>
+                <mat-label>
+                    Name
+                </mat-label>
+                <input matInput placeholder="Name" formControlName="nameControl" autocomplete="off">
+                <mat-error *ngIf="shareRoomFormGroup.controls['nameControl'].errors?.required">
+                    Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <div fxFlex="48px" fxLayoutAlign="end end">
+        <div fxFlexFill fxLayout="row">
+            <div fxFlex fxLayoutAlign="start end">
+                <button mat-raised-button color="accent" class="acme-sc-share-confirmation-confirm-button"
+                    (click)="shareRoom()" [disabled]="!shareRoomFormGroup.controls['emailControl'].valid">
+                    Share
+                </button>
+            </div>
+            <div fxLayoutAlign="end end">
+                <button mat-raised-button color="warn" class="acme-sc-share-confirmation-close-button"
+                    (click)="cancelShare()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+</div>
