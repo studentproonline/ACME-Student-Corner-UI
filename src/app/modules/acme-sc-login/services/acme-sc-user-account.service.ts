@@ -32,6 +32,13 @@ export class AcmeSCAccountService {
         return this.httpService.post('/accounts', headers, email).pipe(catchError(this.handleErrorObservable));
     }
 
+    // generate OTP
+    generateOtp(email: string) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const body = {email: email};
+        return this.httpService.post('/accounts/otp/', headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
     // handle error
     private handleErrorObservable(error: Response | any) { return throwError(error); }
 }

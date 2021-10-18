@@ -73,7 +73,7 @@
                                     <button mat-raised-button color="accent" (click)="login()" fxFill>Login</button>
                                     <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
                                 </div>
-                                <div fxFlex="0 0 32px" fxLayoutAlign="center center">
+                                <div (click)="openAccountResetPasswordDialog()" fxFlex="0 0 32px" fxLayoutAlign="center center">
                                     <a id="resetPasswordButton" mat-button routerLink="." color="primary">Forgot
                                         Password?</a>
                                 </div>

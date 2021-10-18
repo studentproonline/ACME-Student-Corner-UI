@@ -13,7 +13,8 @@ import { AcmeSCLoginService } from '../../services/acme-sc-login.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 
 //dialogs
-import { AcmeSCActivateAccountComponent } from '../../dialogs/acme-sc-activate-account/acme-sc-activate-account.component'
+import { AcmeSCActivateAccountComponent } from '../../dialogs/acme-sc-activate-account/acme-sc-activate-account.component';
+import { AcmeSCAccountPasswordResetComponent } from '../../dialogs/acme-sc-account-password-reset/acme-sc-account-password-reset';
 
 
 @Component({
@@ -47,6 +48,19 @@ export class AcmeSCLoginComponent {
         dialogRef.afterClosed().subscribe(result => {
         });
     }
+
+    openAccountResetPasswordDialog(): void {
+        const dialogRef = this.dialog.open(AcmeSCAccountPasswordResetComponent, {
+            width: '500px',
+            height: '450px',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+        });
+    }
+
     login(): void {
         const emailControl = 'emailControl';
         const passwordControl = 'passwordControl';
