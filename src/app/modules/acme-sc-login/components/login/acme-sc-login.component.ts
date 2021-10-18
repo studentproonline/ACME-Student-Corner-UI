@@ -55,12 +55,16 @@ export class AcmeSCLoginComponent {
         const password: any = this.loginFormGroup.controls[passwordControl].value;
 
         if (email.trim() === '') {
-            this.snackBar.open('Please provide email Id');
+            this.snackBar.open('Please provide email Id.', '', {
+                duration: 3000
+            });
             return;
         }
 
         if (password.trim() === '') {
-            this.snackBar.open('Please provide password');
+            this.snackBar.open('Please provide valid password.', '', {
+                duration: 3000
+            });
             return;
         }
 

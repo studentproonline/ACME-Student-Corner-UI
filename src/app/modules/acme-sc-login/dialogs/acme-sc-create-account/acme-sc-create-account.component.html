@@ -28,7 +28,8 @@
                     </mat-label>
                     <input matInput placeholder="First Name" formControlName="firstNameControl">
 
-                    <mat-error *ngIf="createAccountFormGroup.controls['firstNameControl'].errors?.required">
+                    <mat-error *ngIf="createAccountFormGroup.controls['firstNameControl'].errors?.required ||
+                    createAccountFormGroup.controls['firstNameControl'].errors?.whiteSpace">
                         First Name is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
@@ -36,7 +37,8 @@
                 <mat-form-field class="form-field" fxFill>
                     <mat-label>Last Name</mat-label>
                     <input matInput placeholder="Last Name" formControlName="lastNameControl">
-                    <mat-error *ngIf="createAccountFormGroup.controls['lastNameControl'].errors?.required">
+                    <mat-error *ngIf="createAccountFormGroup.controls['lastNameControl'].errors?.required ||
+                    createAccountFormGroup.controls['lastNameControl'].errors?.whiteSpace" >
                         Last Name is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>

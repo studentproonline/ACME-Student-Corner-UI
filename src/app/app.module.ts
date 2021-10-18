@@ -11,6 +11,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AcmeSCAuthguradServiceService } from './core/guards/acme-sc-authentication.guard.service';
 import { AcmeSCAuthorizationService } from './core/services/acme-sc-authorization.service';
 
+//validators
+import { WhiteSpaceValidator } from './core/validators/acme-sc-whitespace-validator';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,7 @@ import { AcmeSCAuthorizationService } from './core/services/acme-sc-authorizatio
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [ AcmeSCAuthguradServiceService, AcmeSCAuthorizationService ],
+  providers: [ AcmeSCAuthguradServiceService, AcmeSCAuthorizationService, WhiteSpaceValidator ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

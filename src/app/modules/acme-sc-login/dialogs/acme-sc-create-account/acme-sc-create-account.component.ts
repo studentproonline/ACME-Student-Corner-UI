@@ -7,7 +7,10 @@ import { IUser } from '../../Models/acme-sc-user.model';
 import { AcmeSCAccountService } from '../../services/acme-sc-user-account.service';
 
 //dialogs
-import { AcmeSCActivateAccountComponent } from '../acme-sc-activate-account/acme-sc-activate-account.component'
+import { AcmeSCActivateAccountComponent } from '../acme-sc-activate-account/acme-sc-activate-account.component';
+
+// validator
+import { WhiteSpaceValidator } from '../../../../core/validators/acme-sc-whitespace-validator';
 
 @Component({
     selector: 'acme-sc-create-account',
@@ -25,11 +28,11 @@ export class AcmeSCCreateAccountComponent {
         private snackBar: MatSnackBar, private acmeSCAccountService: AcmeSCAccountService) {
 
         this.createAccountFormGroup = this.formBuilder.group({
-            firstNameControl: ['', [Validators.required]],
-            lastNameControl: ['', [Validators.required]],
+            firstNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+            lastNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             emailControl: ['', [Validators.required, Validators.email]],
-            passwordControl: ['', [Validators.required]],
-            confirmPasswordControl: ['', [Validators.required,
+            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+            confirmPasswordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
                 ( control => this.confirmPassword ( control, this.createAccountFormGroup, 'passwordControl' ) ) ] ]
         });
     }
