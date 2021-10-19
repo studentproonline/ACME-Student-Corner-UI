@@ -39,6 +39,12 @@ export class AcmeSCAccountService {
         return this.httpService.post('/accounts/otp/', headers, body).pipe(catchError(this.handleErrorObservable));
     }
 
+    // Reset password
+    resetPassword(resetPassword: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.httpService.post('/accounts/resetpassword/', headers, resetPassword).pipe(catchError(this.handleErrorObservable));
+    }
+
     // handle error
     private handleErrorObservable(error: Response | any) { return throwError(error); }
 }

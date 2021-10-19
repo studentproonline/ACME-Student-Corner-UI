@@ -31,7 +31,8 @@ export class AcmeSCCreateAccountComponent {
             firstNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             lastNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             emailControl: ['', [Validators.required, Validators.email]],
-            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
+                ( control => this.confirmPassword ( control, this.createAccountFormGroup, 'confirmPasswordControl' ) )]],
             confirmPasswordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
                 ( control => this.confirmPassword ( control, this.createAccountFormGroup, 'passwordControl' ) ) ] ]
         });

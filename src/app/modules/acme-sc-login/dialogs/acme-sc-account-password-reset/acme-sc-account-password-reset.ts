@@ -8,6 +8,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // validator
 import { WhiteSpaceValidator } from '../../../../core/validators/acme-sc-whitespace-validator';
 
+// models
+import { IResetPasswordModel } from '../../Models/acme-sc-account-password-reset.model';
+
 @Component({
     selector: 'acme-sc-account-password-reset',
     templateUrl: './acme-sc-account-password-reset.html',
@@ -25,20 +28,16 @@ export class AcmeSCAccountPasswordResetComponent {
         this.accountPasswordResetFormGroup = this.formBuilder.group({
             otpControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             emailControl: ['', [Validators.required, Validators.email]],
-            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
+                ( control => this.confirmPassword ( control, this.accountPasswordResetFormGroup, 'confirmPasswordControl' ) )]],
             confirmPasswordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
                 ( control => this.confirmPassword ( control, this.accountPasswordResetFormGroup, 'passwordControl' ) ) ] ]
         });
     }
 
     generateOTP(): void {
-        const otpControl = 'otpControl';
-        const passwordControl = 'passwordControl';
         const emailControl = 'emailControl';
-
-        const otp: any = this.accountPasswordResetFormGroup.controls[otpControl].value;
         const email: any = this.accountPasswordResetFormGroup.controls[emailControl].value;
-        const password: any = this.accountPasswordResetFormGroup.controls[passwordControl].value;
 
         // show progress
         this.isProgress = true;
@@ -54,6 +53,33 @@ export class AcmeSCAccountPasswordResetComponent {
                 this.otpGenerationMessage = 'Fail to generate OTP';
             }
         );
+    }
+
+    resetPassword(): void {
+        const otpControl = 'otpControl';
+        const passwordControl = 'passwordControl';
+        const emailControl = 'emailControl';
+
+        const otp: any = this.accountPasswordResetFormGroup.controls[otpControl].value;
+        const email: any = this.accountPasswordResetFormGroup.controls[emailControl].value;
+        const password: any = this.accountPasswordResetFormGroup.controls[passwordControl].value;
+
+        const resetPassword: IResetPasswordModel = { otp, email, password };
+
+         // show progress
+         this.isProgress = true;
+         this.otpGenerationMessage = '';
+
+         this.acmeSCAccountService.resetPassword(resetPassword).subscribe(
+            value => {
+                this.isProgress = false;
+                this.otpGenerationMessage = 'Your password is succesfully reset, login with new password.';
+            },
+            err => {
+                this.isProgress = false; // end progress
+                this.otpGenerationMessage = 'Fail to reset password';
+            }
+         );
     }
 
     // validation method
