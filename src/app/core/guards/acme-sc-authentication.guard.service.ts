@@ -16,10 +16,13 @@ export class AcmeSCAuthguradServiceService {
   gettoken() {
     const cookies = this.acmeScCookiesService.getCookiesObject();
     if (!cookies || cookies.email === 'undefined' || cookies.firstName === 'undefined'
-      || cookies.lastName === 'undefined' || cookies.token === 'undefined') {
+      || cookies.lastName === 'undefined' || cookies.token === 'undefined' ||
+      cookies.email.trim() === '' || cookies.firstName.trim() === ''
+      || cookies.lastName.trim() === '' || cookies.token.trim() === '') {
+
       this.router.navigateByUrl("/login");
     }
-    const loginEntity: ILoginEntity ={
+    const loginEntity: ILoginEntity = {
       id: '',
       email: cookies.email,
       firstName: cookies.firstName,

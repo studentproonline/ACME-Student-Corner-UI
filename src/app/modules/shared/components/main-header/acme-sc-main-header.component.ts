@@ -1,5 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AcmeScCookiesService } from '../../../../core/services/acme-sc-cookies.service';
 
 @Component({
     selector: 'acme-sc-main-header',
@@ -15,7 +18,8 @@ export class AcmeSCMainHeaderComponent {
 
     searchFormGroup: any;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, 
+        private acmeScCookiesService: AcmeScCookiesService, private router: Router) {
         this.searchFormGroup = this.formBuilder.group({
             searchControl: ['']
         });
@@ -28,4 +32,8 @@ export class AcmeSCMainHeaderComponent {
         this.userNameClicked.emit();
     }
 
+    logout() {
+       this.acmeScCookiesService.deleteCookies();
+       this.router.navigateByUrl("/login");
+    }
 }

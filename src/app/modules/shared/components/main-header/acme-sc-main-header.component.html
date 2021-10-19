@@ -1,5 +1,5 @@
 <div fxFlexFill fxLayout="row" fxLayoutAlign="end end" fxLayoutGap=16px>
-    <div fxFlex="50%" fxFill fxLayoutAlign="center center" class="searchBox">
+    <div fxFlex="55%" fxFill fxLayoutAlign="center center" class="searchBox">
         <div fxFlexFill fxLayout="row">
             <div fxFlex="32px" fxLayoutAlign="center center">
                 <mat-label fxLayoutAlign="center center">
@@ -32,7 +32,10 @@
             </svg>
         </mat-icon>
     </div>
-    <div fxFlex="10%" fxFill fxLayoutAlign="end center">
+    <div (click)="logout()" class="acme-sc-logout-text" fxFlex="32px" fxFill fxLayoutAlign="end center">
+        <span><u>Logout</u></span>
+    </div>
+    <div fxFlex="48px" fxFill fxLayoutAlign="end center">
         <div matTooltip={{userFullName}} class="UserInfoCircle" (click)="nickNameClicked()"
             fxLayoutAlign="center center">
             {{userNickName}}

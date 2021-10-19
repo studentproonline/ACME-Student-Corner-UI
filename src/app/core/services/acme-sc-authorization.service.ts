@@ -19,4 +19,9 @@ export class AcmeSCAuthorizationService {
     getAccessToken() {
         return this.activeSession ? this.activeSession.token : null;
     }
+
+    deleteSession() {
+        this.activeSession = undefined;
+        this.isSessionActive = false;
+    }
 }
