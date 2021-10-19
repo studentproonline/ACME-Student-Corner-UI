@@ -11,7 +11,9 @@ import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc
 
 //models
 import { ITopic } from '../../../Models/topic';
-import { ITopicEntity } from '../../../entities/topic.entity';
+
+// validator
+import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
 
 @Component({
     selector: 'acme-sc-create-topic',
@@ -32,7 +34,7 @@ export class AcmeSCSRoomCreateTopicComponent {
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
 
         this.topicFormGroup = this.formBuilder.group({
-            titleControl: ['', [Validators.required]],
+            titleControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             tagControl: []
         });
 

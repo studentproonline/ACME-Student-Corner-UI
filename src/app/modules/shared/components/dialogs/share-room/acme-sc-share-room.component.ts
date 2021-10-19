@@ -10,6 +10,9 @@ import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc
 //models
 import { ISharedRoomModel } from '../../../models/acme-sc-shared-room.model';
 
+// validator
+import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
+
 @Component({
     selector: 'acme-sc-share-room',
     templateUrl: './acme-sc-share-room.component.html',
@@ -25,7 +28,7 @@ export class AcmeSCShareRoomComponent {
 
         this.shareRoomFormGroup = this.formBuilder.group({
             emailControl: ['', [Validators.required, , Validators.email]],
-            nameControl: ['', [Validators.required] ]
+            nameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace] ]
         });
        
     }

@@ -9,6 +9,9 @@ import { IRoomModel } from '../../../models/acme-sc-room.model';
 import { AcmeRoomService } from '../../../services/acme-sc-room.service';
 import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc-authorization.service';
 
+// validator
+import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
+
 @Component({
     selector: 'acme-sc-create-room',
     templateUrl: './acme-sc-create-room.component.html',
@@ -21,8 +24,8 @@ export class AcmeSCCreateRoomComponent {
         private acmeRoomService: AcmeRoomService, private acmeSCAuthorizationService: AcmeSCAuthorizationService) {
 
         this.createRoomFormGroup = this.formBuilder.group({
-            titleControl: ['', [Validators.required]],
-            descriptionControl: ['', [Validators.required]]
+            titleControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+            descriptionControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]]
         });
     }
 

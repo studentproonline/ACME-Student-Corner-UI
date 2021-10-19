@@ -16,7 +16,7 @@
                     </mat-icon>
                     Email
                 </mat-label>
-                <input matInput placeholder="Email" formControlName="emailControl" autocomplete="off">
+                <input required matInput placeholder="Email" formControlName="emailControl" autocomplete="off">
                 <mat-error *ngIf="shareRoomFormGroup.controls['emailControl'].errors?.email">
                     Please enter a valid email address
                 </mat-error>
@@ -29,8 +29,9 @@
                 <mat-label>
                     Name
                 </mat-label>
-                <input matInput placeholder="Name" formControlName="nameControl" autocomplete="off">
-                <mat-error *ngIf="shareRoomFormGroup.controls['nameControl'].errors?.required">
+                <input required matInput placeholder="Name" formControlName="nameControl" autocomplete="off">
+                <mat-error *ngIf="shareRoomFormGroup.controls['nameControl'].errors?.required ||
+                    shareRoomFormGroup.controls['nameControl'].errors?.whiteSpace">
                     Name is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
@@ -40,7 +41,8 @@
         <div fxFlexFill fxLayout="row">
             <div fxFlex fxLayoutAlign="start end">
                 <button mat-raised-button color="accent" class="acme-sc-share-confirmation-confirm-button"
-                    (click)="shareRoom()" [disabled]="!shareRoomFormGroup.controls['emailControl'].valid">
+                    (click)="shareRoom()" [disabled]="!shareRoomFormGroup.controls['emailControl'].valid ||
+                        !shareRoomFormGroup.controls['nameControl'].valid">
                     Share
                 </button>
             </div>

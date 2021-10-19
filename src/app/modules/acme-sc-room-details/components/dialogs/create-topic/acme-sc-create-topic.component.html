@@ -9,8 +9,9 @@
                 <mat-label>
                     Title
                 </mat-label>
-                <input matInput placeholder="Title" formControlName="titleControl" autocomplete="off">
-                <mat-error *ngIf="topicFormGroup.controls['titleControl'].errors?.required">
+                <input required matInput placeholder="Title" formControlName="titleControl" autocomplete="off">
+                <mat-error *ngIf="topicFormGroup.controls['titleControl'].errors?.required ||
+                    topicFormGroup.controls['titleControl'].errors?.whiteSpace">
                     Title is <strong>required</strong>
                 </mat-error>
             </mat-form-field>

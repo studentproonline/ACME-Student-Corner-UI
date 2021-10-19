@@ -10,7 +10,7 @@
             <mat-form-field class="form-field" fxFill>
                 <mat-label>
                     <mat-icon class="acme-cs-mat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                             fill="#000000">
                             <path d="M0 0h24v24H0V0z" fill="none" />
                             <path d="M5 4v3h5.5v12h3V7H19V4H5z" />
@@ -18,8 +18,9 @@
                     </mat-icon>
 
                 </mat-label>
-                <input matInput placeholder="Title" formControlName="titleControl">
-                <mat-error *ngIf="createRoomFormGroup.controls['titleControl'].errors?.required">
+                <input required matInput placeholder="Title" formControlName="titleControl">
+                <mat-error *ngIf="createRoomFormGroup.controls['titleControl'].errors?.required ||
+                    createRoomFormGroup.controls['titleControl'].errors?.whiteSpace">
                     Title is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
@@ -27,7 +28,7 @@
             <mat-form-field class="form-field" fxFill>
                 <mat-label>
                     <mat-icon class="acme-cs-mat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                             fill="#000000">
                             <path d="M0 0h24v24H0V0z" fill="none" />
                             <path
@@ -35,8 +36,9 @@
                         </svg>
                     </mat-icon>
                 </mat-label>
-                <input matInput placeholder="Description" formControlName="descriptionControl">
-                <mat-error *ngIf="createRoomFormGroup.controls['descriptionControl'].errors?.required">
+                <input required matInput placeholder="Description" formControlName="descriptionControl">
+                <mat-error *ngIf="createRoomFormGroup.controls['descriptionControl'].errors?.required ||
+                    createRoomFormGroup.controls['descriptionControl'].errors?.whiteSpace">
                     Description is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
