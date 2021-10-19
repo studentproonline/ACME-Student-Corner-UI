@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // services
 import { AcmeSCAuthguradServiceService } from './core/guards/acme-sc-authentication.guard.service';
 import { AcmeSCAuthorizationService } from './core/services/acme-sc-authorization.service';
+import { AcmeScCookiesService } from './core/services/acme-sc-cookies.service';
 
 //validators
 import { WhiteSpaceValidator } from './core/validators/acme-sc-whitespace-validator';
@@ -26,7 +27,8 @@ import { WhiteSpaceValidator } from './core/validators/acme-sc-whitespace-valida
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [ AcmeSCAuthguradServiceService, AcmeSCAuthorizationService, WhiteSpaceValidator ],
+  providers: [ AcmeSCAuthguradServiceService, AcmeSCAuthorizationService, 
+    WhiteSpaceValidator, AcmeScCookiesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

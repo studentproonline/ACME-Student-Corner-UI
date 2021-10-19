@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 // dialog
 import { AcmeSCSRoomCreateCommentComponent } from '../dialogs/create-comment/acme-sc-create-comment.component';
+import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 
 // entities
 import { ICommentEntity } from '../../entities/comment.entity';
@@ -95,6 +96,10 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
                 } else {
                     this.commentsResponseMessage = 'Server Error';
                 }
+                if(err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
             }
         );
     }
@@ -127,5 +132,16 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
         // refresh comment list
         this.commentsList.length=0;
         this.getComments(0);
+    }
+
+    openSessionExpiredDialog(): void {
+        const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
+            width: '700px',
+            height: '100px',
+            disableClose: true,
+            data:{}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+        });
     }
 }

@@ -2,6 +2,7 @@ import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeSCSRoomCreateTopicComponent } from '../dialogs/create-topic/acme-sc-create-topic.component';
+import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 
 import { ITopicEntity } from '../../entities/topic.entity';
 
@@ -95,7 +96,21 @@ export class AcmeSCRoomTopicsListComponent {
                 } else {
                     this.topicsResponseMessage = 'Server Error';
                 }
+                if(err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
             }
         );
+    }
+    openSessionExpiredDialog(): void {
+        const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
+            width: '700px',
+            height: '100px',
+            disableClose: true,
+            data:{}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+        });
     }
 }

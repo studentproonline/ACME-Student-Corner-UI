@@ -14,6 +14,7 @@ import { AcmeSCDialogHeaderComponent } from './components/dialog-header/acme-sc-
 //dialogs
 import { AcmeSCUserConfirmationComponent } from './components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 import { AcmeSCShareRoomComponent } from './components/dialogs/share-room/acme-sc-share-room.component';
+import { AcmeSCSessionExpiredComponent } from './components/dialogs/session-expired/acme-sc-session-expired.component';
 
 // third party
 import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
@@ -30,7 +31,8 @@ import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
         AcmeSCMainHeaderComponent,
         AcmeSCDialogHeaderComponent,
         AcmeSCUserConfirmationComponent,
-        AcmeSCShareRoomComponent
+        AcmeSCShareRoomComponent,
+        AcmeSCSessionExpiredComponent
     ],
     exports: [
         NgScrollbarModule,
@@ -42,7 +44,8 @@ import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
         AcmeSCMainHeaderComponent,
         AcmeSCDialogHeaderComponent,
         AcmeSCUserConfirmationComponent,
-        AcmeSCShareRoomComponent
+        AcmeSCShareRoomComponent,
+        AcmeSCSessionExpiredComponent
     ],
     providers: [ AcmeSCHttpService ]
 })

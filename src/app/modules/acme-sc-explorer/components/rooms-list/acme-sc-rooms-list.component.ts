@@ -10,8 +10,9 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 
 // dialogs
 import { AcmeSCCreateRoomComponent } from '../dialogs/create-room/acme-sc-create-room.component';
+import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { Observable } from 'rxjs';
-import { filter } from 'rxjs-compat/operator/filter';
+
 
 @Component({
     selector: 'acme-sc-rooms-list',
@@ -75,6 +76,11 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
             err => {
                 this.isProgress = false;
                 this.isSuccesfull = false;
+                console.log(err);
+                if(err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
             }
         );
     }
@@ -91,6 +97,10 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
             err => {
                 this.isProgress = false;
                 this.isSuccesfull = false;
+                if(err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
             }
         );
     }
@@ -107,6 +117,10 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
             err => {
                 this.isProgress = false;
                 this.isSuccesfull = false;
+                if(err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
             }
         );
     }
@@ -163,7 +177,16 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
             default:
                 break;
         }
-
     }
 
+    openSessionExpiredDialog(): void {
+        const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
+            width: '700px',
+            height: '100px',
+            disableClose: true,
+            data:{}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+        });
+    }
 }
