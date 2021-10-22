@@ -74,6 +74,10 @@ export class AcmeSCAccountPasswordResetComponent {
             value => {
                 this.isProgress = false;
                 this.otpGenerationMessage = 'Your password is succesfully reset, login with new password.';
+                this.snackBar.open('Your password is succesfully reset, login with new password', '', {
+                    duration: 3000
+                });
+                this.dialogRef.closeAll();
             },
             err => {
                 this.isProgress = false; // end progress
