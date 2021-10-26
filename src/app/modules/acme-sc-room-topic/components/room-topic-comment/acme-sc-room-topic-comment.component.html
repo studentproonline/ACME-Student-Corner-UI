@@ -1,6 +1,6 @@
 <div style="padding-top:8px">
-    <div [innerHTML]="comment.data" class="acme-sc-topic-comment-container">
-
+    <div class="acme-sc-topic-comment-container">
+        <quill-view [content]="comment.data"></quill-view>
     </div>
     <div fxLayout="row" fxLayoutAlign="end end" class="acme-sc-topic-comment-container-footer" fxLayoutGap="16px">
         <div fxFlex="80%">
