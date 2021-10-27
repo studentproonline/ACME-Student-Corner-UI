@@ -27,9 +27,9 @@
             <!--name-->
             <mat-form-field class="form-field" fxFill>
                 <mat-label>
-                    Name
+                    Nick Name
                 </mat-label>
-                <input required matInput placeholder="Name" formControlName="nameControl" autocomplete="off">
+                <input required matInput placeholder="Nick Name" formControlName="nameControl" autocomplete="off">
                 <mat-error *ngIf="shareRoomFormGroup.controls['nameControl'].errors?.required ||
                     shareRoomFormGroup.controls['nameControl'].errors?.whiteSpace">
                     Name is <strong>required</strong>

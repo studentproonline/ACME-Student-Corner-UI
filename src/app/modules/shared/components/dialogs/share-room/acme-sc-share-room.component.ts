@@ -27,7 +27,7 @@ export class AcmeSCShareRoomComponent {
         private snackBar: MatSnackBar, @Inject ( MAT_DIALOG_DATA ) public data: any) {
 
         this.shareRoomFormGroup = this.formBuilder.group({
-            emailControl: ['', [Validators.required, , Validators.email]],
+            emailControl: ['', [Validators.required, Validators.email]],
             nameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace] ]
         });
        
