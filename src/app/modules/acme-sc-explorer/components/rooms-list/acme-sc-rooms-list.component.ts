@@ -23,6 +23,7 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
     @Input() roomType = 'My Rooms';
     @Input() filterText = '';
+    @Input() loggedInUser = '';
 
     roomsList: IRoomEntity[] = [];
     filteredRoomsList: IRoomEntity[] = [];

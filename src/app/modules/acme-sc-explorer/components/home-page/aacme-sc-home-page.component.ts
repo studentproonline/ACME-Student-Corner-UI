@@ -14,6 +14,7 @@ export class AcmeSCMainPageComponent implements OnInit {
     loginEntity: ILoginEntity;
     nickName: string;
     fullName: string;
+    email: string;
     selectedNavigationItem: string = 'My Rooms';
     isProgress = false;
     isSuccesfull= true;
@@ -27,6 +28,7 @@ export class AcmeSCMainPageComponent implements OnInit {
         const lastNameChar = (this.loginEntity.lastName.substring(0, 1)).toUpperCase();
         this.nickName = firstNameChar.concat(lastNameChar);
         this.fullName = this.loginEntity.firstName.concat(' ', this.loginEntity.lastName);
+        this.email = this.loginEntity.email;
     }
 
     ngOnInit() {

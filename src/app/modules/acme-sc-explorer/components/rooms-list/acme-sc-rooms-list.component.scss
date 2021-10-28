@@ -1,3 +1,26 @@
 .acme-sc-create-new-button {
     width:32px;
 }
+
+.acme-sc-room-count {
+    font-size: small;
+    font-weight: bold;
+    opacity:0.7;
+    padding-right: 16px;
+}
+
+.acme-sc-login-user-label {
+    font-size: small;
+    opacity:0.7;
+}
+
+.roomCountInfoCircle {
+    width: 32px;
+    height: 32px;
+    line-height: 500px;
+    border-radius: 50%;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    background:gray;
+}
