@@ -58,7 +58,7 @@
                             </mat-chip>
                         </mat-chip-list>
                     </div>
-                    <div *ngIf="isRoomOwner" fxFlex fxLayoutAlign="end center">
+                    <div *ngIf="isTopicOrRoomOwner" fxFlex fxLayoutAlign="end center">
                         <div fxLayout="column">
                             <div fxFlex>
                                 <mat-slide-toggle (change)="updateTopic($event)" class="acme-sc-room-topic-close-toggle"

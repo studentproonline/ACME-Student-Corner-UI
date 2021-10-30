@@ -22,7 +22,7 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
     topicClosedEnabled: boolean = true;
     closeColor = "warn";
     isProgress = false;
-    isRoomOwner = false;
+    isTopicOrRoomOwner = false;
 
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService, private snackBar: MatSnackBar,
@@ -37,8 +37,12 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
             this.topicClosed = true;
         }
         if (this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-                this.topic.roomOwner.toUpperCase().trim()) {
-                this.isRoomOwner = true;
+                this.topic.roomOwner.toUpperCase().trim()||
+                
+                this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
+                this.topic.owner.toUpperCase().trim()) {
+                
+                    this.isTopicOrRoomOwner = true;
         }
     }
 
