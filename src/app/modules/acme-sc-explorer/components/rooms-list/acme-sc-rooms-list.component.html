@@ -51,7 +51,7 @@
     </div>
 
     <!--list rooms-->
-    <div fxFlex="48px"  *ngIf="roomType==='My Rooms' && isSuccesfull && !isProgress">
+    <div fxFlex="48px"  *ngIf="roomType==='My Rooms' && isSuccesfull && !isProgress && roomsList.length > 0">
         <div fxLayout="row">
             <div fxFlex="200px" fxLayoutAlign="start center">
                 <div class="acme-sc-room-count">
