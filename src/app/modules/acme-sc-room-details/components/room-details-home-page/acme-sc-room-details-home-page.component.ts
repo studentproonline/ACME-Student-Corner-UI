@@ -8,6 +8,9 @@ import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { AcmeRoomDetailsService } from '../../services/acme-sc-room-details.service';
 import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
+import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
     selector: 'acme-sc-room-details-home-page',
     templateUrl: './acme-sc-room-details-home-page.component.html',
@@ -31,7 +34,7 @@ export class AcmeSCRoomDetailsHomePageComponent {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
          private route: ActivatedRoute, private acmeRoomDetailsService: AcmeRoomDetailsService,
-         private router: Router) {
+         private router: Router, public dialog: MatDialog) {
         
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -72,6 +75,10 @@ export class AcmeSCRoomDetailsHomePageComponent {
                 } else {
                     this.roomDetailsResponseMessage = 'Server Error';
                 }
+                if(err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
             }
         );
     }
@@ -85,5 +92,16 @@ export class AcmeSCRoomDetailsHomePageComponent {
     }
     searchTextchange($event) {
       this.filterText = $event;
+    }
+
+    openSessionExpiredDialog(): void {
+        const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
+            width: '700px',
+            height: '100px',
+            disableClose: true,
+            data:{}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+        });
     }
 }
