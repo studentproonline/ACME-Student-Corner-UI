@@ -78,6 +78,7 @@ export class AcmeSCRoomComponent implements OnInit {
             this.isProgress = true;
             let currentRoom = Object.assign({}, this.room)
             this.room.status = status;
+            console.log("ROOM STATUS IS "+ this.room.status);
             this.acmeRoomService.updateRoom(this.room, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
                 value => {
                     this.isProgress = false;

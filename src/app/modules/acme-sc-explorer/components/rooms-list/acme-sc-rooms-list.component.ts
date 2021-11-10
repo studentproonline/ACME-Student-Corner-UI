@@ -153,8 +153,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
             data: {}
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.data) {
-                this.roomsList.push(result.data);
+            if (result && result.data) {
+                this.getRooms();
             }
         });
     }
