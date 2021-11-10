@@ -175,6 +175,10 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
                 this.getSharedRoomsList();
                 break;
             }
+            case 'Achievements': {
+                this.roomsList.length=0;
+                break;
+            }
             default:
                 break;
         }

@@ -16,7 +16,7 @@ export class AcmeSCNavigationSidebarComponent {
 
     constructNavigationItemsList() {
         this.addtNavigationItem('My Rooms','home', true);
-        this.addtNavigationItem('Explore','explore', false);
+        this.addtNavigationItem('Achievements','auto_awesome', false);
         this.addtNavigationItem('Recent','update', false);
         this.addtNavigationItem('Favorites','favorite border', false);
         this.addtNavigationItem('Shared with Me','people alt', false);
