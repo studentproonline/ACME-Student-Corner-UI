@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
@@ -35,6 +36,7 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
 
     constructor(public dialog: MatDialog, private acmeRoomService: AcmeRoomService,
+        private router: Router,
         private acmeFavRoomService: AcmeFavRoomService,
         private acmesharedRoomService: AcmesharedRoomService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService) {
@@ -176,8 +178,7 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
                 break;
             }
             case 'Achievements': {
-                this.roomsList.length=0;
-                break;
+                this.router.navigateByUrl('/achievements');
             }
             default:
                 break;

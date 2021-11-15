@@ -1,0 +1,46 @@
+<mat-card class="acme-sc-achievement-bar-card" fxFill>
+    <div fxFlexFill fxLayout="column" fxLayoutGap="8px">
+        <div class="acme-sc-achievement-bar-card-Title" fxFlex="32px" fxLayoutAlign="center center">
+            <div fxFlexFill fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+                <div fxFlex fxLayoutAlign="end center">
+                    <span>{{chartHeading}}</span>
+                </div>
+                <div fxFlex fxLayoutAlign="start center">
+                    <mat-icon fontSet="material-icons-outlined" aria-hidden="false" aria-label="home icon">{{iconName}}</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="154px" >
+            <acme-sc-achievement-bar [data]="data" [min]="min" [max]="max" [chartTitle]="chartTitle"
+                [chartHeading]="chartHeading" [color]="color"></acme-sc-achievement-bar>
+        </div>
+        <div fxFlex="32px">
+            <div fxFlexFill fxLayout="row" class="acme-sc-achievements-message">
+                <div fxFlex="400px" fxLayoutAlign="start center">
+                    <span>{{userLevelMessage}}</span>
+                </div>
+                <div fxFlex>
+                    <div fxFlexFill fxLayout="row" fxLayoutAlign="end end">
+                        <div fxFlex="32px">
+                            <mat-icon fxLayoutAlign="center center" style="height:24px;width:24px;color:darkorange">
+                                <svg width="24" height="24" viewBox="0 0 36 48" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.7157 10.1211C13.026 10.1211 9.21045 13.9363 9.21045 18.626C9.21045 23.3161 13.026 27.1313 17.7157 27.1313C22.4054 27.1313 26.2206 23.3161 26.2206 18.626C26.2206 13.9363 22.4054 10.1211 17.7157 10.1211Z"
+                                        fill="darkgoldenrod" />
+                                    <path
+                                        d="M35.4313 24.3834L32.8521 18.6273L35.4313 12.8712L29.9615 9.73022L28.6648 3.55737L22.3931 4.23157L17.7158 0L13.0382 4.23157L6.76685 3.55774L5.47009 9.73059L0 12.8712L2.57922 18.6273L0 24.3834L5.47009 27.5244L6.17249 30.8687L0.333618 43.2755L6.42737 43.3553L10.3729 48L16.1122 35.8041L17.7158 37.2546L19.3191 35.8041L25.0587 48L29.0039 43.3553L35.0977 43.2755L29.2588 30.8687L29.9615 27.5244L35.4313 24.3834ZM17.7158 29.9447C11.4752 29.9447 6.39844 24.8679 6.39844 18.6273C6.39844 12.3867 11.4752 7.30994 17.7158 7.30994C23.9561 7.30994 29.0332 12.3871 29.0332 18.6273C29.0332 24.8679 23.9561 29.9447 17.7158 29.9447Z"
+                                        fill="darkgoldenrod" />
+                                </svg>
+                            </mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Total badge earned-->
+        <div class="acme-sc-badge-earned" fxFlex="32px">
+            <span>Total badges earned : </span> <span>{{badgesEarned}}</span>
+        </div>
+    </div>
+</mat-card>

@@ -31,6 +31,12 @@ const routes: Routes = [
         canActivate: [AcmeSCAuthenticationGuard]
         
     },
+    {
+        path: 'achievements',
+        loadChildren: () => import('./modules/acme-sc-achievements/acme-sc-achievements.module').then(m => m.AcmeStudentCornerAchievementsModule),
+        canActivate: [AcmeSCAuthenticationGuard]
+        
+    },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'app' },
 ];
