@@ -12,12 +12,11 @@
                     </mat-icon>
                 </mat-label>
             </div>
-            <div fxFlex >
+            <div fxFlex>
                 <form [formGroup]="searchFormGroup" fxFill>
                     <mat-form-field class="form-field" fxFill>
-                        <input matInput formControlName="searchControl" type="text"
-                            name="search" autocomplete="off" placeholder={{placeHolder}}
-                            class="searchInput">
+                        <input matInput formControlName="searchControl" type="text" name="search" autocomplete="off"
+                            placeholder={{placeHolder}} class="searchInput">
                     </mat-form-field>
                 </form>
             </div>
@@ -32,13 +31,12 @@
             </svg>
         </mat-icon>
     </div>
-    <div (click)="logout()" class="acme-sc-logout-text" fxFlex="32px" fxFill fxLayoutAlign="end center">
-        <span style="color:darkred"><u>Logout</u></span>
-    </div>
     <div fxFlex="48px" fxFill fxLayoutAlign="end center">
-        <div matTooltip={{userFullName}} class="UserInfoCircle" (click)="nickNameClicked()"
-            fxLayoutAlign="center center">
+        <div matTooltip={{userFullName}} class="UserInfoCircle" fxLayoutAlign="center center"
+            (click)="nickNameClicked($event)">
             {{userNickName}}
         </div>
+        <acme-sc-user-popup *ngIf="showUserPopup" [ngStyle]="getRightClickMenuStyle()" (closed)="closePopup()"
+            (logOut)="logout()"></acme-sc-user-popup>
     </div>
 </div>

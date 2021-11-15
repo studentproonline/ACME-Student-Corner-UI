@@ -17,6 +17,9 @@ export class AcmeSCMainHeaderComponent {
     @Output() searchTextchange = new EventEmitter<string>();
 
     searchFormGroup: any;
+    showUserPopup: any= false;
+    rightClickMenuPositionX: number;
+    rightClickMenuPositionY: number;
 
     constructor(private formBuilder: FormBuilder, 
         private acmeScCookiesService: AcmeScCookiesService, private router: Router) {
@@ -28,8 +31,27 @@ export class AcmeSCMainHeaderComponent {
         })
     }
 
-    nickNameClicked(): void {
+    nickNameClicked(event): void {
         this.userNameClicked.emit();
+        this.showUserPopup= true;
+        this.rightClickMenuPositionX = event.clientX;
+        this.rightClickMenuPositionY = event.clientY;
+    }
+
+    // close popup event 
+    closePopup() {
+        this.showUserPopup= false;
+    }
+
+    getRightClickMenuStyle() {
+        return {
+            position: 'absolute',
+            left: `${this.rightClickMenuPositionX-400}px`,
+            top: `${this.rightClickMenuPositionY+10}px`,
+            height: '200px',
+            width: '400px',
+            'z-index': '100'
+          }
     }
 
     logout() {
