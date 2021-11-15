@@ -1,8 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeScCookiesService } from '../../../../core/services/acme-sc-cookies.service';
+
+import { AcmeSCContactinformationComponent } from '../../../shared/components/dialogs/contact-information/acme-sc-contact-information.component';
+import { AcmeSCUserPopupComponent } from '../user-popup/acme-sc-user-popup.component';
 
 @Component({
     selector: 'acme-sc-main-header',
@@ -22,7 +26,8 @@ export class AcmeSCMainHeaderComponent {
     rightClickMenuPositionY: number;
 
     constructor(private formBuilder: FormBuilder, 
-        private acmeScCookiesService: AcmeScCookiesService, private router: Router) {
+        private acmeScCookiesService: AcmeScCookiesService, private router: Router,
+        public dialog: MatDialog) {
         this.searchFormGroup = this.formBuilder.group({
             searchControl: ['']
         });
@@ -57,5 +62,19 @@ export class AcmeSCMainHeaderComponent {
     logout() {
        this.acmeScCookiesService.deleteCookies();
        this.router.navigateByUrl("/login");
+    }
+
+    openHelp() {
+        const dialogRef = this.dialog.open(AcmeSCContactinformationComponent, {
+            width: '600px',
+            height: '250px',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.data ) {
+                //this.updateRoomStatus(status);
+            }
+        });
     }
 }
