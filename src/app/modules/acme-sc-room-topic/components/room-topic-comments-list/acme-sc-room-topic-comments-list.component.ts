@@ -31,7 +31,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
     commentsResponseMessage = '';
     commentsEntity: ICommentEntity;
     commentsList: any[] = [];
-    isMore= false;
+    isMore = false;
     currentPageNumber = 0;
 
     constructor(private route: ActivatedRoute, private router: Router,
@@ -50,39 +50,42 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
     }
 
     refrshCommentsList() {
-        this.commentsList.length=0;
+        this.commentsList.length = 0;
         this.currentPageNumber = 0;
         this.getComments(this.currentPageNumber);
     }
 
     fetchMoreRecords() {
-        this.currentPageNumber = this.currentPageNumber+1;
+        this.currentPageNumber = this.currentPageNumber + 1;
         this.getComments(this.currentPageNumber);
     }
 
     getComments(pageNumber: Number) {
         // show progress
         this.isProgress = true;
-        this.acmeTopicCommentService.getTopicComments(pageNumber,this.topicId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeTopicCommentService.getTopicComments(pageNumber, this.topicId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 const response: any = value;
                 this.isProgress = false;
+                this.isMore = false;
                 this.isSuccessFull = true;
                 this.commentsEntity = response.data;
                 if (this.commentsEntity) {
                     this.roomId = this.commentsEntity.roomId;
-                    this.roomOwner= this.commentsEntity.roomOwner;
-                    if(this.commentsEntity.comments && this.commentsEntity.comments.length > 0) {
-                        this.commentsList=this.commentsList.concat(this.commentsEntity.comments);
-                        this.isMore = true;
-                    } else{
-                        this.currentPageNumber=this.currentPageNumber-1;
+                    this.roomOwner = this.commentsEntity.roomOwner;
+                    if (this.commentsEntity.comments && this.commentsEntity.comments.length > 0) {
+                        this.commentsList = this.commentsList.concat(this.commentsEntity.comments);
+                        if (this.commentsEntity.comments.length >= 10) {
+                            this.isMore = true;
+                        }
+                    } else {
+                        this.currentPageNumber = this.currentPageNumber - 1;
                         this.isMore = false;
                     }
-                    if(this.commentsEntity.roomStatus === 'Active') {
+                    if (this.commentsEntity.roomStatus === 'Active') {
                         this.isRoomActive = true;
                     }
-                    if(this.commentsEntity.topicStatus === 'Active') {
+                    if (this.commentsEntity.topicStatus === 'Active') {
                         this.isTopicActive = true;
                     }
                 }
@@ -96,7 +99,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
                 } else {
                     this.commentsResponseMessage = 'Server Error';
                 }
-                if(err.status === 401 || err.status === 401.1) {
+                if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog
                     this.openSessionExpiredDialog();
                 }
@@ -105,7 +108,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
     }
 
     goToAllTopics() {
-        this.router.navigateByUrl('/roomDetails?roomId='+this.roomId+'&roomType='+this.roomType);
+        this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
     }
 
     createComment() {
@@ -121,7 +124,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data) {
-                this.commentsList.length=0;
+                this.commentsList.length = 0;
                 this.getComments(0);
             }
         });
@@ -130,7 +133,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
     // comment delete event
     commentDeleted() {
         // refresh comment list
-        this.commentsList.length=0;
+        this.commentsList.length = 0;
         this.getComments(0);
     }
 
@@ -139,7 +142,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
             width: '700px',
             height: '100px',
             disableClose: true,
-            data:{}
+            data: {}
         });
         dialogRef.afterClosed().subscribe(result => {
         });
