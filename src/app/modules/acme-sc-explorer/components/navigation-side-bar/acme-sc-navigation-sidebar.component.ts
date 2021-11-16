@@ -16,11 +16,10 @@ export class AcmeSCNavigationSidebarComponent {
 
     constructNavigationItemsList() {
         this.addtNavigationItem('My Rooms','home', true);
-        this.addtNavigationItem('Achievements','auto_awesome', false);
-        this.addtNavigationItem('Recent','update', false);
-        this.addtNavigationItem('Favorites','favorite border', false);
         this.addtNavigationItem('Shared with Me','people alt', false);
-
+        this.addtNavigationItem('Favorites','favorite border', false);
+        this.addtNavigationItem('Recent','update', false);
+        this.addtNavigationItem('Achievements','auto_awesome', false);
     }
     
     addtNavigationItem(itemName: string, itemIcon: string,selected: boolean) {
