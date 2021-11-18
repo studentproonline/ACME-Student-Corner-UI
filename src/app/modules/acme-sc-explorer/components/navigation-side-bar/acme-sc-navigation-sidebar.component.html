@@ -19,7 +19,15 @@
 
     </div>
     <div fxFlex="10%" fxLayoutAlign="center start" class="acme-sc-title-heading">
-        <span>ACME - Student Corner</span>
+        <div fxFlexFill fxLayout="column">
+            <div fxFlex="24px" fxLayoutAlign="center start">
+                <span>A.C.M.E. - Student Corner</span>
+            </div>
+            <div fxFlex fxLayoutAlign="center center" class="acme-sc-title-label">
+                <span>Acedemic & Co-currical Metrical Evaluation</span>
+            </div>
+        </div>
+        
     </div>
     <div fxFlex="48px" style="padding:4px" *ngFor="let navigationItem of navigationItemsList">
         <acme-sc-navigation-item [itemName]="navigationItem.name" [iconName]="navigationItem.icon"
