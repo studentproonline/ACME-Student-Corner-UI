@@ -37,6 +37,12 @@ const routes: Routes = [
         canActivate: [AcmeSCAuthenticationGuard]
         
     },
+    {
+        path: 'library',
+        loadChildren: () => import('./modules/acme-sc-room-library/acme-sc-room-library.module').then(m => m.AcmeStudentCornerRoomLibraryModule),
+        canActivate: [AcmeSCAuthenticationGuard]
+        
+    },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'app' },
 ];
