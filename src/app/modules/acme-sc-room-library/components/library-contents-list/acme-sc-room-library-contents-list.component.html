@@ -61,7 +61,7 @@
                     <span>This room is no longer active !!!!</span>
                 </div>
                 <!-- new library content button-->
-                <div *ngIf="roomTopicsList.length > 0 && room.status === 'Active'" fxFlex fxLayoutAlign="end center">
+                <div *ngIf="roomLibraryContentsList.length > 0 && room.status === 'Active'" fxFlex fxLayoutAlign="end center">
                     <button mat-raised-button color="accent" (click)="uploadNewContent()"
                         class="acme-cs-login-button">upload new content
                     </button>
@@ -71,7 +71,7 @@
         <!--content-->
         <div fxFlex style="padding-top:32px">
             <!--Empty List-->
-            <div *ngIf="roomTopicsList.length === 0" fxFlexFill fxLayout="column" fxLayoutAlign="center  center"
+            <div *ngIf="roomLibraryContentsList.length === 0" fxFlexFill fxLayout="column" fxLayoutAlign="center  center"
                 fxLayoutGap="8px">
                 <div fxFlex="90px" fxLayoutAlign="center  center">
                     <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="center center" style="height:90px;width:90px;">
@@ -90,6 +90,20 @@
                     <button mat-raised-button color="accent" (click)="uploadNewContent()" class="acme-cs-login-button">Upload
                         new content
                     </button>
+                </div>
+            </div>
+            <!--non empty list-->
+            <div *ngIf="roomLibraryContentsList.length > 0" fxFlexFill fxLayout="column" fxLayoutGap="8px">
+                <div fxLayout="column" fxFlexFill>
+                    <ng-scrollbar thumbClass="white-scrollbars">
+                        <div fxLayout="column" fxFlexFill fxLayoutGap="8px">
+                            <acme-sc-room-library-content *ngFor="let libraryContent of filteredroomLibraryContentsList"
+                             [libraryContent]="libraryContent" [roomOwner]="room.email"
+                             (contentDeleted)="libraryContentDeleted($event)">
+
+                            </acme-sc-room-library-content>
+                        </div>
+                    </ng-scrollbar>
                 </div>
             </div>
         </div>

@@ -1,0 +1,70 @@
+<div class="acme-sc-room-library-content-item" fxLayout="column" fxLayoutGap="8px">
+    <div fxFlex="24px" fxFlexFill>
+        <div fxLayout="row" fxLayoutGap="16px">
+            <!--content icon -->
+            <div fxFlex="24px" class="acme-sc-room-topic-row">
+                <mat-icon fxLayoutAlign="center center" style="height:24px;width:24px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+                        viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <g>
+                            <rect fill="none" height="24" width="24" />
+                            <path
+                                d="M19,3H5C3.89,3,3,3.9,3,5v14c0,1.1,0.89,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.11,3,19,3z M19,19H5V7h14V19z M17,12H7v-2 h10V12z M13,16H7v-2h6V16z" />
+                        </g>
+                    </svg>
+                </mat-icon>
+            </div>
+            <!--Topic title-->
+            <div (click)="openDocument()" fxFlex fxLayoutAlign="start start" style="cursor:pointer;">
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <div fxFlex="98%">
+                        <span class="acme-sc-room-library-content-title">{{libraryContent.name}} </span>
+                        <span class="acme-sc-room-library-content-description">({{libraryContent.description}})</span>
+                    </div>
+                    <div fxFlex="2%" *ngIf="isProgress">
+                        <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div fxFlex="24px" fxFlexFill>
+        <div fxLayout="row" fxLayoutGap="16px">
+            <div fxFlex="90%" fxFlexFill>
+                <span class="acme-sc-room-library-content-owner"><b>Created By:</b> {{libraryContent.owner}}</span>
+            </div>
+            <div fxFlex="200px" fxLayoutAlign="end start">
+                <span class="acme-sc-room-library-content-createdOn"><b>Created on:</b>
+                    {{libraryContent.createdOn|date:'medium'}}</span>
+            </div>
+        </div>
+
+    </div>
+    <div fxFlex="24px" fxFlexFill>
+        <div fxLayout="row" fxLayoutGap="16px">
+            <div fxFlex="98%">
+                <mat-chip-list #chipList aria-label="Topic tags">
+                    <mat-chip [removable]="tagRemove" *ngFor="let tag of contentTags" fxLayoutAlign="center center"
+                        class="acme-sc-library-content-chip">
+                        {{tag}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+
+            <!--Delete icon-->
+            <div fxLayoutAlign="end end" *ngIf="isContentOrRoomOwner" fxFlex="2%"
+                class="acme-sc-room-library-content-row">
+                <mat-icon matTooltip="Delete content" fxLayoutAlign="end end"
+                    style="height:24px;width:24px;opacity: 0.5;" (click)="deleteLibrarycontent()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
+                    </svg>
+                </mat-icon>
+            </div>
+        </div>
+    </div>
+</div>

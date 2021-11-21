@@ -12,9 +12,27 @@ export class AcmeSCRoomLibraryService {
     }
 
     // upload document
-    uploadtDocument(token: any, fileData: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data', Authorization: token });
-        return this.httpService.post('/achievements/', headers, fileData).pipe(catchError(this.handleErrorObservable));
+    uploadDocument(token: any, fileData: any) {
+        const headers = new HttpHeaders({ Authorization: token });
+        return this.httpService.post('/libraryfiles/', headers, fileData).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get library contents
+    getLibrarycontents(roomId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/libraryfiles/?roomId='+ roomId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get library content
+    getLibrarycontent(contentId: string, roomId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/libraryfiles/'+contentId +'?roomId='+ roomId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get library content
+    deleteLibrarycontent(contentId: string, roomId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.delete('/libraryfiles/'+contentId +'?roomId='+ roomId, headers).pipe(catchError(this.handleErrorObservable));
     }
 
     // get room details
