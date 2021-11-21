@@ -53,9 +53,21 @@ export class AcmeSCRoomLibraryContentItemComponent {
                 const response: any = value;
                 this.isProgress = false;
                 this.isSuccessFull = true;
-                var blob = new Blob([this._base64ToArrayBuffer(response.data.fileData)], { type: response.data.contentType });
-                const url = URL.createObjectURL(blob);
-                window.open(url);
+                //
+                if (response.data.contentType !== 'link') {
+                    var blob = new Blob([this._base64ToArrayBuffer(response.data.fileData)], { type: response.data.contentType });
+                    const url = URL.createObjectURL(blob);
+                    window.open(url);
+                } else {
+                    var blob = new Blob([this._base64ToArrayBuffer(response.data.fileData)]);
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        const url = reader.result.toString();
+                        window.open(
+                            url, "_blank");
+                    }
+                    reader.readAsText(blob);
+                }
             },
             err => {
                 this.isProgress = false;

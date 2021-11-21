@@ -2,8 +2,8 @@
     <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
         <span>Upload new content</span>
     </div>
-    <div fxFlex>
-        <mat-tab-group>
+    <div fxFlex="calc(100%-102px)">
+        <mat-tab-group (selectedTabChange)="myTabSelectedTabChange($event)">
             <mat-tab>
                 <ng-template mat-tab-label>
                     <mat-icon>
@@ -31,15 +31,18 @@
                         </mat-error>
                     </mat-form-field>
                     <!--content Tags-->
+                    <mat-label class="acme-sc-mat-label"><span> Associate Tags : please press
+                            <B>Enter</B> after typing to associate tag with the content.</span></mat-label>
                     <mat-form-field class="form-field" style="width:99%">
-                        <mat-label>Associated Tags</mat-label>
-                        <mat-chip-list #chipList aria-label="Topic tags">
-                            <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
-                                (removed)="removeTag(tag)" fxLayoutAlign="center center" class="acme-sc-library-content-chip">
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let tag of documentTags" [selectable]="selectable" [removable]="removable"
+                                (removed)="removeTag(tag)" fxLayoutAlign="center center"
+                                class="acme-sc-library-content-chip">
                                 {{tag}}
-                                <mat-icon class="acme-cs-mat-icon acme-sc-library-content-chip-close-icon">cancel</mat-icon>
+                                <mat-icon class="acme-cs-mat-icon acme-sc-library-content-chip-close-icon">cancel
+                                </mat-icon>
                             </mat-chip>
-                            <input placeholder="Associated tags" #fruitInput formControlName="tagControl"
+                            <input formControlName="documentTagControl"
                                 [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                 (matChipInputTokenEnd)="addTag($event)">
                         </mat-chip-list>
@@ -49,7 +52,6 @@
                         (change)="onFileChange($event)" accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
                     <div class="acme-sc-file-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
                 </form>
-                <div class="acme-sc-library-content-tags-message" fxLayoutAlign="center center"><span>please press <B>Enter</B> after typing to associate tag with the content.</span></div>
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
@@ -63,6 +65,50 @@
                     </mat-icon>
                     <span style="padding-left: 4px;">Links</span>
                 </ng-template>
+                <!--upload link form-->
+                <form [formGroup]="linkuploadFormGroup">
+                    <!--Link Description-->
+                    <mat-form-field class="form-field" fxFill>
+                        <mat-label>
+                            Link
+                        </mat-label>
+                        <input required matInput placeholder="Link : provide full url including http:// or https://" formControlName="fileLinkControl"
+                            autocomplete="off">
+                        <mat-error *ngIf="linkuploadFormGroup.controls['fileLinkControl'].errors?.required ||
+                            linkuploadFormGroup.controls['fileLinkControl'].errors?.whiteSpace">
+                            Link is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <!--File Description-->
+                    <mat-form-field class="form-field" fxFill>
+                        <mat-label>
+                            Description
+                        </mat-label>
+                        <input required matInput placeholder="Description" formControlName="fileDescriptionControl"
+                            autocomplete="off">
+                        <mat-error *ngIf="linkuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
+                            linkuploadFormGroup.controls['fileDescriptionControl'].errors?.whiteSpace">
+                            Description is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <!--content Tags-->
+                    <mat-label class="acme-sc-mat-label"><span> Associate Tags : please press
+                            <B>Enter</B> after typing to associate tag with the content.</span></mat-label>
+                    <mat-form-field class="form-field" style="width:99%">
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let tag of linkTags" [selectable]="selectable" [removable]="removable"
+                                (removed)="removeTag(tag)" fxLayoutAlign="center center"
+                                class="acme-sc-library-content-chip">
+                                {{tag}}
+                                <mat-icon class="acme-cs-mat-icon acme-sc-library-content-chip-close-icon">cancel
+                                </mat-icon>
+                            </mat-chip>
+                            <input  formControlName="linkTagControl"
+                                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                (matChipInputTokenEnd)="addTag($event)">
+                        </mat-chip-list>
+                    </mat-form-field>
+                </form>
             </mat-tab>
         </mat-tab-group>
     </div>
@@ -81,7 +127,7 @@
                 </button>
             </div>
         </div>
-        
+
     </div>
     <!--progress bar-->
     <div fxFlex>
