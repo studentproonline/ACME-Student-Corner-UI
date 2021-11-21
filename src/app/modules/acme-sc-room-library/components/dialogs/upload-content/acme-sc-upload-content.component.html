@@ -4,6 +4,7 @@
     </div>
     <div fxFlex="calc(100%-102px)">
         <mat-tab-group (selectedTabChange)="myTabSelectedTabChange($event)">
+            <!--document tab-->
             <mat-tab>
                 <ng-template mat-tab-label>
                     <mat-icon>
@@ -49,10 +50,11 @@
                     </mat-form-field>
                     <!--File-->
                     <input formControlName="fileControl" id="file" type="file" class="form-control"
-                        (change)="onFileChange($event)" accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
+                        (change)="onFileChange($event)" accept=".pdf, .doc,.docx, .txt, .ppt, .pptx,.mp3,.mp4,.avi">
                     <div class="acme-sc-file-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
                 </form>
             </mat-tab>
+            <!--Link tab-->
             <mat-tab>
                 <ng-template mat-tab-label>
                     <mat-icon>
