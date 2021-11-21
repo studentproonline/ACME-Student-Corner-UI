@@ -20,3 +20,32 @@
     border-top-style: outset;
     padding:8px;
 }
+
+.acme-sc-content-item-container{
+    background-color: #f1f1f1;
+    cursor:pointer;
+}
+.acme-sc-content-item-container-default{
+    background-color: #fafafa;
+    cursor:pointer
+}
+.acme-sc-content-item-selection-bar{
+    background-color: purple;
+}
+.acme-sc-content-item-selection-bar-default{
+    background-color: #fafafa;
+}
+.acme-sc-content-item-text {
+    color: black;
+    opacity: 0.7;
+    padding-left: 8px;
+}
+.acme-sc-content-item-text-default {
+    opacity:0.5;
+    color: black;
+    padding-left: 8px;
+}
+.acme-sc-content-item-icon-selected {
+    color: black;
+    opacity:0.7
+}

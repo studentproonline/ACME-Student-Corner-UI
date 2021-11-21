@@ -30,6 +30,7 @@ export class AcmeSCLibraryExplorerComponent {
     isRoomOwner = false;
     roomDetailsResponseMessage = '';
     filterText: string = '';
+    contentFilterType='All';
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private route: ActivatedRoute, private router: Router,
@@ -109,5 +110,9 @@ export class AcmeSCLibraryExplorerComponent {
 
     gotoRoomsList() {
         this.router.navigateByUrl('/home?roomType=' + this.roomType);
+    }
+
+    OnContentTypeSelected($event) {
+        this.contentFilterType =$event;
     }
 }

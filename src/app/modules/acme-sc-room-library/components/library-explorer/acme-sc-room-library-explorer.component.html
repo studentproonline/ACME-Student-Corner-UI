@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="row">
     <div fxFlex="20%" fxFlex.md="25%">
-        <acme-sc-room-library-content-types></acme-sc-room-library-content-types>
+        <acme-sc-room-library-content-types (itemClicked)="OnContentTypeSelected($event)"></acme-sc-room-library-content-types>
     </div>
     <div fxFlex class="acme-sc-container">
         <div fxFlexFill fxLayout="column" fxLayoutGap="16px">
@@ -104,7 +104,7 @@
             </div>
              <!--Library content list container-->
              <div *ngIf="!isProgress && isSuccessFull" fxFlex>
-                <acme-sc-room-library-contents-list [filterText]="filterText" [room]="roomDetailsEntity" [roomType]="roomType"></acme-sc-room-library-contents-list>
+                <acme-sc-room-library-contents-list [filterText]="filterText" [contentTypeFilter]="contentFilterType" [room]="roomDetailsEntity" [roomType]="roomType"></acme-sc-room-library-contents-list>
             </div>
         </div>
     </div>

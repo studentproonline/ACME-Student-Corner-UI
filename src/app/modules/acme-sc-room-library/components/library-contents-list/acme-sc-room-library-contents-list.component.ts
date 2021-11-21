@@ -22,6 +22,7 @@ export class AcmeSCRoomTopicsListComponent {
     @Input() room: any;
     @Input() roomType: string;
     @Input() filterText = '';
+    @Input() contentTypeFilter = '';
 
     isProgress = false;
     isSuccessFull = true;
@@ -40,6 +41,11 @@ export class AcmeSCRoomTopicsListComponent {
         const filterSearchText: SimpleChange = changes.filterText;
         if(filterSearchText) {
             this.filteredroomLibraryContentsList=this.filterTopic(filterSearchText.currentValue);
+        }
+
+        const contentTypeFilterText: SimpleChange = changes.contentTypeFilter;
+        if(contentTypeFilterText) {
+            this.filteredroomLibraryContentsList=this.filterTopicByContent(this.roomLibraryContentsList,contentTypeFilterText.currentValue);
         }
     }
 
@@ -100,9 +106,21 @@ export class AcmeSCRoomTopicsListComponent {
     private filterTopic(value: string): ILibraryContentEntity[] {
         const filterValue = value.toLowerCase();
         if (filterValue.toLowerCase().trim() === '') {
-            return this.roomLibraryContentsList;
+            return this.filterTopicByContent(this.roomLibraryContentsList,this.contentTypeFilter);
         } else {
-            return this.roomLibraryContentsList.filter(roomsLibraryContentList => roomsLibraryContentList.name.toLowerCase().includes(filterValue));
+            let firstLevelFilterArray=this.roomLibraryContentsList.filter(roomsLibraryContentList => roomsLibraryContentList.name.toLowerCase().includes(filterValue));
+            return this.filterTopicByContent(firstLevelFilterArray,this.contentTypeFilter);
+        }
+    }
+
+    private filterTopicByContent(array: any, value: string): ILibraryContentEntity[] {
+        const filterValue = value.toLowerCase();
+        if (filterValue.toLowerCase().trim() === '' || filterValue.toLowerCase().trim() === 'all') {
+            return array;
+        } else if (filterValue.toLowerCase().trim() === 'links') {
+            return array.filter(roomsLibraryContentList => roomsLibraryContentList.contentType.toLowerCase().includes('link'));
+        } else {
+            return array.filter(roomsLibraryContentList => !roomsLibraryContentList.contentType.toLowerCase().includes('link'));
         }
     }
 
