@@ -25,7 +25,7 @@ export class AcmeSCConferenceRoomComponent {
 
     private client: AgoraClient;
     private localStream: Stream;
-    private uid: string;
+    private uid: number;
 
     loginEntity: ILoginEntity;
     nickName: string;
@@ -51,14 +51,13 @@ export class AcmeSCConferenceRoomComponent {
         private route: ActivatedRoute, private router: Router,
         public dialog: MatDialog) {
 
-        //Math.floor(Math.random() * 100);
+        this.uid = Math.floor(Math.random() * 100);
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
         const lastNameChar = (this.loginEntity.lastName.substring(0, 1)).toUpperCase();
         this.nickName = firstNameChar.concat(lastNameChar);
         this.fullName = this.loginEntity.firstName.concat(' ', this.loginEntity.lastName);
-
     }
 
     ngOnInit() {
@@ -69,7 +68,6 @@ export class AcmeSCConferenceRoomComponent {
                 this.roomType = params.roomType;
                 this.getRoomDetails();
             });
-
     }
 
     /**
@@ -104,6 +102,7 @@ export class AcmeSCConferenceRoomComponent {
         this.localStream.stop();
         this.localStream.close();
         this.playing = false;
+        this.connectedUsers.length=0;
     }
 
     pauseVideo() {
@@ -238,8 +237,7 @@ export class AcmeSCConferenceRoomComponent {
                 if (this.loginEntity.email.toUpperCase().trim() === response.data.email.toUpperCase().trim()) {
                     this.isRoomOwner = true;
                 }
-                this.uid = this.loginEntity.email;
-
+                //this.uid = this.loginEntity.email;
             },
             err => {
                 this.isProgress = false;

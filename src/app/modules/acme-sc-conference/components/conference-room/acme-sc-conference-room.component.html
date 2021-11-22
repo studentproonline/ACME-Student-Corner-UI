@@ -9,7 +9,7 @@
                 <!--main header-->
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
                     [placeHolder]="'Start searching for a user by name'"
-                    [dislaySearchBox]="showSearchBox" [title]="'Conference Room Center'">
+                    [dislaySearchBox]="showSearchBox" [title]="'Conference Room'">
                 </acme-sc-main-header>
             </div>
             <!--progress-->
@@ -177,8 +177,11 @@
                             <div *ngIf="playing  && connectedUsers.length === 0" fxFlex="32px" class="acme-sc-conference-room-call-label">
                                 <span>Waiting for users to join</span>
                             </div>
+                            <div *ngIf="playing  && connectedUsers.length > 0" fxLayout="row wrap" fxFlexFill fxLayoutGap="32px">
+                                <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"></div>
+                            </div>
                         </div>
-                        <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"></div>
+                       
                     </div>
                 </div>
 
