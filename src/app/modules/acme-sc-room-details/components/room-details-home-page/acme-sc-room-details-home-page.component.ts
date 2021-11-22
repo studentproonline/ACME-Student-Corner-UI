@@ -108,4 +108,8 @@ export class AcmeSCRoomDetailsHomePageComponent {
         dialogRef.afterClosed().subscribe(result => {
         });
     }
+
+    gotoConferenceCall() {
+        this.router.navigateByUrl ( '/conference?roomType='+ this.roomType + '&roomId='+ this.roomId);
+    }
 }

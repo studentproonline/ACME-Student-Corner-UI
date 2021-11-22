@@ -43,6 +43,12 @@ const routes: Routes = [
         canActivate: [AcmeSCAuthenticationGuard]
         
     },
+    {
+        path: 'conference',
+        loadChildren: () => import('./modules/acme-sc-conference/acme-sc-room-conference.module').then(m => m.AcmeStudentCornerRoomconferenceModule),
+        canActivate: [AcmeSCAuthenticationGuard]
+        
+    },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'app' },
 ];
