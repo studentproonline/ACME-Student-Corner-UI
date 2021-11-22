@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'acme-sc-conference-room-users-list',
@@ -6,5 +6,5 @@ import { Component, Input} from '@angular/core';
     styleUrls: ['./acme-sc-conference-room-users-list.component.scss']
 })
 export class AcmeSCConferenceRoomUsersListComponent {
-    @Input() connectedUsersNameList;
+    @Input() connectedUsersNameList:any;
 }

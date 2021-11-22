@@ -46,9 +46,12 @@
 .acme-sc-conference-room-toolbar {
     padding:0;
 }
-
+.acme-sc-conference-room-connect-disconnect-icon {
+   cursor: pointer;
+}
 .acme-sc-conference-room-video-icon {
     opacity: 1;
+    cursor: pointer;
 }
 .acme-sc-conference-room-call-label {
     font-weight: bold;

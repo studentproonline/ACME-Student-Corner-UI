@@ -13,6 +13,10 @@ import { AcmeSCConferenceRoomUserComponent } from './components/conference-room-
 //services
 import { AcmeSCConferenceRoomLibraryService } from './services/acme-sc-conference-room.service';
 
+export const agoraConfig: any = {
+    AppID: null //setting null here
+};
+
 @NgModule({
     declarations: [AcmeSCConferenceRoomComponent,
         AcmeSCConferenceRoomUsersListComponent,
@@ -21,7 +25,7 @@ import { AcmeSCConferenceRoomLibraryService } from './services/acme-sc-conferenc
     imports: [FlexLayoutModule,
         AcmeSCSharedModule,
         AcmeSCRoomConferenceRoutingModule,
-        NgxAgoraModule.forRoot({ AppID: '9f02b64bac7c41639488ebc1b4f36cab' })],
+        NgxAgoraModule.forRoot(agoraConfig)],
 
     providers: [AcmeSCConferenceRoomLibraryService],
 
