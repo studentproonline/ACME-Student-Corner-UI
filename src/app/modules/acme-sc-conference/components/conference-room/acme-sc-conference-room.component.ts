@@ -44,6 +44,7 @@ export class AcmeSCConferenceRoomComponent {
     playing = false;
     pauseVideoStream = false;
     pauseAudioStream = false;
+    pauseScreenShare = true;
 
     constructor(private ngxAgoraService: NgxAgoraService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
@@ -126,6 +127,14 @@ export class AcmeSCConferenceRoomComponent {
             }
         }
         this.pauseAudioStream = !this.pauseAudioStream;
+    }
+
+    screenShare() {
+
+    }
+
+    stopScreenShare() {
+        
     }
 
     private assignLocalStreamHandlers(): void {

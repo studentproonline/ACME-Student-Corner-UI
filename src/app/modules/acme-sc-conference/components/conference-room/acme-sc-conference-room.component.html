@@ -110,39 +110,60 @@
                         <div fxFlexFill fxLayout="row" fxLayoutGap="8px">
                             <mat-card fxFill class="acme-sc-conference-room-toolbar">
                                 <div fxFlexFill fxLayout="row" fxLayoutGap="16px" style="padding:8px">
+                                    <!--connect icon-->
                                     <div  *ngIf="!playing" class="acme-sc-conference-room-connect-disconnect-icon" matTooltip="Connect" fxFlex="32px" fxLayoutAlign="center center" (click)="connectCall()">
                                         <mat-icon fxLayoutAlign="center center">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="green"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM21 6h-3V3h-2v3h-3v2h3v3h2V8h3z"/>
                                             </svg>
                                         </mat-icon>
                                     </div>
+                                     <!--disconnect icon-->
                                     <div *ngIf="playing" class="acme-sc-conference-room-connect-disconnect-icon"  matTooltip="Disconnect" fxFlex="32px" fxLayoutAlign="center center" (click)="leaveCall()">
                                         <mat-icon fxLayoutAlign="center center">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="red"><path d="M0 0h24v24H0z" fill="none"/><path d="M17.34 14.54l-1.43-1.43c.56-.73 1.05-1.5 1.47-2.32l-2.2-2.2c-.28-.28-.36-.67-.25-1.02.37-1.12.57-2.32.57-3.57 0-.55.45-1 1-1H20c.55 0 1 .45 1 1 0 3.98-1.37 7.64-3.66 10.54zm-2.82 2.81C11.63 19.64 7.97 21 4 21c-.55 0-1-.45-1-1v-3.49c0-.55.45-1 1-1 1.24 0 2.45-.2 3.57-.57.35-.12.75-.03 1.02.24l2.2 2.2c.81-.42 1.58-.9 2.3-1.46L1.39 4.22l1.42-1.41L21.19 21.2l-1.41 1.41-5.26-5.26z"/>
                                             </svg>
                                         </mat-icon>
                                     </div>
+                                     <!--video icon-->
                                     <div class="acme-sc-conference-room-video-icon" *ngIf="!pauseVideoStream && playing"   matTooltip="pause video" fxFlex="32px" fxLayoutAlign="center center" (click)="pauseVideo()">
                                        <mat-icon fxLayoutAlign="center center">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rebeccapurple"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"/>
                                             </svg>
                                         </mat-icon>
                                     </div>
+                                     <!--pause video icon-->
                                     <div class="acme-sc-conference-room-video-icon" *ngIf="pauseVideoStream && playing"   matTooltip="resume video" fxFlex="32px" fxLayoutAlign="center center" (click)="pauseVideo()">
                                         <mat-icon fxLayoutAlign="center center">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rebeccapurple"><path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none"/><path d="M21 6.5l-4 4V7c0-.55-.45-1-1-1H9.82L21 17.18V6.5zM3.27 2L2 3.27 4.73 6H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.21 0 .39-.08.54-.18L19.73 21 21 19.73 3.27 2z"/>
                                             </svg>
                                         </mat-icon>
                                     </div>
-                                    <div class="acme-sc-conference-room-video-icon" *ngIf="!pauseAudioStream && !playing"   matTooltip="mute audio" fxFlex="32px" fxLayoutAlign="center center" (click)="pauseAudio()">
+                                    <!--audio icon-->
+                                    <div class="acme-sc-conference-room-video-icon" *ngIf="!pauseAudioStream && playing"   matTooltip="mute audio" fxFlex="32px" fxLayoutAlign="center center" (click)="pauseAudio()">
                                         <mat-icon fxLayoutAlign="center center">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rebeccapurple"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1.2-9.1c0-.66.54-1.2 1.2-1.2.66 0 1.2.54 1.2 1.2l-.01 6.2c0 .66-.53 1.2-1.19 1.2-.66 0-1.2-.54-1.2-1.2V4.9zm6.5 6.1c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
                                             </svg>
                                          </mat-icon>
                                      </div>
-                                     <div class="acme-sc-conference-room-video-icon" *ngIf="pauseAudioStream && !playing"   matTooltip="unmute audio" fxFlex="32px" fxLayoutAlign="center center" (click)="pauseAudio()">
+                                     <!--mute audio icon-->
+                                     <div class="acme-sc-conference-room-video-icon" *ngIf="pauseAudioStream && playing"   matTooltip="unmute audio" fxFlex="32px" fxLayoutAlign="center center" (click)="pauseAudio()">
                                          <mat-icon fxLayoutAlign="center center">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rebeccapurple"><path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none"/><path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.13 1.77-.45 2.54-.9L19.73 21 21 19.73 4.27 3z"/>
+                                            </svg>
+                                         </mat-icon>
+                                     </div>
+                                    <!--screen not sharing-->
+                                    <div class="acme-sc-conference-room-video-icon" *ngIf="pauseScreenShare && playing"   matTooltip="share screen" fxFlex="32px" fxLayoutAlign="center center" (click)="screenShare()">
+                                        <mat-icon fxLayoutAlign="center center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rebeccapurple"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.11-.9-2-2-2H4c-1.11 0-2 .89-2 2v10c0 1.1.89 2 2 2H0v2h24v-2h-4zm-7-3.53v-2.19c-2.78 0-4.61.85-6 2.72.56-2.67 2.11-5.33 6-5.87V7l4 3.73-4 3.74z"/>
+                                            </svg>
+                                         </mat-icon>
+                                     </div>
+
+                                     <!--screen sharing-->
+                                    <div class="acme-sc-conference-room-video-icon" *ngIf="pauseScreenShare && playing"   matTooltip="share screen" fxFlex="32px" fxLayoutAlign="center center" (click)="stopScreenShare()">
+                                        <mat-icon fxLayoutAlign="center center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="rebeccapurple"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M21.22 18.02l2 2H24v-2h-2.78zm.77-2l.01-10c0-1.11-.9-2-2-2H7.22l5.23 5.23c.18-.04.36-.07.55-.1V7.02l4 3.73-1.58 1.47 5.54 5.54c.61-.33 1.03-.99 1.03-1.74zM2.39 1.73L1.11 3l1.54 1.54c-.4.36-.65.89-.65 1.48v10c0 1.1.89 2 2 2H0v2h18.13l2.71 2.71 1.27-1.27L2.39 1.73zM7 15.02c.31-1.48.92-2.95 2.07-4.06l1.59 1.59c-1.54.38-2.7 1.18-3.66 2.47z"/>
                                             </svg>
                                          </mat-icon>
                                      </div>
