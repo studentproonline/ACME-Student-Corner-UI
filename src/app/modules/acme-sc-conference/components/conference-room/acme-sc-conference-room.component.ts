@@ -130,11 +130,7 @@ export class AcmeSCConferenceRoomComponent {
     }
 
     screenShare() {
-
-    }
-
-    stopScreenShare() {
-        
+        this.pauseScreenShare = !this.pauseScreenShare;
     }
 
     private assignLocalStreamHandlers(): void {
