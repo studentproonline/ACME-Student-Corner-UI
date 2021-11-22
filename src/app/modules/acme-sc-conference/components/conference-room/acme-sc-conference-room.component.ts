@@ -106,6 +106,17 @@ export class AcmeSCConferenceRoomComponent {
         this.connectedUsers.length=0;
     }
 
+    ConnectToScreenShare() {
+        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' },false);
+        this.client.init('9f02b64bac7c41639488ebc1b4f36cab');
+        this.assignClientHandlers();
+        //Added in this step to initialize the local A/V stream
+        this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: false, screen: true });
+        this.assignLocalStreamHandlers();
+        this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
+        console.log(this.remoteCalls);
+    }
+
     pauseVideo() {
 
         if (this.localStream) {
@@ -130,6 +141,18 @@ export class AcmeSCConferenceRoomComponent {
     }
 
     screenShare() {
+        if (this.localStream) {
+            if (this.pauseScreenShare) {
+                // switch to screen
+              this.leaveCall();
+              this.ConnectToScreenShare();
+            } else {
+               // switch to video
+               // switch to screen
+              this.leaveCall();
+              this.connectCall();
+            }
+        }
         this.pauseScreenShare = !this.pauseScreenShare;
     }
 
