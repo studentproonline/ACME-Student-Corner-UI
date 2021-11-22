@@ -35,6 +35,7 @@ export class AcmeSCConferenceRoomComponent {
     roomName: string;
     ownerName: string;
     roomDetailsEntity: any;
+    showSearchBox= false;
 
     isProgress = false;
     isSuccessFull = false;

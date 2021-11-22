@@ -17,6 +17,8 @@ export class AcmeSCMainHeaderComponent {
     @Input() userNickName = '';
     @Input() userFullName = '';
     @Input() placeHolder = '';
+    @Input() dislaySearchBox = true;
+    @Input() title =''
     @Output() userNameClicked = new EventEmitter();
     @Output() searchTextchange = new EventEmitter<string>();
 
