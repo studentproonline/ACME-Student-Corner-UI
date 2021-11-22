@@ -178,8 +178,10 @@
                                 <span>Waiting for users to join</span>
                             </div>
                             <div *ngIf="playing  && connectedUsers.length > 0" fxLayout="row wrap" fxFlexFill fxLayoutGap="32px">
-                                <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"></div>
-                            </div>
+                                <mat-card *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
+
+                                </mat-card>
+                             </div>
                         </div>
                        
                     </div>
