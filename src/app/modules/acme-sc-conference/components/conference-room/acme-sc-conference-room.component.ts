@@ -263,11 +263,19 @@ export class AcmeSCConferenceRoomComponent {
         }
     }
 
-    gotoLibrary() {
+    gotoTopics() {
         if (this.playing) {
             this.leaveConferenceRoom('RoomDetails');
         } else {
             this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
+        }
+    }
+    
+    gotoLibrary() {
+        if (this.playing) {
+            this.leaveConferenceRoom('Library');
+        } else {
+            this.router.navigateByUrl ( '/library?roomType='+ this.roomType + '&roomId='+ this.roomId);
         }
     }
 
@@ -331,6 +339,9 @@ export class AcmeSCConferenceRoomComponent {
                 }
                 else if(navigationArea === 'RoomDetails') {
                     this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
+                }
+                else if(navigationArea === 'Library') {
+                    this.router.navigateByUrl ( '/library?roomType='+ this.roomType + '&roomId='+ this.roomId);
                 }
             }
         });

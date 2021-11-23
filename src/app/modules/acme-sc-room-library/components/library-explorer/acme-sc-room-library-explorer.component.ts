@@ -104,12 +104,16 @@ export class AcmeSCLibraryExplorerComponent {
         console.log('nick name clicked')
     }
 
-    gotoLibrary() {
+    gotoTopics() {
         this.router.navigateByUrl('/roomDetails?roomId='+this.roomId+'&roomType=' + this.roomType);
     }
 
     gotoRoomsList() {
         this.router.navigateByUrl('/home?roomType=' + this.roomType);
+    }
+
+    gotoConferenceCall() {
+        this.router.navigateByUrl ( '/conference?roomType='+ this.roomType + '&roomId='+ this.roomId);
     }
 
     OnContentTypeSelected($event) {
