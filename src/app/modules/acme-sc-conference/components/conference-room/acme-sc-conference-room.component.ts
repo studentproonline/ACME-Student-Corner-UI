@@ -10,7 +10,7 @@ import { AcmeSCConferenceRoomLibraryService } from '../../services/acme-sc-confe
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-
+import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 
 @Component({
     selector: 'acme-sc-conference-room',
@@ -21,7 +21,7 @@ export class AcmeSCConferenceRoomComponent {
     title = 'angular-video';
     localCallId = 'agora_local';
     remoteCalls: string[] = [];
-    connectedUsers: string[]=[];
+    connectedUsers: string[] = [];
 
     private client: AgoraClient;
     private localStream: Stream;
@@ -35,7 +35,7 @@ export class AcmeSCConferenceRoomComponent {
     roomName: string;
     ownerName: string;
     roomDetailsEntity: any;
-    showSearchBox= false;
+    showSearchBox = false;
 
     isProgress = false;
     isSuccessFull = false;
@@ -88,7 +88,7 @@ export class AcmeSCConferenceRoomComponent {
     }
 
     connectCall() {
-        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' },false);
+        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
         this.client.init('9f02b64bac7c41639488ebc1b4f36cab');
         this.assignClientHandlers();
         //Added in this step to initialize the local A/V stream
@@ -105,11 +105,11 @@ export class AcmeSCConferenceRoomComponent {
         this.localStream.stop();
         this.localStream.close();
         this.playing = false;
-        this.connectedUsers.length=0;
+        this.connectedUsers.length = 0;
     }
 
     ConnectToScreenShare() {
-        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' },false);
+        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
         this.client.init('9f02b64bac7c41639488ebc1b4f36cab');
         this.assignClientHandlers();
         //Added in this step to initialize the local A/V stream
@@ -146,13 +146,13 @@ export class AcmeSCConferenceRoomComponent {
         if (this.localStream) {
             if (this.pauseScreenShare) {
                 // switch to screen
-              this.leaveCall();
-              this.ConnectToScreenShare();
+                this.leaveCall();
+                this.ConnectToScreenShare();
             } else {
-               // switch to video
-               // switch to screen
-              this.leaveCall();
-              this.connectCall();
+                // switch to video
+                // switch to screen
+                this.leaveCall();
+                this.connectCall();
             }
         }
         this.pauseScreenShare = !this.pauseScreenShare;
@@ -211,8 +211,8 @@ export class AcmeSCConferenceRoomComponent {
             const id = this.getRemoteId(stream);
             if (!this.remoteCalls.length) {
                 this.remoteCalls.push(id);
-                if(this.remoteCalls.length === 1) {
-                    this.selectedCallId =this.remoteCalls[0];
+                if (this.remoteCalls.length === 1) {
+                    this.selectedCallId = this.remoteCalls[0];
                 }
                 setTimeout(() => stream.play(id), 1000);
             }
@@ -256,11 +256,19 @@ export class AcmeSCConferenceRoomComponent {
     }
 
     gotoRoomsList() {
-        this.router.navigateByUrl('/home?roomType=' + this.roomType);
+        if (this.playing) {
+            this.leaveConferenceRoom('Home');
+        } else {
+            this.router.navigateByUrl('/home?roomType=' + this.roomType);
+        }
     }
 
     gotoLibrary() {
-        this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
+        if (this.playing) {
+            this.leaveConferenceRoom('RoomDetails');
+        } else {
+            this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
+        }
     }
 
     getRoomDetails() {
@@ -304,5 +312,35 @@ export class AcmeSCConferenceRoomComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
+    }
+
+    leaveConferenceRoom(navigationArea) {
+        const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
+            width: '500px',
+            height: '150',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { message: 'This action will remove you from conference.' }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data === 'true') {
+                this.playing = false;
+                this.leaveCall();
+                if(navigationArea === 'Home') {
+                    this.router.navigateByUrl('/home?roomType=' + this.roomType);
+                }
+                else if(navigationArea === 'RoomDetails') {
+                    this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
+                }
+            }
+        });
+    }
+
+    ngOnDestroy() {
+        console.log('called onDestroy of video conference')
+        if (this.playing) {
+            this.playing = false;
+            this.leaveCall();
+        }
     }
 }
