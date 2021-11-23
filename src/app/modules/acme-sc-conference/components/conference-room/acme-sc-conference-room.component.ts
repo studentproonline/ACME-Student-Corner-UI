@@ -46,6 +46,8 @@ export class AcmeSCConferenceRoomComponent {
     pauseAudioStream = false;
     pauseScreenShare = true;
 
+    selectedCallId: any
+
     constructor(private ngxAgoraService: NgxAgoraService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCConferenceRoomLibraryService: AcmeSCConferenceRoomLibraryService,
@@ -209,6 +211,9 @@ export class AcmeSCConferenceRoomComponent {
             const id = this.getRemoteId(stream);
             if (!this.remoteCalls.length) {
                 this.remoteCalls.push(id);
+                if(this.remoteCalls.length === 1) {
+                    this.selectedCallId =this.remoteCalls[0];
+                }
                 setTimeout(() => stream.play(id), 1000);
             }
         });
@@ -242,6 +247,13 @@ export class AcmeSCConferenceRoomComponent {
         return `agora_remote-${stream.getId()}`;
     }
 
+    selectCallIdForLargeView(callId) {
+        this.selectedCallId = callId;
+    }
+
+    filterSelectedCallIds() {
+        return this.remoteCalls.filter(x => x !== this.selectedCallId);
+    }
 
     gotoRoomsList() {
         this.router.navigateByUrl('/home?roomType=' + this.roomType);
