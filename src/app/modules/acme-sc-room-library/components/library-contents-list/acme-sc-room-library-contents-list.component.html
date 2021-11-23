@@ -86,7 +86,7 @@
                 <div fxFlex="24px" fxLayoutAlign="center center" style="font-size: normal;">
                     <span>There is no library content available, upload new content.</span>
                 </div>
-                <div fxFlex="48px" fxLayoutAlign="center start">
+                <div *ngIf="room && room.status ==='Active'" fxFlex="48px" fxLayoutAlign="center start">
                     <button mat-raised-button color="accent" (click)="uploadNewContent()" class="acme-cs-login-button">Upload
                         new content
                     </button>

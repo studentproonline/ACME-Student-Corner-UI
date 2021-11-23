@@ -84,7 +84,7 @@
                 <div fxFlex="24px" fxLayoutAlign="center center" style="font-size: normal;">
                     <span>You don't have any topics to discuss, create new topic and start the discussion.</span>
                 </div>
-                <div fxFlex="48px" fxLayoutAlign="center start">
+                <div *ngIf="room.status ==='Active'" fxFlex="48px" fxLayoutAlign="center start">
                     <button mat-raised-button color="accent" (click)="createTopic()" class="acme-cs-login-button">Start
                         new discussion
                     </button>

@@ -70,6 +70,7 @@
                     <div fxFlex="45%" fxLayoutAlign="start center">
                         <span>{{roomName}}</span>
                     </div>
+                    
                     <div fxFlex="130px" fxLayoutAlign="end center" fxLayoutGap="8px" class="acme-sc-conference-room" >
 
                         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
@@ -121,8 +122,16 @@
                     </div>
                 </div>
             </div>
+            <div  fxLayoutAlign="center center"  *ngIf="roomDetailsEntity && roomDetailsEntity.status!=='Active'" fxFlex="32px" class="acme-sc-room-close-label">
+                <mat-icon matTooltip="Refresh topics list" fxLayoutAlign="center center"
+                    style="height:24px;width:24px">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="red"><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"/>
+                    </svg>
+                </mat-icon>
+                <span>This room is no longer active !!!!</span>
+            </div>
             <!--conference call container-->
-            <div *ngIf="!isProgress && isSuccessFull" fxFlex>
+            <div *ngIf="!isProgress && isSuccessFull && roomDetailsEntity.status === 'Active'" fxFlex>
                 <div fxFlexFill fxLayout="column" fxLayoutGap="8px">
                     <!--conference tool bar -->
                     <div fxFlex="48px" fxLayoutAlign="center center">

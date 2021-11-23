@@ -71,6 +71,7 @@ export class AcmeSCConferenceRoomComponent {
                 this.roomType = params.roomType;
                 this.getRoomDetails();
             });
+        
     }
 
     /**
@@ -95,7 +96,6 @@ export class AcmeSCConferenceRoomComponent {
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
         this.assignLocalStreamHandlers();
         this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
-        console.log(this.remoteCalls);
     }
 
     leaveCall() {
@@ -116,7 +116,6 @@ export class AcmeSCConferenceRoomComponent {
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: false, screen: true });
         this.assignLocalStreamHandlers();
         this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
-        console.log(this.remoteCalls);
     }
 
     pauseVideo() {
