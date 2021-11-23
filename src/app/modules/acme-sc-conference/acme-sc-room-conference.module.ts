@@ -9,6 +9,7 @@ import { NgxAgoraModule } from 'ngx-agora';
 import { AcmeSCConferenceRoomComponent } from './components/conference-room/acme-sc-conference-room.component';
 import { AcmeSCConferenceRoomUsersListComponent } from './components/conference-room-users-list/acme-sc-conference-room-users-list.component';
 import { AcmeSCConferenceRoomUserComponent } from './components/conference-room-user/acme-sc-conference-room-user';
+import { AcmeSCConferenceRoomSelfViewComponent } from './components/conference-room-self-view/acme-sc-conference-room-self-view.component';
 
 //services
 import { AcmeSCConferenceRoomLibraryService } from './services/acme-sc-conference-room.service';
@@ -20,7 +21,8 @@ export const agoraConfig: any = {
 @NgModule({
     declarations: [AcmeSCConferenceRoomComponent,
         AcmeSCConferenceRoomUsersListComponent,
-        AcmeSCConferenceRoomUserComponent],
+        AcmeSCConferenceRoomUserComponent,
+        AcmeSCConferenceRoomSelfViewComponent],
 
     imports: [FlexLayoutModule,
         AcmeSCSharedModule,

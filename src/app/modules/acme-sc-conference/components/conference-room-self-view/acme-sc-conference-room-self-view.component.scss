@@ -1,0 +1,33 @@
+.acme-sc-conference-room-self-view-card {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 20vw;
+    height: 35vh;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+    padding:0
+}
+
+.acme-sc-conference-room-self-view-container {
+    padding:8px;
+
+}
+
+.acme-sc-conference-room-self-view-header {
+   background-color: purple;
+   opacity: 0.5;
+    
+}
+
+.acme-sc-conference-room-self-view-header:hover{
+    opacity: 1;
+}
+
+.acme-sc-conference-room-self-view-user-name{
+    font-size: x-small;
+    color: white;
+    padding:4px
+}
+
