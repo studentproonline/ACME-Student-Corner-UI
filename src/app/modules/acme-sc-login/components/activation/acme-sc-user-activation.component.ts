@@ -11,8 +11,10 @@ import { AcmeSCAccountService } from '../../services/acme-sc-user-account.servic
 export class AcmeSCUserActivationComponent implements OnInit {
     isProgress = false;
     isSuccessFull = false;
+    notApproved = false;
     activationResponseMessage = '';
     userId: string;
+    contactInformation: any={}
 
     constructor(private route: ActivatedRoute, private router: Router, private acmeSCAccountService: AcmeSCAccountService) {
 
@@ -69,9 +71,14 @@ export class AcmeSCUserActivationComponent implements OnInit {
                 this.isProgress = false;
                 this.isSuccessFull = false;
                 if (err.error && err.error.description) {
-                    this.activationResponseMessage = err.error.description;
+                    this.activationResponseMessage = err.error.description.message;
                 } else {
                     this.activationResponseMessage = 'Server Error';
+                }
+                if(err.error.code === 'NOT_APPROVED') {
+                    this.notApproved = true;
+                    this.contactInformation = err.error.description;
+                    this.activationResponseMessage = this.contactInformation.message;
                 }
             }
         );
