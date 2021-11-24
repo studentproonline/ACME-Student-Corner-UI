@@ -1,6 +1,13 @@
 <div fxFlexFill fxLayout="row">
     <div fxFlex="20%" fxFlex.md="25%">
-        <acme-sc-room-users-list [room]="roomDetailsEntity" [canAddUser]="isRoomOwner"></acme-sc-room-users-list>
+        <div fxFlexFill fxLayout="column">
+            <div  fxFlex>
+                <acme-sc-room-users-list [room]="roomDetailsEntity" [canAddUser]="isRoomOwner"></acme-sc-room-users-list>
+            </div>
+            <div class="acme-sc-company-label"  fxFlex="32px" fxLayoutAlign="center center">
+                <span>Powered By: <b>Bitstone Infotech</b> </span>
+            </div>
+        </div>
     </div>
     <div fxFlex class="acme-sc-container">
         <div fxFlexFill fxLayout="column" fxLayoutGap="16px">
