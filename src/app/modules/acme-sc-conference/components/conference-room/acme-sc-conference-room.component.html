@@ -243,6 +243,10 @@
                                             </svg>
                                         </mat-icon>
                                     </div>
+
+                                    <div fxLayoutAlign="center center" *ngIf="isTokenGenerationInProgress" fxFlex="150px" class="acme-sc-conference-connecting-label">
+                                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                                    </div>
                                 </div>
                             </mat-card>
                         </div>

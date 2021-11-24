@@ -11,10 +11,16 @@ export class AcmeSCConferenceRoomLibraryService {
 
     }
 
-     // get room details
-     getRoomById(roomId: string, token: any) {
+    // get room details
+    getRoomById(roomId: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
         return this.httpService.get('/rooms/'+ roomId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get token for video conferencing
+    getVideoConferenceAccessToken(roomId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/agora/token?roomId='+ roomId, headers).pipe(catchError(this.handleErrorObservable));
     }
 
     // handle error

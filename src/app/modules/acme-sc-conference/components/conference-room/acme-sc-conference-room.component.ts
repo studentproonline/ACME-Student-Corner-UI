@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AgoraClient, ClientEvent, NgxAgoraService, Stream, StreamEvent } from 'ngx-agora';
 
 
@@ -38,9 +39,12 @@ export class AcmeSCConferenceRoomComponent {
     showSearchBox = false;
 
     isProgress = false;
+    isTokenGenerationInProgress = false;
     isSuccessFull = false;
     isRoomOwner = false;
     conferenceRoomDetailsResponseMessage = '';
+    conferenceAppId = '';
+    conferenceToken = '';
     playing = false;
     pauseVideoStream = false;
     pauseAudioStream = false;
@@ -52,7 +56,7 @@ export class AcmeSCConferenceRoomComponent {
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCConferenceRoomLibraryService: AcmeSCConferenceRoomLibraryService,
         private route: ActivatedRoute, private router: Router,
-        public dialog: MatDialog) {
+        public dialog: MatDialog, private snackBar: MatSnackBar) {
 
         this.uid = Math.floor(Math.random() * 100);
 
@@ -78,7 +82,7 @@ export class AcmeSCConferenceRoomComponent {
      * Attempts to connect to an online chat room where users can host and receive A/V streams.
      */
     join(onSuccess?: (uid: number | string) => void, onFailure?: (error: Error) => void): void {
-        this.client.join(null, this.roomName, this.loginEntity.email, onSuccess, onFailure);
+        this.client.join(this.conferenceToken, this.roomId, this.loginEntity.email, onSuccess, onFailure);
     }
 
     /**
@@ -86,16 +90,49 @@ export class AcmeSCConferenceRoomComponent {
     */
     publish(): void {
         this.client.publish(this.localStream, err => console.log('Publish local stream error: ' + err));
+        this.playing = true;
     }
 
     connectCall() {
+        
+        this.isTokenGenerationInProgress = true;
+        this.conferenceToken = '';
+        this.conferenceAppId = '';
+        this.acmeSCConferenceRoomLibraryService.getVideoConferenceAccessToken(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isTokenGenerationInProgress = false;
+                this.conferenceToken = response.data.token;
+                this.conferenceAppId = response.data.appId;
+                this.connectToStream();
+            },
+            err => {
+                this.isTokenGenerationInProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    connectToStream() {
         this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
-        this.client.init('9f02b64bac7c41639488ebc1b4f36cab');
+        this.client.init(this.conferenceAppId);
         this.assignClientHandlers();
         //Added in this step to initialize the local A/V stream
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
         this.assignLocalStreamHandlers();
-        this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
+        this.initLocalStream(() => this.join(uid => this.publish(),
+        error => {
+             console.error(error)
+             if(this.localStream) {
+                this.snackBar.open('Fail to join conference call', '', {
+                    duration: 3000
+                });
+                this.localStream.stop();
+                this.localStream.close();
+             }
+        }));
     }
 
     leaveCall() {
@@ -110,7 +147,7 @@ export class AcmeSCConferenceRoomComponent {
 
     ConnectToScreenShare() {
         this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
-        this.client.init('9f02b64bac7c41639488ebc1b4f36cab');
+        this.client.init(this.conferenceAppId);
         this.assignClientHandlers();
         //Added in this step to initialize the local A/V stream
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: false, screen: true });
@@ -174,7 +211,6 @@ export class AcmeSCConferenceRoomComponent {
                 // The user has granted access to the camera and mic.
                 this.localStream.play(this.localCallId);
                 if (onSuccess) {
-                    this.playing = true;
                     onSuccess();
                 }
             },
