@@ -128,6 +128,10 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
         );
     }
 
+    SendRequestToShareRoom() {
+        
+    }
+
     // events
     roomCreated() {
         console.log('room created event recieved')

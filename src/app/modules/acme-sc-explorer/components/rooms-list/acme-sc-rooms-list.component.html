@@ -58,6 +58,11 @@
             <div fxFlex="24px" fxLayoutAlign="center center">
                 <span>You are not part of any shared room yet, please contact room owners.</span>
             </div>
+            <div fxFlex fxLayoutAlign="center start">
+                <button mat-raised-button color="accent" (click)="SendRequestToShareRoom()" class="acme-cs-login-button">Send Request
+
+                </button>
+            </div>
         </div>
     </div>
 
@@ -103,7 +108,7 @@
     </div>
 
     <!--list rooms-->
-    <div fxFlex="48px" *ngIf="roomType==='My Rooms' && isSuccesfull && !isProgress && roomsList.length > 0">
+    <div fxFlex="48px" *ngIf="isSuccesfull && !isProgress && roomsList.length > 0">
         <div fxLayout="row">
             <div fxFlex="200px" fxLayoutAlign="start center">
                 <div class="acme-sc-room-count">
@@ -115,21 +120,30 @@
                 </div>
             </div>
             <div fxFlex>
-                <div fxLayout="row" fxFlex fxLayoutAlign="end center">
+                <div fxLayout="row" fxFlex fxLayoutAlign="end center" fxLayoutGap="16px">
                     <div fxFlex fxLayoutAlign="end center">
                         <div fxLayoutAlign="center center" class="acme-sc-login-user-label"><span>Logged in as :
                                 <b>{{loggedInUser}}</b></span></div>
                     </div>
-                    <div fxFlex="200px" fxLayoutAlign="end start">
+                    <div *ngIf="roomType==='My Rooms'" fxFlex="150px" fxLayoutAlign="end start">
                         <!--<mat-icon>
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="deeppink"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 6h-8l-2-2H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm0 12H4V6h5.17l2 2H20v10zm-8-4h2v2h2v-2h2v-2h-2v-2h-2v2h-2z"/>
                             </svg>
                         </mat-icon>-->
-                        <button mat-raised-button color="accent" (click)="createRoom()" class="acme-cs-login-button">
+                        <button fxFill mat-raised-button color="accent" (click)="createRoom()" class="acme-cs-login-button">
                             Create New Room
                         </button>
                     </div>
-
+                    <div *ngIf="roomType==='Shared with Me'" fxFlex="150px" fxLayoutAlign="end start">
+                        <!--<mat-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="deeppink"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 6h-8l-2-2H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm0 12H4V6h5.17l2 2H20v10zm-8-4h2v2h2v-2h2v-2h-2v-2h-2v2h-2z"/>
+                            </svg>
+                        </mat-icon>-->
+                        <button fxFill mat-raised-button color="accent" (click)="SendRequestToShareRoom()" class="acme-cs-login-button">
+                            Send Request
+                        </button>
+                    </div>
+                   
                 </div>
             </div>
         </div>
