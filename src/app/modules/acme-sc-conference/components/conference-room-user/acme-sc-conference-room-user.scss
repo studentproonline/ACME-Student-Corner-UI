@@ -14,3 +14,11 @@
     text-align: center;
     background: darkgray;
 }
+
+.acme-sc-room-user-name {
+    font-size:small;
+    color:darkslateblue;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}

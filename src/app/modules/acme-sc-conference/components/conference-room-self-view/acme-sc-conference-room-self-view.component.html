@@ -1,0 +1,21 @@
+<mat-card id='viewcard' #viewcard class="acme-sc-conference-room-self-view-card">
+    <div fxFlexFill fxLayout="column">
+        <div fxFlex="32px" fxLayoutAlign="end start">
+            <div fxFlexFill fxLayout="row" class="acme-sc-conference-room-self-view-header">
+                <div fxFlex class="acme-sc-conference-room-self-view-user-name">
+                    <span>{{userName}}</span> <span style="padding-left:4px">(Me)</span>
+                </div>
+                <div fxFlex="32px" fxLayoutAlign="start start">
+                    <mat-icon fxLayoutAlign="center center" style="height:24px;width:24px">
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="white"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M20,9H4v2h16V9z M4,15h16v-2H4V15z"/></g></g></g>
+                        </svg>
+                    </mat-icon>
+                </div>
+            </div>
+        </div>
+        <div fxFlex [id]="localCallId"  class="acme-sc-conference-room-self-view-container">
+
+        </div>
+
+    </div>
+</mat-card>

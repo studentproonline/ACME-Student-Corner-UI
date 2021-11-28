@@ -9,19 +9,25 @@ import { NgxAgoraModule } from 'ngx-agora';
 import { AcmeSCConferenceRoomComponent } from './components/conference-room/acme-sc-conference-room.component';
 import { AcmeSCConferenceRoomUsersListComponent } from './components/conference-room-users-list/acme-sc-conference-room-users-list.component';
 import { AcmeSCConferenceRoomUserComponent } from './components/conference-room-user/acme-sc-conference-room-user';
+import { AcmeSCConferenceRoomSelfViewComponent } from './components/conference-room-self-view/acme-sc-conference-room-self-view.component';
 
 //services
 import { AcmeSCConferenceRoomLibraryService } from './services/acme-sc-conference-room.service';
 
+export const agoraConfig: any = {
+    AppID: null //setting null here
+};
+
 @NgModule({
     declarations: [AcmeSCConferenceRoomComponent,
         AcmeSCConferenceRoomUsersListComponent,
-        AcmeSCConferenceRoomUserComponent],
+        AcmeSCConferenceRoomUserComponent,
+        AcmeSCConferenceRoomSelfViewComponent],
 
     imports: [FlexLayoutModule,
         AcmeSCSharedModule,
         AcmeSCRoomConferenceRoutingModule,
-        NgxAgoraModule.forRoot({ AppID: '9f02b64bac7c41639488ebc1b4f36cab' })],
+        NgxAgoraModule.forRoot(agoraConfig)],
 
     providers: [AcmeSCConferenceRoomLibraryService],
 

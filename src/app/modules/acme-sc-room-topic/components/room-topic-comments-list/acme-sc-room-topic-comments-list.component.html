@@ -41,12 +41,36 @@
     </div>
     <div fxFlex="48px" *ngIf="isSuccessFull && !isProgress">
         <div fxFlexFill fxLayout="row" fxLayoutGap="8px">
-            <div (click)="goToAllTopics()" class="acme-sc-all-topics" fxFlex="100px" fxLayoutAlign="center center">
+            <div fxFlex="24px" fxLayoutAlign="end center" class="acme-cs-mat-icon">
+                <mat-icon fxLayoutAlign="start end" style="height:24px;width:24px">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                </mat-icon>
+            </div>
+
+            <div (click)="gotoHome()" fxFlex="60px" fxLayoutAlign="start center" class="acme-sc-room-home">
+                <span>Home</span>
+            </div>
+            <div fxFlex="24px" fxLayoutAlign="end center">
+                <mat-icon fxLayoutAlign="start end" style="height:24px;width:24px">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="gray">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                    </svg>
+                </mat-icon>
+            </div>
+            <div (click)="goToAllTopics()" class="acme-sc-all-topics" fxFlex="100px" fxLayoutAlign="start center">
                 <span><u>All Topics</u></span>
             </div>
             <div fxFlex>
                 <div fxFlexFill fxLayoutAlign="end end" fxLayout="row" fxLayoutGap="8px">
-                    <div class="acme-sc-not-active-room" *ngIf="!isRoomActive || !isTopicActive" fxFlex fxLayoutAlign="center center">
+                    <div class="acme-sc-not-active-room" *ngIf="!isRoomActive || !isTopicActive" fxFlex
+                        fxLayoutAlign="center center">
                         <span>This topic is no longer active !!!!</span>
                     </div>
                     <div *ngIf="isRoomActive" fxFlex="32px" fxLayoutAlign="cener center" (click)="refrshCommentsList()">
@@ -95,7 +119,7 @@
             <div fxFlex="90px">
                 <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="center center" style="height:90px;width:90px;">
                     <svg xmlns="http://www.w3.org/2000/svg" height="90px" viewBox="0 0 22 24" width="90px"
-                        fill="#000000">
+                        fill="purple">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path
                             d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM20 4v13.17L18.83 16H4V4h16zM6 12h12v2H6zm0-3h12v2H6zm0-3h12v2H6z" />
@@ -112,12 +136,13 @@
     <div *ngIf="commentsList.length > 0 && isSuccessFull && !isProgress" fxFlex>
         <ng-scrollbar thumbClass="white-scrollbars">
             <acme-sc-room-topic-comment *ngFor="let comment of commentsList" [comment]=comment [roomOwner]="roomOwner"
-            (commentDeleted)="commentDeleted()">
+                (commentDeleted)="commentDeleted()">
 
             </acme-sc-room-topic-comment>
         </ng-scrollbar>
     </div>
-    <div (click)="fetchMoreRecords()" class="acme-sc-comments-loadmore" *ngIf="isMore && isSuccessFull && !isProgress" fxFlex="16px" fxLayoutAlign="center center">
-            <span>Load more....</span>
+    <div (click)="fetchMoreRecords()" class="acme-sc-comments-loadmore" *ngIf="isMore && isSuccessFull && !isProgress"
+        fxFlex="16px" fxLayoutAlign="center center">
+        <span>Load more....</span>
     </div>
 </div>

@@ -113,7 +113,7 @@
     <!--users found-->
     <div fxFlex *ngIf="sharedRoomUsersList.length > 0 && isSuccessFull" fxLayoutAlign="center center"
         class="acme-sc-room-users-list">
-        <div fxLayout="column" fxFlexFill fxLayoutGap="8px">
+        <div fxLayout="column" fxFlexFill fxLayoutGap="16px">
             <ng-scrollbar thumbClass="white-scrollbars">
                 <acme-sc-room-user-item *ngFor="let user of sharedRoomUsersList" [user]="user"
                     [canRemoveUser]="isRoomOwner" (roomUserRemoved)="roomUserRemoved($event)">

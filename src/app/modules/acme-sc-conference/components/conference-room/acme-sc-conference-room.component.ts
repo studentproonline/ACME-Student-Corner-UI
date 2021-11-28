@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AgoraClient, ClientEvent, NgxAgoraService, Stream, StreamEvent } from 'ngx-agora';
 
 
@@ -10,7 +11,7 @@ import { AcmeSCConferenceRoomLibraryService } from '../../services/acme-sc-confe
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-
+import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 
 @Component({
     selector: 'acme-sc-conference-room',
@@ -21,10 +22,11 @@ export class AcmeSCConferenceRoomComponent {
     title = 'angular-video';
     localCallId = 'agora_local';
     remoteCalls: string[] = [];
+    connectedUsers: string[] = [];
 
     private client: AgoraClient;
     private localStream: Stream;
-    private uid: string;
+    private uid: number;
 
     loginEntity: ILoginEntity;
     nickName: string;
@@ -34,22 +36,30 @@ export class AcmeSCConferenceRoomComponent {
     roomName: string;
     ownerName: string;
     roomDetailsEntity: any;
+    showSearchBox = false;
 
     isProgress = false;
+    isTokenGenerationInProgress = false;
     isSuccessFull = false;
     isRoomOwner = false;
     conferenceRoomDetailsResponseMessage = '';
-    playing=false;
-    pauseVideoStream= false;
-    pauseAudioStream= false;
+    conferenceAppId = '';
+    conferenceToken = '';
+    playing = false;
+    pauseVideoStream = false;
+    pauseAudioStream = false;
+    pauseScreenShare = true;
+    sessionStarted = false;
+
+    selectedCallId: any
 
     constructor(private ngxAgoraService: NgxAgoraService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCConferenceRoomLibraryService: AcmeSCConferenceRoomLibraryService,
         private route: ActivatedRoute, private router: Router,
-        public dialog: MatDialog) {
+        public dialog: MatDialog, private snackBar: MatSnackBar) {
 
-        //Math.floor(Math.random() * 100);
+        this.uid = Math.floor(Math.random() * 100);
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -66,14 +76,14 @@ export class AcmeSCConferenceRoomComponent {
                 this.roomType = params.roomType;
                 this.getRoomDetails();
             });
-      
+
     }
 
     /**
      * Attempts to connect to an online chat room where users can host and receive A/V streams.
      */
     join(onSuccess?: (uid: number | string) => void, onFailure?: (error: Error) => void): void {
-        this.client.join(null, this.roomName, this.uid, onSuccess, onFailure);
+        this.client.join(this.conferenceToken, this.roomId, this.loginEntity.email, onSuccess, onFailure);
     }
 
     /**
@@ -81,16 +91,87 @@ export class AcmeSCConferenceRoomComponent {
     */
     publish(): void {
         this.client.publish(this.localStream, err => console.log('Publish local stream error: ' + err));
+        this.playing = true;
+    }
+
+    startConferenceCallSession() {
+        this.isTokenGenerationInProgress = true;
+        this.acmeSCConferenceRoomLibraryService.startVideoConference(this.roomId, '120', this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isTokenGenerationInProgress = false;
+                this.sessionStarted = true;
+            }
+            , err => {
+                this.isTokenGenerationInProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    deletepConferenceCallSession() {
+        this.isTokenGenerationInProgress = true;
+        this.acmeSCConferenceRoomLibraryService.stopVideoConference(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isTokenGenerationInProgress = false;
+                this.sessionStarted = false;
+                if(this.playing) {
+                    this.leaveCall();
+                }
+                this.sessionStarted = false;
+            }
+            , err => {
+                this.isTokenGenerationInProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
     }
 
     connectCall() {
-        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' });
+
+        this.isTokenGenerationInProgress = true;
+        this.conferenceToken = '';
+        this.conferenceAppId = '';
+        this.acmeSCConferenceRoomLibraryService.getVideoConferenceAccessToken(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isTokenGenerationInProgress = false;
+                this.conferenceToken = response.data.token;
+                this.conferenceAppId = response.data.appId;
+                this.connectToStream();
+            },
+            err => {
+                this.isTokenGenerationInProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    connectToStream() {
+        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
+        this.client.init(this.conferenceAppId);
         this.assignClientHandlers();
         //Added in this step to initialize the local A/V stream
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
         this.assignLocalStreamHandlers();
-        this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
-        console.log(this.remoteCalls);
+        this.initLocalStream(() => this.join(uid => this.publish(),
+            error => {
+                console.error(error)
+                if (this.localStream) {
+                    this.snackBar.open('Fail to join conference call', '', {
+                        duration: 3000
+                    });
+                    this.localStream.stop();
+                    this.localStream.close();
+                }
+            }));
     }
 
     leaveCall() {
@@ -99,30 +180,57 @@ export class AcmeSCConferenceRoomComponent {
         this.client.leave();
         this.localStream.stop();
         this.localStream.close();
-        this.playing= false;
+        this.playing = false;
+        this.connectedUsers.length = 0;
+    }
+
+    ConnectToScreenShare() {
+        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
+        this.client.init(this.conferenceAppId);
+        this.assignClientHandlers();
+        //Added in this step to initialize the local A/V stream
+        this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: false, screen: true });
+        this.assignLocalStreamHandlers();
+        this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
     }
 
     pauseVideo() {
-        
-        if(this.localStream) {
-            if(this.pauseVideoStream) {
+
+        if (this.localStream) {
+            if (this.pauseVideoStream) {
                 this.localStream.unmuteVideo();
             } else {
-               this.localStream.muteVideo();
+                this.localStream.muteVideo();
             }
         }
-        this.pauseVideoStream =!this.pauseVideoStream;
+        this.pauseVideoStream = !this.pauseVideoStream;
     }
 
     pauseAudio() {
-        if(this.localStream) {
-            if(this.pauseAudioStream) {
+        if (this.localStream) {
+            if (this.pauseAudioStream) {
                 this.localStream.unmuteAudio();
             } else {
-               this.localStream.muteAudio();
+                this.localStream.muteAudio();
             }
         }
-        this.pauseAudioStream =!this.pauseAudioStream;
+        this.pauseAudioStream = !this.pauseAudioStream;
+    }
+
+    screenShare() {
+        if (this.localStream) {
+            if (this.pauseScreenShare) {
+                // switch to screen
+                this.leaveCall();
+                this.ConnectToScreenShare();
+            } else {
+                // switch to video
+                // switch to screen
+                this.leaveCall();
+                this.connectCall();
+            }
+        }
+        this.pauseScreenShare = !this.pauseScreenShare;
     }
 
     private assignLocalStreamHandlers(): void {
@@ -142,7 +250,6 @@ export class AcmeSCConferenceRoomComponent {
                 // The user has granted access to the camera and mic.
                 this.localStream.play(this.localCallId);
                 if (onSuccess) {
-                    this.playing= true;
                     onSuccess();
                 }
             },
@@ -178,6 +285,9 @@ export class AcmeSCConferenceRoomComponent {
             const id = this.getRemoteId(stream);
             if (!this.remoteCalls.length) {
                 this.remoteCalls.push(id);
+                if (this.remoteCalls.length === 1) {
+                    this.selectedCallId = this.remoteCalls[0];
+                }
                 setTimeout(() => stream.play(id), 1000);
             }
         });
@@ -190,12 +300,19 @@ export class AcmeSCConferenceRoomComponent {
                 console.log(`Remote stream is removed ${stream.getId()}`);
             }
         });
-
+        this.client.on(ClientEvent.PeerOnline, evt => {
+            this.connectedUsers.push(evt.uid);
+            console.log("user joined " + evt.uid)
+        });
         this.client.on(ClientEvent.PeerLeave, evt => {
             const stream = evt.stream as Stream;
             if (stream) {
                 stream.stop();
                 this.remoteCalls = this.remoteCalls.filter(call => call !== `${this.getRemoteId(stream)}`);
+                const index = this.connectedUsers.findIndex(user => user === evt.uid);
+                if (index !== -1) {
+                    this.connectedUsers.splice(index, 1);
+                }
                 console.log(`${evt.uid} left from this channel`);
             }
         });
@@ -204,13 +321,40 @@ export class AcmeSCConferenceRoomComponent {
         return `agora_remote-${stream.getId()}`;
     }
 
+    selectCallIdForLargeView(callId) {
+        this.selectedCallId = callId;
+    }
+
+    filterSelectedCallIds() {
+        return this.remoteCalls.filter(x => x !== this.selectedCallId);
+    }
 
     gotoRoomsList() {
-        this.router.navigateByUrl('/home?roomType=' + this.roomType);
+        if (this.playing) {
+            this.leaveConferenceRoom('Home');
+        } else {
+            this.router.navigateByUrl('/home?roomType=' + this.roomType);
+        }
+    }
+
+    gotoTopics() {
+        if (this.playing) {
+            this.leaveConferenceRoom('RoomDetails');
+        } else {
+            this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
+        }
     }
 
     gotoLibrary() {
-        this.router.navigateByUrl('/roomDetails?roomId='+this.roomId+'&roomType=' + this.roomType);
+        if (this.playing) {
+            this.leaveConferenceRoom('Library');
+        } else {
+            this.router.navigateByUrl('/library?roomType=' + this.roomType + '&roomId=' + this.roomId);
+        }
+    }
+
+    gotoHome() {
+        this.router.navigateByUrl ( '/home?roomType=My Rooms');
     }
 
     getRoomDetails() {
@@ -227,7 +371,7 @@ export class AcmeSCConferenceRoomComponent {
                 if (this.loginEntity.email.toUpperCase().trim() === response.data.email.toUpperCase().trim()) {
                     this.isRoomOwner = true;
                 }
-                this.uid = this.loginEntity.email;
+                //this.uid = this.loginEntity.email;
             },
             err => {
                 this.isProgress = false;
@@ -254,5 +398,53 @@ export class AcmeSCConferenceRoomComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
+    }
+
+    leaveConferenceRoom(navigationArea) {
+        const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
+            width: '500px',
+            height: '150',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { message: 'This action will remove you from conference.' }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data === 'true') {
+                this.playing = false;
+                this.leaveCall();
+                if (navigationArea === 'Home') {
+                    this.router.navigateByUrl('/home?roomType=' + this.roomType);
+                }
+                else if (navigationArea === 'RoomDetails') {
+                    this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
+                }
+                else if (navigationArea === 'Library') {
+                    this.router.navigateByUrl('/library?roomType=' + this.roomType + '&roomId=' + this.roomId);
+                }
+            }
+        });
+    }
+
+    stopConferenceCallSession() {
+        const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
+            width: '500px',
+            height: '150',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { message: 'This action will stop conference session.' }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data === 'true') {
+                this.deletepConferenceCallSession();
+            }
+        });
+    }
+
+    ngOnDestroy() {
+        console.log('called onDestroy of video conference')
+        if (this.playing) {
+            this.playing = false;
+            this.leaveCall();
+        }
     }
 }

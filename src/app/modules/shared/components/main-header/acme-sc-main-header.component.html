@@ -2,7 +2,8 @@
     <div fxFlex fxFill fxLayoutAlign="center center">
         
         <div fxFlexFill fxLayout="row" fxLayoutGap=16px fxLayoutAlign="center center">
-            <div fxFlex="50%" fxFill fxLayoutAlign="center center" class="searchBox">
+            <div *ngIf="dislaySearchBox"  fxFlex="50%" fxFill fxLayoutAlign="center center" class="searchBox">
+                <!--search box-->
                 <div fxFlexFill fxLayout="row">
                     <!--search icon-->
                     <div fxFlex="32px" fxLayoutAlign="center center">
@@ -25,6 +26,13 @@
                             </mat-form-field>
                         </form>
                     </div>
+                </div>
+            </div>
+            <!--Title-->
+            <div  *ngIf="!dislaySearchBox"  fxFlex="50%" fxFill fxLayoutAlign="center center">
+                <!--Title if serach box is not enabled-->
+                <div class="acme-sc-title" fxFlexFill fxLayout="row"  fxLayoutAlign="center center">
+                    <span>{{title}}</span>
                 </div>
             </div>
         </div>

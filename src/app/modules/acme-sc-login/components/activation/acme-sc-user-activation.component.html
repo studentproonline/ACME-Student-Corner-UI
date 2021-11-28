@@ -45,6 +45,48 @@
             <div *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
                 <span>{{activationResponseMessage}}</span>
             </div>
+
+            <!--Account not approved-->
+            <div *ngIf="!isProgress && notApproved" fxFlex fxLayoutAlign="center center">
+                <div fxFlexFill fxLayout="column">
+                    <!--Email information-->
+                    <div fxFlex="32px" fxLayoutAlign="center center">
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="16px">
+                            <div fxFlex="32px">
+                                <mat-icon class="acme-cs-mat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                                        width="24px" fill="purple">
+                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                                        <path
+                                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
+                                    </svg>
+                                </mat-icon>
+                            </div>
+                            <div fxFlex fxLayoutGap="16px">
+                                <span>Email Information:</span><span>{{contactInformation.contactEmails}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Contact Numbers-->
+                    <div fxFlex="32px" fxLayoutAlign="center center">
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="16px">
+                            <div fxFlex="32px">
+                                <mat-icon class="acme-cs-mat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                                        width="24px" fill="purple">
+                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                                        <path
+                                            d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z" />
+                                    </svg>
+                                </mat-icon>
+                            </div>
+                            <div fxFlex fxLayoutGap="16px">
+                                <span>Contact Numbers:</span><span>{{contactInformation.contactNumbers}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
                 <mat-spinner></mat-spinner>
             </div>
@@ -52,9 +94,9 @@
                 <span>Activating user....</span>
             </div>
             <div fxFlex fxLayoutAlign="center center">
-                <button mat-raised-button color="accent" (click)="gotoLoginScreen()" class="acme-cs-login-button">Login</button>
+                <button mat-raised-button color="accent" (click)="gotoLoginScreen()"
+                    class="acme-cs-login-button">Login</button>
             </div>
         </div>
-
     </div>
 </div>

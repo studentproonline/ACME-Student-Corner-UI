@@ -111,6 +111,10 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
         this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
     }
 
+    gotoHome() {
+        this.router.navigateByUrl ( '/home?roomType=My Rooms');
+    }
+
     createComment() {
         const dialogRef = this.dialog.open(AcmeSCSRoomCreateCommentComponent, {
             width: '900px',
