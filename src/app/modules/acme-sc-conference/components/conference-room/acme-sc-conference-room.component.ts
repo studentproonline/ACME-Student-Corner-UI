@@ -49,6 +49,7 @@ export class AcmeSCConferenceRoomComponent {
     pauseVideoStream = false;
     pauseAudioStream = false;
     pauseScreenShare = true;
+    sessionStarted = false;
 
     selectedCallId: any
 
@@ -75,7 +76,7 @@ export class AcmeSCConferenceRoomComponent {
                 this.roomType = params.roomType;
                 this.getRoomDetails();
             });
-        
+
     }
 
     /**
@@ -93,8 +94,46 @@ export class AcmeSCConferenceRoomComponent {
         this.playing = true;
     }
 
+    startConferenceCallSession() {
+        this.isTokenGenerationInProgress = true;
+        this.acmeSCConferenceRoomLibraryService.startVideoConference(this.roomId, '120', this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isTokenGenerationInProgress = false;
+                this.sessionStarted = true;
+            }
+            , err => {
+                this.isTokenGenerationInProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    deletepConferenceCallSession() {
+        this.isTokenGenerationInProgress = true;
+        this.acmeSCConferenceRoomLibraryService.stopVideoConference(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isTokenGenerationInProgress = false;
+                this.sessionStarted = false;
+                if(this.playing) {
+                    this.leaveCall();
+                }
+                this.sessionStarted = false;
+            }
+            , err => {
+                this.isTokenGenerationInProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
     connectCall() {
-        
+
         this.isTokenGenerationInProgress = true;
         this.conferenceToken = '';
         this.conferenceAppId = '';
@@ -123,16 +162,16 @@ export class AcmeSCConferenceRoomComponent {
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
         this.assignLocalStreamHandlers();
         this.initLocalStream(() => this.join(uid => this.publish(),
-        error => {
-             console.error(error)
-             if(this.localStream) {
-                this.snackBar.open('Fail to join conference call', '', {
-                    duration: 3000
-                });
-                this.localStream.stop();
-                this.localStream.close();
-             }
-        }));
+            error => {
+                console.error(error)
+                if (this.localStream) {
+                    this.snackBar.open('Fail to join conference call', '', {
+                        duration: 3000
+                    });
+                    this.localStream.stop();
+                    this.localStream.close();
+                }
+            }));
     }
 
     leaveCall() {
@@ -305,12 +344,12 @@ export class AcmeSCConferenceRoomComponent {
             this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
         }
     }
-    
+
     gotoLibrary() {
         if (this.playing) {
             this.leaveConferenceRoom('Library');
         } else {
-            this.router.navigateByUrl ( '/library?roomType='+ this.roomType + '&roomId='+ this.roomId);
+            this.router.navigateByUrl('/library?roomType=' + this.roomType + '&roomId=' + this.roomId);
         }
     }
 
@@ -369,15 +408,30 @@ export class AcmeSCConferenceRoomComponent {
             if (result && result.data === 'true') {
                 this.playing = false;
                 this.leaveCall();
-                if(navigationArea === 'Home') {
+                if (navigationArea === 'Home') {
                     this.router.navigateByUrl('/home?roomType=' + this.roomType);
                 }
-                else if(navigationArea === 'RoomDetails') {
+                else if (navigationArea === 'RoomDetails') {
                     this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
                 }
-                else if(navigationArea === 'Library') {
-                    this.router.navigateByUrl ( '/library?roomType='+ this.roomType + '&roomId='+ this.roomId);
+                else if (navigationArea === 'Library') {
+                    this.router.navigateByUrl('/library?roomType=' + this.roomType + '&roomId=' + this.roomId);
                 }
+            }
+        });
+    }
+
+    stopConferenceCallSession() {
+        const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
+            width: '500px',
+            height: '150',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { message: 'This action will stop conference session.' }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data === 'true') {
+                this.deletepConferenceCallSession();
             }
         });
     }

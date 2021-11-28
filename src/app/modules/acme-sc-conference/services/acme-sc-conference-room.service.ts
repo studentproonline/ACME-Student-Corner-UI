@@ -23,6 +23,18 @@ export class AcmeSCConferenceRoomLibraryService {
         return this.httpService.get('/agora/token?roomId='+ roomId, headers).pipe(catchError(this.handleErrorObservable));
     }
 
+    // start video conference session
+    startVideoConference(roomId: string, minutes: string,  token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/agora/start?roomId='+ roomId + '&minutes=' + minutes, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // delete video conference session
+    stopVideoConference(roomId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.delete('/agora/stop?roomId='+ roomId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
     // handle error
     private handleErrorObservable(error: Response | any){ 
         return throwError(error);
