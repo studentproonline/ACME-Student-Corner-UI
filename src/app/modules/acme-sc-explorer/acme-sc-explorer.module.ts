@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import { AcmeSCSharedModule } from '../shared/acme-sc-shared.module';
 import { AcmeSCRoomsExplorerRoutingModule } from './acme-sc-explorer-routing.module';
 
@@ -32,6 +33,7 @@ import { AcmesharedRoomService} from '../shared/services/acme-sc-shared-room.ser
     imports: [
         FlexLayoutModule,
         AcmeSCSharedModule,
+        ClipboardModule,
         AcmeSCRoomsExplorerRoutingModule
 
     ],

@@ -1,8 +1,9 @@
 <div fxLayout="column" class="acme-sc-room-card">
     <div fxFlex="58px" class="acme-sc-room-title">
         <div fxLayout="row" fxFill fxLayoutGap="8px" fxLayoutAlign="end end" >
-            <div *ngIf="room.status === 'Active' && roomType=== 'My Rooms'" fxFlex="8%" matTooltip="copy invitation link" class="acme-sc-room-card-action" (click)="updateRoom('Locked')">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-2zm-3-4h8v2H8z"/>
+            <div *ngIf="room.status === 'Active' && roomType=== 'My Rooms'" fxFlex="8%" matTooltip="copy invitation link" class="acme-sc-room-card-action" 
+            [cdkCopyToClipboard]="this.roomLink" (click)="copyRoomLinkToClipboard()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="maroon"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-2zm-3-4h8v2H8z"/>
                 </svg>
             
             </div>

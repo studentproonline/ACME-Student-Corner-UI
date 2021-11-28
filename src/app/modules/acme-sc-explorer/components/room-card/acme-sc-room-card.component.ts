@@ -11,6 +11,8 @@ import { AcmeFavRoomService } from '../../services/acme-sc-fav-room.service';
 import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 
+import { apiConfig } from '../../../../config/config';
+
 //dialogs
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 import { AcmeSCShareRoomComponent } from '../../../shared/components/dialogs/share-room/acme-sc-share-room.component';
@@ -24,6 +26,7 @@ export class AcmeSCRoomComponent implements OnInit {
 
     isProgress = false;
     owner: string;
+    roomLink='';
     @Input() room: IRoomEntity
     @Input() roomType: string;
 
@@ -39,6 +42,7 @@ export class AcmeSCRoomComponent implements OnInit {
 
     ngOnInit() {
         this.owner ="Owner: " +this.room.email;
+        this.roomLink = apiConfig.host + '/shareRoom?roomId='+this.room._id;
     }
 
     enterRoom() {
@@ -207,6 +211,14 @@ export class AcmeSCRoomComponent implements OnInit {
             if (result.data === 'true') {
                 this.removeUserFromSharedRoom();
             }
+        });
+    }
+
+    // copy room link to clipboard
+    copyRoomLinkToClipboard() {
+        //
+        this.snackBar.open('Room invitation link copied to clipboard', '', {
+            duration: 3000
         });
     }
 

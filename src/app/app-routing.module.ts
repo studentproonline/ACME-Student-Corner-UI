@@ -49,6 +49,11 @@ const routes: Routes = [
         canActivate: [AcmeSCAuthenticationGuard]
         
     },
+    {
+        path: 'shareRoom',
+        loadChildren: () => import('./modules/acme-sc-room-invitation/acme-sc-room-invitation.module').then(m => m.AcmeStudentCornerRoomInvitationModule),
+        
+    },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'app' },
 ];

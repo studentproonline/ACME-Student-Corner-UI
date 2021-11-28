@@ -31,6 +31,14 @@ export class AcmesharedRoomService {
         return this.httpService.post('/sharedrooms/activate/', headers, sharedLink).pipe(catchError(this.handleErrorObservable));
     }
 
+    // get room public details
+    getRoomPublicDetails(roomId: string) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let body: any ={};
+        body.roomId=roomId;
+        return this.httpService.post('/sharedrooms/public', headers,body).pipe(catchError(this.handleErrorObservable));
+    }
+
     //delete shared room
     deleteSharedRoom(sharedRoom: any, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
