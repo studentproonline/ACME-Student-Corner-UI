@@ -353,6 +353,10 @@ export class AcmeSCConferenceRoomComponent {
         }
     }
 
+    gotoHome() {
+        this.router.navigateByUrl ( '/home?roomType=My Rooms');
+    }
+
     getRoomDetails() {
         this.isProgress = true;
         this.isSuccessFull = false;

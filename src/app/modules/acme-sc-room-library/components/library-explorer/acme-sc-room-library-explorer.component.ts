@@ -108,6 +108,10 @@ export class AcmeSCLibraryExplorerComponent {
         this.router.navigateByUrl('/roomDetails?roomId='+this.roomId+'&roomType=' + this.roomType);
     }
 
+    gotoHome() {
+        this.router.navigateByUrl ( '/home?roomType=My Rooms');
+    }
+
     gotoRoomsList() {
         this.router.navigateByUrl('/home?roomType=' + this.roomType);
     }

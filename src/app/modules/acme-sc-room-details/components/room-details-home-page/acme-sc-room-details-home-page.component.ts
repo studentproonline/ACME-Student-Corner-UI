@@ -94,6 +94,9 @@ export class AcmeSCRoomDetailsHomePageComponent {
     gotoRoomsList() {
         this.router.navigateByUrl ( '/home?roomType='+ this.roomType);
     }
+    gotoHome() {
+        this.router.navigateByUrl ( '/home?roomType=My Rooms');
+    }
     searchTextchange($event) {
       this.filterText = $event;
     }
