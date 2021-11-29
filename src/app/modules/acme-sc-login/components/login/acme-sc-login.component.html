@@ -1,11 +1,11 @@
 <div fxFlexFill fxLayout="row" fxLayoutAlign="end" class="acme-cs-login-page">
     <div fxFlex="40%" fxFlex.md="54%" fxFlex.sm="100%" fxLayoutAlign="end">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center">
-            <div fxFlex="64%">
+            <div fxFlex="64%" fxFlex.md="90%" fxFlex.sm="90%">
                 <div fxFlexFill fxLayout="row" fxLayoutAlign="center">
                     <div fxFlex="80%">
                         <mat-card fxFill class="acme-cs-mat-card">
-                            <div fxFlexFill fxLayout="column" fxLayoutAlign="space-between" class="acme-cs-login-box">
+                            <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw" class="acme-cs-login-box">
                                 <div fxFlex="15%">
                                     <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
                                         <div fxFlex="60%" class="acme-cs-heading">
@@ -13,83 +13,98 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div fxFlex="40%">
-                                    <form [formGroup]="loginFormGroup">
-                                        <!--Email address-->
-                                        <mat-form-field class="form-field" fxFill>
-                                            <div fxLayout="row">
-                                                <mat-label fxLayoutAlign="center center">
-                                                    <mat-icon class="acme-cs-mat-icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%"
-                                                            height="100%" viewBox="0 0 24 24">
-                                                            <path
-                                                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                                            <path d="M0 0h24v24H0z" fill="none" />
-                                                        </svg>
-                                                    </mat-icon>
-                                                </mat-label>
+                                <div fxFlex="50%" fxFlex.md="40%" fxFlex.sm="40%">
+                                    <form [formGroup]="loginFormGroup" fxFill>
+                                        <div fxFlexFill fxLayout="column">
+                                            <div fxFlex="50%">
+                                                <!--Email address-->
+                                                <mat-form-field class="form-field" fxFill>
+                                                    <div fxFlexFill fxLayout="row">
+                                                        <mat-label class="acme-form-input-field" fxLayoutAlign="center center">
+                                                            <mat-icon class="acme-cs-mat-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                                                    height="100%" viewBox="0 0 24 24">
+                                                                    <path
+                                                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                                </svg>
+                                                            </mat-icon>
+                                                        </mat-label>
 
-                                                <input matInput placeholder="E-mail address"
-                                                    formControlName="emailControl">
+                                                        <input class="acme-form-input-field" matInput
+                                                            placeholder="E-mail address" formControlName="emailControl">
+                                                    </div>
+
+                                                    <mat-error class="acme-form-input-field"
+                                                        *ngIf="loginFormGroup.controls['emailControl'].errors?.email">
+                                                        Please enter a valid email address
+                                                    </mat-error>
+                                                    <mat-error class="acme-form-input-field"
+                                                        *ngIf="loginFormGroup.controls['emailControl'].errors?.required">
+                                                        Email is <strong>required</strong>
+                                                    </mat-error>
+                                                </mat-form-field>
                                             </div>
-                                            <mat-error *ngIf="loginFormGroup.controls['emailControl'].errors?.email">
-                                                Please enter a valid email address
-                                            </mat-error>
-                                            <mat-error *ngIf="loginFormGroup.controls['emailControl'].errors?.required">
-                                                Email is <strong>required</strong>
-                                            </mat-error>
-                                        </mat-form-field>
-                                        <!--password-->
-                                        <mat-form-field class="form-field" fxFill>
-                                            <div fxLayout="row">
-                                                <mat-label fxLayoutAlign="center center">
-                                                    <mat-icon class="acme-cs-mat-icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
-                                                            <path d="M0 0h24v24H0z" fill="none" />
-                                                            <path
-                                                                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-                                                        </svg>
-                                                    </mat-icon>
-                                                </mat-label>
-                                                <input matInput placeholder="Enter your password"
-                                                    [type]="hide ? 'password' : 'text'"
-                                                    formControlName="passwordControl">
-                                                <button mat-icon-button matSuffix (click)="hide = !hide"
-                                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                                    <mat-icon class="acme-cs-mat-icon">{{hide ? 'visibility_off' :
-                                                        'visibility'}}</mat-icon>
-                                                </button>
+                                            <div fxFlex="50%">
+                                                <!--password-->
+                                                <mat-form-field class="form-field" fxFill>
+                                                    <div fxFlexFill fxLayout="row">
+                                                        <mat-label class="acme-form-input-field" fxLayoutAlign="center center">
+                                                            <mat-icon class="acme-cs-mat-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                                                    height="100%" viewBox="0 0 24 24">
+                                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                                    <path
+                                                                        d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                                                                </svg>
+                                                            </mat-icon>
+                                                        </mat-label>
+                                                        <input class="acme-form-input-field" matInput placeholder="Enter your password"
+                                                            [type]="hide ? 'password' : 'text'"
+                                                            formControlName="passwordControl">
+                                                        </div>
+                                                        <button mat-icon-button matSuffix (click)="hide = !hide"
+                                                            [attr.aria-label]="'Hide password'"
+                                                            [attr.aria-pressed]="hide">
+                                                            <mat-icon class="acme-cs-mat-icon">{{hide ? 'visibility_off'
+                                                                :
+                                                                'visibility'}}</mat-icon>
+                                                        </button>
+                                                 
+                                                    <mat-error class="acme-form-input-field"
+                                                        *ngIf="loginFormGroup.controls['passwordControl'].errors?.required ||
+                                                                  loginFormGroup.controls['passwordControl'].errors?.whiteSpace">
+                                                        Password is <strong>required</strong>
+                                                    </mat-error>
+                                                </mat-form-field>
                                             </div>
-                                            <mat-error
-                                                *ngIf="loginFormGroup.controls['passwordControl'].errors?.required ||
-                                                          loginFormGroup.controls['passwordControl'].errors?.whiteSpace">
-                                                Password is <strong>required</strong>
-                                            </mat-error>
-                                        </mat-form-field>
-                                       
+                                        </div>
                                     </form>
                                 </div>
-                                <div fxFlex="0 0 48px">
-                                    <button mat-raised-button color="accent" (click)="login()" fxFill>Login</button>
+                                <div fxFlex="0 0 10%" fxFlex.md="15%" fxFlex.sm="15%">
+                                    <button mat-raised-button color="accent" (click)="login()" fxFill><span
+                                            class="acme-sc-login-button">Login</span></button>
                                     <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
                                 </div>
-                                <div (click)="openAccountResetPasswordDialog()" fxFlex="0 0 32px" fxLayoutAlign="center center">
-                                    <a id="resetPasswordButton" mat-button routerLink="." color="primary">Forgot
+                                <div (click)="openAccountResetPasswordDialog()" fxFlex="0 0 5%" fxFlex.md="10%"
+                                    fxFlex.sm="10%" fxLayoutAlign="center center">
+                                    <a class="acme-sc-forget-password-label" id="resetPasswordButton" mat-button
+                                        routerLink="." color="primary">Forgot
                                         Password?</a>
                                 </div>
-                                <div fxFlex="0 0 10px">
+                                <div fxFlex="0 0 5%" fxFlex.md="15%" fxFlex.sm="15%">
                                     <div fxLayout="row">
                                         <div id="divider" fxFlex class="acme-cs-divider" fxLayoutAlign="start center">
                                         </div>
-                                        <div fxFlex style="font-size: 12px;" fxLayoutAlign="center center">
+                                        <div class="acme-sc-or-label" fxFlex fxLayoutAlign="center center">
                                             Or
                                         </div>
                                         <div fxFlex class="acme-cs-divider" fxLayoutAlign="start center"></div>
                                     </div>
                                 </div>
-                                <div fxFlex="0 0 48px" fxLayoutAlign="end center">
+                                <div fxFlex="0 0 10%" fxFlex.md="15%" fxFlex.sm="15%" fxLayoutAlign="end center">
                                     <button mat-raised-button color="warn" fxFill
-                                        (click)="openCreateAccountDialog()">Create a new account</button>
+                                        (click)="openCreateAccountDialog()" class="acme-sc-login-button">Create a new account</button>
                                 </div>
                             </div>
                         </mat-card>
