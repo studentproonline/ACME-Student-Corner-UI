@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="8px">
+<div  id='roomListContainer' #roomListContainer  fxFlexFill fxLayout="column" fxLayoutGap="8px">
     <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
     </div>
@@ -136,10 +136,9 @@
     <div fxFlex *ngIf="roomsList.length> 0 && isSuccesfull && !isProgress">
         <ng-scrollbar thumbClass="white-scrollbars">
             <div fxLayout="row wrap" fxFlexFill fxLayoutGap="32px">
-                <acme-sc-room-card *ngFor="let room of filteredRoomsList" [roomType]="roomType" [room]="room"
+                <acme-sc-room-card [ngStyle]="getWidth()" *ngFor="let room of filteredRoomsList" [roomType]="roomType" [room]="room"
                     (roomDeleted)="roomDeleted()" (favRoomDeleted)="favRoomDeleted()"
                     (sharedRoomDeleted)="sharedRoomDeleted()" class="acme-sc-room-card">
-
                 </acme-sc-room-card>
             </div>
         </ng-scrollbar>

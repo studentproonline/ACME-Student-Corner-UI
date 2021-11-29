@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChange, SimpleChanges, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
@@ -30,10 +30,12 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
     filteredRoomsList: IRoomEntity[] = [];
     isProgress = false;
     isSuccesfull = true;
+    clientWidth= 0;
 
     // your current result based on filters input
     filteredOptions: Observable<string[]>;
 
+    @ViewChild('roomListContainer', { static: false, read: ElementRef }) roomListContainer: ElementRef;
 
     constructor(public dialog: MatDialog, private acmeRoomService: AcmeRoomService,
         private router: Router,
@@ -43,7 +45,18 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
     }
     ngOnInit() {
+       
+    }
 
+    getWidth() {
+        return {
+            width: (this.roomListContainer.nativeElement.clientWidth/3) -34 + 'px'
+        }
+    }
+
+    ngAfterViewInit() {
+        console.log(this.roomListContainer.nativeElement.clientWidth);
+        this.clientWidth= this.roomListContainer.nativeElement.clientWidth;
     }
 
     private filterRooms(value: string): IRoomEntity[] {
