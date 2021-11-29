@@ -1,5 +1,6 @@
 <div fxLayout="column" class="acme-sc-room-user-item">
     <div fxFlexFill fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="8px">
+        <!--user icon-->
         <div fxFlex="20%" fxFlexFill fxLayoutAlign="center center">
             <div class="UserInfoCircle" fxLayoutAlign="center center">
                 <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" style="height:16px;width:16px;"
@@ -13,10 +14,17 @@
                 </mat-icon>
             </div>
         </div>
+        <!--user name-->
         <div fxFlexFill fxFlex="200px" fxFlex.md="150px" fxLayoutAlign="start center" class="acme-sc-room-user-name">
-            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">{{user.userName}}</span>
+            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">{{user.userName}}  <br> 
+                <span (click)="approveRejectUser('Approved','Approve')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-approve-link">Approve</span>
+                <span (click)="approveRejectUser('Rejected', 'Reject')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-reject-link">Reject</span>
+                <span *ngIf="user.status ==='Approved' && canRemoveUser" class="acme-sc-room-user-pending-link">Waiting for user to join</span>
+            </span>
+              
         </div>
-        <div *ngIf="canRemoveUser" fxFlex="24px" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon"
+        <!--remove icon-->
+        <div *ngIf="user.status ==='Active' && canRemoveUser" fxFlex="24px" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon"
             (click)="removeUser()">
             <mat-icon matTooltip="Remove user" fxLayoutAlign="center center" style="height:24px;width:24px;"
                 class="acme-cs-mat-icon">
@@ -26,6 +34,9 @@
                         d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                 </svg>
             </mat-icon>
+        </div>
+        <!--dummy for allignment-->
+        <div *ngIf="user.status !=='Active' || !canRemoveUser" fxFlex="24px" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon">
         </div>
     </div>
 </div>

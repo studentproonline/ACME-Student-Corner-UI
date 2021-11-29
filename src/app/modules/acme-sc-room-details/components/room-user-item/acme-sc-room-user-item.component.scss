@@ -40,3 +40,22 @@
     text-align: center;
     background: lightgray;
 }
+
+.acme-sc-room-user-approve-link {
+    font-size: x-small;
+    color: darkgreen;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.acme-sc-room-user-pending-link {
+    font-size: x-small;
+    color: darkgreen;
+}
+.acme-sc-room-user-reject-link {
+    font-size: x-small;
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+    padding-left: 32px;
+}

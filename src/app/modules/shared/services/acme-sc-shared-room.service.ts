@@ -39,6 +39,18 @@ export class AcmesharedRoomService {
         return this.httpService.post('/sharedrooms/public', headers,body).pipe(catchError(this.handleErrorObservable));
     }
 
+    // send request to join room
+    sendRequestToJoinRoom(body: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.httpService.post('/sharedrooms/request', headers,body).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // approve reject request
+    approveRejectRequest(body: any, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.post('/sharedrooms/requestaction', headers,body).pipe(catchError(this.handleErrorObservable));
+    }
+
     //delete shared room
     deleteSharedRoom(sharedRoom: any, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });

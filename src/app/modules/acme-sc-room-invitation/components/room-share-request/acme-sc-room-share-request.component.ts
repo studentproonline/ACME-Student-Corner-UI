@@ -28,7 +28,8 @@ export class AcmeSCSharedRoomShareRequestComponent implements OnInit {
         private acmesharedRoomService: AcmesharedRoomService, private formBuilder: FormBuilder,
         public dialog: MatDialog) {
         this.sendRequestFormGroup = this.formBuilder.group({
-            emailControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]]
+            emailControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+            nameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]]
         });
     }
 
@@ -40,7 +41,28 @@ export class AcmeSCSharedRoomShareRequestComponent implements OnInit {
     }
 
     sendRequest() {
+        // show progress
+        this.isProgress = true;
+        this.isSuccessFull = false;
+        // call account service to create account
+        const emailControl = 'emailControl';
+        const nameControl = 'nameControl';
+        let body: any ={};
+        body.roomId=this.roomId;
+        body.inviteeEmail = this.sendRequestFormGroup.controls[emailControl].value;
+        body.userName = this.sendRequestFormGroup.controls[nameControl].value;
 
+        this.acmesharedRoomService.sendRequestToJoinRoom(body).subscribe(
+            value => {
+                this.isProgress = false; // end progress
+                this.isSuccessFull = true;
+                this.invitationResponseMessage= 'Succesfully placed request to join room.'
+            },
+            err => {
+                this.isProgress = false; // end progress
+                this.invitationResponseMessage=err.error.description;
+            }
+        );
     }
 
     gotoLoginScreen() {

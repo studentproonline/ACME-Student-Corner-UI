@@ -29,8 +29,13 @@
     <div fxFlex fxLayoutAlign="center center">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
-                <mat-icon style="width:90px;height: 90px;" *ngIf="isSuccessFull" class="acme-cs-mat-icon" fxLayoutAlign="center center">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="90px" viewBox="0 0 24 24" width="90px" fill="purple"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12.5 10c0-1.65-1.35-3-3-3s-3 1.35-3 3 1.35 3 3 3 3-1.35 3-3zm-3 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6.5 2c1.11 0 2-.89 2-2 0-1.11-.89-2-2-2-1.11 0-2.01.89-2 2 0 1.11.89 2 2 2zM11.99 2.01c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zM5.84 17.12c.68-.54 2.27-1.11 3.66-1.11.07 0 .15.01.23.01.24-.64.67-1.29 1.3-1.86-.56-.1-1.09-.16-1.53-.16-1.3 0-3.39.45-4.73 1.43-.5-1.04-.78-2.2-.78-3.43 0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.2-.27 2.34-.75 3.37-1-.59-2.36-.87-3.24-.87-1.52 0-4.5.81-4.5 2.7v2.78c-2.27-.13-4.29-1.21-5.66-2.86z"/>
+                <mat-icon style="width:90px;height: 90px;" *ngIf="isSuccessFull" class="acme-cs-mat-icon"
+                    fxLayoutAlign="center center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="90px" viewBox="0 0 24 24" width="90px"
+                        fill="purple">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M12.5 10c0-1.65-1.35-3-3-3s-3 1.35-3 3 1.35 3 3 3 3-1.35 3-3zm-3 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6.5 2c1.11 0 2-.89 2-2 0-1.11-.89-2-2-2-1.11 0-2.01.89-2 2 0 1.11.89 2 2 2zM11.99 2.01c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zM5.84 17.12c.68-.54 2.27-1.11 3.66-1.11.07 0 .15.01.23.01.24-.64.67-1.29 1.3-1.86-.56-.1-1.09-.16-1.53-.16-1.3 0-3.39.45-4.73 1.43-.5-1.04-.78-2.2-.78-3.43 0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.2-.27 2.34-.75 3.37-1-.59-2.36-.87-3.24-.87-1.52 0-4.5.81-4.5 2.7v2.78c-2.27-.13-4.29-1.21-5.66-2.86z" />
                     </svg>
                 </mat-icon>
                 <mat-icon *ngIf="!isSuccessFull" class="acme-cs-mat-icon">
@@ -40,54 +45,99 @@
                 </mat-icon>
             </div>
             <div class="acme-sc-account-email-label" fxFlex fxLayoutAlign="center center">
-                <span>Please provide your account email address</span>
+                <span>Please provide your details</span>
             </div>
-            <form [formGroup]="sendRequestFormGroup">
-                <!--Email-->
-                <mat-form-field class="form-field" style="width:500px">
-                    <mat-label>
-                        <mat-icon class="acme-cs-mat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
-                                <path
-                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                <path d="M0 0h24v24H0z" fill="none" />
-                            </svg>
-                        </mat-icon>
-                        Email
-                    </mat-label>
-                    <input required matInput placeholder="Email" formControlName="emailControl" autocomplete="off">
-                    <mat-error *ngIf="sendRequestFormGroup.controls['emailControl'].errors?.email">
-                        Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="sendRequestFormGroup.controls['emailControl'].errors?.required">
-                        Email is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
-            </form>
+            <div fxFlex>
+                <form [formGroup]="sendRequestFormGroup">
+                    <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+                        <div fxFlex>
+                            <!--Email-->
+                            <mat-form-field class="form-field" style="width:500px">
+                                <mat-label>
+                                    <mat-icon class="acme-cs-mat-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                        </svg>
+                                    </mat-icon>
+                                    Email
+                                </mat-label>
+                                <input required matInput placeholder="Email" formControlName="emailControl"
+                                    autocomplete="off">
+                                <mat-error *ngIf="sendRequestFormGroup.controls['emailControl'].errors?.email">
+                                    Please enter a valid email address
+                                </mat-error>
+                                <mat-error *ngIf="sendRequestFormGroup.controls['emailControl'].errors?.required">
+                                    Email is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex>
+                            <!--name -->
+                            <mat-form-field class="form-field" style="width:500px">
+                                <mat-label>
+                                    <mat-icon class="acme-cs-mat-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
+                                            width="100%" fill="#000000">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                        </svg>
+                                    </mat-icon>
+                                    Nick Name
+                                </mat-label>
+                                <input required matInput placeholder="Nick Name" formControlName="nameControl"
+                                    autocomplete="off">
+                                <mat-error *ngIf="sendRequestFormGroup.controls['nameControl'].errors?.required ||
+                                sendRequestFormGroup.controls['nameControl'].errors?.whiteSpace">
+                                    Name is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
             <div *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
-                <button mat-raised-button color="accent" (click)="sendRequest()" class="acme-sc-login-button">
-                   Send request to join room
+                <button mat-raised-button color="accent" (click)="sendRequest()" class="acme-sc-login-button"
+                    [disabled]="!sendRequestFormGroup.controls['emailControl'].valid ||
+                    !sendRequestFormGroup.controls['nameControl'].valid || isProgress===true">
+                    Send request to join room
                 </button>
             </div>
 
             <div class="acme-sc-get-room-details-label" *ngIf="!isProgress" fxFlex fxLayoutAlign="center center"
-            (click)="getRoomDetails()">
+                (click)="getRoomDetails()">
                 <span>Get room details</span>
             </div>
 
-            <div *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
-                <span>{{invitationResponseMessage}}</span>
+            <div  *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="32px"  *ngIf="invitationResponseMessage!==''">
+                        <mat-icon class="acme-cs-mat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                            </svg>
+                        </mat-icon>
+                    </div>
+                    <div class="acme-sc-activation-response-message" fxFlex>
+                        <span>{{invitationResponseMessage}}</span>
+                    </div>
+                </div>
+               
             </div>
             <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
                 <mat-spinner></mat-spinner>
             </div>
             <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
-                <span>Activating shared room....</span>
+                <span>Sending request for room share....</span>
             </div>
             <div class="acme-sc-create-account-label" *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
                 <span>Please create an account in A.C.M.E. Student Corner if not already done.</span>
             </div>
         </div>
-
     </div>
 </div>
