@@ -21,15 +21,15 @@
     <!--Successfull call-->
     <div fxLayout="column" *ngIf="isSuccessFull && !isProgress" fxFlexFill>
         <!--Title row-->
-        <div fxFlex="32px">
-            <div fxFlexFill fxLayout="row" fxLayoutGap="8px">
-                <div fxFlex="80px" fxLayoutAlign="start center" class="acme-sc-topic-title">
+        <div fxFlex="10%">
+            <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                <div fxFlex="8%" fxLayoutAlign="start center" class="acme-sc-topic-title">
                     Topics
                 </div>
                 <!--Icon-->
-                <div fxFlex="24px" fxLayoutAlign="start center">
-                    <mat-icon fxLayoutAlign="center center" style="height:24px;width:24px" class="acme-cs-mat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                <div fxFlex="2%" fxLayoutAlign="start center">
+                    <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%" class="acme-cs-mat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                             fill="purple">
                             <path d="M0 0h24v24H0V0z" fill="none" />
                             <path
@@ -38,10 +38,10 @@
                     </mat-icon>
                 </div>
                 <!--Refresh -->
-                <div fxFlex="24px" fxLayoutAlign="start center" (click)="refreshTopicsList()">
+                <div fxFlex="2%" fxLayoutAlign="start center" (click)="refreshTopicsList()">
                     <mat-icon matTooltip="Refresh topics list" fxLayoutAlign="center center"
-                        style="height:24px;width:24px" class="acme-cs-mat-icon acme-sc-refresh-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        style="height:100%;width:100%" class="acme-cs-mat-icon acme-sc-refresh-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                             fill="#000000">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
@@ -59,7 +59,7 @@
                 </div>
                 <!-- new discussion button-->
                 <div *ngIf="roomTopicsList.length > 0 && room.status === 'Active'" fxFlex fxLayoutAlign="end center">
-                    <button mat-raised-button color="accent" (click)="createTopic()" class="acme-cs-login-button acme-create-topic-button">Start
+                    <button class="acme-create-topic-button" mat-raised-button color="accent" (click)="createTopic()">Start
                         new discussion
                     </button>
                 </div>

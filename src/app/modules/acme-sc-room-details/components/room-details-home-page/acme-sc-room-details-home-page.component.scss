@@ -1,17 +1,26 @@
 .acme-sc-room-type-text {
     cursor: pointer;
     text-decoration-line: underline;
+    font-size:0.9vw;
 }
 
 .acme-sc-room-home {
     cursor: pointer;
     text-decoration-line: underline;
-    color:purple
+    color:purple;
+    font-size:0.9vw;
 }
 
 .acme-sc-room-owner-name {
     font-weight: normal;
     color: #5f6368;
+    font-size:0.9vw;
+}
+
+.acme-sc-room-name {
+    font-weight: normal;
+    font-weight: bold;
+    font-size:0.9vw;
 }
 
 .acme-sc-room-details-header{
@@ -24,16 +33,38 @@
     cursor: pointer;
 }
 .acme-sc-beta-label {
-    font-size: x-small;
+    font-size: 0.6vw;
     color: green;
     padding-left: 4px;
 }
 
 .acme-sc-company-label {
-    font-size: x-small;
+    font-size:0.66vw;
     color: purple;
     background-color:#fafafa;
     border-color: lightgray;
     border-width: 0.5px;
     border-right-style: solid;
+}
+
+.acme-sc-apps-label {
+    font-size:0.9vw;
+    padding-left:4px;
+    opacity:0.7
+}
+
+.acme-sc-apps-menu-item {
+    font-size:1vw;
+}
+
+.acme-sc-apps-icon {
+    opacity:0.7;
+    color:purple;
+    height:100%;
+    width:100%;
+}
+
+.acme-sc-apps-button {
+    height:100%;
+    width:100%;
 }

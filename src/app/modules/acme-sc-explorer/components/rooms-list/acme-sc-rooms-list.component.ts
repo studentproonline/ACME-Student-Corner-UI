@@ -31,6 +31,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
     isProgress = false;
     isSuccesfull = true;
     clientWidth= 0;
+    clientHeight =0;
+    cardHeight='';
 
     // your current result based on filters input
     filteredOptions: Observable<string[]>;
@@ -51,12 +53,17 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
     getWidth() {
         return {
             width: (this.roomListContainer.nativeElement.clientWidth/3) -34 + 'px'
-        }
+        };
     }
 
     ngAfterViewInit() {
-        console.log(this.roomListContainer.nativeElement.clientWidth);
-        this.clientWidth= this.roomListContainer.nativeElement.clientWidth;
+        this.clientHeight = this.roomListContainer.nativeElement.clientHeight;
+        this.cardHeight = (this.clientHeight/2)-48 + 'px';
+    }
+
+    onResize($event) {
+        this.clientHeight = this.roomListContainer.nativeElement.clientHeight;
+        this.cardHeight = (this.clientHeight/2)-48 + 'px';
     }
 
     private filterRooms(value: string): IRoomEntity[] {

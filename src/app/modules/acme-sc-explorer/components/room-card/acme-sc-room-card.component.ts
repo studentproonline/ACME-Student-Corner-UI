@@ -29,6 +29,9 @@ export class AcmeSCRoomComponent implements OnInit {
     roomLink='';
     @Input() room: IRoomEntity
     @Input() roomType: string;
+    @Input() height: string;
+    @Input() width: string;
+
 
     @Output() roomClicked = new EventEmitter<IRoomEntity>();
     @Output() roomDeleted = new EventEmitter();
@@ -43,6 +46,11 @@ export class AcmeSCRoomComponent implements OnInit {
     ngOnInit() {
         this.owner ="Owner: " +this.room.email;
         this.roomLink = apiConfig.host + '/shareRoom?roomId='+this.room._id;
+    }
+    getHeight() {
+        return {
+            height: this.height
+        };
     }
 
     enterRoom() {

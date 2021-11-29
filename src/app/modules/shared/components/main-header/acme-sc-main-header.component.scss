@@ -14,8 +14,13 @@
     border-width: 0.5px;
     border-radius: 4px;
 }
+
+.searchBoxLabel {
+    font-size: 1.08vw;
+}
 .searchInput {
     border-style: none;
+    font-size: 1.08vw;
 }
 textarea:focus, input:focus{
     outline: none;
@@ -29,7 +34,7 @@ textarea:focus, input:focus{
 }
 
 .acme-sc-title {
-    font-size: x-large;
+    font-size: 1.6vW;
     opacity: 0.7;
     border-bottom-color: darkgoldenrod;
     border-bottom-style: solid;

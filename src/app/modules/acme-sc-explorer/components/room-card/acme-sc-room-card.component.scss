@@ -1,5 +1,4 @@
 .acme-sc-room-card {
-    height: 250px;
     background-color: whitesmoke; 
     color: #222;
     clip-path: polygon(0 23%, 0 7%, 4% 0, 29% 0, 32% 7%, 60% 7%, 98% 7%, 100% 10%, 100% 100%, 15% 100%, 0 100%, 0% 85%);
@@ -7,15 +6,16 @@
 
 .acme-sc-room-title {
     font-weight: bold;
-    padding: 8px;
+    font-size: 1.05vw;
+    padding: 0.4vw;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
 }
 .acme-sc-room-description {
-    padding: 8px;
+    padding: 0.4vw;
     font-weight: lighter;
-    font-size: smaller;
+    font-size: 0.88vw;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -31,5 +31,5 @@
 .acme-sc-room-readonly {
     font-size: small;
     color: slategray;
-    padding-bottom: 8px;
+    padding-bottom:0.4vw;
 }

@@ -7,16 +7,26 @@
 
 .acme-sc-room-users-list{
     border-top-style: outset;
-    padding:8px;
+    padding:0.4vw;
 }
 
 .acme-sc-title-heading {
     font-weight: bold;
-    font-size:small;
+    font-size:1vw;
+}
+
+.acme-sc-room-user-label {
+    font-size:1.1vw;
+}
+
+.acme-sc-room-nouser-label {
+    font-size:1.1vw;
+    font-size: normal;
+    opacity: 0.5;
 }
 
 .acme-sc-title-label {
-    font-size:x-small;
+    font-size:0.66vw;
     color:purple;
     font-style: italic;
 }
