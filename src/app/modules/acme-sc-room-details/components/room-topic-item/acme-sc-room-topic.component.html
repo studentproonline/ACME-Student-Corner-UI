@@ -1,22 +1,22 @@
-<div fxLayout="row"  fxLayoutGap="8px">
-    <div fxFlex="70px">
+<div [ngStyle]="getHeight()"  fxLayout="row"  fxLayoutGap="8px">
+    <div fxFlex="6%">
         <div fxLayout="column" fxFlexFill fxLayoutGap="8px">
             <div fxFlex="50%" fxFlexFill>
                 <acme-sc-room-topic-votes [topic]="topic"></acme-sc-room-topic-votes>
             </div> 
-            <div fxFlexFill fxFlex="50%">
+            <div fxFlex="50%" fxFlexFill >
                 <acme-sc-room-topic-views [topic]="topic"></acme-sc-room-topic-views>
             </div>       
         </div>
     </div>
     <div fxFlex>
-        <div fxLayout="column" class="acme-sc-room-topic-item">
-            <div fxFlex="32px" fxFlexFill>
+        <div  fxLayout="column" class="acme-sc-room-topic-item">
+            <div fxFlex="40%" fxFlexFill>
                 <div fxLayout="row" fxLayoutGap="16px">
                     <!--question icon-->
-                    <div fxFlex="24px" class="acme-sc-room-topic-row">
-                        <mat-icon fxLayoutAlign="center center" style="height:24px;width:24px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    <div fxFlex="4%" class="acme-sc-room-topic-row">
+                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                                 fill="darkgoldenrod">
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path
@@ -30,25 +30,25 @@
                     </div>
                 </div>
             </div>
-            <div fxFlex="24px" fxFlexFill>
-                <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="end center" class="acme-sc-room-topic-row">
+            <div fxFlex="20%" fxFlexFill>
+                <div fxLayout="row" fxLayoutGap="0.4vw" fxLayoutAlign="end center" class="acme-sc-room-topic-row">
                     <!--created by-->
                     <div fxFlex="70%" fxLayoutAlign="start center">
                         <span class="acme-sc-room-topic-details-label-bold">Created by:</span><span
                             class="acme-sc-room-topic-details-label"
-                            style="padding-left:8px">{{topic.ownerFirstName}}</span>
+                            style="padding-left:0.4vw">{{topic.ownerFirstName}}</span>
                         <span class="acme-sc-room-topic-details-label"
-                            style="padding-left:8px">{{topic.ownerLastName}}</span>
+                            style="padding-left:0.4vw">{{topic.ownerLastName}}</span>
                     </div>
                     <div fxFlex="30%" fxLayoutAlign="end center">
                         <span class="acme-sc-room-topic-details-label-xsmall-bold">Started on:</span><span
                             class="acme-sc-room-topic-details-label-xsmall"
-                            style="padding-left:8px;color:purple;opacity: 1;">{{topic.createdAt|date:'medium'}}</span>
+                            style="padding-left:0.4vw;color:purple;opacity: 1;">{{topic.createdAt|date:'medium'}}</span>
                     </div>
                 </div>
             </div>
-            <div fxFlex="24px" class="acme-sc-room-topic-row" style="padding-top:8px">
-                <div fxLayout="row" fxLayoutGap="16px">
+            <div fxFlex="40%" class="acme-sc-room-topic-row" style="padding-top:8px">
+                <div fxLayout="row" fxLayoutGap="0.4vw">
                     <div fxFlex="90%">
                         <mat-chip-list #chipList aria-label="Topic tags">
                             <mat-chip [removable]="tagRemove" *ngFor="let tag of topic.tags"
@@ -60,7 +60,7 @@
                     <div *ngIf="isTopicOrRoomOwner" fxFlex fxLayoutAlign="end center">
                         <div fxLayout="column">
                             <div fxFlex>
-                                <mat-slide-toggle (change)="updateTopic($event)" class="acme-sc-room-topic-close-toggle"
+                                <mat-slide-toggle fxFill (change)="updateTopic($event)" class="acme-sc-room-topic-close-toggle"
                                     [color]="closeColor" [checked]="topicClosed" [disabled]="!topicClosedEnabled">Stop
                                     discussion
                                 </mat-slide-toggle>

@@ -1,22 +1,22 @@
 .acme-sc-room-topic-comment-container{
-    padding: 24px;
+    padding: 1.5vw;
 }
 
 .acme-sc-title-heading {
     font-weight: bold;
-    font-size:x-small;
+    font-size:0.7vw;
 }
 
 .acme-sc-room-home {
     font-weight: bold;
-    font-size: small;
+    font-size: 0.9vw;
     cursor: pointer;
     text-decoration-line: underline;
     color:purple;
 }
 
 .acme-sc-topic-title {
-    font-size: xx-large;
+    font-size: 2.2vw;
     opacity: 0.7;
     border-bottom-color: darkgoldenrod;
     border-bottom-style: solid;
@@ -32,12 +32,28 @@
 
 .acme-sc-all-topics {
     font-weight: bold;
-    font-size: small;
+    font-size: 0.9vw;
     cursor: pointer;
 }
 .acme-sc-comments-loadmore{
-    font-size: small;
+    font-size: 0.9vw;
     font-weight: normal;
     color: gray;
     cursor: pointer;
+}
+
+.acme-create-add-comment-button {
+    font-size: 0.8vw;
+}
+
+.acme-server-response-message {
+    font-size: 1.2vw;
+}
+
+.acme-no-data-message {
+    font-size: 1.2vw;
+}
+
+.acme-load-more-label {
+    font-size: 1vw;
 }

@@ -16,6 +16,7 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 export class AcmeSCRoomTopicItemComponent implements OnInit {
     @Input() topic: ITopicEntity
     @Input() roomType: string
+    @Input() height
 
     tagRemove: boolean = false;
     topicClosed: boolean = false;
@@ -23,7 +24,7 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
     closeColor = "warn";
     isProgress = false;
     isTopicOrRoomOwner = false;
-
+ 
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService, private snackBar: MatSnackBar,
         private router: Router) {
@@ -44,6 +45,12 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
                 
                     this.isTopicOrRoomOwner = true;
         }
+    }
+
+    getHeight() {
+        return {
+            height: this.height
+        };
     }
 
     lauchTopic() {

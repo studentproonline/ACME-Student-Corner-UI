@@ -1,8 +1,7 @@
 .acme-sc-topic-comment-container {
     background-color: whitesmoke;
-    border-radius: 16px;
-    padding:8px;
-    font-size: small;
+    border-radius: 0.4vw;
+    padding:0.4vw;
     
 }
 
@@ -11,12 +10,12 @@
 }
 
 .acme-sc-topic-commennt-useful-label {
-    font-size: x-small;
+    font-size: 0.8vw;
     color:purple;
 }
 .acme-sc-topic-comment-container-footer-createdOn {
-    font-size: x-small;
-    padding-left: 8px;
+    font-size: 0.7vw;
+    padding-left: 0.4vw;
 }
 
 
@@ -27,5 +26,5 @@
     cursor: pointer;
 }
 .acme-sc-topic-comment-vote-count {
-    font-size: small;
+    font-size: 1vw;
 }

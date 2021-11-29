@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, Input, SimpleChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeSCSRoomCreateTopicComponent } from '../dialogs/create-topic/acme-sc-create-topic.component';
@@ -23,28 +23,49 @@ export class AcmeSCRoomTopicsListComponent {
     isProgress = true;
     isSuccessFull = false;
     topicsResponseMessage = '';
+    clientHeight = 0;
+    topicHeight = '';
 
-    roomTopicsList:ITopicEntity[]=[];
+    roomTopicsList: ITopicEntity[] = [];
     filteredRoomTopicsList: ITopicEntity[] = [];
-    
+
+    @ViewChild('topicsListContainer', { static: false, read: ElementRef }) topicsListContainer: ElementRef;
+
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         public dialog: MatDialog) {
 
     }
 
+
+    ngAfterViewInit() {
+        this.clientHeight = this.topicsListContainer.nativeElement.clientHeight;
+        this.topicHeight = (this.clientHeight / 3) + 'px';
+        console.log(this.topicsListContainer.nativeElement);
+        console.log(this.clientHeight + '=====' + this.topicHeight);
+    }
+
+    onResize($event) {
+        /*setTimeout(() => {                           //<<<---using ()=> syntax
+            this.clientHeight = this.topicsListContainer.nativeElement.clientHeight;
+            this.topicHeight = (this.clientHeight / 2.8) + 'px';
+            console.log(this.topicsListContainer);
+            console.log(this.clientHeight + '=====' + this.topicHeight);
+        }, 3000);*/
+    }
+
     ngOnChanges(changes: SimpleChanges) {
         const currentRoom: SimpleChange = changes.room;
-        if(currentRoom) {
+        if (currentRoom) {
             this.room = currentRoom.currentValue;
-            if(this.room) {
+            if (this.room) {
                 this.getRoomTopicsList();
             }
         }
 
         const filterSearchText: SimpleChange = changes.filterText;
-        if(filterSearchText) {
-            this.filteredRoomTopicsList=this.filterTopic(filterSearchText.currentValue);
+        if (filterSearchText) {
+            this.filteredRoomTopicsList = this.filterTopic(filterSearchText.currentValue);
         }
 
     }
@@ -55,10 +76,10 @@ export class AcmeSCRoomTopicsListComponent {
             height: '250',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: {roomId: this.room._id}
+            data: { roomId: this.room._id }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result && result.data ) {
+            if (result && result.data) {
                 this.getRoomTopicsList();
             }
         });
@@ -80,13 +101,13 @@ export class AcmeSCRoomTopicsListComponent {
     getRoomTopicsList() {
         this.isProgress = true;
         this.isSuccessFull = false;
-        this.acmeRoomTopicsService.getRoomTopics(this.room._id,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeRoomTopicsService.getRoomTopics(this.room._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 const response: any = value;
                 this.isProgress = false;
                 this.isSuccessFull = true;
-                this.roomTopicsList=response.data;
-                this.filteredRoomTopicsList= this.roomTopicsList;
+                this.roomTopicsList = response.data;
+                this.filteredRoomTopicsList = this.roomTopicsList;
             },
             err => {
                 this.isProgress = false;
@@ -96,7 +117,7 @@ export class AcmeSCRoomTopicsListComponent {
                 } else {
                     this.topicsResponseMessage = 'Server Error';
                 }
-                if(err.status === 401 || err.status === 401.1) {
+                if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog
                     this.openSessionExpiredDialog();
                 }
@@ -108,7 +129,7 @@ export class AcmeSCRoomTopicsListComponent {
             width: '700px',
             height: '100px',
             disableClose: true,
-            data:{}
+            data: {}
         });
         dialogRef.afterClosed().subscribe(result => {
         });

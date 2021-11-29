@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column">
+<div  (window:resize)="onResize($event)" id='topicsListContainer' #topicsListContainer  fxFlexFill fxLayout="column">
     <!--Progress-->
     <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
@@ -96,7 +96,7 @@
                     <ng-scrollbar thumbClass="white-scrollbars">
                         <div fxLayout="column" fxFlexFill fxLayoutGap="8px">
                             <acme-sc-room-topic *ngFor="let topic of filteredRoomTopicsList" [topic]="topic"
-                            [roomType]="roomType">
+                            [roomType]="roomType" [height]="topicHeight">
                             </acme-sc-room-topic>
                         </div>
                     </ng-scrollbar>
