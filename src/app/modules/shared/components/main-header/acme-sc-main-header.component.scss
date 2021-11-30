@@ -1,9 +1,8 @@
 .UserInfoCircle {
-    width: 32px;
-    height: 32px;
-    line-height: 500px;
+    width: 2.5vw;
+    height: 2.5vw;
     border-radius: 50%;
-    font-size: 16px;
+    font-size: 1vw;
     color: #fff;
     text-align: center;
     background:purple;
@@ -11,8 +10,8 @@
 }
 .searchBox {
     border-style: solid;
-    border-width: 0.5px;
-    border-radius: 4px;
+    border-width: 0.1vw;
+    border-radius: 0.4vw;
 }
 
 .searchBoxLabel {
@@ -20,6 +19,9 @@
 }
 .searchInput {
     border-style: none;
+    font-size: 1.08vw;
+}
+:host ::ng-deep .mat-form-field-label {
     font-size: 1.08vw;
 }
 textarea:focus, input:focus{
@@ -40,7 +42,19 @@ textarea:focus, input:focus{
     border-bottom-style: solid;
 }
 
+.acme-form-input-field {
+    font-size: 1.1vw;
+}
+
+.acme-sc-search-form {
+    //height:100%;
+    width:97%;
+}
+
+/*::ng-deep .mat-form-field-infix {
+   border-top: 0 !important;
+}*/
+
 /*::ng-deep .mat-form-field-underline {
     display: none;
-    height:32px;
 }*/

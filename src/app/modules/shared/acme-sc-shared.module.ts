@@ -11,6 +11,7 @@ import { AcmeSCHttpService } from '../../core/services/acme-sc-http.service';
 import { AcmeSCMainHeaderComponent } from './components/main-header/acme-sc-main-header.component';
 import { AcmeSCDialogHeaderComponent } from './components/dialog-header/acme-sc-dialog-header.component';
 import { AcmeSCUserPopupComponent } from './components/user-popup/acme-sc-user-popup.component';
+import { AcmeSCNavigationBarComponent } from './components/navigation-bar/acme-sc-navigation-bar.component';
 
 //dialogs
 import { AcmeSCUserConfirmationComponent } from './components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
@@ -32,6 +33,7 @@ import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
     declarations: [
         AcmeSCMainHeaderComponent,
         AcmeSCDialogHeaderComponent,
+        AcmeSCNavigationBarComponent,
         AcmeSCUserConfirmationComponent,
         AcmeSCShareRoomComponent,
         AcmeSCSessionExpiredComponent,
@@ -46,6 +48,7 @@ import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
         FormsModule,
         ReactiveFormsModule,
         AcmeSCMainHeaderComponent,
+        AcmeSCNavigationBarComponent,
         AcmeSCDialogHeaderComponent,
         AcmeSCUserConfirmationComponent,
         AcmeSCShareRoomComponent,

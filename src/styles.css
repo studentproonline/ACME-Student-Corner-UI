@@ -18,6 +18,10 @@ body {
 .acme-cs-mat-icon {
     opacity: 0.5
 }
+
+.acme-cs-mat-icon-darker {
+    opacity: 0.7
+}
 .acme-cs-heading {
     text-align: center !important;
     font-size: 1.5vw !important;
@@ -30,7 +34,7 @@ body {
     border-radius: 20px !important;
  }
  .acme-sc-container {
-     padding:24px;
+    padding: 1.5vw;
  }
 .mat-raised-button.mat-warn {
     background-color: darkorange !important;

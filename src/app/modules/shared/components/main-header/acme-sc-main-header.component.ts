@@ -1,12 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeScCookiesService } from '../../../../core/services/acme-sc-cookies.service';
 
 import { AcmeSCContactinformationComponent } from '../../../shared/components/dialogs/contact-information/acme-sc-contact-information.component';
-import { AcmeSCUserPopupComponent } from '../user-popup/acme-sc-user-popup.component';
 
 @Component({
     selector: 'acme-sc-main-header',
@@ -27,15 +25,12 @@ export class AcmeSCMainHeaderComponent {
     rightClickMenuPositionX: number;
     rightClickMenuPositionY: number;
 
-    constructor(private formBuilder: FormBuilder, 
-        private acmeScCookiesService: AcmeScCookiesService, private router: Router,
+    constructor(private acmeScCookiesService: AcmeScCookiesService, private router: Router,
         public dialog: MatDialog) {
-        this.searchFormGroup = this.formBuilder.group({
-            searchControl: ['']
-        });
-        this.searchFormGroup.get("searchControl").valueChanges.subscribe(x => {
-            this.searchTextchange.emit(x);
-        })
+    }
+
+    onSearchChange(value) {
+        this.searchTextchange.emit(value);
     }
 
     nickNameClicked(event): void {

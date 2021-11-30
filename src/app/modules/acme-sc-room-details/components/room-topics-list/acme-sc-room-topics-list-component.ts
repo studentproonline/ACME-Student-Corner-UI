@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeSCSRoomCreateTopicComponent } from '../dialogs/create-topic/acme-sc-create-topic.component';
@@ -29,29 +29,10 @@ export class AcmeSCRoomTopicsListComponent {
     roomTopicsList: ITopicEntity[] = [];
     filteredRoomTopicsList: ITopicEntity[] = [];
 
-    @ViewChild('topicsListContainer', { static: false, read: ElementRef }) topicsListContainer: ElementRef;
-
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         public dialog: MatDialog) {
 
-    }
-
-
-    ngAfterViewInit() {
-        this.clientHeight = this.topicsListContainer.nativeElement.clientHeight;
-        this.topicHeight = (this.clientHeight / 3) + 'px';
-        console.log(this.topicsListContainer.nativeElement);
-        console.log(this.clientHeight + '=====' + this.topicHeight);
-    }
-
-    onResize($event) {
-        /*setTimeout(() => {                           //<<<---using ()=> syntax
-            this.clientHeight = this.topicsListContainer.nativeElement.clientHeight;
-            this.topicHeight = (this.clientHeight / 2.8) + 'px';
-            console.log(this.topicsListContainer);
-            console.log(this.clientHeight + '=====' + this.topicHeight);
-        }, 3000);*/
     }
 
     ngOnChanges(changes: SimpleChanges) {

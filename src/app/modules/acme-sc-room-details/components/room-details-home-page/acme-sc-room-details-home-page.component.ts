@@ -52,10 +52,6 @@ export class AcmeSCRoomDetailsHomePageComponent {
             });
     }
 
-    gotoLibrary() {
-        this.router.navigateByUrl ( '/library?roomType='+ this.roomType + '&roomId='+ this.roomId);
-    }
-
     getRoomDetails() {
         this.isProgress = true;
         this.isSuccessFull = false;
@@ -90,13 +86,7 @@ export class AcmeSCRoomDetailsHomePageComponent {
     userNameClicked($event) {
         console.log('nick name clicked')
     }
-
-    gotoRoomsList() {
-        this.router.navigateByUrl ( '/home?roomType='+ this.roomType);
-    }
-    gotoHome() {
-        this.router.navigateByUrl ( '/home?roomType=My Rooms');
-    }
+    
     searchTextchange($event) {
       this.filterText = $event;
     }
@@ -110,9 +100,5 @@ export class AcmeSCRoomDetailsHomePageComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
-    }
-
-    gotoConferenceCall() {
-        this.router.navigateByUrl ( '/conference?roomType='+ this.roomType + '&roomId='+ this.roomId);
     }
 }
