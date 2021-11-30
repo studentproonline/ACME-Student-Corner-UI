@@ -1,5 +1,5 @@
 <div fxFlexFill fxLayout="row">
-    <div fxFlex="20%" fxFlex.md="25%">
+    <div fxFlex="20%">
         <div fxFlexFill fxLayout="column">
             <div  fxFlex>
                 <acme-sc-navigation-sidebar (navigationItemSelected)="navigationItemSelected($event)"></acme-sc-navigation-sidebar>
@@ -10,8 +10,8 @@
         </div>
     </div>
     <div fxFlex  class="acme-sc-container">
-        <div fxFlexFill fxLayout="column" fxLayoutGap="16px">
-            <div fxFlex="48px">
+        <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+            <div fxFlex="7%">
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
                     [placeHolder]="'Start searching for a room by name'"
                     (userNameClicked)="userNameClicked($event)"

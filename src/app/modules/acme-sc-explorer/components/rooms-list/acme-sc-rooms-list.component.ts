@@ -55,17 +55,6 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
             width: (this.roomListContainer.nativeElement.clientWidth/3) -34 + 'px'
         };
     }
-
-    ngAfterViewInit() {
-        this.clientHeight = this.roomListContainer.nativeElement.clientHeight;
-        this.cardHeight = (this.clientHeight/2)-48 + 'px';
-    }
-
-    onResize($event) {
-        this.clientHeight = this.roomListContainer.nativeElement.clientHeight;
-        this.cardHeight = (this.clientHeight/2)-48 + 'px';
-    }
-
     private filterRooms(value: string): IRoomEntity[] {
         const filterValue = value.toLowerCase();
         if (filterValue.toLowerCase().trim() === '') {

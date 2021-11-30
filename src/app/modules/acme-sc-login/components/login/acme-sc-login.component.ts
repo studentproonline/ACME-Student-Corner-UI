@@ -41,8 +41,8 @@ export class AcmeSCLoginComponent {
     }
     openCreateAccountDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCCreateAccountComponent, {
-            width: '500px',
-            height: '560px',
+            width: this.getScreenWidth(),
+            height: this.getScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}
@@ -51,10 +51,42 @@ export class AcmeSCLoginComponent {
         });
     }
 
+    getScreenWidth() {
+        if (window.screen.width <= 414) { // 768px portrait
+            return '45%';
+        } else  {
+            return '40%';
+        }
+    }
+
+    getScreenHeight() {
+        if (window.screen.height <= 736) { // 768px portrait
+            return '90%';
+        } else  {
+            return '70%';
+        }
+    }
+
+    getPasswordResetScreenWidth() {
+        if (window.screen.width <= 414) { // 768px portrait
+            return '45%';
+        } else  {
+            return '40%';
+        }
+    }
+
+    getPasswordResetScreenHeight() {
+        if (window.screen.height <= 736) { // 768px portrait
+            return '90%';
+        } else  {
+            return '70%';
+        }
+    }
+
     openAccountResetPasswordDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCAccountPasswordResetComponent, {
-            width: '500px',
-            height: '450px',
+            width: this.getPasswordResetScreenWidth(),
+            height: this.getPasswordResetScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}

@@ -94,13 +94,29 @@ export class AcmeSCCreateAccountComponent {
     // email confirmation dialog
     openConfirmEmailDialog(emailId: string): void {
         const dialogRef = this.dialogRef.open(AcmeSCActivateAccountComponent, {
-            width: '500px',
-            height: '250px',
+            width: this.getScreenWidth(),
+            height: this.getScreenHeight(),
             disableClose: true,
             data:{Email:emailId}
         });
         dialogRef.afterClosed().subscribe(result => {
         });
+    }
+
+    getScreenWidth() {
+        if (window.screen.width <= 414) { // 768px portrait
+            return '45%';
+        } else  {
+            return '50%';
+        }
+    }
+
+    getScreenHeight() {
+        if (window.screen.height <= 736) { // 768px portrait
+            return '50%';
+        } else  {
+            return '30%';
+        }
     }
 
     // validation method
@@ -117,6 +133,7 @@ export class AcmeSCCreateAccountComponent {
     }
 
     close($event): void {
+       
         this.dialogRef.closeAll();
     }
 }

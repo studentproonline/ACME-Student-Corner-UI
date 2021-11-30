@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column" fxLayoutAlign="0.4vw">
+<div fxFlexFill fxLayout="column">
     <div fxFlex="5%" fxLayoutAlign="end end">
         <mat-icon (click)='close($event)' [ngStyle]="{'cursor': 'pointer'}">
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
@@ -11,7 +11,7 @@
     <div fxFlex="5%" fxLayoutAlign="center" class="acme-cs-heading">
         <span>Create your User Account</span>
     </div>
-    <div fxFlex="60%">
+    <div fxFlex="70%">
         <div fxFlex>
             <form [formGroup]="createAccountFormGroup" fxFill>
                 <div fxFlexFill fxLayout="column">
@@ -67,7 +67,7 @@
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['emailControl'].errors?.email">
                                 Please enter a valid email address
                             </mat-error>
-                            <mat-error *ngIf="createAccountFormGroup.controls['emailControl'].errors?.required">
+                            <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['emailControl'].errors?.required">
                                 Email is <strong>required</strong>
                             </mat-error>
                         </mat-form-field>
@@ -136,21 +136,25 @@
         </div>
     </div>
 
-    <div fxFlex="10%" fxLayoutAlign="center center">
+    <div fxFlex="10%" fxLayoutAlign="center center" class="acme-sc-term-condition-label">
         <mat-checkbox id="agreementCheckBox" [checked]="agreementCheck" (change)="agreementChange($event)">I agree to
             the terms & conditions</mat-checkbox>
     </div>
-    <div fxFlex="20%" fxLayoutAlign="end end">
-        <button mat-raised-button color="accent" class="acme-sc-crea-account-button" (click)="createAccount()" [disabled]="!createAccountFormGroup.controls['emailControl'].valid ||
-        !createAccountFormGroup.controls['firstNameControl'].valid ||
-        !createAccountFormGroup.controls['lastNameControl'].valid ||
-        !createAccountFormGroup.controls['emailControl'].valid ||
-        !createAccountFormGroup.controls['passwordControl'].valid ||
-        !agreementCheck ||
-        !createAccountFormGroup.controls['confirmPasswordControl'].valid ||
-        isProgress===true">Sign Up
-
-        </button>
-    </div>
+    <div fxFlex fxLayoutAlign="end end">
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex>
+                <button fxFill mat-raised-button color="accent" class="acme-sc-crea-account-button" (click)="createAccount()" [disabled]="!createAccountFormGroup.controls['emailControl'].valid ||
+                !createAccountFormGroup.controls['firstNameControl'].valid ||
+                !createAccountFormGroup.controls['lastNameControl'].valid ||
+                !createAccountFormGroup.controls['emailControl'].valid ||
+                !createAccountFormGroup.controls['passwordControl'].valid ||
+                !agreementCheck ||
+                !createAccountFormGroup.controls['confirmPasswordControl'].valid ||
+                isProgress===true">Sign Up
+        
+                </button>
+            </div>
+        </div>
+   </div>
     <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
 </div>

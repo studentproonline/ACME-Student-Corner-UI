@@ -3,7 +3,7 @@
 }
 
 .acme-sc-small-message {
-    font-size: small;
+    font-size: 0.8vw;
 }
 
 ::ng-deep {
@@ -11,3 +11,7 @@
         border-radius: 20px !important;
     }
 }
+
+.acme-sc-activate-account-button {
+    font-size: 1vw;
+ }
