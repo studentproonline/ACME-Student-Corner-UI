@@ -20,6 +20,7 @@ import { AcmeSCCreateRoomComponent } from './components/dialogs/create-room/acme
 import { AcmeRoomService } from './services/acme-sc-room.service';
 import { AcmeFavRoomService } from './services/acme-sc-fav-room.service';
 import { AcmesharedRoomService} from '../shared/services/acme-sc-shared-room.service';
+import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utiltities.services';
 
 @NgModule({
     declarations: [AcmeSCMainPageComponent,
@@ -37,7 +38,7 @@ import { AcmesharedRoomService} from '../shared/services/acme-sc-shared-room.ser
         AcmeSCRoomsExplorerRoutingModule
 
     ],
-    providers: [AcmeRoomService, AcmeFavRoomService, AcmesharedRoomService],
+    providers: [AcmeRoomService, AcmeFavRoomService, AcmesharedRoomService, AcmesharedUiTuilitiesService],
     entryComponents: []
 })
 export class AcmeStudentCornerExplorerModule { }

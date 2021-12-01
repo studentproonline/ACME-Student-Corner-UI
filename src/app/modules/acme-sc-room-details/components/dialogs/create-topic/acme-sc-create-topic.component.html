@@ -1,48 +1,56 @@
-<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between">
-    <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
+<div fxFlexFill fxLayout="column">
+    <div fxFlex="5%" fxFill class="acme-cs-heading">
         <span>Create new discussion Topic</span>
     </div>
-    <div fxFlex>
-        <form [formGroup]="topicFormGroup">
-            <!--Title-->
-            <mat-form-field class="form-field" fxFill>
-                <mat-label>
-                    Title
-                </mat-label>
-                <input required matInput placeholder="Title" formControlName="titleControl" autocomplete="off">
-                <mat-error *ngIf="topicFormGroup.controls['titleControl'].errors?.required ||
-                    topicFormGroup.controls['titleControl'].errors?.whiteSpace">
-                    Title is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            
-            <!--Topic Tags-->
-            <mat-form-field class="form-field" fxFill>
-                <mat-label>Associated Tags</mat-label>
-                <mat-chip-list #chipList aria-label="Topic tags">
-                    <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
-                        (removed)="removeTag(tag)" fxLayoutAlign="center center" class="acme-sc-topic-chip">
-                        {{tag}}
-                        <mat-icon class="acme-cs-mat-icon acme-sc-topic-chip-close-icon">cancel</mat-icon>
-                    </mat-chip>
-                    <input placeholder="Associated tags" #fruitInput formControlName="tagControl"
-                        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                        (matChipInputTokenEnd)="addTag($event)">
-                </mat-chip-list>
-            </mat-form-field>
-        </form>
-        <div class="acme-sc-topic-tags-message" fxLayoutAlign="center center"><span>please press <B>Enter</B> after typing to associate tag with the topic.</span></div>
+    <div fxFlex="80%" fxFill>
+        <div fxFlex fxFill>
+            <form [formGroup]="topicFormGroup" fxFill>
+                <div fxFlexFill fxLayout="column">
+                    <!--topic title-->
+                    <div fxFlex="30%" fxFill>
+                        <mat-form-field class="form-field" fxFill>
+                            <mat-label class="acme-form-input-field">
+                                Title
+                            </mat-label>
+                            <input class="acme-form-input-field" required matInput placeholder="Title"
+                                formControlName="titleControl" autocomplete="off">
+                            <mat-error class="acme-form-input-field" *ngIf="topicFormGroup.controls['titleControl'].errors?.required ||
+                                topicFormGroup.controls['titleControl'].errors?.whiteSpace">
+                                Title is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <!--topic tags-->
+                    <div fxFlex="70%" fxFill>
+                        <!--Topic Tags-->
+                        <mat-form-field class="form-field" fxFill>
+                            <mat-label class="acme-form-input-field">Associated Tags</mat-label>
+                            <mat-chip-list #chipList aria-label="Topic tags">
+                                <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+                                    (removed)="removeTag(tag)" fxLayoutAlign="center center" class="acme-sc-topic-chip acme-form-input-field">
+                                    {{tag}}
+                                    <mat-icon fxLayoutAlign="center center" class="acme-cs-mat-icon acme-sc-topic-chip-close-icon">cancel</mat-icon>
+                                </mat-chip>
+                                <input class="acme-form-input-field" placeholder="Associated tags" #fruitInput formControlName="tagControl"
+                                    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    (matChipInputTokenEnd)="addTag($event)">
+                            </mat-chip-list>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div fxFlex="48px" fxLayoutAlign="end end">
-        <div fxFlexFill fxLayout="row">
-            <div fxFlex fxLayoutAlign="start end">
-                <button mat-raised-button color="accent" class="acme-sc-topic-creation-confirm-button"
+    <div fxFlex fxLayoutAlign="end end" fxFill>
+        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+            <div fxFlex fxLayoutAlign="start end" fxFill>
+                <button fxFill mat-raised-button color="accent" class="acme-sc-topic-creation-confirm-button"
                     (click)="createTopic()" [disabled]="!topicFormGroup.controls['titleControl'].valid">
                     Create
                 </button>
             </div>
-            <div fxLayoutAlign="end end">
-                <button mat-raised-button color="warn" class="acme-sc-topic-creation-close-button"
+            <div fxFlex fxLayoutAlign="end end" fxFill>
+                <button fxFill mat-raised-button color="warn" class="acme-sc-topic-creation-close-button"
                     (click)="cancelTopicCreation()">
                     Cancel
                 </button>

@@ -19,6 +19,7 @@ import { AcmeSCSRoomCreateTopicComponent } from './components/dialogs/create-top
 import { AcmeRoomDetailsService } from './services/acme-sc-room-details.service';
 import { AcmesharedRoomService } from '../shared/services/acme-sc-shared-room.service';
 import { AcmeRoomTopicsService } from './services/acme-sc-room-topics.service';
+import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utiltities.services';
 
 @NgModule({
     declarations: [AcmeSCRoomDetailsHomePageComponent,
@@ -34,7 +35,7 @@ import { AcmeRoomTopicsService } from './services/acme-sc-room-topics.service';
         AcmeSCSharedModule,
         AcmeSCTopicsRoutingModule
     ],
-    providers: [ AcmeRoomDetailsService, AcmesharedRoomService, AcmeRoomTopicsService ]
+    providers: [ AcmeRoomDetailsService, AcmesharedRoomService, AcmeRoomTopicsService, AcmesharedUiTuilitiesService ]
 })
 
 export class AcmeStudentCornerRoomDetailsModule { }

@@ -1,9 +1,15 @@
 .acme-sc-comment-creation-close-button {
     background-color: darkorange !important;
-    width:100px;
+    font-size:1vw;
+    width:100%;
+    padding:0.4vw;
+    line-height: 0;
 }
 .acme-sc-comment-creation-confirm-button {
-    width:100px;
+    font-size:1vw;
+    width:100%;
+    padding:0.4vw;
+    line-height: 0;
 }
 ::ng-deep .ql-tooltip {
     left:0px !important

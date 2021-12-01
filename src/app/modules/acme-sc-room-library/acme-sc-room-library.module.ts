@@ -12,6 +12,7 @@ import { AcmeSCRoomLibraryContentItemComponent } from './components/library-cont
 
 //services
 import { AcmeSCRoomLibraryService } from './services/acme-sc-room-library.service';
+import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utiltities.services';
 
 @NgModule({
     declarations: [AcmeSCLibraryExplorerComponent,
@@ -24,7 +25,7 @@ import { AcmeSCRoomLibraryService } from './services/acme-sc-room-library.servic
         AcmeSCSharedModule,
         AcmeSCRoomLibraryRoutingModule],
 
-    providers: [AcmeSCRoomLibraryService],
+    providers: [AcmeSCRoomLibraryService, AcmesharedUiTuilitiesService],
 
     entryComponents: []
 })

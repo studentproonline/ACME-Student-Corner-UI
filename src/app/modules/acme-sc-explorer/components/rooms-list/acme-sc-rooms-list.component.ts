@@ -7,6 +7,7 @@ import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 import { AcmeRoomService } from '../../services/acme-sc-room.service';
 import { AcmeFavRoomService } from '../../services/acme-sc-fav-room.service';
 import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 
 // dialogs
@@ -43,7 +44,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
         private router: Router,
         private acmeFavRoomService: AcmeFavRoomService,
         private acmesharedRoomService: AcmesharedRoomService,
-        private acmeSCAuthorizationService: AcmeSCAuthorizationService) {
+        private acmeSCAuthorizationService: AcmeSCAuthorizationService,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
 
     }
     ngOnInit() {
@@ -56,22 +58,7 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
         };
     }
 
-    getScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '60%';
-        } else  {
-            return '40%';
-        }
-    }
-
-    getScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '50%';
-        } else  {
-            return '45%';
-        }
-    }
-
+   
     private filterRooms(value: string): IRoomEntity[] {
         const filterValue = value.toLowerCase();
         if (filterValue.toLowerCase().trim() === '') {
@@ -174,8 +161,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
     createRoom() {
         const dialogRef = this.dialog.open(AcmeSCCreateRoomComponent, {
-            width: this.getScreenWidth(),
-            height: this.getScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getCreateRoomScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getCreateRoomScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}
@@ -213,8 +200,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: '700px',
-            height: '100px',
+            width: this.acmesharedUiTuilitiesService.getSessionExpiredScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getSessionExpiredScreenHeight(),
             disableClose: true,
             data:{}
         });

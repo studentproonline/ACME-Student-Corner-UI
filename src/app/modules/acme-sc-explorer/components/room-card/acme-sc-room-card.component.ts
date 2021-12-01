@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AcmeRoomService } from '../../services/acme-sc-room.service';
 import { AcmeFavRoomService } from '../../services/acme-sc-fav-room.service';
 import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 
 import { apiConfig } from '../../../../config/config';
@@ -40,7 +41,8 @@ export class AcmeSCRoomComponent implements OnInit {
 
     constructor(private acmeRoomService: AcmeRoomService, private acmeFavRoomService: AcmeFavRoomService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService, private acmesharedRoomService: AcmesharedRoomService,
-        private router: Router,private snackBar: MatSnackBar, public dialog: MatDialog) {
+        private router: Router,private snackBar: MatSnackBar, public dialog: MatDialog,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
     }
 
     ngOnInit() {
@@ -53,38 +55,7 @@ export class AcmeSCRoomComponent implements OnInit {
         };
     }
 
-    getConfirmationScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '45%';
-        } else  {
-            return '40%';
-        }
-    }
-
-    getConfirmationScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '35%';
-        } else  {
-            return '25%';
-        }
-    }
-
-    getScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '45%';
-        } else  {
-            return '40%';
-        }
-    }
-
-    getScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '60%';
-        } else  {
-            return '30%';
-        }
-    }
-
+    
     enterRoom() {
         this.router.navigateByUrl('/roomDetails?roomId='+this.room._id +'&roomType='+this.roomType);
         this.roomClicked.emit(this.room);
@@ -101,14 +72,14 @@ export class AcmeSCRoomComponent implements OnInit {
             displayMessage = 'This action will open room for content posting.'
         }
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: this.getConfirmationScreenWidth(),
-            height: this.getConfirmationScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: displayMessage }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.data === 'true') {
+            if (result && result.data === 'true') {
                 this.updateRoomStatus(status);
             }
         });
@@ -225,14 +196,14 @@ export class AcmeSCRoomComponent implements OnInit {
     // share room
     shareRoom() {
         const dialogRef = this.dialog.open(AcmeSCShareRoomComponent, {
-            width: this.getScreenWidth(),
-            height: this.getScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getShareRoomScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getShareScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { room: this.room }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.data ) {
+            if (result && result.data ) {
                 //this.updateRoomStatus(status);
             }
         });
@@ -241,14 +212,14 @@ export class AcmeSCRoomComponent implements OnInit {
     // delete share room
     deleteShareRoom() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: this.getConfirmationScreenWidth(),
-            height: this.getConfirmationScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: 'This action will remove you from the shared room.' }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.data === 'true') {
+            if (result && result.data === 'true') {
                 this.removeUserFromSharedRoom();
             }
         });

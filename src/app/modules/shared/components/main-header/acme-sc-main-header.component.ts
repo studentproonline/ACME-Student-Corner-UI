@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AcmeScCookiesService } from '../../../../core/services/acme-sc-cookies.service';
 
 import { AcmeSCContactinformationComponent } from '../../../shared/components/dialogs/contact-information/acme-sc-contact-information.component';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 @Component({
     selector: 'acme-sc-main-header',
@@ -26,7 +27,7 @@ export class AcmeSCMainHeaderComponent {
     rightClickMenuPositionY: number;
 
     constructor(private acmeScCookiesService: AcmeScCookiesService, private router: Router,
-        public dialog: MatDialog) {
+        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
     }
 
     onSearchChange(value) {
@@ -45,52 +46,15 @@ export class AcmeSCMainHeaderComponent {
         this.showUserPopup= false;
     }
 
-    getScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '45%';
-        } else  {
-            return '25%';
-        }
-    }
-
-    getScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '35%';
-        } else  {
-            return '25%';
-        }
-    }
-
-    getHelpScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '5%';
-        } else  {
-            return '35%';
-        }
-    }
-
-    getHelpScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '55%';
-        } else  {
-            return '35%';
-        }
-    }
-
-    getScreenLeftOffSet() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return 0;
-        }
-        return 400;
-    }
+    
 
     getRightClickMenuStyle() {
         return {
             position: 'absolute',
-            left: `${this.rightClickMenuPositionX-this.getScreenLeftOffSet()}px`,
+            left: `${this.rightClickMenuPositionX-this.acmesharedUiTuilitiesService.getScreenLeftOffSet()}px`,
             top: `${this.rightClickMenuPositionY+20}px`,
-            height: this.getScreenHeight(),
-            width: this.getScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getScreenWidth(),
             'z-index': '100'
           }
     }
@@ -102,13 +66,13 @@ export class AcmeSCMainHeaderComponent {
 
     openHelp() {
         const dialogRef = this.dialog.open(AcmeSCContactinformationComponent, {
-            width: this.getHelpScreenWidth(),
-            height: this.getHelpScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getHelpScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getHelpScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.data ) {
+            if (result && result.data ) {
                 //this.updateRoomStatus(status);
             }
         });

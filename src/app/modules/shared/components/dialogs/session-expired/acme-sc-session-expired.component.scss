@@ -1,8 +1,15 @@
 .acme-sc-session-expired-container{
-    height: 54px;
+    height: 8vh;
 }
 .acme-sc-session-expired-message {
-    font-size: smaller;
+    font-size: 1vw;
     font-weight: bold;
     opacity: 0.7;
+}
+
+.acme-sc-login-button {
+    font-size:1vw;
+    width:100%;
+    padding:0.4vw;
+    line-height: 0;
 }

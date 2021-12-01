@@ -8,6 +8,7 @@ import { ITopicEntity } from '../../entities/topic.entity';
 
 // services
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 import { AcmeRoomTopicsService } from '../../services/acme-sc-room-topics.service';
 
 @Component({
@@ -31,7 +32,7 @@ export class AcmeSCRoomTopicsListComponent {
 
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        public dialog: MatDialog) {
+        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
 
     }
 
@@ -53,8 +54,8 @@ export class AcmeSCRoomTopicsListComponent {
 
     createTopic() {
         const dialogRef = this.dialog.open(AcmeSCSRoomCreateTopicComponent, {
-            width: '700px',
-            height: '250',
+            width: this.acmesharedUiTuilitiesService.getCreateTopicScreenWidth(),
+            height:  this.acmesharedUiTuilitiesService.getCreateTopicScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { roomId: this.room._id }

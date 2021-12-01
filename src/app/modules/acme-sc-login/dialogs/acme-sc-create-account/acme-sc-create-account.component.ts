@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { IUser } from '../../Models/acme-sc-user.model';
 import { AcmeSCAccountService } from '../../services/acme-sc-user-account.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 //dialogs
 import { AcmeSCActivateAccountComponent } from '../acme-sc-activate-account/acme-sc-activate-account.component';
@@ -25,7 +26,8 @@ export class AcmeSCCreateAccountComponent {
     isProgress = false;
 
     constructor(public dialogRef: MatDialog, private formBuilder: FormBuilder,
-        private snackBar: MatSnackBar, private acmeSCAccountService: AcmeSCAccountService) {
+        private snackBar: MatSnackBar, private acmeSCAccountService: AcmeSCAccountService,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
 
         this.createAccountFormGroup = this.formBuilder.group({
             firstNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -94,8 +96,8 @@ export class AcmeSCCreateAccountComponent {
     // email confirmation dialog
     openConfirmEmailDialog(emailId: string): void {
         const dialogRef = this.dialogRef.open(AcmeSCActivateAccountComponent, {
-            width: this.getScreenWidth(),
-            height: this.getScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getEmailConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getEmailConfirmationScreenHeight(),
             disableClose: true,
             data:{Email:emailId}
         });
@@ -103,21 +105,7 @@ export class AcmeSCCreateAccountComponent {
         });
     }
 
-    getScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '45%';
-        } else  {
-            return '50%';
-        }
-    }
-
-    getScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '50%';
-        } else  {
-            return '30%';
-        }
-    }
+    
 
     // validation method
     confirmPassword(control: FormControl, group: FormGroup, matchPassword: string) {

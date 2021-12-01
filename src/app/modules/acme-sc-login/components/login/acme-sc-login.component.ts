@@ -12,6 +12,7 @@ import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { AcmeSCLoginService } from '../../services/acme-sc-login.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeScCookiesService } from '../../../../core/services/acme-sc-cookies.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 //dialogs
 import { AcmeSCActivateAccountComponent } from '../../dialogs/acme-sc-activate-account/acme-sc-activate-account.component';
@@ -31,7 +32,8 @@ export class AcmeSCLoginComponent {
 
     constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar,
         private loginService: AcmeSCLoginService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private acmeScCookiesService: AcmeScCookiesService, private router: Router) {
+        private acmeScCookiesService: AcmeScCookiesService, private router: Router,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
         this.loginFormGroup = this.formBuilder.group({
             emailControl: ['', [Validators.required, Validators.email]],
             passwordControl: ['', [Validators.required]],
@@ -41,8 +43,8 @@ export class AcmeSCLoginComponent {
     }
     openCreateAccountDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCCreateAccountComponent, {
-            width: this.getScreenWidth(),
-            height: this.getScreenHeight(),
+            width: this.acmesharedUiTuilitiesService.getCreateAccountScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getCreateAccountScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}
@@ -51,22 +53,7 @@ export class AcmeSCLoginComponent {
         });
     }
 
-    getScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '45%';
-        } else  {
-            return '40%';
-        }
-    }
-
-    getScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '90%';
-        } else  {
-            return '70%';
-        }
-    }
-
+  
     getPasswordResetScreenWidth() {
         if (window.screen.width <= 414) { // 768px portrait
             return '45%';

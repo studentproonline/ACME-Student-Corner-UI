@@ -12,6 +12,7 @@ import { ICommentEntity } from '../../entities/comment.entity';
 // services
 import { AcmeTopicCommentService } from '../../services/acme-sc-topic-comment.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 @Component({
     selector: 'acme-sc-room-topic-comments-list',
@@ -36,7 +37,8 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private router: Router,
         public dialog: MatDialog, private acmeTopicCommentService: AcmeTopicCommentService,
-        private acmeSCAuthorizationService: AcmeSCAuthorizationService) {
+        private acmeSCAuthorizationService: AcmeSCAuthorizationService,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
 
     }
 
@@ -117,8 +119,8 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
 
     createComment() {
         const dialogRef = this.dialog.open(AcmeSCSRoomCreateCommentComponent, {
-            width: '900px',
-            height: '550px',
+            width: this.acmesharedUiTuilitiesService.getCreateCommentScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getCreatecommentScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {

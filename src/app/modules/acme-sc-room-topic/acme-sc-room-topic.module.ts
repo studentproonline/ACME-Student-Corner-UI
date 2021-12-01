@@ -16,6 +16,7 @@ import { QuillModule } from 'ngx-quill';
 //services
 import { AcmeTopicCommentService } from './services/acme-sc-topic-comment.service';
 import { AcmeTopicCommentVoteService } from './services/acme-sc-topic-comment-vote.service';
+import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utiltities.services';
 
 @NgModule({
     declarations: [AcmeSCRoomTopicCommentsListComponent,
@@ -28,7 +29,7 @@ import { AcmeTopicCommentVoteService } from './services/acme-sc-topic-comment-vo
         QuillModule
     ],
     providers: [AcmeTopicCommentService,
-        AcmeTopicCommentVoteService],
+        AcmeTopicCommentVoteService, AcmesharedUiTuilitiesService],
     entryComponents: []
 })
 export class AcmeStudentCornerTopicModule {

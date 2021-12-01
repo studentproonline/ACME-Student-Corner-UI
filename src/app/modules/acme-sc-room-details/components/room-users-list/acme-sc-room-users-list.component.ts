@@ -5,6 +5,7 @@ import { AcmeSCShareRoomComponent } from '../../../shared/components/dialogs/sha
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 
 //entities
@@ -27,7 +28,8 @@ export class AcmeSCRoomUsersListComponent implements OnChanges {
     sharedRoomUsersList: IRoomUserEntity[] = [];
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private acmesharedRoomService: AcmesharedRoomService, public dialog: MatDialog) {
+        private acmesharedRoomService: AcmesharedRoomService, public dialog: MatDialog,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
 
     }
 
@@ -79,8 +81,8 @@ export class AcmeSCRoomUsersListComponent implements OnChanges {
     // share room
     shareRoom() {
         const dialogRef = this.dialog.open(AcmeSCShareRoomComponent, {
-            width: '500px',
-            height: '250',
+            width: this.acmesharedUiTuilitiesService.getShareRoomScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getShareScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { room: this.room }

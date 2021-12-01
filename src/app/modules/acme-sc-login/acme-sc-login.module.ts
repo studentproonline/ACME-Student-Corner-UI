@@ -12,6 +12,7 @@ import { AcmeSCAccountPasswordResetComponent } from './dialogs/acme-sc-account-p
 //services
 import { AcmeSCAccountService } from './services/acme-sc-user-account.service';
 import { AcmeSCLoginService } from './services/acme-sc-login.service';
+import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utiltities.services';
 
 @NgModule({
     declarations: [AcmeSCLoginComponent,
@@ -24,7 +25,7 @@ import { AcmeSCLoginService } from './services/acme-sc-login.service';
         AcmeSCLoginRoutingModule,
 
     ],
-    providers: [ AcmeSCAccountService, AcmeSCLoginService ],
+    providers: [ AcmeSCAccountService, AcmeSCLoginService, AcmesharedUiTuilitiesService ],
     entryComponents: []
 })
 export class AcmeStudentCornerLoginModule { }
