@@ -53,6 +53,38 @@ export class AcmeSCRoomComponent implements OnInit {
         };
     }
 
+    getConfirmationScreenWidth() {
+        if (window.screen.width <= 414) { // 768px portrait
+            return '45%';
+        } else  {
+            return '40%';
+        }
+    }
+
+    getConfirmationScreenHeight() {
+        if (window.screen.height <= 736) { // 768px portrait
+            return '35%';
+        } else  {
+            return '25%';
+        }
+    }
+
+    getScreenWidth() {
+        if (window.screen.width <= 414) { // 768px portrait
+            return '45%';
+        } else  {
+            return '40%';
+        }
+    }
+
+    getScreenHeight() {
+        if (window.screen.height <= 736) { // 768px portrait
+            return '60%';
+        } else  {
+            return '30%';
+        }
+    }
+
     enterRoom() {
         this.router.navigateByUrl('/roomDetails?roomId='+this.room._id +'&roomType='+this.roomType);
         this.roomClicked.emit(this.room);
@@ -69,8 +101,8 @@ export class AcmeSCRoomComponent implements OnInit {
             displayMessage = 'This action will open room for content posting.'
         }
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: this.getConfirmationScreenWidth(),
+            height: this.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: displayMessage }
@@ -193,8 +225,8 @@ export class AcmeSCRoomComponent implements OnInit {
     // share room
     shareRoom() {
         const dialogRef = this.dialog.open(AcmeSCShareRoomComponent, {
-            width: '500px',
-            height: '250',
+            width: this.getScreenWidth(),
+            height: this.getScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { room: this.room }
@@ -209,8 +241,8 @@ export class AcmeSCRoomComponent implements OnInit {
     // delete share room
     deleteShareRoom() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: this.getConfirmationScreenWidth(),
+            height: this.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: 'This action will remove you from the shared room.' }

@@ -55,6 +55,23 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
             width: (this.roomListContainer.nativeElement.clientWidth/3) -34 + 'px'
         };
     }
+
+    getScreenWidth() {
+        if (window.screen.width <= 414) { // 768px portrait
+            return '60%';
+        } else  {
+            return '40%';
+        }
+    }
+
+    getScreenHeight() {
+        if (window.screen.height <= 736) { // 768px portrait
+            return '50%';
+        } else  {
+            return '45%';
+        }
+    }
+
     private filterRooms(value: string): IRoomEntity[] {
         const filterValue = value.toLowerCase();
         if (filterValue.toLowerCase().trim() === '') {
@@ -157,8 +174,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
     createRoom() {
         const dialogRef = this.dialog.open(AcmeSCCreateRoomComponent, {
-            width: '500px',
-            height: '300px',
+            width: this.getScreenWidth(),
+            height: this.getScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}

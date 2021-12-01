@@ -1,5 +1,5 @@
 .acme-sc-user-popup-container {
-   padding:16px
+   padding:1vw
 }
 
 .acme-sc-user-popup-card {
@@ -8,8 +8,14 @@
 }
 
 .acme-sc-userName {
-    font-size: x-large;
+    font-size:1.5vw;
 }
 .acme-sc-email {
-    font-size: small;
+    font-size:1vw;
+}
+.acme-sc-logout-button{
+    font-size:1vw;
+    width:100%;
+    padding:0.4vw;
+    line-height: 0;
 }

@@ -1,14 +1,14 @@
-<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between">
-    <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
+<div fxFlexFill fxLayout="column">
+    <div fxFlex="20%" fxFill fxLayoutAlign="center start" class="acme-cs-heading">
         <span>Review your action </span>
     </div>
-    <div fxFlex="32px" fxLayoutAlign="center center" class="acme-sc-user-confirmation-message">
+    <div fxFlex="20%" fxFill fxLayoutAlign="center center" class="acme-sc-user-confirmation-message">
         <span>{{data.message}}</span>
     </div>
-    <div fxFlex="32px" fxLayoutAlign="center center" class="acme-sc-user-confirmation-text">
+    <div fxFlex="30%" fxFill fxLayoutAlign="center center" class="acme-sc-user-confirmation-text">
         <span>Are you sure, you want to continue?</span>
     </div>
-    <div fxFlex>
+    <div fxFlex fxFill>
         <div fxFlexFill fxLayout="row">
             <div fxFlex fxLayoutAlign="start end">
                 <button (click)="close()" mat-raised-button color="warn" class="acme-sc-user-confirmation-close-button">Cancel</button>
