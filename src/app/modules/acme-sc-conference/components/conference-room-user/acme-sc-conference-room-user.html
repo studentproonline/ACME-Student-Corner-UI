@@ -1,10 +1,10 @@
 <div fxLayout="column" class="acme-sc-conference-room-user-item">
-    <div fxFlexFill fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="8px">
-        <div fxFlex="20%" fxFlexFill fxLayoutAlign="center center">
+    <div fxFlexFill fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="0.4vw">
+        <div fxFlex="20%" fxFill fxLayoutAlign="center center">
             <div class="UserInfoCircle" fxLayoutAlign="center center">
-                <mat-icon matTooltip={{userName}} fxLayoutAlign="center center" style="height:16px;width:16px;"
+                <mat-icon matTooltip={{userName}} fxLayoutAlign="center center" style="height:80%;width:80%;"
                     class="acme-cs-mat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px"
+                    <svg xmlns="http://www.w3.org/2000/svg" height="80%" viewBox="0 0 24 24" width="80%"
                         fill="#000000">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
@@ -13,7 +13,7 @@
                 </mat-icon>
             </div>
         </div>
-        <div fxFlexFill fxFlex="200px" fxFlex.md="150px" fxLayoutAlign="start center" class="acme-sc-room-user-name">
+        <div fxFlex fxFill fxLayoutAlign="start center" class="acme-sc-room-user-name">
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">{{userName}}</span>
         </div>
     </div>

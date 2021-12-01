@@ -1,22 +1,25 @@
 .acme-sc-conference-room-user-item {
     width:100%;
-    height:40px;
-    padding-top:4px;
+    height:4vw;
+    padding-top:0.4vw;
     padding-bottom: 4px;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: white;
+    font-weight: bold;
 }
 .UserInfoCircle {
-    width: 24px;
-    height: 24px;
-    line-height: 500px;
+    width: 1.6vw;
+    height: 1.6vw;
     border-radius: 50%;
-    font-size: 16px;
     color: #fff;
     text-align: center;
     background: darkgray;
 }
 
 .acme-sc-room-user-name {
-    font-size:small;
+    font-size:0.9vw;
+    font-weight: bold;
     color:darkslateblue;
     overflow: hidden;
     white-space: nowrap; 

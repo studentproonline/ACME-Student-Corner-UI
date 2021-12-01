@@ -1,8 +1,8 @@
 <div fxFlexFill fxLayout="column" class="acme-sc-conference-room-users-list-container">
     <!--ACME icom-->
     <div fxFlex="15%" fxLayoutAlign="center center">
-        <mat-icon fxLayoutAlign="center center" style="height: 54px;width:54px">
-            <svg width="54" height="54" viewBox="0 0 2941 3738" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mat-icon fxLayoutAlign="center center" style="height: 50%;width:50%">
+            <svg width="100%" height="100%" viewBox="0 0 2941 3738" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M1598.03 96.9975C1551.84 -29.904 1373.01 -31.6868 1324.3 94.2688L807.442 1430.93L628.601 1886.68L10.447 3525.01C-25.1878 3619.45 43.3475 3720.73 144.27 3722.77L829.463 3736.62C870.832 3737.45 910.618 3720.72 938.952 3690.56L1356.89 3245.78C1415.13 3183.8 1513.79 3184.43 1571.23 3247.16L1977.2 3690.47C2004.89 3720.71 2044.01 3737.93 2085.01 3737.93H2794.67C2898.34 3737.93 2969.07 3633 2930.18 3536.9L2262.34 1886.68L2083.49 1430.93L1598.03 96.9975ZM1747.56 2800.69C1813.06 2800.69 1870.57 2844.26 1888.3 2907.32L2060.51 3520.12C2078.24 3583.18 2135.75 3626.76 2201.25 3626.76H2608.53C2711.57 3626.76 2782.27 3523.02 2744.59 3427.12L1743.29 878.354C1721.13 821.922 1666.42 785.032 1605.8 785.627L1311.98 788.507C1252.43 789.091 1199.19 825.739 1177.38 881.155L175.507 3427.04C137.762 3522.95 208.466 3626.76 311.54 3626.76H716.483C782.107 3626.76 839.689 3583.03 857.306 3519.81L1027.9 2907.63C1045.52 2844.42 1103.1 2800.69 1168.73 2800.69H1747.56Z"
                     fill="grey" />
@@ -19,7 +19,7 @@
         </mat-icon>
     </div>
     <!--Acme Title-->
-    <div fxFlex="64px" fxLayoutAlign="center start" class="acme-sc-title-heading">
+    <div fxFlex="8%" fxLayoutAlign="center start" class="acme-sc-title-heading">
         <div fxFlexFill fxLayout="column">
             <div fxFlex="24px" fxLayoutAlign="center start">
                 <span>A.C.M.E. Student Corner</span>
@@ -28,14 +28,16 @@
                 <span>Acedemic & Co-currical Metrical Evaluation</span>
             </div>
         </div>
+        
     </div>
     <!--Contents Title>-->
-    <div fxFlex="32px" fxLayoutAlign="center start">
+    <div fxFlex="5%" fxLayoutAlign="center start" class="acme-sc-room-user-label">
         <span>Conference Users</span>
     </div>
 
+    <!--room user list-->
     <div fxFlex class="acme-sc-conference-room-users-list">
-        <div fxLayout="column" fxFlexFill fxLayoutGap="8px">
+        <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vw">
             <ng-scrollbar thumbClass="white-scrollbars">
                 <acme-sc-conference-room-user *ngFor="let user of connectedUsersNameList" [userName]="user">
 
@@ -43,4 +45,3 @@
             </ng-scrollbar>
         </div>
     </div>
-</div>

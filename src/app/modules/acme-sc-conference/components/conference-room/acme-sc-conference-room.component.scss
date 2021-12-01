@@ -15,9 +15,13 @@
     //left: 0;
     //width: 100vw;
     //height: 100vh;
-    height: 200px;
-    width: 200px;
+    height: 15vw;
+    width: 15vw;
 }
+.acme-sc-server-response-message {
+    font-size: 1.2vw;
+}
+
 
 .acme-sc-room-owner-name {
     font-weight: normal;
@@ -63,7 +67,7 @@
 }
 .acme-sc-conference-room-call-label {
     font-weight: bold;
-    font-size: small;
+    font-size: 1.1vw;
     opacity: 0.7;
 }
 
@@ -74,7 +78,7 @@
 }
 
 .acme-sc-conference-connecting-label {
-    font-size: small;
+    font-size: 1vw;
     font-style: italic;
     color: purple
 }

@@ -1,20 +1,20 @@
 <div fxFlexFill fxLayout="row">
-    <div fxFlex="20%" fxFlex.md="25%">
-        <!--Add conference users here-->
+    <!--Add conference users here-->
+    <div fxFlex="20%">
         <div fxFlexFill fxLayout="column">
-            <div fxFlex>
+            <div  fxFlex fxFill>
                 <acme-sc-conference-room-users-list [connectedUsersNameList]="connectedUsers">
                 </acme-sc-conference-room-users-list>
             </div>
-            <div class="acme-sc-company-label" fxFlex="32px" fxLayoutAlign="center center">
+            <div class="acme-sc-company-label"  fxFlex="5%" fxLayoutAlign="center center">
                 <span>Powered By: <b>Bitstone Infotech</b> </span>
             </div>
         </div>
     </div>
     <div fxFlex class="acme-sc-container">
-        <div fxFlexFill fxLayout="column" fxLayoutGap="16px">
-            <div fxFlex="48px">
-                <!--main header-->
+        <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+            <!--main header-->
+            <div fxFlex="7%" fxFill>
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
                     [placeHolder]="'Start searching for a user by name'" [dislaySearchBox]="showSearchBox"
                     [title]="'Conference Room'">
@@ -25,163 +25,80 @@
                 <mat-spinner></mat-spinner>
             </div>
             <!--Navigation row-->
-            <div *ngIf="!isProgress" fxFlex="32px" fxLayoutAlign="start center" class="acme-sc-room-conference-header">
-                <div fxFlexFill fxLayout="row" fxLayoutGap="8px">
-                    <div fxFlex="24px" fxLayoutAlign="start start" class="acme-cs-mat-icon">
-                        <mat-icon fxLayoutAlign="start start" style="height:24px;width:24px">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
-                                fill="#000000">
-                                <path d="M0 0h24v24H0z" fill="none" />
-                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                            </svg>
-                        </mat-icon>
-                    </div>
-
-                    <div (click)="gotoHome()" fxFlex="60px" fxLayoutAlign="start center"
-                        class="acme-sc-room-home">
-                        <span>Home</span>
-                    </div>
-                    <div fxFlex="24px" fxLayoutAlign="start start" class="acme-cs-mat-icon">
-                        <mat-icon fxLayoutAlign="start start" style="height:24px;width:24px">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/>
-                            </svg>
-                        </mat-icon>
-                    </div>
-                    <div (click)="gotoRoomsList()" fxFlex="10%" fxLayoutAlign="start center"
-                        class="acme-sc-room-type-text">
-                        <span>{{roomType}}</span>
-                    </div>
-                    <div fxFlex="24px">
-                        <mat-icon fxLayoutAlign="center center" style="height:24px;width:24px">
-                            <svg width="24" height="24" viewBox="0 0 94 89" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M87.5122 35.7754H77.2382V6.42123C77.2382 2.88056 74.3577 0 70.817 0H28.6203C25.0797 0 22.1991 2.88056 22.1991 6.42123V24.7676H6.42123C2.88056 24.7676 0 27.6482 0 31.1888V56.8738C0 60.4144 2.88056 63.295 6.42123 63.295H11.1913V74.3028C11.1913 76.7451 14.157 77.9813 15.8891 76.2486L28.8429 63.295H35.9589V67.8816C35.9589 71.4223 38.8395 74.3028 42.3801 74.3028H65.0906L78.0444 87.2565C79.7662 88.9786 82.7422 87.7636 82.7422 85.3107V74.3028H87.5122C91.0529 74.3028 93.9334 71.4223 93.9334 67.8816V42.1967C93.9334 38.656 91.0529 35.7754 87.5122 35.7754ZM27.703 6.42123C27.703 5.91542 28.1145 5.50391 28.6203 5.50391H70.817C71.3228 5.50391 71.7343 5.91542 71.7343 6.42123V35.7754H55.2226V31.1888C55.2226 27.6482 52.342 24.7676 48.8014 24.7676H27.703V6.42123ZM27.703 57.7911C26.9732 57.7911 26.2733 58.0811 25.7572 58.5972L16.6952 67.6591V60.543C16.6952 59.0232 15.4631 57.7911 13.9432 57.7911H6.42123C5.91542 57.7911 5.50391 57.3796 5.50391 56.8738V31.1888C5.50391 30.683 5.91542 30.2715 6.42123 30.2715H48.8014C49.3072 30.2715 49.7187 30.683 49.7187 31.1888V56.8738C49.7187 57.3796 49.3072 57.7911 48.8014 57.7911H27.703ZM88.4295 67.8816C88.4295 68.3874 88.018 68.7989 87.5122 68.7989H79.9902C78.4704 68.7989 77.2382 70.0311 77.2382 71.5509V78.6669L68.1762 69.6051C67.6602 69.089 66.9602 68.7989 66.2304 68.7989H42.3801C41.8743 68.7989 41.4628 68.3874 41.4628 67.8816V63.295H48.8014C52.342 63.295 55.2226 60.4144 55.2226 56.8738V41.2793H87.5122C88.018 41.2793 88.4295 41.6909 88.4295 42.1967V67.8816Z"
-                                    fill="slategray" />
-                                <path
-                                    d="M27.7031 46.7832C29.223 46.7832 30.4551 45.5511 30.4551 44.0313C30.4551 42.5114 29.223 41.2793 27.7031 41.2793C26.1833 41.2793 24.9512 42.5114 24.9512 44.0313C24.9512 45.5511 26.1833 46.7832 27.7031 46.7832Z"
-                                    fill="slategray" />
-                                <path
-                                    d="M38.7109 46.7832C40.2308 46.7832 41.4629 45.5511 41.4629 44.0313C41.4629 42.5114 40.2308 41.2793 38.7109 41.2793C37.1911 41.2793 35.959 42.5114 35.959 44.0313C35.959 45.5511 37.1911 46.7832 38.7109 46.7832Z"
-                                    fill="slategray" />
-                                <path
-                                    d="M16.6953 46.7832C18.2152 46.7832 19.4473 45.5511 19.4473 44.0313C19.4473 42.5114 18.2152 41.2793 16.6953 41.2793C15.1755 41.2793 13.9434 42.5114 13.9434 44.0313C13.9434 45.5511 15.1755 46.7832 16.6953 46.7832Z"
-                                    fill="slategray8" />
-                                <path
-                                    d="M63.4785 57.791C64.9984 57.791 66.2305 56.5589 66.2305 55.0391C66.2305 53.5192 64.9984 52.2871 63.4785 52.2871C61.9587 52.2871 60.7266 53.5192 60.7266 55.0391C60.7266 56.5589 61.9587 57.791 63.4785 57.791Z"
-                                    fill="slategray" />
-                                <path
-                                    d="M74.4863 57.791C76.0062 57.791 77.2383 56.5589 77.2383 55.0391C77.2383 53.5192 76.0062 52.2871 74.4863 52.2871C72.9665 52.2871 71.7344 53.5192 71.7344 55.0391C71.7344 56.5589 72.9665 57.791 74.4863 57.791Z"
-                                    fill="slategray" />
-                                <path
-                                    d="M49.7188 19.2637C51.2386 19.2637 52.4707 18.0316 52.4707 16.5117C52.4707 14.9919 51.2386 13.7598 49.7188 13.7598C48.1989 13.7598 46.9668 14.9919 46.9668 16.5117C46.9668 18.0316 48.1989 19.2637 49.7188 19.2637Z"
-                                    fill="slategray" />
-                                <path
-                                    d="M60.7266 19.2637C62.2464 19.2637 63.4785 18.0316 63.4785 16.5117C63.4785 14.9919 62.2464 13.7598 60.7266 13.7598C59.2067 13.7598 57.9746 14.9919 57.9746 16.5117C57.9746 18.0316 59.2067 19.2637 60.7266 19.2637Z"
-                                    fill="slategray" />
-                                <path
-                                    d="M38.7109 19.2637C40.2308 19.2637 41.4629 18.0316 41.4629 16.5117C41.4629 14.9919 40.2308 13.7598 38.7109 13.7598C37.1911 13.7598 35.959 14.9919 35.959 16.5117C35.959 18.0316 37.1911 19.2637 38.7109 19.2637Z"
-                                    fill="slategray" />
-                            </svg>
-                        </mat-icon>
-                    </div>
-                    <div fxFlex="40%" fxLayoutAlign="start center">
-                        <span>{{roomName}}</span>
-                    </div>
-
-                    <div fxFlex="130px" fxLayoutAlign="start center" fxLayoutGap="8px" class="acme-sc-conference-room">
-
-                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                            <mat-icon style="color:purple">apps</mat-icon>
-                            <span style="padding-left:4px;font-size: small;"><b>Apps</b></span>
-                        </button>
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item (click)="gotoLibrary()">
-                                <mat-icon style="opacity:0.7;" matTooltip="Go to Library" style="opacity:0.7">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                        width="24px" fill="purple">
-                                        <path d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.19 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z" />
-                                    </svg>
-                                </mat-icon>
-                                <span>Library</span>
-                            </button>
-                            <button mat-menu-item (click)="gotoTopics()">
-                                <mat-icon style="opacity:0.7;" matTooltip="Go to Topics" style="opacity:0.7">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                        width="24px" fill="purple">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M19 1l-5 5v11l5-4.5V1zM1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6zm22 13.5V6c-.6-.45-1.25-.75-2-1v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5v2c1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5v-1.1z" />
-                                    </svg>
-                                </mat-icon>
-                                <span>Topics</span>
-                            </button>
-                        </mat-menu>
-                    </div>
-                    <div fxFlex fxLayoutAlign="end center" class="acme-sc-room-owner-name">
-                        <span>Room Owner: <b>{{ownerName}}</b></span>
-                    </div>
-                </div>
+            <div *ngIf="!isProgress && isSuccessFull" fxFlex="7%" fxFill class="acme-sc-room-details-header">
+                <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType">
+                </acme-sc-navigation-bar>
             </div>
             <!--Sever error-->
-            <div *ngIf="!isProgress && !isSuccessFull" fxFlex fxLayoutAlign="center center">
+            <div *ngIf="!isSuccessFull && !isProgress" fxFlex fxFill fxLayoutAlign="center center">
                 <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-                    <div fxFlex="150px" fxLayoutAlign="center center">
-                        <mat-icon fxLayoutAlign="center center" style="height:90px;width:90px;color:darkorange">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="94" height="89" viewBox="0 0 24 24">
-                                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
-                            </svg>
-                        </mat-icon>
+                    <div fxFlex="20%" fxFill fxLayoutAlign="center  center">
+                        <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="5vw" height="5vw"
+                            viewBox="0 0 24 24">
+                            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+                        </svg>
                     </div>
-                    <div fxFlex="24px" fxLayoutAlign="center center">
+                    <div fxFlex="5%" fxFill fxLayoutAlign="center center" class="acme-sc-server-response-message">
                         <span>Fail to initialize conference, please contact system administrator.</span>
                     </div>
                 </div>
             </div>
+
             <div fxLayoutAlign="center center" *ngIf="roomDetailsEntity && roomDetailsEntity.status!=='Active'"
-                fxFlex="32px" class="acme-sc-room-close-label">
-                <mat-icon matTooltip="Refresh topics list" fxLayoutAlign="center center" style="height:24px;width:24px">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="red">
-                        <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
-                    </svg>
-                </mat-icon>
+                fxFlex="10%" fxFill class="acme-sc-room-close-label">
+                <svg xmlns="http://www.w3.org/2000/svg" height="5vw" viewBox="0 0 24 24" width="5vw" fill="red">
+                    <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                </svg>
+
+            </div>
+            <div *ngIf="roomDetailsEntity && roomDetailsEntity.status!=='Active'" fxFlex="5%" fxFill fxFill
+                fxLayoutAlign="center center" class="acme-sc-server-response-message">
                 <span>This room is no longer active !!!!</span>
             </div>
             <!--conference call container-->
             <div *ngIf="!isProgress && isSuccessFull && roomDetailsEntity.status === 'Active'" fxFlex>
-                <div fxFlexFill fxLayout="column" fxLayoutGap="8px">
+                <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
                     <!--conference tool bar -->
-                    <div fxFlex="48px" fxLayoutAlign="center center">
-                        <div fxFlexFill fxLayout="row" fxLayoutGap="8px">
+                    <div fxFlex="10%" fxLayoutAlign="center center">
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
                             <mat-card fxFill class="acme-sc-conference-room-toolbar">
-                                <div fxFlexFill fxLayout="row" fxLayoutGap="16px" style="padding:8px">
+                                <div fxFlexFill fxLayout="row" fxLayoutGap="16px" style="padding:0.4vw">
                                     <!--start session-->
-                                    <div *ngIf="!sessionStarted && isRoomOwner" class="acme-sc-conference-room-connect-disconnect-icon"
-                                        matTooltip="Start new conference session" fxFlex="32px" fxLayoutAlign="center center"
-                                        (click)="startConferenceCallSession()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="purple"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zm-6-5.4l3 2.4V7l-3 2.4V7H7v6h7z"/>
+                                    <div *ngIf="!sessionStarted && isRoomOwner"
+                                        class="acme-sc-conference-room-connect-disconnect-icon"
+                                        matTooltip="Start new conference session" fxFlex="4%"
+                                        fxLayoutAlign="center center" (click)="startConferenceCallSession()">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="purple">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path
+                                                    d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zm-6-5.4l3 2.4V7l-3 2.4V7H7v6h7z" />
                                             </svg>
                                         </mat-icon>
                                     </div>
                                     <!--stop session-->
-                                    <div *ngIf="sessionStarted && isRoomOwner" class="acme-sc-conference-room-connect-disconnect-icon"
-                                        matTooltip="Stop conference session" fxFlex="32px" fxLayoutAlign="center center"
+                                    <div *ngIf="sessionStarted && isRoomOwner"
+                                        class="acme-sc-conference-room-connect-disconnect-icon"
+                                        matTooltip="Stop conference session" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="stopConferenceCallSession()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="red"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><circle cx="12" cy="12" r="5"/>
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="red">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path
+                                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                                <circle cx="12" cy="12" r="5" />
                                             </svg>
                                         </mat-icon>
                                     </div>
                                     <!--connect icon-->
                                     <div *ngIf="!playing" class="acme-sc-conference-room-connect-disconnect-icon"
-                                        matTooltip="Connect" fxFlex="32px" fxLayoutAlign="center center"
+                                        matTooltip="Connect" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="connectCall()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="green">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="green">
                                                 <path d="M0 0h24v24H0z" fill="none" />
                                                 <path
                                                     d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM21 6h-3V3h-2v3h-3v2h3v3h2V8h3z" />
@@ -190,11 +107,11 @@
                                     </div>
                                     <!--disconnect icon-->
                                     <div *ngIf="playing" class="acme-sc-conference-room-connect-disconnect-icon"
-                                        matTooltip="Disconnect" fxFlex="32px" fxLayoutAlign="center center"
+                                        matTooltip="Disconnect" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="leaveCall()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="red">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="red">
                                                 <path d="M0 0h24v24H0z" fill="none" />
                                                 <path
                                                     d="M17.34 14.54l-1.43-1.43c.56-.73 1.05-1.5 1.47-2.32l-2.2-2.2c-.28-.28-.36-.67-.25-1.02.37-1.12.57-2.32.57-3.57 0-.55.45-1 1-1H20c.55 0 1 .45 1 1 0 3.98-1.37 7.64-3.66 10.54zm-2.82 2.81C11.63 19.64 7.97 21 4 21c-.55 0-1-.45-1-1v-3.49c0-.55.45-1 1-1 1.24 0 2.45-.2 3.57-.57.35-.12.75-.03 1.02.24l2.2 2.2c.81-.42 1.58-.9 2.3-1.46L1.39 4.22l1.42-1.41L21.19 21.2l-1.41 1.41-5.26-5.26z" />
@@ -203,11 +120,11 @@
                                     </div>
                                     <!--video icon-->
                                     <div class="acme-sc-conference-room-video-icon" *ngIf="!pauseVideoStream && playing"
-                                        matTooltip="pause video" fxFlex="32px" fxLayoutAlign="center center"
+                                        matTooltip="pause video" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="pauseVideo()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="rebeccapurple">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="rebeccapurple">
                                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                                 <path
                                                     d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z" />
@@ -216,11 +133,11 @@
                                     </div>
                                     <!--pause video icon-->
                                     <div class="acme-sc-conference-room-video-icon" *ngIf="pauseVideoStream && playing"
-                                        matTooltip="resume video" fxFlex="32px" fxLayoutAlign="center center"
+                                        matTooltip="resume video" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="pauseVideo()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="rebeccapurple">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="rebeccapurple">
                                                 <path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none" />
                                                 <path
                                                     d="M21 6.5l-4 4V7c0-.55-.45-1-1-1H9.82L21 17.18V6.5zM3.27 2L2 3.27 4.73 6H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.21 0 .39-.08.54-.18L19.73 21 21 19.73 3.27 2z" />
@@ -229,11 +146,11 @@
                                     </div>
                                     <!--audio icon-->
                                     <div class="acme-sc-conference-room-video-icon" *ngIf="!pauseAudioStream && playing"
-                                        matTooltip="mute audio" fxFlex="32px" fxLayoutAlign="center center"
+                                        matTooltip="mute audio" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="pauseAudio()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="rebeccapurple">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="rebeccapurple">
                                                 <path d="M0 0h24v24H0z" fill="none" />
                                                 <path
                                                     d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1.2-9.1c0-.66.54-1.2 1.2-1.2.66 0 1.2.54 1.2 1.2l-.01 6.2c0 .66-.53 1.2-1.19 1.2-.66 0-1.2-.54-1.2-1.2V4.9zm6.5 6.1c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" />
@@ -242,11 +159,11 @@
                                     </div>
                                     <!--mute audio icon-->
                                     <div class="acme-sc-conference-room-video-icon" *ngIf="pauseAudioStream && playing"
-                                        matTooltip="unmute audio" fxFlex="32px" fxLayoutAlign="center center"
+                                        matTooltip="unmute audio" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="pauseAudio()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="rebeccapurple">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="rebeccapurple">
                                                 <path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none" />
                                                 <path
                                                     d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.13 1.77-.45 2.54-.9L19.73 21 21 19.73 4.27 3z" />
@@ -255,34 +172,19 @@
                                     </div>
                                     <!--screen not sharing-->
                                     <div class="acme-sc-conference-room-video-icon" *ngIf="pauseScreenShare && playing"
-                                        matTooltip="share screen" fxFlex="32px" fxLayoutAlign="center center"
+                                        matTooltip="share screen" fxFlex="4%" fxLayoutAlign="center center"
                                         (click)="screenShare()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="rebeccapurple">
+                                        <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="60%" viewBox="0 0 24 24"
+                                                width="60%" fill="rebeccapurple">
                                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                                 <path
                                                     d="M21.22 18.02l2 2H24v-2h-2.78zm.77-2l.01-10c0-1.11-.9-2-2-2H7.22l5.23 5.23c.18-.04.36-.07.55-.1V7.02l4 3.73-1.58 1.47 5.54 5.54c.61-.33 1.03-.99 1.03-1.74zM2.39 1.73L1.11 3l1.54 1.54c-.4.36-.65.89-.65 1.48v10c0 1.1.89 2 2 2H0v2h18.13l2.71 2.71 1.27-1.27L2.39 1.73zM7 15.02c.31-1.48.92-2.95 2.07-4.06l1.59 1.59c-1.54.38-2.7 1.18-3.66 2.47z" />
                                             </svg>
                                         </mat-icon>
                                     </div>
-
-                                    <!--screen sharing-->
-                                    <div class="acme-sc-conference-room-video-icon" *ngIf="!pauseScreenShare && playing"
-                                        matTooltip="stop share screen" fxFlex="32px" fxLayoutAlign="center center"
-                                        (click)="screenShare()">
-                                        <mat-icon fxLayoutAlign="center center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                                width="24px" fill="rebeccapurple">
-                                                <path d="M0 0h24v24H0V0z" fill="none" />
-                                                <path
-                                                    d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.11-.9-2-2-2H4c-1.11 0-2 .89-2 2v10c0 1.1.89 2 2 2H0v2h24v-2h-4zm-7-3.53v-2.19c-2.78 0-4.61.85-6 2.72.56-2.67 2.11-5.33 6-5.87V7l4 3.73-4 3.74z" />
-                                            </svg>
-                                        </mat-icon>
-                                    </div>
-
-                                    <div fxLayoutAlign="center center" *ngIf="isTokenGenerationInProgress"
-                                        fxFlex="150px" class="acme-sc-conference-connecting-label">
+                                    <div fxLayoutAlign="center center" *ngIf="isTokenGenerationInProgress" fxFlex="30%"
+                                        class="acme-sc-conference-connecting-label">
                                         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
                                     </div>
                                 </div>
@@ -291,43 +193,36 @@
                     </div>
                     <!--view container-->
                     <div fxFlex class="acme-sc-conference-room-viewer">
-                        <div fxFlexFill fxLayout="row" fxLayoutGap="8px">
-                            <div fxFlex>
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                            <div fxFlex fxFill>
                                 <!--default view-->
                                 <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
                                     <!--not playng default icon-->
-                                    <div *ngIf="!playing" fxFlex="90px" fxLayoutAlign="center center">
-                                        <mat-icon fxLayoutAlign="center center"
-                                            style="height:90px;width:90px;opacity:0.7">
-                                            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                                height="90px" viewBox="0 0 24 24" width="90px" fill="purple">
-                                                <rect fill="none" height="24" width="24" />
-                                                <path
-                                                    d="M20.5,16.5c-0.83,0-1.5-0.67-1.5-1.5v-2.5c0-0.83,0.67-1.5,1.5-1.5s1.5,0.67,1.5,1.5V15C22,15.83,21.33,16.5,20.5,16.5z M20,20h1c0,0,0-1.54,0-1.54c1.69-0.24,3-1.7,3-3.46h-1c0,1.38-1.12,2.5-2.5,2.5S18,16.38,18,15h-1c0,1.76,1.31,3.22,3,3.46 C20,18.46,20,20,20,20z M9,12c-2.21,0-4-1.79-4-4c0-2.21,1.79-4,4-4c0.47,0,0.92,0.08,1.34,0.23C9.5,5.26,9,6.57,9,8 c0,1.43,0.5,2.74,1.34,3.77C9.92,11.92,9.47,12,9,12z M7.11,13.13C5.79,14.05,5,15.57,5,17.22V20H1v-2.78 c0-1.12,0.61-2.15,1.61-2.66C3.85,13.92,5.37,13.37,7.11,13.13z M11,8c0-2.21,1.79-4,4-4s4,1.79,4,4c0,2.21-1.79,4-4,4 S11,10.21,11,8z M18.32,20c-1.67-0.81-2.82-2.52-2.82-4.5c0-0.89,0.23-1.73,0.64-2.45C15.77,13.02,15.39,13,15,13 c-2.53,0-4.71,0.7-6.39,1.56C7.61,15.07,7,16.1,7,17.22V20L18.32,20z" />
-                                            </svg>
-                                        </mat-icon>
-
+                                    <div *ngIf="!playing" fxFlex="20%" fxLayoutAlign="center center"
+                                        style="opacity: 0.5;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                            height="15vh" width="15vw" viewBox="0 0 24 24" fill="purple">
+                                            <rect fill="none"height="24" width="24" />
+                                            <path
+                                                d="M20.5,16.5c-0.83,0-1.5-0.67-1.5-1.5v-2.5c0-0.83,0.67-1.5,1.5-1.5s1.5,0.67,1.5,1.5V15C22,15.83,21.33,16.5,20.5,16.5z M20,20h1c0,0,0-1.54,0-1.54c1.69-0.24,3-1.7,3-3.46h-1c0,1.38-1.12,2.5-2.5,2.5S18,16.38,18,15h-1c0,1.76,1.31,3.22,3,3.46 C20,18.46,20,20,20,20z M9,12c-2.21,0-4-1.79-4-4c0-2.21,1.79-4,4-4c0.47,0,0.92,0.08,1.34,0.23C9.5,5.26,9,6.57,9,8 c0,1.43,0.5,2.74,1.34,3.77C9.92,11.92,9.47,12,9,12z M7.11,13.13C5.79,14.05,5,15.57,5,17.22V20H1v-2.78 c0-1.12,0.61-2.15,1.61-2.66C3.85,13.92,5.37,13.37,7.11,13.13z M11,8c0-2.21,1.79-4,4-4s4,1.79,4,4c0,2.21-1.79,4-4,4 S11,10.21,11,8z M18.32,20c-1.67-0.81-2.82-2.52-2.82-4.5c0-0.89,0.23-1.73,0.64-2.45C15.77,13.02,15.39,13,15,13 c-2.53,0-4.71,0.7-6.39,1.56C7.61,15.07,7,16.1,7,17.22V20L18.32,20z" />
+                                        </svg>
                                     </div>
                                     <!--not playng default label-->
-                                    <div *ngIf="!playing" fxFlex="32px" class="acme-sc-conference-room-call-label">
+                                    <div *ngIf="!playing" fxFlex="5%" class="acme-sc-conference-room-call-label">
                                         <span>A.C.M.E - Conference call</span>
                                     </div>
                                     <!--playing and user not joined icon-->
-                                    <div *ngIf="playing && connectedUsers.length === 0" fxFlex="90px"
-                                        fxLayoutAlign="center center">
-                                        <mat-icon fxLayoutAlign="center center"
-                                            style="height:90px;width:90px;opacity:0.7">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="90px" viewBox="0 0 24 24"
-                                                width="90px" fill="purple">
+                                    <div *ngIf="playing && connectedUsers.length === 0" fxFlex="20%"
+                                        fxLayoutAlign="center center"  style="opacity: 0.5;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="15vh" viewBox="0 0 24 24"
+                                                width="15vh" fill="purple">
                                                 <path d="M0 0h24v24H0z" fill="none" />
                                                 <path
                                                     d="M16.24 7.76C15.07 6.59 13.54 6 12 6v6l-4.24 4.24c2.34 2.34 6.14 2.34 8.49 0 2.34-2.34 2.34-6.14-.01-8.48zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                                            </svg>
-                                        </mat-icon>
-
+                                        </svg>
                                     </div>
                                     <!--playing and user not joined label-->
-                                    <div *ngIf="playing  && connectedUsers.length === 0" fxFlex="32px"
+                                    <div *ngIf="playing  && connectedUsers.length === 0" fxFlex="5%"
                                         class="acme-sc-conference-room-call-label">
                                         <span>Waiting for users to join</span>
                                     </div>
@@ -342,11 +237,12 @@
                                 </div>
                             </div>
                             <!--Thumb nails-->
-                            <div *ngIf="playing  && connectedUsers.length > 1" fxFlex="200px">
-                                <div fxFlexFill fxLayout="column" fxFlexFill fxLayoutGap="8px">
-                                    <ng-scrollbar thumbClass="white-scrollbars">
+                            <div *ngIf="playing  && connectedUsers.length > 1" fxFlex="20%">
+                                <div fxFlexFill fxLayout="column" fxFlexFill style="border-style: solid;">
+                                    <ng-scrollbar thumbClass="white-scrollbars" >
                                         <mat-card (click)="selectCallIdForLargeView(callId)"
-                                            *ngFor="let callId of filterSelectedCallIds()" [id]="callId" class="remote">
+                                            *ngFor="let callId of filterSelectedCallIds()" [id]="callId" class="remote"
+                                            style="padding:0">
 
                                         </mat-card>
                                     </ng-scrollbar>
@@ -355,14 +251,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-</div>
-<!--<div [id]="localCallId" class="local">
+    <!--<div [id]="localCallId" class="local">
 
-</div>-->
-<acme-sc-conference-room-self-view [userName]="fullName" [localCallId]="localCallId">
-</acme-sc-conference-room-self-view>
-<!--<div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"></div>-->
+    </div>-->
+    <acme-sc-conference-room-self-view [userName]="fullName" [localCallId]="localCallId">
+    </acme-sc-conference-room-self-view>
+    <!--<div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"></div>-->
