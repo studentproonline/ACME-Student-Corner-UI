@@ -53,11 +53,11 @@ export class AcmeSCLoginComponent {
         });
     }
 
-  
+
     getPasswordResetScreenWidth() {
         if (window.screen.width <= 414) { // 768px portrait
             return '45%';
-        } else  {
+        } else {
             return '40%';
         }
     }
@@ -65,7 +65,7 @@ export class AcmeSCLoginComponent {
     getPasswordResetScreenHeight() {
         if (window.screen.height <= 736) { // 768px portrait
             return '90%';
-        } else  {
+        } else {
             return '70%';
         }
     }
@@ -116,7 +116,7 @@ export class AcmeSCLoginComponent {
                         const loginEntity: ILoginEntity = response.data;
                         this.acmeSCAuthorizationService.setSession(loginEntity);
                         this.acmeScCookiesService.setCookies(loginEntity);
-                        this.router.navigateByUrl ( '/home?roomType=My Rooms' );
+                        this.router.navigateByUrl('/home?roomType=My Rooms');
                         return;
                     }
                     default: {
@@ -132,13 +132,19 @@ export class AcmeSCLoginComponent {
                 if (err.error) {
                     switch (err.error.code) {
                         case 'ACCOUNT_NOT_ACTIVE': {
-                            const email: any=this.loginFormGroup.controls[emailControl].value
+                            const email: any = this.loginFormGroup.controls[emailControl].value
                             this.openConfirmEmailDialog(email);
                             break;
                         }
                         default: {
                             break;
                         }
+                    }
+                    if(err.status === 0) {
+                        this.snackBar.open(err.message, '', {
+                            duration: 3000
+                        });
+                        return;
                     }
                     this.snackBar.open(err.error.description, '', {
                         duration: 3000
@@ -158,7 +164,7 @@ export class AcmeSCLoginComponent {
             width: '500px',
             height: '250px',
             disableClose: true,
-            data:{Email:emailId}
+            data: { Email: emailId }
         });
         dialogRef.afterClosed().subscribe(result => {
         });
