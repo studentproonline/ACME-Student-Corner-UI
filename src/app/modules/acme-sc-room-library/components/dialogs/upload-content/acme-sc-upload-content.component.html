@@ -1,8 +1,8 @@
 <div fxFlexFill fxLayout="column" fxLayoutAlign="space-between">
-    <div fxFlex="54px" fxLayoutAlign="center start" class="acme-cs-heading">
+    <div fxFlex="5%" fxLayoutAlign="center start" class="acme-cs-heading">
         <span>Upload new content</span>
     </div>
-    <div fxFlex="calc(100%-102px)">
+    <div fxFlex>
         <mat-tab-group (selectedTabChange)="myTabSelectedTabChange($event)">
             <!--document tab-->
             <mat-tab>
@@ -43,8 +43,8 @@
                                 <mat-icon class="acme-cs-mat-icon acme-sc-library-content-chip-close-icon">cancel
                                 </mat-icon>
                             </mat-chip>
-                            <input formControlName="documentTagControl"
-                                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            <input formControlName="documentTagControl" [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                 (matChipInputTokenEnd)="addTag($event)">
                         </mat-chip-list>
                     </mat-form-field>
@@ -74,8 +74,8 @@
                         <mat-label>
                             Link
                         </mat-label>
-                        <input required matInput placeholder="Link : provide full url including http:// or https://" formControlName="fileLinkControl"
-                            autocomplete="off">
+                        <input required matInput placeholder="Link : provide full url including http:// or https://"
+                            formControlName="fileLinkControl" autocomplete="off">
                         <mat-error *ngIf="linkuploadFormGroup.controls['fileLinkControl'].errors?.required ||
                             linkuploadFormGroup.controls['fileLinkControl'].errors?.whiteSpace">
                             Link is <strong>required</strong>
@@ -105,8 +105,8 @@
                                 <mat-icon class="acme-cs-mat-icon acme-sc-library-content-chip-close-icon">cancel
                                 </mat-icon>
                             </mat-chip>
-                            <input  formControlName="linkTagControl"
-                                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            <input formControlName="linkTagControl" [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                 (matChipInputTokenEnd)="addTag($event)">
                         </mat-chip-list>
                     </mat-form-field>
@@ -114,25 +114,30 @@
             </mat-tab>
         </mat-tab-group>
     </div>
-    <div fxFlex="48px" fxLayoutAlign="end end">
-        <div fxFlexFill fxLayout="row">
-            <div fxFlex fxLayoutAlign="start end">
-                <button mat-raised-button color="accent" class="acme-sc-content-upload-confirm-button"
-                    (click)="uploadContent()" [disabled]="!isValid()">
-                    Upload
-                </button>
-            </div>
-            <div fxLayoutAlign="end end">
-                <button mat-raised-button color="warn" class="acme-sc-content-upload-close-button"
-                    (click)="cancelUploadContent()">
-                    Cancel
-                </button>
+    <div fxFlex="12%" fxFill fxLayoutAlign="end end">
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFlex fxFill fxLayoutAlign="end end">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex="50%" fxLayoutAlign="start end">
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-content-upload-confirm-button"
+                            (click)="uploadContent()" [disabled]="!isValid()">
+                            Upload
+                        </button>
+                    </div>
+                    <div fxFlex="50%" fxLayoutAlign="end end">
+                        <button fxFill mat-raised-button color="warn" class="acme-sc-content-upload-close-button"
+                            (click)="cancelUploadContent()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+               
             </div>
         </div>
 
     </div>
-    <!--progress bar-->
-    <div fxFlex>
+     <!--progress bar-->
+     <div fxFlex  *ngIf="isProgress">
         <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
     </div>
 </div>

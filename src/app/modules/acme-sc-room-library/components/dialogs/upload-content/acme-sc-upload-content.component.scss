@@ -1,9 +1,13 @@
 .acme-sc-content-upload-close-button {
     background-color: darkorange !important;
-    width:150px;
+    font-size:1vw;
+    padding:0.4vw;
+    line-height: 0;
 }
 .acme-sc-content-upload-confirm-button {
-    width:150px;
+    font-size:1vw;
+    padding:0.4vw;
+    line-height: 0;
 }
 .acme-sc-file-error {
     margin-top:4px;
@@ -14,6 +18,11 @@
 .acme-sc-library-content-chip {
     padding-left:8px;
 }
+
+.acme-form-input-field {
+    font-size: 1.1vw;
+}
+
 
 .acme-sc-library-content-chip-close-icon {
     padding-left: 4px;;
