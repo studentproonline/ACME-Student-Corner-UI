@@ -1,11 +1,13 @@
-<div class="acme-sc-room-library-content-item" fxLayout="column" fxLayoutGap="8px">
-    <div fxFlex="24px" fxFlexFill>
-        <div fxLayout="row" fxLayoutGap="16px">
+<div class="acme-sc-room-library-content-item" fxLayout="column" fxLayoutGap="0.4vw">
+    <!--library title-->
+    <div fxFlex="40%" fxFill>
+        <div fxLayout="row" fxLayoutGap="0.4vw">
             <!--content icon -->
-            <div fxFlex="24px" class="acme-sc-room-topic-row">
-                <mat-icon *ngIf="libraryContent.contentType !=='link'" fxLayoutAlign="center center" style="height:24px;width:24px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
-                        viewBox="0 0 24 24" width="24px" fill="#000000">
+            <div fxFlex="2%" class="acme-sc-room-topic-row">
+                <mat-icon *ngIf="libraryContent.contentType !=='link'" fxLayoutAlign="center center"
+                    style="height:100%;width:100%;">
+                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="100%"
+                        viewBox="0 0 24 24" width="100%" fill="#000000">
                         <g>
                             <rect fill="none" height="24" width="24" />
                             <path
@@ -13,14 +15,19 @@
                         </g>
                     </svg>
                 </mat-icon>
-                <mat-icon *ngIf="libraryContent.contentType ==='link'" fxLayoutAlign="center center" style="height:24px;width:24px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+                <mat-icon *ngIf="libraryContent.contentType ==='link'" fxLayoutAlign="center center"
+                    style="height:100%;width:100%;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
+                        fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
                     </svg>
                 </mat-icon>
             </div>
             <!--Topic title-->
-            <div (click)="openDocument()" fxFlex fxLayoutAlign="start start" style="cursor:pointer;">
-                <div fxLayout="column" fxLayoutGap="8px">
+            <div (click)="openDocument()" fxFlex fxFill fxLayoutAlign="start start" style="cursor:pointer;">
+                <div fxLayout="column" fxLayoutGap="0.4vw">
                     <div fxFlex="98%">
                         <span class="acme-sc-room-library-content-title">{{libraryContent.name}} </span>
                         <span class="acme-sc-room-library-content-description">({{libraryContent.description}})</span>
@@ -32,36 +39,33 @@
             </div>
         </div>
     </div>
-
-    <div fxFlex="24px" fxFlexFill>
-        <div fxLayout="row" fxLayoutGap="16px">
-            <div fxFlex="90%" fxFlexFill>
+    <div fxFlex="20%" fxFill>
+        <div fxLayout="row" fxLayoutGap="0.4vw">
+            <div fxFlex="80%" fxFill>
                 <span class="acme-sc-room-library-content-owner"><b>Created By:</b> {{libraryContent.owner}}</span>
             </div>
-            <div fxFlex="200px" fxLayoutAlign="end start">
+            <div fxFlex="20%" fxFill fxLayoutAlign="end start">
                 <span class="acme-sc-room-library-content-createdOn"><b>Created on:</b>
                     {{libraryContent.createdOn|date:'medium'}}</span>
             </div>
         </div>
-
     </div>
-    <div fxFlex="24px" fxFlexFill>
-        <div fxLayout="row" fxLayoutGap="16px">
-            <div fxFlex="98%">
-                <mat-chip-list #chipList aria-label="Topic tags">
-                    <mat-chip [removable]="tagRemove" *ngFor="let tag of contentTags" fxLayoutAlign="center center"
-                        class="acme-sc-library-content-chip">
+    <div fxFlex="40%" fxFill>
+        <div fxLayout="row" fxLayoutGap="0.4vw">
+            <div fxFlex="98%" fxFill fxLayoutAlign="start start">
+                <mat-chip-list  style="padding:0.4vw" #chipList aria-label="Topic tags">
+                    <mat-chip [removable]="tagRemove" *ngFor="let tag of contentTags" fxLayoutAlign="start start"
+                        class="acme-sc-library-content-chip" [ngStyle]="getMinHeight()">
                         {{tag}}
                     </mat-chip>
                 </mat-chip-list>
             </div>
-
             <!--Delete icon-->
             <div fxLayoutAlign="end end" *ngIf="isContentOrRoomOwner" fxFlex="2%"
-                class="acme-sc-room-library-content-row">
+                class="acme-sc-room-library-content-row" fxFill>
                 <mat-icon matTooltip="Delete content" fxLayoutAlign="end end"
-                    style="height:24px;width:24px;opacity: 0.5;" (click)="deleteLibrarycontent()">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    style="height:100%;width:100%;opacity: 0.5;" (click)="deleteLibrarycontent()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                         fill="#000000">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path

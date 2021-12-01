@@ -7,18 +7,18 @@
 
 .acme-sc-title-heading {
     font-weight: bold;
-    font-size:small;
+    font-size:1vw;
 }
 
 .acme-sc-title-label {
-    font-size:x-small;
+    font-size:0.66vw;
     color:purple;
     font-style: italic;
 }
 
 .acme-sc-room-library-content-types-list{
     border-top-style: outset;
-    padding:8px;
+    padding:0.4vw;
 }
 
 .acme-sc-content-item-container{
@@ -38,14 +38,21 @@
 .acme-sc-content-item-text {
     color: black;
     opacity: 0.7;
-    padding-left: 8px;
+    padding-left: 0.4vw;
+    font-size: 1.1vw;
 }
 .acme-sc-content-item-text-default {
     opacity:0.5;
     color: black;
-    padding-left: 8px;
+    padding-left: 0.4vw;
+    font-size: 1.1vw;
 }
 .acme-sc-content-item-icon-selected {
     color: black;
     opacity:0.7
 }
+
+.acme-sc-library-content-types-label {
+    font-size:1.1vw;
+}
+

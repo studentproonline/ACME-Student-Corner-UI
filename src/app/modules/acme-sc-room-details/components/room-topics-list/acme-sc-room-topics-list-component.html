@@ -5,17 +5,17 @@
     </div>
 
     <!--Server Error-->
-    <div *ngIf="!isSuccessFull && !isProgress" fxFlexFill fxLayout="column" fxLayoutAlign="center center"
-        fxLayoutGap="8px">
-        <div fxFlex="90px" fxLayoutAlign="center  center">
-            <mat-icon fxLayoutAlign="center center" style="height:48px;width:48px;color:darkorange">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+    <div *ngIf="!isSuccessFull && !isProgress" fxFlex fxFill fxLayoutAlign="center center">
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+            <div fxFlex="20%" fxFill fxLayoutAlign="center  center">
+                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="5vw" height="5vw"
+                    viewBox="0 0 24 24">
                     <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
                 </svg>
-            </mat-icon>
-        </div>
-        <div fxFlex="24px" fxLayoutAlign="center center" style="font-size: normal;">
-            <span>{{topicsResponseMessage}}</span>
+            </div>
+            <div fxFlex="5%" fxFill fxLayoutAlign="center center" class="acme-sc-server-response-message">
+                <span>{{topicsResponseMessage}}</span>
+            </div>
         </div>
     </div>
     <!--Successfull call-->

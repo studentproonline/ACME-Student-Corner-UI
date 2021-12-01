@@ -12,17 +12,15 @@
     <div fxFlex fxLayoutAlign="center center"
         *ngIf="roomType==='Favorites' && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="20%" fxLayoutAlign="center center">
-                <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="center center" style="height:100%;width:100%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
+            <div fxFlex="20%" fxLayoutAlign="center center" style="opacity: 0.7;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="5vw" viewBox="0 0 24 24" width="5vw"
                         fill="purple">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path
                             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                </mat-icon>
+                </svg>
             </div>
-            <div  fxFlex="10%" fxLayoutAlign="center center">
+            <div  fxFlex="5%" fxLayoutAlign="center center">
                 <span class="acme-sc-login-label-default">You does not have any favorites added yet, please add rooms to your favorite list.</span>
             </div>
         </div>
@@ -32,10 +30,9 @@
     <div fxFlex fxLayoutAlign="center center"
         *ngIf="roomType==='Shared with Me' && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="20%" fxLayoutAlign="center center">
-                <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="center center" style="height:100%;width:100%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="100%"
-                        viewBox="0 0 24 24" width="100%" fill="purple">
+            <div fxFlex="20%" fxLayoutAlign="center center" style="opacity: 0.7;">
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="5vw"
+                        viewBox="0 0 24 24" width="5vw" fill="purple">
                         <g>
                             <rect fill="none" height="24" width="24" />
                         </g>
@@ -53,9 +50,8 @@
                             </g>
                         </g>
                     </svg>
-                </mat-icon>
-            </div>
-            <div fxFlex="10%" fxLayoutAlign="center center">
+             </div>
+            <div fxFlex="5%" fxLayoutAlign="center center">
                 <span class="acme-sc-login-label-default">You are not part of any shared room yet, please contact room owners.</span>
             </div>
         </div>
@@ -65,10 +61,9 @@
     <div fxFlex fxLayoutAlign="center center"
         *ngIf="roomType==='Achievements' && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="20%" fxLayoutAlign="center center">
-                <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="center center" style="height:100%;width:100%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="100%"
-                        viewBox="0 0 24 24" width="100%" fill="purple">
+            <div fxFlex="20%" fxLayoutAlign="center center" style="opacity: 0.7;">
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="5vw"
+                        viewBox="0 0 24 24" width="5vw" fill="purple">
                         <g>
                             <rect fill="none" height="24" width="24" x="0" />
                         </g>
@@ -81,10 +76,9 @@
                                     d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z" />
                             </g>
                         </g>
-                    </svg>
-                </mat-icon>
+                </svg>
             </div>
-            <div fxFlex="10%" fxLayoutAlign="center center">
+            <div fxFlex="5%" fxLayoutAlign="center center">
                 <span class="acme-sc-login-label-default">You don't have any achievments yet, start discussing and win achievements.</span>
             </div>
         </div>

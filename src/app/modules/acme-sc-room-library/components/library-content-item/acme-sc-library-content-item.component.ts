@@ -45,6 +45,17 @@ export class AcmeSCRoomLibraryContentItemComponent {
         }
     }
 
+  
+    getMinHeight() {
+        console.log(window.screen.height );
+        if (window.screen.height <= 736) { // 768px portrait
+            return {'min-height': '0','background-color' : 'transparent'};
+        } else  {
+            return {'min-height': '1.5vw','padding-top':'3px'};
+        }
+    }
+
+
     openDocument() {
         this.isProgress = true;
         this.isSuccessFull = false;
