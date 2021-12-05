@@ -1,5 +1,6 @@
 import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeSCRoomAssignmentService } from '../../services/acme-sc-room-assigment.service';
@@ -9,6 +10,7 @@ import { IAssignmentEntity } from '../../entities/assignment';
 import { IUserAssignmentEntity } from '../../entities/userassignment';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
+import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignment/acme-sc-evaluate-assignment.component';
 
 
 @Component({
@@ -18,7 +20,9 @@ import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialog
 })
 export class AcmeSCAssignmentEvaluationComponent {
     @Input() assignment: IAssignmentEntity;
+    @Input() roomType: string;
     @Input() userId: string = '';
+    @Input() roomStatus: String;
 
     userAssignment: IUserAssignmentEntity;
 
@@ -30,7 +34,8 @@ export class AcmeSCAssignmentEvaluationComponent {
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog) {
+        public dialog: MatDialog, private router: Router) {
+
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -39,6 +44,28 @@ export class AcmeSCAssignmentEvaluationComponent {
             this.userId = currentUser.currentValue;
             this.getUserAssignment();
         }
+    }
+
+   
+    reviewAssignment() {
+        let mode;
+        if(this.userAssignment.status === 'Reviewed') {
+            mode='Edit';
+        } else {
+            mode='New';
+        }
+        const dialogRef = this.dialog.open(AcmeSCEvaluateAssignmentComponent, {
+            width: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenHeight(),
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { mode: mode, userAssignment: this.userAssignment }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data) {
+                this.getUserAssignment();
+            }
+        });
     }
 
     getUserAssignment() {
@@ -82,5 +109,13 @@ export class AcmeSCAssignmentEvaluationComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
+    }
+
+    goToAllassignments() {
+        this.router.navigateByUrl('/assignments?roomId=' + this.assignment.roomId + '&roomType=' + this.roomType);
+    }
+
+    gotoHome() {
+        this.router.navigateByUrl('/home?roomType=My Rooms');
     }
 }

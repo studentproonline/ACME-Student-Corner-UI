@@ -40,7 +40,7 @@
                     <!--Assignments container-->
                     <div *ngIf="!isProgress && isSuccessFull" fxFlex fxFill>
                             <acme-sc-assignment-evaluation *ngIf="isAssignmentOwner" [assignment]="assignment"
-                                [userId]="selectedUser">
+                                [userId]="selectedUser" [roomType]="roomType" [roomStatus]="roomStatus">
 
                             </acme-sc-assignment-evaluation>
 

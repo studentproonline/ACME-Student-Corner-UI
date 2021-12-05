@@ -1,6 +1,10 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
-      <!--navigation bar-->
-      <div *ngIf="!isProgress" fxFlex="7%" fxFill>
+<div fxLayout="column" fxFlexFill fxLayoutGap="1vh">
+    <!--Progress-->
+    <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+    </div>
+    <!--navigation bar-->
+    <div *ngIf="!isProgress"  fxFlex="7%" fxFill >
         <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
             <!--home icon-->
             <div fxFlex="2%" fxLayoutAlign="start center" class="acme-cs-mat-icon">
@@ -26,30 +30,32 @@
                 fxLayoutAlign="start center">
                 <span><u>All Assignments</u></span>
             </div>
-
+            <!--status-->
+            <div *ngIf="isAssignmentFound" fxFlex="10%" fxLayoutAlign="start center" class="acme-sc-room-user-assignment-status">
+                <span><b>Status: </b>{{userAssignment.status}}</span>
+            </div>
             <!--room not active label-->
-            <div fxFlex fxFill *ngIf="(roomStatus === 'Closed' || assignment.status === 'Closed' || assignment.status === 'Expired') && !isProgress && isSuccessFull" fxLayoutAlign="center center"  class="acme-sc-not-active-room">
+            <div fxFlex fxFill
+                *ngIf="(roomStatus === 'Closed' || assignment.status === 'Closed' || assignment.status === 'Expired') && !isProgress && isSuccessFull"
+                fxLayoutAlign="center center" class="acme-sc-not-active-room">
                 <span>This assignment is no longer active !!!!</span>
             </div>
-            <div fxFlex *ngIf="roomStatus !== 'Closed' && assignment.status !== 'Closed' && assignment.status !== 'Expired' && !isProgress && isSuccessFull && isAssignmentFound">
+            <div fxFlex *ngIf="roomStatus !== 'Closed' && assignment.status !== 'Closed' && assignment.status !== 'Expired'
+                               && !isProgress && isSuccessFull && isAssignmentFound &&
+                               userAssignment.status !=='Reviewed'">
                 <div fxFlexFill fxLayout="row" fxLayoutAlign="end center">
                     <div fxFlex="17%" fxFill>
-                        <button fxFill mat-raised-button color="accent" class="acme-turnin-assignment-button" (click)="turnInAssignment()">
+                        <button fxFill mat-raised-button color="accent" class="acme-turnin-assignment-button"
+                            (click)="turnInAssignment('Edit')">
                             Edit assignment
                         </button>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-    <div fxFlex fxFill class="acme-sc-assignment-data-container">
-        <quill-view [content]="assignment.data"></quill-view>
-    </div>
-  
-    <!--no user assigment found-->
-    <div *ngIf="!isAssignmentFound" fxFlex="100%" fxFill>
+    <!--no assigment evaluation found-->
+    <div *ngIf="!isAssignmentFound && !isProgress" fxFlex="93%" fxFill>
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2vh">
             <!--assignment not submitted icon-->
             <div fxFlex="20%" fzFill style="padding-left: 0.4vw;">
@@ -69,12 +75,28 @@
             <div *ngIf="assignment.status ==='Active'" fxFlex="8%" fxFill fxLayoutAlign="center start">
                 <div fxLayout="row" fxFlexFill fxLayoutAlign="center start">
                     <div fxFlex="15%" fxFill fxLayoutAlign="center start">
-                        <button fxFill mat-raised-button color="accent" (click)="turnInAssignment()"
+                        <button fxFill mat-raised-button color="accent" (click)="turnInAssignment('New')"
                             class="acme-turnin-assignment-button">Turn in Assignment
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!--assignment evlauation found-->
+    <div *ngIf="isAssignmentFound && !isProgress" fxFlex fxFill>
+        <ng-scrollbar thumbClass="white-scrollbars">
+            <div style="padding-top:0.4vw">
+                <div class="acme-sc-assignment-data-container">
+                    <quill-view [content]="userAssignment.data"></quill-view>
+                </div>
+            </div>
+            <div *ngIf="userAssignment.status === 'Reviewd' || userAssignment.status === 'Returned'"
+                style="padding-top:0.4vw">
+                <div class="acme-sc-assignment-data-container">
+                    <quill-view [content]="userAssignment.evaluatedData"></quill-view>
+                </div>
+            </div>
+        </ng-scrollbar>
     </div>
 </div>

@@ -46,6 +46,24 @@ export class AcmeSCRoomAssignmentService {
         return this.httpService.get('/assignmentEvaluations/?userId=' + userId + '&assignmentId=' + assignmentId, headers).pipe(catchError(this.handleErrorObservable));
     }
 
+    // create user assignment evaluation
+    createUserAssignment(body: any, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.post('/assignmentEvaluations/', headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // update user assignment
+    updateUserAssignment(assignmentEvaluationId: string, body: any, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.put('/assignmentEvaluations/'+assignmentEvaluationId, headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // update user evaluation assignment
+    updateUserEvaluationAssignment(assignmentEvaluationId: string, body: any, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.put('/assignmentEvaluations/evaluate/'+assignmentEvaluationId, headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
     // get room details
     getRoomById(roomId: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });

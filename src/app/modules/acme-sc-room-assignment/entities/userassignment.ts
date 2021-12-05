@@ -4,6 +4,8 @@ export interface IUserAssignmentEntity {
     submittedBy: string;
     submittedAt: Date;
     reviewedBy: string;
+    reviewerFirstName: string;
+    reviewerLastName: string;
     reviewedAt: Date;
     roomId: string;
     data: string;

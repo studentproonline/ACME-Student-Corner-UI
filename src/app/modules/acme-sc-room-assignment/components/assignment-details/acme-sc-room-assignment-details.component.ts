@@ -108,6 +108,6 @@ export class AcmeSCAssignmentDetailsComponent {
 
     userSelected($event) {
         // user id
-        this.selectedUser = $event._id;
+        this.selectedUser = $event.userEmail;
     }
 }

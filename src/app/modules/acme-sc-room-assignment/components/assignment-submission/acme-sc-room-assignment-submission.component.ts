@@ -12,7 +12,7 @@ import { IAssignmentEntity } from '../../entities/assignment';
 import { IUserAssignmentEntity } from '../../entities/userassignment';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-
+import { AcmeSSubmitAssignmentComponent } from '../dialogs/submit-assignment/acme-sc-submit-assignment.component';
 
 @Component({
     selector: 'acme-sc-assignment-submission',
@@ -35,7 +35,7 @@ export class AcmeSCAssignmentSubmissionComponent {
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog, private router: Router,) {
+        public dialog: MatDialog, private router: Router) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
 
@@ -43,7 +43,6 @@ export class AcmeSCAssignmentSubmissionComponent {
     }
 
     ngOnInit() {
-        console.log(this.assignment);
         this.getUserAssignment();
     }
 
@@ -51,7 +50,7 @@ export class AcmeSCAssignmentSubmissionComponent {
         this.isProgress = true;
         this.isSuccessFull = false;
         this.isAssignmentFound = false;
-        this.acmeSCRoomAssignmentService.getUserAssignment(this.loginEntity.id,
+        this.acmeSCRoomAssignmentService.getUserAssignment(this.loginEntity.email,
             this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
                 value => {
                     const response: any = value;
@@ -80,8 +79,19 @@ export class AcmeSCAssignmentSubmissionComponent {
             );
     }
 
-    turnInAssignment() {
-
+    turnInAssignment(mode) {
+        const dialogRef = this.dialog.open(AcmeSSubmitAssignmentComponent, {
+            width: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenHeight(),
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { mode: mode, userAssignment: this.userAssignment }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data) {
+                this.getUserAssignment();
+            }
+        });
     }
 
     openSessionExpiredDialog(): void {

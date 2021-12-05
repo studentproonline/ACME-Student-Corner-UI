@@ -15,6 +15,8 @@ import { AcmeSCAssignmentEvaluationComponent} from './components/assignment-eval
 import { AcmeSCRoomAssignmentUsersListComponent } from './components/assignement-users-list/acme-sc-room-assignment-users-list.component';
 import { AcmeSCRoomAssignmentUserItemComponent } from './components/assignment-user-item/acme-sc-asssignment-user-item.component';
 import { AcmeSCAssignmentSubmissionComponent } from './components/assignment-submission/acme-sc-room-assignment-submission.component';
+import { AcmeSSubmitAssignmentComponent } from './components/dialogs/submit-assignment/acme-sc-submit-assignment.component';
+import { AcmeSCEvaluateAssignmentComponent } from './components/dialogs/evaluate-assignment/acme-sc-evaluate-assignment.component';
 
 //services
 import { AcmeSCRoomAssignmentService } from './services/acme-sc-room-assigment.service';
@@ -35,7 +37,9 @@ import { QuillModule } from 'ngx-quill';
         AcmeSCAssignmentEvaluationComponent,
         AcmeSCRoomAssignmentUsersListComponent,
         AcmeSCRoomAssignmentUserItemComponent,
-        AcmeSCAssignmentSubmissionComponent],
+        AcmeSCAssignmentSubmissionComponent,
+        AcmeSSubmitAssignmentComponent,
+        AcmeSCEvaluateAssignmentComponent],
 
     imports: [FlexLayoutModule,
         AcmeSCSharedModule,

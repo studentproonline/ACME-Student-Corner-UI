@@ -59,6 +59,7 @@ export class AcmeSCRoomAssignmentUsersListComponent {
                 this.isSuccessFull = true;
                 this.sharedRoomUsersList = response.data;
                 this.selectedUserId = this.sharedRoomUsersList[0].userEmail;
+                console.log(this.sharedRoomUsersList[0]);
                 this.userClicked.emit( this.sharedRoomUsersList[0]);
             },
             err => {
