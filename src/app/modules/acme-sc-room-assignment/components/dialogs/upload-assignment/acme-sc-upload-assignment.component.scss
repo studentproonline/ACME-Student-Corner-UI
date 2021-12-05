@@ -1,0 +1,29 @@
+.acme-sc-assignment-creation-close-button {
+    background-color: darkorange !important;
+    font-size:1vw;
+    width:50%;
+    height:100%;
+    padding:0.4vw;
+    line-height: 0;
+}
+.acme-sc-assignment-creation-confirm-button {
+    font-size:1vw;
+    width:50%;
+    height:100%;
+    padding:0.4vw;
+    line-height: 0;
+}
+.acme-form-input-field {
+    font-size: 1.0vw;
+}
+
+::ng-deep .ql-tooltip {
+    left:0px !important
+}
+::ng-deep .ql-editing {
+    left:0px !important
+}
+::ng-deep .ql-container{
+    height:82% !important
+}
+

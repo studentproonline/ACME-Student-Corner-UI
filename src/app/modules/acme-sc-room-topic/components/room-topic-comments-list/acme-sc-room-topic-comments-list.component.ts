@@ -139,6 +139,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
     // comment delete event
     commentDeleted() {
         // refresh comment list
+        this.currentPageNumber = 0;
         this.commentsList.length = 0;
         this.getComments(0);
     }

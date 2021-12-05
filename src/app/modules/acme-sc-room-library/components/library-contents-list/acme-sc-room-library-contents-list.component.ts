@@ -11,6 +11,7 @@ import { AcmeSUploadContentComponent } from '../dialogs/upload-content/acme-sc-u
 // services
 import { AcmeSCRoomLibraryService } from '../../services/acme-sc-room-library.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 @Component({
     selector: 'acme-sc-room-library-contents-list',
@@ -32,7 +33,8 @@ export class AcmeSCRoomTopicsListComponent {
     filteredroomLibraryContentsList: ILibraryContentEntity[] = [];
 
     constructor(public dialog: MatDialog, private acmeSCRoomLibraryService: AcmeSCRoomLibraryService,
-        private acmeSCAuthorizationService: AcmeSCAuthorizationService) {
+        private acmeSCAuthorizationService: AcmeSCAuthorizationService,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
 
       
     }
@@ -126,8 +128,8 @@ export class AcmeSCRoomTopicsListComponent {
 
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: '700px',
-            height: '100px',
+            width: this.acmesharedUiTuilitiesService.getSessionExpiredScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getSessionExpiredScreenHeight(),
             disableClose: true,
             data: {}
         });

@@ -125,7 +125,7 @@ export class AcmesharedUiTuilitiesService {
     }
 
     getCreateAccountScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
+        if (window.screen.width <= 736) { // 768px portrait
             return '45%';
         } else  {
             return '40%';
@@ -133,15 +133,31 @@ export class AcmesharedUiTuilitiesService {
     }
 
     getCreateAccountScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
+        if (window.screen.height <= 414) { // 768px portrait
             return '90%';
         } else  {
             return '70%';
         }
     }
 
+    getCreateAssignmentScreenWidth() {
+        if (window.screen.width <= 736) { // 768px portrait
+            return '90%';
+        } else  {
+            return '65%';
+        }
+    }
+
+    getCreateAssignmentScreenHeight() {
+        if (window.screen.height <= 414) { // 768px portrait
+            return '95%';
+        } else  {
+            return '85%';
+        }
+    }
+
     getEmailConfirmationScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
+        if (window.screen.width <= 736) { // 768px portrait
             return '45%';
         } else  {
             return '50%';
@@ -149,7 +165,7 @@ export class AcmesharedUiTuilitiesService {
     }
 
     getEmailConfirmationScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
+        if (window.screen.height <= 414) { // 768px portrait
             return '50%';
         } else  {
             return '30%';
@@ -157,7 +173,7 @@ export class AcmesharedUiTuilitiesService {
     }
 
     getSessionExpiredScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
+        if (window.screen.width <= 736) { // 768px portrait
             return '80%';
         } else  {
             return '60%';
@@ -165,7 +181,7 @@ export class AcmesharedUiTuilitiesService {
     }
 
     getSessionExpiredScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
+        if (window.screen.height <= 414) { // 768px portrait
             return '20%';
         } else  {
             return '14%';

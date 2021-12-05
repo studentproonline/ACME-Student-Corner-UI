@@ -115,6 +115,7 @@ export class AcmeSCLoginComponent {
                     case 'USER_LOGGEDIN': {
                         const loginEntity: ILoginEntity = response.data;
                         this.acmeSCAuthorizationService.setSession(loginEntity);
+                        loginEntity.id=response.data.id;
                         this.acmeScCookiesService.setCookies(loginEntity);
                         this.router.navigateByUrl('/home?roomType=My Rooms');
                         return;

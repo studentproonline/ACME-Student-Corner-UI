@@ -1,5 +1,5 @@
 <div fxFlexFill fxLayout="column" class="acme-sc-room-users-container">
-    <!--ACME icom-->
+    <!--ACME icon-->
     <div fxFlex="15%" fxLayoutAlign="center center">
         <mat-icon fxLayoutAlign="center center" style="height: 50%;width:50%">
             <svg width="100%" height="100%" viewBox="0 0 2941 3738" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +113,7 @@
     <!--users found-->
     <div fxFlex *ngIf="sharedRoomUsersList.length > 0 && isSuccessFull" fxLayoutAlign="center center"
         class="acme-sc-room-users-list">
-        <div fxLayout="column" fxFlexFill fxLayoutGap="16px">
+        <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vh">
             <ng-scrollbar thumbClass="white-scrollbars">
                 <acme-sc-room-user-item *ngFor="let user of sharedRoomUsersList" [user]="user"
                     [canRemoveUser]="isRoomOwner" (roomUserRemoved)="roomUserRemoved($event)">

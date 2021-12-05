@@ -1,0 +1,86 @@
+<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+    <div fxFlex="5%" fxFill class="acme-cs-heading">
+        <span>Create new Assignment</span>
+    </div>
+    <!--details-->
+    <div fxFlex="23%" fxFill>
+        <div fxFlex fxFill>
+            <form [formGroup]="createAssignmentFormGroup" fxFill>
+                <div fxFlexFill fxLayout="column">
+                    <!--topic title-->
+                    <div fxFlex="50%" fxFill>
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="1vw">
+                            <!--Assignment title-->
+                            <div fxFlex="70%" fxFill>
+                                <mat-form-field class="form-field" fxFill>
+                                    <mat-label class="acme-form-input-field">
+                                        Title
+                                    </mat-label>
+                                    <input class="acme-form-input-field" required matInput placeholder="Title"
+                                        formControlName="titleControl" autocomplete="off">
+                                    <mat-error class="acme-form-input-field" *ngIf="createAssignmentFormGroup.controls['titleControl'].errors?.required ||
+                                        createAssignmentFormGroup.controls['titleControl'].errors?.whiteSpace">
+                                        Title is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <!--Assignment Expiry date-->
+                            <div fxFlex="30%" fxFill>
+                                <mat-form-field class="form-field" fxFill>
+                                    <mat-label class="acme-form-input-field">Choose a expiry date</mat-label>
+                                    <input class="acme-form-input-field" required matInput [matDatepicker]="picker"
+                                        formControlName="expiryDateControl" [min]="minDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error class="acme-form-input-field"
+                                        *ngIf="createAssignmentFormGroup.controls['titleControl'].errors?.required">
+                                        Expiry date is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Assignment description-->
+                    <div fxFlex="50%" fxFill>
+                        <mat-form-field class="form-field" fxFill>
+                            <mat-label class="acme-form-input-field">
+                                Description
+                            </mat-label>
+                            <input class="acme-form-input-field" required matInput placeholder="Description"
+                                formControlName="descriptionControl" autocomplete="off">
+                            <mat-error class="acme-form-input-field" *ngIf="createAssignmentFormGroup.controls['descriptionControl'].errors?.required ||
+                                createAssignmentFormGroup.controls['descriptionControl'].errors?.whiteSpace">
+                                Description is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Assignment Editor-->
+    <div fxFlex="0 0 60%" fxFill>
+        <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
+        [required]="true"></quill-editor>
+    </div>
+    <div fxFlex fxLayoutAlign="end end" fxFill>
+        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+            <div fxFlex fxLayoutAlign="start end" fxFill>
+                <button mat-raised-button color="accent" class="acme-sc-assignment-creation-confirm-button"
+                    (click)="createUpdateAssignment()" [disabled]="!createAssignmentFormGroup.controls['titleControl'].valid ||
+                        !createAssignmentFormGroup.controls['descriptionControl'].valid ||
+                        !createAssignmentFormGroup.controls['expiryDateControl'].valid||
+                        assignmentContent.trim()===''">
+                        {{buttonLabel}}
+                </button>
+            </div>
+            <div fxFlex fxLayoutAlign="end end" fxFill>
+                <button mat-raised-button color="warn" class="acme-sc-assignment-creation-close-button"
+                    (click)="cancelAssignmentCreation()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+</div>

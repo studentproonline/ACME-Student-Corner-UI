@@ -47,7 +47,6 @@ export class AcmeSCRoomLibraryContentItemComponent {
 
   
     getMinHeight() {
-        console.log(window.screen.height );
         if (window.screen.height <= 736) { // 768px portrait
             return {'min-height': '0','background-color' : 'transparent'};
         } else  {

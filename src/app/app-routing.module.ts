@@ -44,6 +44,12 @@ const routes: Routes = [
         
     },
     {
+        path: 'assignments',
+        loadChildren: () => import('./modules/acme-sc-room-assignment/acme-sc-room-assignment.module').then(m => m.AcmeStudentCornerRoomAssignmentModule),
+        canActivate: [AcmeSCAuthenticationGuard]
+        
+    },
+    {
         path: 'conference',
         loadChildren: () => import('./modules/acme-sc-conference/acme-sc-room-conference.module').then(m => m.AcmeStudentCornerRoomconferenceModule),
         canActivate: [AcmeSCAuthenticationGuard]

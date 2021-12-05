@@ -1,0 +1,44 @@
+.acme-sc-assignment-data-container {
+    background-color: whitesmoke;
+    border-radius: 0.4vw;
+    padding:0.4vw;
+    
+}
+
+.acme-sc-server-response-message {
+    font-size: 1.2vw;
+}
+
+.UserInfoCircle {
+    width: 5vw;
+    height:5vw;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    background: lightgray;
+}
+
+.acme-turnin-assignment-button {
+    font-size: 0.8vw;
+    padding:0.4vw;
+    line-height: 0;
+}
+
+.acme-sc-not-active-room {
+    background-color: lightyellow;
+    font-size: large;
+    font-style: italic;
+}
+.acme-sc-all-assignments {
+    font-weight: bold;
+    font-size: 0.9vw;
+    cursor: pointer;
+}
+
+.acme-sc-room-home {
+    font-weight: bold;
+    font-size: 0.9vw;
+    cursor: pointer;
+    text-decoration-line: underline;
+    color:purple;
+}

@@ -18,12 +18,13 @@ export class AcmeSCAuthguradServiceService {
     if (!cookies || cookies.email === 'undefined' || cookies.firstName === 'undefined'
       || cookies.lastName === 'undefined' || cookies.token === 'undefined' ||
       cookies.email.trim() === '' || cookies.firstName.trim() === ''
-      || cookies.lastName.trim() === '' || cookies.token.trim() === '') {
+      || cookies.lastName.trim() === '' || cookies.token.trim() === ''
+      || cookies.id.trim() === '') {
 
       this.router.navigateByUrl("/login");
     }
     const loginEntity: ILoginEntity = {
-      id: '',
+      id: cookies.id,
       email: cookies.email,
       firstName: cookies.firstName,
       lastName: cookies.lastName,

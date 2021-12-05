@@ -1,0 +1,61 @@
+<div fxFlexFill fxLayout="column">
+    <div fxFlex fxFill>
+        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+            <!--Assigment types-->
+            <div fxFlex="20%" fxFill>
+                <div fxFlexFill fxLayout="column">
+                    <div fxFlex fxFill>
+                        <acme-sc-room-assignment-types-list (itemClicked)="OnAssignmentTypeSelected($event)">
+
+                        </acme-sc-room-assignment-types-list>
+                    </div>
+                    <div class="acme-sc-company-label" fxFlex="5%" fxLayoutAlign="center center">
+                        <span>Powered By: <b>Bitstone Infotech</b> </span>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex fxFill class="acme-sc-container">
+                <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+                    <!--main header-->
+                    <div fxFlex="7%" fxFill>
+                        <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
+                            (userNameClicked)="userNameClicked($event)" (searchTextchange)="searchTextchange($event)"
+                            [placeHolder]="'Start searching for a assignment by title'">
+                        </acme-sc-main-header>
+                    </div>
+                    <!--progress-->
+                    <div *ngIf="isProgress" fxFlex fxFill fxLayoutAlign="center center">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <!--Navigation row-->
+                    <div *ngIf="!isProgress && isSuccessFull" fxFlex="7%" fxFill class="acme-sc-room-details-header">
+                        <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType">
+                        </acme-sc-navigation-bar>
+                    </div>
+                    <!--Sever error-->
+                    <div *ngIf="!isSuccessFull && !isProgress" fxFlex fxFill fxLayoutAlign="center center">
+                        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+                            <div fxFlex="20%" fxFill fxLayoutAlign="center  center">
+                                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="5vw" height="5vw"
+                                    viewBox="0 0 24 24">
+                                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+                                </svg>
+                            </div>
+                            <div fxFlex="5%" fxFill fxLayoutAlign="center center"
+                                class="acme-sc-server-response-message">
+                                <span>Fail to get assignments, please contact system administrator.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Assignments list container-->
+                    <div *ngIf="!isProgress && isSuccessFull" fxFlex fxFill>
+                        <!--add assigment list here-->
+                        <acme-sc-room-assignment-list [filterText]="filterText" [contentTypeFilter]="contentFilterType"
+                            [room]="roomDetailsEntity" [roomType]="roomType">
+                        </acme-sc-room-assignment-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -106,7 +106,7 @@ export class AcmeSUploadContentComponent {
         const linkData: any = {};
 
         linkData.title = this.linkuploadFormGroup.get('fileLinkControl')?.value;
-        linkData.description = this.linkuploadFormGroup.get('fileDescriptionControl')?.value;;
+        linkData.description = this.linkuploadFormGroup.get('fileDescriptionControl')?.value;
         linkData.roomId = this.data.roomId;
         linkData.documentType = this.selectedTab;
         linkData.tags = this.linkTags.toString();

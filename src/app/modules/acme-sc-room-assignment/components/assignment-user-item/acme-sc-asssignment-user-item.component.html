@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutGap="8px"  (click)="userItemClicked()"
+    [ngClass]="selected===true?'acme-sc-navigation-item-container' : 'acme-sc-navigation-item-container-default'">
+    <div fxFlex="2px" [ngClass]="{'acme-sc-navigation-item-selection-bar':selected}">
+
+    </div>
+    <div fxFlex="24px" fxLayoutAlign="center center"
+        [ngClass]="selected===true?'acme-sc-navigation-item-icon-selected' : 'acme-cs-mat-icon'">
+        <div class="UserInfoCircle" fxLayoutAlign="center center">
+            <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" style="height:80%;width:80%;"
+                class="acme-cs-mat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="80%" viewBox="0 0 24 24" width="80%"
+                    fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+            </mat-icon>
+        </div>
+    </div>
+    <div fxFlex fxLayoutAlign="start center"
+        [ngClass]="selected===true?'acme-sc-navigation-item-text' : 'acme-sc-navigation-item-text-default'">
+        <span>{{user.userName}}</span>
+    </div>
+</div>

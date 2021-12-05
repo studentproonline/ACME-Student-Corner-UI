@@ -9,6 +9,7 @@ export class AcmeScCookiesService {
         
     }
     setCookies(user: ILoginEntity) {
+        this.cookieService.set( 'ACME_SC_User_Id', user.id ,null,null,null,true,'None');
         this.cookieService.set( 'ACME_SC_User_Token', user.token ,null,null,null,true,'None');
         this.cookieService.set( 'ACME_SC_User_FirstName', user.firstName,null,null,null,true,'None' );
         this.cookieService.set( 'ACME_SC_User_LastName', user.lastName,null,null,null,true,'None' );
@@ -17,6 +18,7 @@ export class AcmeScCookiesService {
 
     getCookiesObject() {
         const cookie: any = {};
+        cookie.id = this.cookieService.get('ACME_SC_User_Id');
         cookie.token = this.cookieService.get('ACME_SC_User_Token');
         cookie.firstName = this.cookieService.get('ACME_SC_User_FirstName');
         cookie.lastName = this.cookieService.get('ACME_SC_User_LastName');
@@ -25,6 +27,7 @@ export class AcmeScCookiesService {
     }
 
     deleteCookies() {
+        this.cookieService.delete('ACME_SC_User_Id', '/');
         this.cookieService.delete('ACME_SC_User_Token', '/');
         this.cookieService.delete('ACME_SC_User_FirstName', '/');
         this.cookieService.delete('ACME_SC_User_LastName', '/');
