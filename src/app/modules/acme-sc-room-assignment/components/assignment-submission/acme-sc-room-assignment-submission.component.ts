@@ -31,6 +31,7 @@ export class AcmeSCAssignmentSubmissionComponent {
     isSuccessFull = false;
     isAssignmentFound = false;
     userSubmissionResponseMessage = '';
+    stars;
  
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,

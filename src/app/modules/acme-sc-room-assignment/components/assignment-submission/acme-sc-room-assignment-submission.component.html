@@ -4,7 +4,7 @@
         <mat-spinner></mat-spinner>
     </div>
     <!--navigation bar-->
-    <div *ngIf="!isProgress"  fxFlex="7%" fxFill >
+    <div *ngIf="!isProgress" fxFlex="7%" fxFill>
         <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
             <!--home icon-->
             <div fxFlex="2%" fxLayoutAlign="start center" class="acme-cs-mat-icon">
@@ -31,8 +31,34 @@
                 <span><u>All Assignments</u></span>
             </div>
             <!--status-->
-            <div *ngIf="isAssignmentFound" fxFlex="10%" fxLayoutAlign="start center" class="acme-sc-room-user-assignment-status">
-                <span><b>Status: </b>{{userAssignment.status}}</span>
+            <div *ngIf="isAssignmentFound" fxFlex="2%" fxLayoutAlign="start center"
+                class="acme-sc-room-user-assignment-status">
+                <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%;" class="acme-cs-mat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
+                        fill="darkgreen">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm5-2.5H7v-1l1-1v-2.61C8 9.27 9.03 7.47 11 7v-.5c0-.57.43-1 1-1s1 .43 1 1V7c1.97.47 3 2.28 3 4.39V14l1 1v1z" />
+                    </svg>
+                </mat-icon>
+            </div>
+            <div *ngIf="isAssignmentFound" fxFlex="10%" fxLayoutAlign="start center"
+                class="acme-sc-room-user-assignment-status">
+                <span>{{userAssignment.status}}</span>
+            </div>
+            <!--Revieweed by-->
+            <div *ngIf="isAssignmentFound" fxFlex="30%" fxLayoutAlign="start center"
+                class="acme-sc-room-user-assignment-status">
+                <span><b>Reviewed By:
+                    </b>{{userAssignment.reviewerFirstName}}</span><span>{{userAssignment.reviewerLastName}}</span>
+            </div>
+            <div *ngIf="isAssignmentFound" fxFlex="2%" class="acme-sc-assignment-evaluation-stars">
+                <div style="width:100%;height:100%" *ngFor="let item of [].constructor(userAssignment.stars); let i = index">
+                    <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%;" class="acme-cs-mat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="purple"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                    </mat-icon>
+                </div>
             </div>
             <!--room not active label-->
             <div fxFlex fxFill
@@ -91,8 +117,22 @@
                     <quill-view [content]="userAssignment.data"></quill-view>
                 </div>
             </div>
-            <div *ngIf="userAssignment.status === 'Reviewd' || userAssignment.status === 'Returned'"
-                style="padding-top:0.4vw">
+            <div fxFlexFill fxLayout="row">
+                <div fxFlex="20%">
+                    <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
+                        userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
+                        <span>Reviewer Remarks</span>
+                    </div>
+                </div>
+                <div fxFlex="40%">
+                    <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
+                        userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
+                        <span>Last Reviewed On: </span><span>{{userAssignment.reviewedAt|date:'mediumDate'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned'
+             || userAssignment.status === 'Submitted'" style="padding-top:0.4vw">
                 <div class="acme-sc-assignment-data-container">
                     <quill-view [content]="userAssignment.evaluatedData"></quill-view>
                 </div>
