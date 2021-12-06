@@ -1,3 +1,5 @@
+@import '../../../css/commom.scss';
+
 a:active, a:focus {
     outline: 0;
     border: none;
@@ -10,9 +12,3 @@ a:active, a:focus {
     font-size: 1vw;
 }
 
-.acme-sc-close-button{
-    font-size:1vw;
-    width:100%;
-    padding:0.4vw;
-    line-height: 0;
-}

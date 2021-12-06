@@ -51,10 +51,10 @@ export class AcmeSCMainHeaderComponent {
     getRightClickMenuStyle() {
         return {
             position: 'absolute',
-            left: `${this.rightClickMenuPositionX-this.acmesharedUiTuilitiesService.getScreenLeftOffSet()}px`,
+            left: `${this.rightClickMenuPositionX-400}px`,
             top: `${this.rightClickMenuPositionY+20}px`,
-            height: this.acmesharedUiTuilitiesService.getScreenHeight(),
-            width: this.acmesharedUiTuilitiesService.getScreenWidth(),
+            height: '30vh',
+            width: '25vw',
             'z-index': '100'
           }
     }
@@ -66,8 +66,8 @@ export class AcmeSCMainHeaderComponent {
 
     openHelp() {
         const dialogRef = this.dialog.open(AcmeSCContactinformationComponent, {
-            width: this.acmesharedUiTuilitiesService.getHelpScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getHelpScreenHeight(),
+            width: '35vw',
+            height:'42vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true
         });

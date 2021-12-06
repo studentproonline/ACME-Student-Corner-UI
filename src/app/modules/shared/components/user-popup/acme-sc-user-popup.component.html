@@ -1,15 +1,15 @@
 <mat-card class="acme-sc-user-popup-card" fxFill>
     <div class="acme-sc-user-popup-container" fxFlexFill fxLayout="column" fxLayoutGap=0.4vw>
-        <div fxFlex="15%" fxLayoutAlign="end start">
+        <div fxFlex="5vh" fxLayoutAlign="end start">
             <div fxFlexFill fxLayout="row">
-                <div fxFlex="85%" fxLayoutAlign="end center" style="padding-left:15%">
-                    <mat-icon [ngStyle]="{'cursor': 'pointer', 'opacity': '0.7','width':'100%', 'height': '100%'}" (click)="close()">
+                <div fxFlex="85%" fxLayoutAlign="center start" style="padding-left:15%">
+                    <mat-icon [ngStyle]="{'cursor': 'pointer', 'opacity': '0.7','width':'3vw', 'height': '3vh'}" (click)="close()">
                         <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78C15.57 19.36 13.86 20 12 20s-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"/>
                         </svg>
                     </mat-icon>
                 </div>
                 <div fxFlex fxLayoutAlign="end start">
-                    <mat-icon [ngStyle]="{'cursor': 'pointer', 'opacity': '0.7','width':'100%', 'height': '100%'}" (click)="close()">
+                    <mat-icon [ngStyle]="{'cursor': 'pointer', 'opacity': '0.7','width':'3vw', 'height': '3vh'}" (click)="close()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
                             <path
                                 d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -19,16 +19,16 @@
                 </div>
             </div>
         </div>
-        <div class="acme-sc-userName" fxFlex="32px" fxLayoutAlign="center center">
+        <div class="acme-sc-userName" fxFlex="5vh" fxLayoutAlign="center center">
             <span><span>{{loginEntity.firstName}} </span>{{loginEntity.lastName}}</span>
         </div>
-        <div class="acme-sc-email" fxFlex="32px" fxLayoutAlign="center center">
+        <div class="acme-sc-email" fxFlex="5vh" fxLayoutAlign="center center">
             <span>{{loginEntity.email}}</span>
         </div>
-        <div fxFlex fxFill fxLayoutAlign="end center">
-            <div fxFlexFill fxLayout="column"fxLayoutAlign="end">
-                <div fxFlex="70%" fxfill >
-                    <button class="acme-sc-logout-button" fxFill mat-raised-button color="warn" (click)="userLogOut()">
+        <div fxFlex fxFill fxLayoutAlign="end end">
+            <div fxFlexFill fxLayout="column"fxLayoutAlign="end end">
+                <div fxFill fxFlex="7vh">
+                    <button class="acme-sc-button" fxFill mat-raised-button color="warn" (click)="userLogOut()">
                         Logout
                     </button>
                 </div>
