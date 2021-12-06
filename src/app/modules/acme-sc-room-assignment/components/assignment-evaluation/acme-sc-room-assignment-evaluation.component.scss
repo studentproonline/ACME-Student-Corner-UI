@@ -26,7 +26,7 @@
 
 .acme-sc-not-active-room {
     background-color: lightyellow;
-    font-size: large;
+    font-size: 0.7vw;
     font-style: italic;
 }
 .acme-sc-all-assignments {
@@ -45,14 +45,15 @@
 
 .acme-sc-room-user-assignment-status {
     font-weight: bold;
-    font-size: 0.9vw;
+    font-size: 0.7vw;
 }
 
 .acme-sc-room-user-assignment-reviewer-remark {
     font-weight: bold;
-    font-size:1vw;
-    padding:1vw;
+    font-size:0.7vw;
+    padding:0.7vw;
     width:100%;
-    height:100%
+    height:100%;
+    color:purple
    
 }
