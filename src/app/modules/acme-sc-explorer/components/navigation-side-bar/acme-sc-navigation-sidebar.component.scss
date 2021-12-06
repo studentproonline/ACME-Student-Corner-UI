@@ -1,17 +1,2 @@
-.acme-sc-navigation-bar {
-    border-width: 0.5px;
-    border-right-style: solid;
-    background-color:#fafafa;
-    border-color: lightgray;
-}
+@import '../../../shared/css/commom.scss';
 
-.acme-sc-title-heading {
-    font-weight: bold;
-    font-size:1vw;
-}
-
-.acme-sc-title-label {
-    font-size:0.66vw;
-    color:purple;
-    font-style: italic;
-}
