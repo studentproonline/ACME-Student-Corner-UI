@@ -1,3 +1,6 @@
+@import '../../../shared/css/variables.scss';
+@import '../../../shared/css/commom.scss';
+
 .acme-cs-login-page {
     background-color: #bdb8b852;
     background-image: url('../../../../../assets/home-page-bg.jpg');
@@ -5,21 +8,12 @@
     background-size: contain;
     
 }
-.acme-cs-login-box {
-    padding:24px;
-}
+
 .acme-cs-divider {
     border-bottom-color: gray;
     border-bottom-style: solid;
     opacity: 0.5;
-    border-width: 1px;
-}
-
-.acme-form-input-field {
-    font-size: 1.0vw;
-}
-.acme-sc-login-button {
-    font-size: 1vw;
+    border-width: 0.3vh;
 }
 
 .acme-sc-forget-password-label {

@@ -43,8 +43,8 @@ export class AcmeSCLoginComponent {
     }
     openCreateAccountDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCCreateAccountComponent, {
-            width: this.acmesharedUiTuilitiesService.getCreateAccountScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getCreateAccountScreenHeight(),
+            width: '40vw',
+            height: '70vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}
@@ -53,27 +53,10 @@ export class AcmeSCLoginComponent {
         });
     }
 
-
-    getPasswordResetScreenWidth() {
-        if (window.screen.width <= 414) { // 768px portrait
-            return '45%';
-        } else {
-            return '40%';
-        }
-    }
-
-    getPasswordResetScreenHeight() {
-        if (window.screen.height <= 736) { // 768px portrait
-            return '90%';
-        } else {
-            return '70%';
-        }
-    }
-
     openAccountResetPasswordDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCAccountPasswordResetComponent, {
-            width: this.getPasswordResetScreenWidth(),
-            height: this.getPasswordResetScreenHeight(),
+            width: '45vw',
+            height: '60vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}
@@ -162,8 +145,8 @@ export class AcmeSCLoginComponent {
     // email confirmation dialog
     openConfirmEmailDialog(emailId: string): void {
         const dialogRef = this.dialog.open(AcmeSCActivateAccountComponent, {
-            width: '500px',
-            height: '250px',
+            width: '35vw',
+            height: '32vh',
             disableClose: true,
             data: { Email: emailId }
         });

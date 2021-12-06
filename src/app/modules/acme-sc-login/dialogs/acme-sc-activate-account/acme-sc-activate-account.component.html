@@ -1,39 +1,47 @@
-<div fxFlexFill fxLayout="column">
-    <div fxFlex="5%" fxLayoutAlign="end end">
-        <mat-icon (click)='close($event)' [ngStyle]="{'cursor': 'pointer'}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
-                <path
-                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                <path d="M0 0h24v24H0z" fill="none" />
-            </svg>
-        </mat-icon>
-    </div>
-    <div fxFlex="10%" fxFill fxLayoutAlign="center" class="acme-cs-heading">
-        <span>Confirm your Email</span>
-    </div>
-    <div fxFlex="20%" fxFill fxLayoutAlign="center center" class="acme-sc-small-message">
+<div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+    <div fxFlex="5vh">
+        <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+            <div fxFlex class="acme-cs-heading" fxFill fxLayoutAlign="center center">
+                <span>Confirm your Email</span>
+            </div>
+            <div fxFlex="30vw" style="position: absolute;" fxLayoutAlign="end end">
+                <mat-icon (click)='close($event)'class="acme-cs-mat-icon-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="3vw" height="4vh" viewBox="0 0 24 24">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                        <path d="M0 0h24v24H0z" fill="none" />
+                    </svg>
+                </mat-icon>
+            </div>
+       </div>
+   </div>
+    <div fxFlex="2vh" fxFill fxLayoutAlign="center center" class="acme-sc-small-message">
         <span>Please check your inbox for a confirmation email. Click the link in the email</span>
     </div>
-    <div fxFlex="20%" fxFill fxLayoutAlign="center" class="acme-sc-small-message">
+    <div fxFlex="2vh" fxFill fxLayoutAlign="center" class="acme-sc-small-message">
         <span>to confirm your email address</span>
     </div>
-    <div fxFlex="30%" fxFill fxLayoutAlign="center center" class="acme-sc-small-message">
+    <div fxFlex="3vh" fxFill fxLayoutAlign="center center" class="acme-sc-small-message">
         <span>After you confirm click Login</span>
     </div>
-    <div fxFlex fxFill  fxLayoutAlign="end"  class="acme-cs-heading">
-        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-            <div fxFlex="50%" fxFill fxLayoutAlign="start" (click)='close($event)'>
-                <button class="acme-sc-activate-account-button" fxFlexFill  mat-raised-button color="accent" >Login</button>
-            </div>
-            <div fxFlex="50%" fxFill fxLayoutAlign="end">
-                <button class="acme-sc-activate-account-button"  fxFlexFill  mat-raised-button (click)="resendEmailConfirmation()" [disabled]="isProgress===true" >
-                    Re-send activation email
-                </button>
+    <div fxFlex fxFill  fxLayoutAlign="end end">
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex fxFill (click)='close($event)'>
+                        <button fxFill class="acme-sc-button" fxFlexFill  mat-raised-button color="accent" >Login</button>
+                    </div>
+                    <div fxFlex fxFill fxLayoutAlign="end end">
+                        <button fxFill class="acme-sc-button acme-sc-resend-activation-email-button"  fxFlexFill  mat-raised-button (click)="resendEmailConfirmation()" [disabled]="isProgress===true" >
+                            Re-send activation email
+                        </button>
+                    </div>
+                </div>
+               
             </div>
         </div>
-       
-    </div>
-    <div fxFlex>
+   </div>
+    <div *ngIf="isProgress===true" fxFlex>
         <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
     </div>
 </div>

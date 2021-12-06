@@ -1,22 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "~material-design-icons/iconfont/material-icons.css";
-
-html, body {
-    height: 100%;
-}
-
-body {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    overflow: auto;
-    margin: 0;
-}
 .acme-cs-mat-card {
     border-radius: 16px !important;
     padding: 0 !important;
 }
 .acme-cs-mat-icon {
     opacity: 0.5
+}
+
+.acme-cs-mat-icon-pointer {
+    opacity: 0.7;
+    cursor: pointer;
 }
 
 .acme-cs-mat-icon-darker {
@@ -27,6 +19,7 @@ body {
     font-size: 1.5vw !important;
     font-weight: 400 !important;
 }
+
 .acme-sc-dialog-box {
     padding:16px !important
 }
@@ -36,6 +29,20 @@ body {
  .acme-sc-container {
     padding: 1.5vw;
  }
+ 
+.acme-form-input-field {
+    font-size: 1.0vw;
+}
+.acme-sc-button {
+    font-size: 0.8vw;
+    padding:0.4vw;
+    line-height: 0;
+}
 .mat-raised-button.mat-warn {
     background-color: darkorange !important;
+}
+
+::ng-deep .mat-checkbox-inner-container {
+    height: 1vw !important;
+    width:1vw !important;
 }

@@ -1,23 +1,27 @@
 <div fxFlexFill fxLayout="column">
-    <div fxFlex="5%" fxLayoutAlign="end end">
-        <mat-icon (click)='close($event)' [ngStyle]="{'cursor': 'pointer'}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
-                <path
-                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                <path d="M0 0h24v24H0z" fill="none" />
-            </svg>
-        </mat-icon>
-    </div>
-    <div fxFlex="5%" fxLayoutAlign="center" class="acme-cs-heading">
-        <span>Create your User Account</span>
-    </div>
-    <div fxFlex="70%">
+    <div fxFlex="5vh">
+        <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+            <div class="acme-cs-heading" fxFlex fxFill fxLayoutAlign="center center">
+                <span>Create your User Account</span>
+            </div>
+            <div fxFlex="35vw" style="position: absolute;" fxLayoutAlign="end center">
+                <mat-icon (click)='close($event)'class="acme-cs-mat-icon-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="3vw" height="4vh" viewBox="0 0 24 24">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                        <path d="M0 0h24v24H0z" fill="none" />
+                    </svg>
+                </mat-icon>
+            </div>
+       </div>
+   </div>
+    <div fxFlex="42vh">
         <div fxFlex>
             <form [formGroup]="createAccountFormGroup" fxFill>
                 <div fxFlexFill fxLayout="column">
-                    <div fxFlex="20%">
+                    <div fxFlex="8vh">
                         <!--First Name-->
-                        <mat-form-field class="form-field" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 <mat-icon class="acme-cs-mat-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
@@ -29,7 +33,7 @@
                                 </mat-icon>
                                 First Name
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="First Name" formControlName="firstNameControl">
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="First Name" formControlName="firstNameControl">
 
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['firstNameControl'].errors?.required ||
                             createAccountFormGroup.controls['firstNameControl'].errors?.whiteSpace">
@@ -37,20 +41,20 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <div fxFlex="20%">
+                    <div fxFlex="8vh">
                         <!--Last Name-->
-                        <mat-form-field class="form-field" fxFill>
+                        <mat-form-field class="form-field  acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">Last Name</mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Last Name" formControlName="lastNameControl">
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="Last Name" formControlName="lastNameControl">
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['lastNameControl'].errors?.required ||
                                 createAccountFormGroup.controls['lastNameControl'].errors?.whiteSpace">
                                 Last Name is <strong>required</strong>
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <div fxFlex="20%">
+                    <div fxFlex="8vh">
                         <!--Email-->
-                        <mat-form-field class="form-field" fxFill>
+                        <mat-form-field class="form-field  acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 <mat-icon class="acme-cs-mat-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
@@ -62,7 +66,7 @@
                                 </mat-icon>
                                 Email
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Email" formControlName="emailControl"
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="Email" formControlName="emailControl"
                                 autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['emailControl'].errors?.email">
                                 Please enter a valid email address
@@ -72,9 +76,9 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <div fxFlex="20%">
+                    <div fxFlex="8vh">
                         <!--Password-->
-                        <mat-form-field class="form-field" fxFill>
+                        <mat-form-field class="form-field  acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 <mat-icon class="acme-cs-mat-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
@@ -86,23 +90,18 @@
                                 </mat-icon>
                                 Password
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Enter your password"
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="Enter your password"
                                 [type]="hide ? 'password' : 'text'" formControlName="passwordControl"
                                 autocomplete="off">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide">
-                                <mat-icon class="acme-cs-mat-icon">{{hide ? 'visibility_off' :
-                                    'visibility'}}</mat-icon>
-                            </button>
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['passwordControl'].errors?.required ||
                                 createAccountFormGroup.controls['passwordControl'].errors?.whiteSpace">
                                 Password is <strong>required</strong>
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <div fxFlex="20%">
+                    <div fxFlex="8vh">
                         <!--confirm password-->
-                        <mat-form-field class="form-field" fxFill>
+                        <mat-form-field class="form-field  acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 <mat-icon class="acme-cs-mat-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
@@ -114,14 +113,9 @@
                                 </mat-icon>
                                 confirm Password
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Retype your password"
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="Retype your password"
                                 [type]="hide ? 'password' : 'text'" formControlName="confirmPasswordControl"
                                 autocomplete="off">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide">
-                                <mat-icon class="acme-cs-mat-icon">{{hide ? 'visibility_off' :
-                                    'visibility'}}</mat-icon>
-                            </button>
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['confirmPasswordControl'].errors?.required ||
                                 createAccountFormGroup.controls['confirmPasswordControl'].errors?.whiteSpace">
                                 Password is <strong>required</strong>
@@ -136,14 +130,14 @@
         </div>
     </div>
 
-    <div fxFlex="10%" fxLayoutAlign="center center" class="acme-sc-term-condition-label">
-        <mat-checkbox id="agreementCheckBox" [checked]="agreementCheck" (change)="agreementChange($event)">I agree to
+    <div fxFlex="5vh" fxLayoutAlign="center" class="acme-sc-term-condition-label">
+        <mat-checkbox class="acme-form-input-field" id="agreementCheckBox" [checked]="agreementCheck" (change)="agreementChange($event)">I agree to
             the terms & conditions</mat-checkbox>
     </div>
     <div fxFlex fxLayoutAlign="end end">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
-            <div fxFill fxFlex>
-                <button fxFill mat-raised-button color="accent" class="acme-sc-crea-account-button" (click)="createAccount()" [disabled]="!createAccountFormGroup.controls['emailControl'].valid ||
+            <div fxFill fxFlex="7vh">
+                <button fxFill mat-raised-button color="accent" class="acme-sc-button" (click)="createAccount()" [disabled]="!createAccountFormGroup.controls['emailControl'].valid ||
                 !createAccountFormGroup.controls['firstNameControl'].valid ||
                 !createAccountFormGroup.controls['lastNameControl'].valid ||
                 !createAccountFormGroup.controls['emailControl'].valid ||

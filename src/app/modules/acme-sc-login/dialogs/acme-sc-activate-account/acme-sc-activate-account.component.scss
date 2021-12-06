@@ -1,3 +1,4 @@
+@import '../../../shared/css/commom.scss';
 .acme-sc-resend-activation-email-button{
     background-color: lightgrey;
 }
@@ -11,7 +12,3 @@
         border-radius: 20px !important;
     }
 }
-
-.acme-sc-activate-account-button {
-    font-size: 1vw;
- }
