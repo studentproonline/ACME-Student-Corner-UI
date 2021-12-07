@@ -16,6 +16,7 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 export class AcmeSCRoomTopicItemComponent implements OnInit {
     @Input() topic: ITopicEntity
     @Input() roomType: string
+    @Input() roomName: string
     @Input() height
 
     tagRemove: boolean = false;
@@ -54,7 +55,7 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
     }
 
     lauchTopic() {
-        this.router.navigateByUrl('/topics/comments?topicId='+this.topic._id+"&roomType="+this.roomType);
+        this.router.navigateByUrl('/topics/comments?topicId='+this.topic._id+"&roomType="+this.roomType +'&roomName='+this.roomName);
     }
 
     updateTopic($event) {

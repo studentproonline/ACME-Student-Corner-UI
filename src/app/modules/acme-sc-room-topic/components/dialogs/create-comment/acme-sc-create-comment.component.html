@@ -1,9 +1,9 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
-    <div fxFlex="5%" fxFill fxLayoutAlign="center start" class="acme-cs-heading">
+    <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>Add new Comment</span>
     </div>
 
-    <div fxFlex="82%" fxFill>
+    <div fxFlex="42vh" fxFill>
         <div fxFlexFill fxLayout="column">
             <div fxFlex="80%">
                 <quill-editor fxFlexFill [(ngModel)]="model" [modules]="modules" placeholder="Insert comment here ..."
@@ -14,20 +14,25 @@
     </div>
 
     <div fxFlex fxLayoutAlign="end end" fxFill>
-        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-            <div fxFlex fxLayoutAlign="start end" fxFill>
-                <button fxFill mat-raised-button color="accent" class="acme-sc-comment-creation-confirm-button"
-                    (click)="createComment()" [disabled]="!model || model.length === 0">
-                    Add
-                </button>
-            </div>
-            <div fxFlex fxLayoutAlign="end end" fxFill>
-                <button fxFill mat-raised-button color="warn" class="acme-sc-comment-creation-close-button"
-                    (click)="cancelCommentCreation()">
-                    Cancel
-                </button>
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex fxLayoutAlign="start end" fxFill>
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
+                            (click)="createComment()" [disabled]="!model || model.length === 0">
+                            Add
+                        </button>
+                    </div>
+                    <div fxFlex fxLayoutAlign="end end" fxFill>
+                        <button fxFill mat-raised-button color="warn" class=" acme-sc-button acme-sc-comment-creation-close-button"
+                            (click)="cancelCommentCreation()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+       
     </div>
     <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
 </div>

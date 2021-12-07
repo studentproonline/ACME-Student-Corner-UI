@@ -79,7 +79,7 @@
                     </svg>
                 </div>
                  <!--Empty topics message-->
-                 <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-empty-topic-message">
+                 <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
                     <span>You don't have any topics to discuss, create new topic and start the discussion.</span>
                 </div>
                 <div *ngIf="room.status ==='Active'" fxFlex="7vh" fxFill fxLayoutAlign="center start">
@@ -97,7 +97,8 @@
                 <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vh">
                     <ng-scrollbar thumbClass="white-scrollbars">
                         <acme-sc-room-topic *ngFor="let topic of filteredRoomTopicsList" [topic]="topic"
-                            [roomType]="roomType" [height]="topicHeight">
+                            [roomType]="roomType" [height]="topicHeight"
+                            [roomName]="room.title">
                             </acme-sc-room-topic>
                     </ng-scrollbar>
                 </div>
