@@ -12,15 +12,14 @@
     <div fxFlex fxLayoutAlign="center center"
         *ngIf="roomType==='Favorites' && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="20vh" fxLayoutAlign="center center" style="opacity: 0.7;">
-                <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw"
-                        fill="purple">
+            <div fxFlex="20vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path
                             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
             </div>
-            <div  fxFlex="5%" fxLayoutAlign="center center">
+            <div  fxFlex="5vh" fxLayoutAlign="center center">
                 <span class="acme-sc-label-default-message">You does not have any favorites added yet, please add rooms to your favorite list.</span>
             </div>
         </div>
@@ -30,9 +29,9 @@
     <div fxFlex fxLayoutAlign="center center"
         *ngIf="roomType==='Shared with Me' && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="20vh" fxLayoutAlign="center center" style="opacity: 0.7;">
+            <div fxFlex="20vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="10vh"
-                        viewBox="0 0 24 24" width="10vw" fill="purple">
+                        viewBox="0 0 24 24" width="10vw">
                         <g>
                             <rect fill="none" height="24" width="24" />
                         </g>
@@ -61,9 +60,9 @@
     <div fxFlex fxLayoutAlign="center center"
         *ngIf="roomType==='Achievements' && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="20vh" fxLayoutAlign="center center" style="opacity: 0.7;">
+            <div fxFlex="20vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="10vh"
-                        viewBox="0 0 24 24" width="5vw" fill="purple">
+                        viewBox="0 0 24 24" width="5vw">
                         <g>
                             <rect fill="none" height="24" width="24" x="0" />
                         </g>

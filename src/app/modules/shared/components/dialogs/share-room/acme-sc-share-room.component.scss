@@ -1,15 +1,4 @@
-.acme-sc-share-confirmation-close-button {
+@import '../../../../shared/css/commom.scss';
+acme-sc-share-confirmation-close-button {
     background-color: darkorange !important;
-      font-size: 1.1vw;
-    padding:0.4vw;
-    line-height: 0;
-}
-.acme-sc-share-confirmation-confirm-button {
-    font-size:1vw;
-    padding:0.4vw;
-    line-height: 0;
-}
-
-.acme-form-input-field {
-    font-size: 1.0vw;
 }

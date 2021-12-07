@@ -1,14 +1,14 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
-    <div fxFlex="5%" fxFill class="acme-cs-heading">
+    <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>Create new discussion Topic</span>
     </div>
-    <div fxFlex="80%" fxFill>
+    <div fxFlex="20vh" fxFill>
         <div fxFlex fxFill>
             <form [formGroup]="topicFormGroup" fxFill>
                 <div fxFlexFill fxLayout="column">
                     <!--topic title-->
-                    <div fxFlex="30%" fxFill>
-                        <mat-form-field class="form-field" fxFill>
+                    <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 Title
                             </mat-label>
@@ -21,9 +21,9 @@
                         </mat-form-field>
                     </div>
                     <!--topic tags-->
-                    <div fxFlex="70%" fxFill>
+                    <div fxFlex="9vh" fxFill>
                         <!--Topic Tags-->
-                        <mat-form-field class="form-field" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">Associated Tags</mat-label>
                             <mat-chip-list #chipList aria-label="Topic tags">
                                 <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
@@ -37,23 +37,30 @@
                             </mat-chip-list>
                         </mat-form-field>
                     </div>
+                    <div fxFlex="2vh" fxFill class="acme-sc-topic-tags-message" fxLayoutAlign="center center">
+                            <span>To associate tag please press <b>Enter</b> after typing tag name.</span>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
     <div fxFlex fxLayoutAlign="end end" fxFill>
-        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-            <div fxFlex fxLayoutAlign="start end" fxFill>
-                <button fxFill mat-raised-button color="accent" class="acme-sc-topic-creation-confirm-button"
-                    (click)="createTopic()" [disabled]="!topicFormGroup.controls['titleControl'].valid">
-                    Create
-                </button>
-            </div>
-            <div fxFlex fxLayoutAlign="end end" fxFill>
-                <button fxFill mat-raised-button color="warn" class="acme-sc-topic-creation-close-button"
-                    (click)="cancelTopicCreation()">
-                    Cancel
-                </button>
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex fxLayoutAlign="start end" fxFill>
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
+                            (click)="createTopic()" [disabled]="!topicFormGroup.controls['titleControl'].valid">
+                            Create
+                        </button>
+                    </div>
+                    <div fxFlex fxLayoutAlign="end end" fxFill>
+                        <button fxFill mat-raised-button color="warn" class="acme-sc-button acme-sc-topic-creation-close-button"
+                            (click)="cancelTopicCreation()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

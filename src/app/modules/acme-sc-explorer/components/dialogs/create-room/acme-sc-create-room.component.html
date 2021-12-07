@@ -1,16 +1,14 @@
 <div fxFlexFill fxLayout="column">
-    <div fxFlex="10%" fxFill>
-        <acme-sc-dialog-header [title]="'Create Room'" (closeButtonClicked)="closeButtonClicked($event)">
-
-        </acme-sc-dialog-header>
+    <div fxFlex="5vh" fxFill class="acme-cs-heading">
+        <span>Create Room</span>
     </div>
-    <div fxFlex="75%" fxFill>
+    <div fxFlex="20vh" fxFill>
         <div fxFlex>
             <form [formGroup]="createRoomFormGroup">
                 <div fxFlexFill fxLayout="column">
                     <!--Room title-->
-                    <div fxFlex="50%" fxFill>
-                        <mat-form-field class="form-field" fxFill>
+                    <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 <mat-icon class="acme-cs-mat-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
@@ -30,8 +28,8 @@
                         </mat-form-field>
                     </div>
                     <!--Room Description-->
-                    <div fxFlex="50%" fxFill>
-                        <mat-form-field class="form-field" fxFill>
+                    <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 <mat-icon class="acme-cs-mat-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
@@ -42,7 +40,8 @@
                                     </svg>
                                 </mat-icon>
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Description" formControlName="descriptionControl">
+                            <input class="acme-form-input-field" required matInput placeholder="Description"
+                                formControlName="descriptionControl">
                             <mat-error class="acme-form-input-field" *ngIf="createRoomFormGroup.controls['descriptionControl'].errors?.required ||
                                 createRoomFormGroup.controls['descriptionControl'].errors?.whiteSpace">
                                 Description is <strong>required</strong>
@@ -54,13 +53,23 @@
         </div>
     </div>
     <div fxFlex fxFill fxLayoutAlign="end end">
-        <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
-            <div fxFlex="50%" fxFill>
-                <button class="acme-sc-create-room-button" mat-raised-button color="accent" fxFill
-                    (click)="createRoom()" [disabled]="!createRoomFormGroup.controls['titleControl'].valid ||
-                !createRoomFormGroup.controls['descriptionControl'].valid || isProgress===true">
-                    Create Room
-                </button>
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex fxLayoutAlign="start end" fxFill>
+                        <button class="acme-sc-button" mat-raised-button color="accent" fxFill
+                            (click)="createRoom()" [disabled]="!createRoomFormGroup.controls['titleControl'].valid ||
+                            !createRoomFormGroup.controls['descriptionControl'].valid || isProgress===true">
+                            Create Room
+                        </button>
+                    </div>
+                    <div fxFlex fxLayoutAlign="end end" fxFill>
+                        <button fxFill mat-raised-button color="warn" class="acme-sc-button acme-sc-room-creation-close-button"
+                        (click)="closeButtonClicked($event)">
+                        Cancel
+                    </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

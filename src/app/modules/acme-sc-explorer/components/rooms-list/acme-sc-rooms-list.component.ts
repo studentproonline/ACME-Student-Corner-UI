@@ -161,8 +161,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
     createRoom() {
         const dialogRef = this.dialog.open(AcmeSCCreateRoomComponent, {
-            width: this.acmesharedUiTuilitiesService.getCreateRoomScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getCreateRoomScreenHeight(),
+            width: '40vw',
+            height: '45vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}

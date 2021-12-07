@@ -1,23 +1,26 @@
-<div fxLayout="column" fxFlexFill>
+<div fxLayout="column" class="acme-sc-room-topic-item-container">
     <div fxFlex fxFill>
-        <div fxLayout="row" class="acme-sc-room-topic-item-container" fxLayoutGap="0.4vw">
-            <div fxFlex="6%" fxFill>
+        <div fxLayout="row" fxFlexFill fxLayoutGap="0.4vw">
+            <!--votes and comments section-->
+            <div fxFlex="5vw" fxFill>
                 <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vw">
-                    <div class="acme-sc-room-topic-item" fxFlex="0 0 48%" fxFill>
+                    <div class="acme-sc-room-topic-item" fxFlex fxFill>
                         <acme-sc-room-topic-votes [topic]="topic"></acme-sc-room-topic-votes>
                     </div>
-                    <div class="acme-sc-room-topic-item" fxFlex="0 0 48%" fxFill>
+                    <div class="acme-sc-room-topic-item" fxFlex fxFill>
                         <acme-sc-room-topic-views [topic]="topic"></acme-sc-room-topic-views>
                     </div>
                 </div>
             </div>
+
+            <!--topic details-->
             <div class="acme-sc-room-topic-item" fxFlex fxFill>
-                <div fxFlexFill fxLayout="column">
-                    <div fxFlex="40%" fxFlexFill>
-                        <div fxLayout="row" fxLayoutGap="0.4vw">
+                <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+                    <div fxFlex="45%" fxFlexFill>
+                        <div fxLayout="row" class="acme-sc-room-topic-row" fxLayoutGap="0.4vw">
                             <!--question icon-->
-                            <div fxFlex="4%" class="acme-sc-room-topic-row">
-                                <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%">
+                            <div fxFlex="2vw">
+                                <mat-icon fxLayoutAlign="center center" style="height:3vh;width:2vw">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
                                         width="100%" fill="darkgoldenrod">
                                         <path d="M0 0h24v24H0z" fill="none" />
@@ -32,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <div fxFlex="20%" fxFlexFill>
+                    <div fxFlex="10%" fxFlexFill>
                         <div fxLayout="row" fxLayoutGap="0.4vw" fxLayoutAlign="end center"
                             class="acme-sc-room-topic-row">
                             <!--created by-->
@@ -50,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div fxFlex="40%" fxFlexFillfxLayoutAlign="start center">
+                    <div fxFlex="45%" fxFlexFillfxLayoutAlign="start center">
                         <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
                             <div fxFlex="85%" fxLayoutAlign="start center">
                                 <mat-chip-list style="padding:0.4vw" #chipList aria-label="Topic tags"

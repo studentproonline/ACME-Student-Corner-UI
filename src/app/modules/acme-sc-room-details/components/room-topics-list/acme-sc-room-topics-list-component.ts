@@ -54,8 +54,8 @@ export class AcmeSCRoomTopicsListComponent {
 
     createTopic() {
         const dialogRef = this.dialog.open(AcmeSCSRoomCreateTopicComponent, {
-            width: this.acmesharedUiTuilitiesService.getCreateTopicScreenWidth(),
-            height:  this.acmesharedUiTuilitiesService.getCreateTopicScreenHeight(),
+            width: '40vw',
+            height: '45vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { roomId: this.room._id }

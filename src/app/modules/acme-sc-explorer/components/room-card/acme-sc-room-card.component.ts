@@ -196,8 +196,8 @@ export class AcmeSCRoomComponent implements OnInit {
     // share room
     shareRoom() {
         const dialogRef = this.dialog.open(AcmeSCShareRoomComponent, {
-            width: this.acmesharedUiTuilitiesService.getShareRoomScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getShareScreenHeight(),
+            width: '40vw',
+            height: '40vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { room: this.room }

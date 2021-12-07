@@ -1,18 +1,18 @@
 <div fxFlexFill fxLayout="row">
-    <div fxFlex="20%">
+    <div fxFlex="20vw">
         <div fxFlexFill fxLayout="column">
             <div  fxFlex>
                 <acme-sc-room-users-list [room]="roomDetailsEntity" [canAddUser]="isRoomOwner"></acme-sc-room-users-list>
             </div>
-            <div class="acme-sc-company-label"  fxFlex="5%" fxLayoutAlign="center center">
+            <div class="acme-sc-company-label"  fxFlex="5vh" fxLayoutAlign="center center">
                 <span>Powered By: <b>Bitstone Infotech</b> </span>
             </div>
         </div>
     </div>
     <div fxFlex class="acme-sc-container">
-        <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+        <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
             <!--main header-->
-            <div fxFlex="7%">
+            <div fxFlex="5vh">
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
                     (userNameClicked)="userNameClicked($event)" (searchTextchange)="searchTextchange($event)"
                     [placeHolder]="'Start searching for a topic by title'">
@@ -23,21 +23,21 @@
                 <mat-spinner></mat-spinner>
             </div>
             <!--Navigation row-->
-            <div *ngIf="!isProgress && isSuccessFull" fxFlex="7%" class="acme-sc-room-details-header">
+            <div *ngIf="!isProgress && isSuccessFull" fxFlex="5vh">
                 <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType"></acme-sc-navigation-bar>
             </div>
 
             <!--Sever error-->
             <div *ngIf="!isSuccessFull && !isProgress" fxFlex fxFill fxLayoutAlign="center center">
                 <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-                    <div fxFlex="20%" fxFill fxLayoutAlign="center  center">
-                        <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="5vw"
-                            height="5vw" viewBox="0 0 24 24">
+                    <div fxFlex="20vh" fxFill fxLayoutAlign="center  center">
+                        <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="10vw"
+                            height="10vh" viewBox="0 0 24 24">
                             <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
                         </svg>
                     </div>
-                    <div fxFlex="5%" fxFill fxLayoutAlign="center center"
-                        class="acme-sc-server-response-message">
+                    <div fxFlex="5vh" fxFill fxLayoutAlign="center center"
+                        class="acme-sc-label-default-message">
                         <span>Fail to get room details, please contact system administrator.</span>
                     </div>
                 </div>

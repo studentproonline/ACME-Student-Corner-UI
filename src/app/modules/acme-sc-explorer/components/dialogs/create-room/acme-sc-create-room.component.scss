@@ -1,7 +1,5 @@
-.acme-sc-create-room-button {
-    font-size: 1vw;
-}
+@import '../../../../shared/css/commom.scss';
 
-.acme-form-input-field {
-    font-size: 1.0vw;
+.acme-sc-room-creation-close-button {
+    background-color: darkorange !important;
 }

@@ -1,11 +1,11 @@
-<div fxLayout="column" class="acme-sc-room-user-item">
+<div fxLayout="column" class="acme-sc-navigation-side-bar-item">
     <div fxFlexFill fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="0.4vw">
         <!--user icon-->
-        <div fxFlex="10%" fxFlexFill fxLayoutAlign="center center" style="padding-left: 0.4vw;">
+        <div fxFlex="2vw" fxFlexFill fxLayoutAlign="center center" style="padding-left: 0.4vw;">
             <div class="UserInfoCircle" fxLayoutAlign="center center">
-                <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" style="height:80%;width:80%;"
+                <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" style="height:2vh;width:1vw;"
                     class="acme-cs-mat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="80%" viewBox="0 0 24 24" width="80%"
+                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                         fill="#000000">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
@@ -15,7 +15,8 @@
             </div>
         </div>
         <!--user name-->
-        <div fxFlexFill fxFlex="80%" fxLayoutAlign="start center" class="acme-sc-room-user-name">
+        <div fxFlexFill fxFlex="14vw" fxLayoutAlign="start center"
+            class="acme-sc-navigation-side-bar-item-text acme-sc-room-user-name">
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">{{user.userName}}  <br> 
                 <span (click)="approveRejectUser('Approved','Approve')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-approve-link">Approve</span>
                 <span (click)="approveRejectUser('Rejected', 'Reject')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-reject-link">Reject</span>
@@ -24,9 +25,9 @@
               
         </div>
         <!--remove icon-->
-        <div *ngIf="user.status ==='Active' && canRemoveUser" fxFlex="10%" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon"
+        <div *ngIf="user.status ==='Active' && canRemoveUser" fxFlex="2vw" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon"
             (click)="removeUser()">
-            <mat-icon matTooltip="Remove user" fxLayoutAlign="center center" style="height:100%;width:100%;"
+            <mat-icon matTooltip="Remove user" fxLayoutAlign="center center" style="height:3vh;width:2vw;"
                 class="acme-cs-mat-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="#000000">
                     <path d="M0 0h24v24H0z" fill="none" />
@@ -36,7 +37,7 @@
             </mat-icon>
         </div>
         <!--dummy for allignment-->
-        <div *ngIf="user.status !=='Active' || !canRemoveUser" fxFlex="10%" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon">
+        <div *ngIf="user.status !=='Active' || !canRemoveUser" fxFlex="2vw" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon">
         </div>
     </div>
 </div>

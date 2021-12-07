@@ -81,14 +81,14 @@ export class AcmeSCRoomUsersListComponent implements OnChanges {
     // share room
     shareRoom() {
         const dialogRef = this.dialog.open(AcmeSCShareRoomComponent, {
-            width: this.acmesharedUiTuilitiesService.getShareRoomScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getShareScreenHeight(),
+            width: '40vw',
+            height: '40vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { room: this.room }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.data) {
+            if (result && result.data) {
                 //this.updateRoomStatus(status);
             }
         });
