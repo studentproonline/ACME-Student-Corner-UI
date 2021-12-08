@@ -61,8 +61,8 @@ export class AcmeSCRoomTopicsListComponent {
 
     uploadNewContent() {
         const dialogRef = this.dialog.open(AcmeSUploadContentComponent, {
-            width: '700px',
-            height: '400px',
+            width: '45vw',
+            height: '53vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { roomId: this.room._id }

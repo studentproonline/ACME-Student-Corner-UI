@@ -1,30 +1,30 @@
-<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between">
-    <div fxFlex="5%" fxLayoutAlign="center start" class="acme-cs-heading">
+<div fxFlexFill fxLayout="column"  fxLayoutGap="0.4vw">
+    <div fxFlex="5vh" fxLayoutAlign="center start" class="acme-cs-heading">
         <span>Upload new content</span>
     </div>
     <div fxFlex>
         <mat-tab-group (selectedTabChange)="myTabSelectedTabChange($event)">
             <!--document tab-->
-            <mat-tab>
-                <ng-template mat-tab-label>
+            <mat-tab class="acme-form-input-field">
+                <ng-template mat-tab-label class="acme-form-input-field">
                     <mat-icon>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="2vh"
                             fill="purple">
                             <path d="M0 0h24v24H0V0z" fill="none" />
                             <path
                                 d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z" />
                         </svg>
                     </mat-icon>
-                    <span style="padding-left: 4px;">Documents</span>
+                    <span class="acme-sc-tab">Documents</span>
                 </ng-template>
                 <!--upload document form-->
                 <form [formGroup]="documentuploadFormGroup">
                     <!--File Description-->
-                    <mat-form-field class="form-field" fxFill>
-                        <mat-label>
+                    <mat-form-field class="form-field acme-form-input-field" fxFill>
+                        <mat-label class="acme-form-input-field">
                             Description
                         </mat-label>
-                        <input required matInput placeholder="Description" formControlName="fileDescriptionControl"
+                        <input class="acme-form-input-field" required matInput placeholder="Description" formControlName="fileDescriptionControl"
                             autocomplete="off">
                         <mat-error *ngIf="documentuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
                             documentuploadFormGroup.controls['fileDescriptionControl'].errors?.whiteSpace">
@@ -32,15 +32,14 @@
                         </mat-error>
                     </mat-form-field>
                     <!--content Tags-->
-                    <mat-label class="acme-sc-mat-label"><span> Associate Tags : please press
+                    <mat-label class="acme-sc-user-info"><span> Associate Tags : please press
                             <B>Enter</B> after typing to associate tag with the content.</span></mat-label>
-                    <mat-form-field class="form-field" style="width:99%">
+                    <mat-form-field class="form-field acme-form-input-field" style="width:99%">
                         <mat-chip-list #chipList>
                             <mat-chip *ngFor="let tag of documentTags" [selectable]="selectable" [removable]="removable"
-                                (removed)="removeTag(tag)" fxLayoutAlign="center center"
-                                class="acme-sc-library-content-chip">
+                                (removed)="removeTag(tag)" fxLayoutAlign="center center" >
                                 {{tag}}
-                                <mat-icon class="acme-cs-mat-icon acme-sc-library-content-chip-close-icon">cancel
+                                <mat-icon class="acme-cs-mat-icon-darker"  fxLayoutAlign="center center">cancel
                                 </mat-icon>
                             </mat-chip>
                             <input formControlName="documentTagControl" [matChipInputFor]="chipList"
@@ -49,13 +48,16 @@
                         </mat-chip-list>
                     </mat-form-field>
                     <!--File-->
-                    <input formControlName="fileControl" id="file" type="file" class="form-control"
+                    <label for="file-upload" class="acme-form-input-field custom-file-upload">
+                        upload content
+                    </label>
+                    <input formControlName="fileControl" id="file-upload" type="file" class="form-control acme-form-input-field"
                         (change)="onFileChange($event)" accept=".pdf, .doc,.docx, .txt, .ppt, .pptx,.mp3,.mp4,.avi">
-                    <div class="acme-sc-file-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                    <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
                 </form>
             </mat-tab>
             <!--Link tab-->
-            <mat-tab>
+            <mat-tab class="acme-form-input-field">
                 <ng-template mat-tab-label>
                     <mat-icon>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
@@ -65,47 +67,47 @@
                                 d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
                         </svg>
                     </mat-icon>
-                    <span style="padding-left: 4px;">Links</span>
+                    <span class="acme-sc-tab">Links</span>
                 </ng-template>
                 <!--upload link form-->
                 <form [formGroup]="linkuploadFormGroup">
                     <!--Link Description-->
-                    <mat-form-field class="form-field" fxFill>
-                        <mat-label>
+                    <mat-form-field class="form-field acme-form-input-field" fxFill>
+                        <mat-label acme-form-input-field>
                             Link
                         </mat-label>
-                        <input required matInput placeholder="Link : provide full url including http:// or https://"
+                        <input class="acme-form-input-field" required matInput placeholder="Link : provide full url including http:// or https://"
                             formControlName="fileLinkControl" autocomplete="off">
-                        <mat-error *ngIf="linkuploadFormGroup.controls['fileLinkControl'].errors?.required ||
+                        <mat-error class="acme-form-input-field" *ngIf="linkuploadFormGroup.controls['fileLinkControl'].errors?.required ||
                             linkuploadFormGroup.controls['fileLinkControl'].errors?.whiteSpace">
                             Link is <strong>required</strong>
                         </mat-error>
                     </mat-form-field>
                     <!--File Description-->
-                    <mat-form-field class="form-field" fxFill>
-                        <mat-label>
+                    <mat-form-field class="form-field acme-form-input-field" fxFill>
+                        <mat-label class="acme-form-input-field">
                             Description
                         </mat-label>
-                        <input required matInput placeholder="Description" formControlName="fileDescriptionControl"
+                        <input class="acme-form-input-field" required matInput placeholder="Description" formControlName="fileDescriptionControl"
                             autocomplete="off">
-                        <mat-error *ngIf="linkuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
+                        <mat-error class="acme-form-input-field" *ngIf="linkuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
                             linkuploadFormGroup.controls['fileDescriptionControl'].errors?.whiteSpace">
                             Description is <strong>required</strong>
                         </mat-error>
                     </mat-form-field>
                     <!--content Tags-->
-                    <mat-label class="acme-sc-mat-label"><span> Associate Tags : please press
+                    <mat-label class="acme-sc-user-info"><span> Associate Tags : please press
                             <B>Enter</B> after typing to associate tag with the content.</span></mat-label>
-                    <mat-form-field class="form-field" style="width:99%">
+                    <mat-form-field class="form-field acme-form-input-field" style="width:99%">
                         <mat-chip-list #chipList>
                             <mat-chip *ngFor="let tag of linkTags" [selectable]="selectable" [removable]="removable"
                                 (removed)="removeTag(tag)" fxLayoutAlign="center center"
                                 class="acme-sc-library-content-chip">
                                 {{tag}}
-                                <mat-icon class="acme-cs-mat-icon acme-sc-library-content-chip-close-icon">cancel
+                                <mat-icon class="acme-cs-mat-icon-darker"  fxLayoutAlign="center center">cancel
                                 </mat-icon>
                             </mat-chip>
-                            <input formControlName="linkTagControl" [matChipInputFor]="chipList"
+                            <input class="acme-form-input-field" formControlName="linkTagControl" [matChipInputFor]="chipList"
                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                 (matChipInputTokenEnd)="addTag($event)">
                         </mat-chip-list>

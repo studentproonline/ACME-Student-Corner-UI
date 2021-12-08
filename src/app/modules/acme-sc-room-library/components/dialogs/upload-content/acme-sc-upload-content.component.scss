@@ -1,39 +1,32 @@
+@import '../../../../shared/css/commom.scss';
+@import '../../../../shared/css/variables.scss';
+
 .acme-sc-content-upload-close-button {
     background-color: darkorange !important;
-    font-size:1vw;
-    padding:0.4vw;
-    line-height: 0;
 }
 .acme-sc-content-upload-confirm-button {
     font-size:1vw;
     padding:0.4vw;
     line-height: 0;
 }
-.acme-sc-file-error {
-    margin-top:4px;
-    font-size: x-small;
-    color:red;
-}
-
-.acme-sc-library-content-chip {
-    padding-left:8px;
-}
-
-.acme-form-input-field {
-    font-size: 1.0vw;
-}
 
 
-.acme-sc-library-content-chip-close-icon {
-    padding-left: 4px;;
-}
-
-.acme-sc-library-content-tags-message {
-    font-size: small;
-    font-style: italic;
-    opacity: 0.7;
-}
 .acme-sc-mat-label {
     opacity: 0.5;
     font-size:small
+}
+
+.custom-file-upload {
+    border: 0.1vh solid #ccc;
+    display: inline-block;
+    padding: 0.7vw;
+    cursor: pointer;
+    border-radius: 1vh;
+    background-color: $acme-sc-company-label-color;
+    opacity: 0.7;
+    color: white;
+}
+
+input[type="file"] {
+    display: none;
 }
