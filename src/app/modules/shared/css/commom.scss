@@ -57,6 +57,35 @@
     border-right-style: solid;
 }
 
+.acme-sc-owner-label {
+    padding-left:0.5vw;
+    font-size: 0.7vw;
+}
+
+.acme-sc-date-label {
+    padding-left:0.5vw;
+    font-size: 0.7vw;
+}
+
+.acme-sc-content-link {
+    color: steelblue;
+    font-size: 1.1vw;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+
+.acme-sc-content-description {
+    padding-left:0.5vw;
+    font-size: 0.8vw;
+    font-style: italic;
+    color: purple;
+}
+
+.acme-sc-content-link:hover{
+    color:blue;
+}
+
 .acme-sc-navigation-item-title {
     
     opacity: 0.7;

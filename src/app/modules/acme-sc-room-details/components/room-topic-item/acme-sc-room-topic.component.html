@@ -31,7 +31,7 @@
                             </div>
                             <!--Topic title-->
                             <div (click)="lauchTopic()" fxFlex fxLayoutAlign="start center" style="cursor:pointer;">
-                                <span class="acme-sc-room-topic-title">{{topic.title}}</span>
+                                <span class="acme-sc-content-link">{{topic.title}}</span>
                             </div>
                         </div>
                     </div>
@@ -39,17 +39,11 @@
                         <div fxLayout="row" fxLayoutGap="0.4vw" fxLayoutAlign="end center"
                             class="acme-sc-room-topic-row">
                             <!--created by-->
-                            <div fxFlex="70%" fxLayoutAlign="start center">
-                                <span class="acme-sc-room-topic-details-label-bold">Created by:</span><span
-                                    class="acme-sc-room-topic-details-label"
-                                    style="padding-left:0.4vw">{{topic.ownerFirstName}}</span>
-                                <span class="acme-sc-room-topic-details-label"
-                                    style="padding-left:0.4vw">{{topic.ownerLastName}}</span>
+                            <div fxFlex="70%" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                                <span><b>Created by: </b>{{topic.ownerFirstName }} {{topic.ownerLastName}}</span>
                             </div>
-                            <div fxFlex="30%" fxLayoutAlign="end center">
-                                <span class="acme-sc-room-topic-details-label-xsmall-bold">Started on:</span><span
-                                    class="acme-sc-room-topic-details-label-xsmall"
-                                    style="padding-left:0.4vw;color:purple;opacity: 1;">{{topic.createdAt|date:'medium'}}</span>
+                            <div fxFlex="30%" fxLayoutAlign="end center" class="acme-sc-date-label">
+                                <span><b>Started on: </b>{{topic.createdAt|date:'medium'}}</span>
                             </div>
                         </div>
                     </div>

@@ -3,11 +3,11 @@
     <div fxFlex="40%" fxFill>
         <div fxLayout="row" fxLayoutGap="0.4vw">
             <!--content icon -->
-            <div fxFlex="2%" class="acme-sc-room-topic-row">
+            <div fxFlex="2vw" class="acme-sc-room-topic-row">
                 <mat-icon *ngIf="libraryContent.contentType !=='link'" fxLayoutAlign="center center"
                     style="height:100%;width:100%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="100%"
-                        viewBox="0 0 24 24" width="100%" fill="#000000">
+                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="3vh"
+                        viewBox="0 0 24 24" width="2vw" fill="#000000">
                         <g>
                             <rect fill="none" height="24" width="24" />
                             <path
@@ -17,7 +17,7 @@
                 </mat-icon>
                 <mat-icon *ngIf="libraryContent.contentType ==='link'" fxLayoutAlign="center center"
                     style="height:100%;width:100%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
+                    <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="2vw"
                         fill="#000000">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
@@ -29,8 +29,8 @@
             <div (click)="openDocument()" fxFlex fxFill fxLayoutAlign="start start" style="cursor:pointer;">
                 <div fxLayout="column" fxLayoutGap="0.4vw">
                     <div fxFlex="98%">
-                        <span class="acme-sc-room-library-content-title">{{libraryContent.name}} </span>
-                        <span class="acme-sc-room-library-content-description">({{libraryContent.description}})</span>
+                        <span class="acme-sc-content-link">{{libraryContent.name}} </span>
+                        <span class="acme-sc-content-description">({{libraryContent.description}})</span>
                     </div>
                     <div fxFlex="2%" *ngIf="isProgress">
                         <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
@@ -42,10 +42,10 @@
     <div fxFlex="20%" fxFill>
         <div fxLayout="row" fxLayoutGap="0.4vw">
             <div fxFlex="80%" fxFill>
-                <span class="acme-sc-room-library-content-owner"><b>Created By:</b> {{libraryContent.owner}}</span>
+                <span class="acme-sc-owner-label"><b>Created By:</b> {{libraryContent.owner}}</span>
             </div>
             <div fxFlex="20%" fxFill fxLayoutAlign="end start">
-                <span class="acme-sc-room-library-content-createdOn"><b>Created on:</b>
+                <span class="acme-sc-date-label"><b>Created on:</b>
                     {{libraryContent.createdOn|date:'medium'}}</span>
             </div>
         </div>
