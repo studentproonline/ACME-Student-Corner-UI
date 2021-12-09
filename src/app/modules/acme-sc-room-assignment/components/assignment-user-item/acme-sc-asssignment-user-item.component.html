@@ -1,14 +1,16 @@
-<div fxLayout="row" fxLayoutGap="8px"  (click)="userItemClicked()"
-    [ngClass]="selected===true?'acme-sc-navigation-item-container' : 'acme-sc-navigation-item-container-default'">
-    <div fxFlex="2px" [ngClass]="{'acme-sc-navigation-item-selection-bar':selected}">
+<div fxLayout="row" fxLayoutGap="0.4vw"  (click)="userItemClicked()"
+    [ngClass]="selected===true?'acme-sc-navigation-side-bar-item-container' : 'acme-sc-navigation-side-bar-item-container-default'"
+    class="acme-sc-navigation-side-bar-item" fxLayoutAlign="start center">
+   
+    <div fxFlex="0.1vw" fxFill [ngClass]="{'acme-sc-navigation-side-bar-item-selection-bar':selected}">
 
     </div>
-    <div fxFlex="24px" fxLayoutAlign="center center"
-        [ngClass]="selected===true?'acme-sc-navigation-item-icon-selected' : 'acme-cs-mat-icon'">
+    <div fxFlex="1.5vw" fxLayoutAlign="center center"
+        [ngClass]="selected===true?'acme-sc-content-item-icon-selected' : 'acme-cs-mat-icon'">
         <div class="UserInfoCircle" fxLayoutAlign="center center">
-            <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" style="height:80%;width:80%;"
-                class="acme-cs-mat-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="80%" viewBox="0 0 24 24" width="80%"
+            <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center"  class="acme-cs-mat-icon"
+            style="height:2vh;width:1vw;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                     fill="#000000">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path
@@ -18,7 +20,7 @@
         </div>
     </div>
     <div fxFlex fxLayoutAlign="start center"
-        [ngClass]="selected===true?'acme-sc-navigation-item-text' : 'acme-sc-navigation-item-text-default'">
-        <span>{{user.userName}}</span>
+        [ngClass]="selected===true?'acme-sc-navigation-side-bar-item-text' : 'acme-sc-navigation-side-bar-item-text-default'">
+        <span  class="acme-sc-room-user-name">{{user.userName}}</span>
     </div>
 </div>

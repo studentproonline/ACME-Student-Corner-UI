@@ -8,6 +8,7 @@ export interface IUserAssignmentEntity {
     reviewerLastName: string;
     reviewedAt: Date;
     roomId: string;
+    roomOwner: string;
     data: string;
     evaluatedData: string;
     stars: Number;

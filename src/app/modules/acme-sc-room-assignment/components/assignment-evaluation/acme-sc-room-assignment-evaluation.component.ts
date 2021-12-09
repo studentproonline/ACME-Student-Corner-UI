@@ -8,6 +8,7 @@ import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-u
 
 import { IAssignmentEntity } from '../../entities/assignment';
 import { IUserAssignmentEntity } from '../../entities/userassignment';
+import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignment/acme-sc-evaluate-assignment.component';
@@ -21,10 +22,12 @@ import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignmen
 export class AcmeSCAssignmentEvaluationComponent {
     @Input() assignment: IAssignmentEntity;
     @Input() roomType: string;
+    @Input() roomName: string;
     @Input() userId: string = '';
     @Input() roomStatus: String;
 
     userAssignment: IUserAssignmentEntity;
+    roomDetailsEntity: IRoomEntity;
 
     isProgress = false;
     isSuccessFull = false;
@@ -36,6 +39,21 @@ export class AcmeSCAssignmentEvaluationComponent {
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
         public dialog: MatDialog, private router: Router) {
 
+         
+    }
+
+    ngOnInit() {
+        this.roomDetailsEntity = {
+            _id: '', name: '',
+            owner: undefined,
+            email: '',
+            title: this.roomName,
+            description: undefined,
+            creationDate: undefined,
+            status: undefined
+
+        }
+        console.log(this.roomDetailsEntity);
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -46,7 +64,6 @@ export class AcmeSCAssignmentEvaluationComponent {
         }
     }
 
-   
     reviewAssignment() {
         let mode;
         if(this.userAssignment.status === 'Reviewed') {
@@ -76,10 +93,22 @@ export class AcmeSCAssignmentEvaluationComponent {
             this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
                 value => {
                     const response: any = value;
+                    this.userAssignment = response.data;
+                    let roomDetails: IRoomEntity = {
+                        _id: this.userAssignment.roomId, name: '',
+                        owner: undefined,
+                        email: this.userAssignment.roomOwner,
+                        title: this.roomName,
+                        description: undefined,
+                        creationDate: undefined,
+                        status: undefined
+
+                    }
+                    this.roomDetailsEntity = roomDetails;
                     this.isProgress = false;
                     this.isSuccessFull = true;
                     this.isAssignmentFound = true;
-                    this.userAssignment = response.data;
+                  
                 },
                 err => {
                     this.isProgress = false;

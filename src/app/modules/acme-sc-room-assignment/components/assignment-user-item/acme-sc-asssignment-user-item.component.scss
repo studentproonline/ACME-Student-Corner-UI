@@ -1,43 +1,10 @@
-.acme-sc-navigation-item-container{
-    background-color: #f1f1f1;
-    cursor:pointer;
-    width:100%;
-    height:7vh;
-    padding-top:0.4vw;
-    padding-bottom: 4px;
-    border-radius: 8px;
-    border-style: solid;
-    border-color: white;
-    font-weight: bold;
-}
-.acme-sc-navigation-item-container-default{
-    background-color: #fafafa;
-    cursor:pointer;
-    width:100%;
-    height:7vh;
-    padding-top:0.4vw;
-    padding-bottom: 4px;
-    border-radius: 8px;
-    border-style: solid;
-    border-color: white;
-}
-.acme-sc-navigation-item-selection-bar{
-    background-color: purple;
-}
-.acme-sc-navigation-item-selection-bar-default{
-    background-color: #fafafa;
-}
-.acme-sc-navigation-item-text {
-    color: black;
-    opacity: 0.7;
-    font-size: 1.1vw;
-}
-.acme-sc-navigation-item-text-default {
-    opacity:0.5;
-    color: black;
-    font-size: 1.1vw;
-}
-.acme-sc-navigation-item-icon-selected {
-    color: black;
-    opacity:0.7
+@import '../../../shared/css/commom.scss';
+
+.UserInfoCircle {
+    width: 1.6vw;
+    height: 1.6vw;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    background: lightgray;
 }

@@ -29,6 +29,7 @@ export class AcmeSCAssignmentDetailsComponent {
     roomAssignmentDetailsResponseMessage = '';
     roomId;
     roomType;
+    roomName;
     roomStatus;
     assignmentId;
     selectedUser='';
@@ -51,6 +52,7 @@ export class AcmeSCAssignmentDetailsComponent {
             .subscribe(params => {
                 this.roomId = params.roomId;
                 this.roomType = params.roomType;
+                this.roomName=params.roomName;
                 this.assignmentId = params.assignmentId;
                 this.assignmentTitle = params.assignmentTitle;
                 this.roomStatus =params.roomStatus;

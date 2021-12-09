@@ -26,6 +26,7 @@ export class AcmeSCRoomAssignmentItemComponent {
     @Input() assignment: IAssignmentEntity
     @Input() roomOwner: string
     @Input() roomType: string
+    @Input() roomName: string
     @Input() roomStatus: string
     @Output() assignmentDeleted = new EventEmitter<IAssignmentEntity>();
     @Output() assignmentUpdated = new EventEmitter<IAssignmentEntity>();
@@ -152,6 +153,6 @@ export class AcmeSCRoomAssignmentItemComponent {
     openAssignment() {
        this.router.navigateByUrl('/assignments/details?roomId=' + this.assignment.roomId + '&roomType=' 
         + this.roomType + '&assignmentId='+this.assignment._id +'&assignmentTitle='+this.assignment.title +
-        '&roomStatus='+ this.roomStatus);
+        '&roomStatus='+ this.roomStatus + '&roomName='+this.roomName);
     }
 }

@@ -1,24 +1,4 @@
-.acme-sc-room-assignment-types-container {
-    border-width: 0.5px;
-    border-right-style: solid;
-    background-color:#fafafa;
-    border-color: lightgray;
-}
-
-.acme-sc-title-heading {
-    font-weight: bold;
-    font-size:1vw;
-}
-
-.acme-sc-title-label {
-    font-size:0.66vw;
-    color:purple;
-    font-style: italic;
-}
-
-.acme-sc-assignment-types-label {
-    font-size:1.1vw;
-}
+@import '../../../shared/css/commom.scss';
 
 .acme-sc-room-assignment-types-list{
     border-top-style: outset;
