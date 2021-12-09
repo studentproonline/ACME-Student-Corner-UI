@@ -53,7 +53,6 @@ export class AcmeSCAssignmentEvaluationComponent {
             status: undefined
 
         }
-        console.log(this.roomDetailsEntity);
     }
 
     ngOnChanges(changes: SimpleChanges) {

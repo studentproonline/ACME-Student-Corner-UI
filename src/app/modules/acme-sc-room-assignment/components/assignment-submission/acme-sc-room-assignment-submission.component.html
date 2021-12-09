@@ -1,40 +1,36 @@
-<div fxLayout="column" fxFlexFill fxLayoutGap="1vh">
+<div fxFlexFill fxLayout="column"fxLayoutGap="0.4vw">
+    <div fxFlex="15vh" fxFill>
+        <div fxFlexFill fxLayout="row" fxFill>
+            <div fxFlex="20vw" class="acme-sc-custom-company-header">
+                <acme-sc-company-header></acme-sc-company-header>
+            </div>
+            <div fxFlex>
+                <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+                    <div fxFlex="5vh" fxFill>
+                        <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
+                            [placeHolder]="''" [title]="assignmentTitle"
+                            [dislaySearchBox]="showSearchBox">
+                        </acme-sc-main-header>
+                    </div>
+                    <div *ngIf="!isProgress && isSuccessFull" fxFlex="5vh">
+                        <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType">
+                        </acme-sc-navigation-bar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Progress-->
     <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
     </div>
-    <!--navigation bar-->
-    <div *ngIf="!isProgress" fxFlex="7%" fxFill>
+    <!--assignment details bar-->
+    <div *ngIf="!isProgress && isSuccessFull" fxFlex="5vh" fxFill>
         <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-            <!--home icon-->
-            <div fxFlex="2%" fxLayoutAlign="start center" class="acme-cs-mat-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                </svg>
-            </div>
-            <!--home link-->
-            <div (click)="gotoHome()" fxFlex="5%" fxLayoutAlign="start center" class="acme-sc-room-home">
-                <span>Home</span>
-            </div>
-            <!--All Assignment icon-->
-            <div fxFlex="2%" fxLayoutAlign="start center" style="opacity:0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-                </svg>
-            </div>
-            <!--All assignments link-->
-            <div (click)="goToAllassignments()" class="acme-sc-all-assignments" fxFlex="10%"
-                fxLayoutAlign="start center">
-                <span><u>All Assignments</u></span>
-            </div>
             <!--status-->
-            <div *ngIf="isAssignmentFound" fxFlex="2%" fxLayoutAlign="start center"
-                class="acme-sc-room-user-assignment-status">
-                <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%;" class="acme-cs-mat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
+            <div *ngIf="isAssignmentFound" fxFlex="2vw" fxLayoutAlign="start center">
+                <mat-icon fxLayoutAlign="center center" class="acme-cs-mat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="2vw"
                         fill="darkgreen">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
@@ -42,13 +38,11 @@
                     </svg>
                 </mat-icon>
             </div>
-            <div *ngIf="isAssignmentFound" fxFlex="10%" fxLayoutAlign="start center"
-                class="acme-sc-room-user-assignment-status">
-                <span>{{userAssignment.status}}</span>
+            <div *ngIf="isAssignmentFound" fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <span><B>{{userAssignment.status}}</B></span>
             </div>
-            <!--Revieweed by-->
-            <div *ngIf="isAssignmentFound" fxFlex="30%" fxLayoutAlign="start center"
-                class="acme-sc-room-user-assignment-status">
+             <!--Revieweed by-->
+            <div *ngIf="isAssignmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                 <span><b>Reviewed By:
                     </b>{{userAssignment.reviewerFirstName}}</span><span>{{userAssignment.reviewerLastName}}</span>
             </div>
@@ -60,18 +54,22 @@
                     </mat-icon>
                 </div>
             </div>
+
             <!--room not active label-->
-            <div fxFlex fxFill
+            <div fxLayoutAlign="center center"
                 *ngIf="(roomStatus === 'Closed' || assignment.status === 'Closed' || assignment.status === 'Expired') && !isProgress && isSuccessFull"
-                fxLayoutAlign="center center" class="acme-sc-not-active-room">
+                fxFlex="50vw" class="acme-sc-room-close-label">
+                <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="red">
+                    <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                </svg>
                 <span>This assignment is no longer active !!!!</span>
             </div>
             <div fxFlex *ngIf="roomStatus !== 'Closed' && assignment.status !== 'Closed' && assignment.status !== 'Expired'
                                && !isProgress && isSuccessFull && isAssignmentFound &&
                                userAssignment.status !=='Reviewed'">
                 <div fxFlexFill fxLayout="row" fxLayoutAlign="end center">
-                    <div fxFlex="17%" fxFill>
-                        <button fxFill mat-raised-button color="accent" class="acme-turnin-assignment-button"
+                    <div fxFlex="13vw" fxFill>
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
                             (click)="turnInAssignment('Edit')">
                             Edit assignment
                         </button>
@@ -81,28 +79,25 @@
         </div>
     </div>
     <!--no assigment evaluation found-->
-    <div *ngIf="!isAssignmentFound && !isProgress" fxFlex="93%" fxFill>
+    <div *ngIf="!isAssignmentFound && !isProgress" fxFlex fxFill>
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2vh">
             <!--assignment not submitted icon-->
-            <div fxFlex="20%" fzFill style="padding-left: 0.4vw;">
-                <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%;" class="acme-cs-mat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
-                        fill="purple">
+            <div fxFlex="20vh"fxFill class="acme-cs-navigation-item-icon" fxLayoutAlign="center center">
+               <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
                             d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 15h-2v-2h2v2zm0-4h-2V8h2v6zm-1-9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
-                    </svg>
-                </mat-icon>
+                </svg>
             </div>
-            <div fxFlex="5%" fxFill fxLayoutAlign="center center" class="acme-sc-server-response-message">
+            <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
                 <span>You have not yet submitted the assignment.</span>
             </div>
             <!--turn in button-->
-            <div *ngIf="assignment.status ==='Active'" fxFlex="8%" fxFill fxLayoutAlign="center start">
+            <div *ngIf="assignment.status ==='Active'" fxFlex="7vh" fxFill fxLayoutAlign="center start">
                 <div fxLayout="row" fxFlexFill fxLayoutAlign="center start">
-                    <div fxFlex="15%" fxFill fxLayoutAlign="center start">
+                    <div fxFlex="13vw" fxFill fxLayoutAlign="center start">
                         <button fxFill mat-raised-button color="accent" (click)="turnInAssignment('New')"
-                            class="acme-turnin-assignment-button">Turn in Assignment
+                            class="acme-sc-button">Turn in Assignment
                         </button>
                     </div>
                 </div>
@@ -118,7 +113,7 @@
                 </div>
             </div>
             <div fxFlexFill fxLayout="row">
-                <div fxFlex="20%">
+                <div fxFlex="10vw">
                     <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
                         userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
                         <span>Reviewer Remarks</span>

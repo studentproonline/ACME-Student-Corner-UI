@@ -13,12 +13,14 @@
         </div>
 
     </div>
+
+    
     <!--assignment container-->
     <div fxFlex fxFill class="acme-sc-container">
         <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
             <!--main header-->
-            <div fxFlex="5vh" fxFill>
-                <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
+            <div *ngIf="isAssignmentOwner" fxFlex="5vh" fxFill>
+                <acme-sc-main-header  [userNickName]="nickName" [userFullName]="fullName"
                     [placeHolder]="'Start searching for a user by name'" [dislaySearchBox]="showSearchBox"
                     [title]="assignmentTitle">
                 </acme-sc-main-header>
@@ -51,7 +53,8 @@
                 </acme-sc-assignment-evaluation>
 
                 <acme-sc-assignment-submission *ngIf="!isAssignmentOwner" [assignment]="assignment"
-                    [roomType]="roomType" [roomStatus]="roomStatus">
+                    [roomType]="roomType" [roomStatus]="roomStatus"
+                    [roomName]="roomName" [assignmentTitle]="assignmentTitle">
 
                 </acme-sc-assignment-submission>
             </div>

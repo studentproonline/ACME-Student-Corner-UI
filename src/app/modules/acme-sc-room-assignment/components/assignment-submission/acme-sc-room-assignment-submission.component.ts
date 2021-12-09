@@ -10,6 +10,7 @@ import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-u
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { IAssignmentEntity } from '../../entities/assignment';
 import { IUserAssignmentEntity } from '../../entities/userassignment';
+import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeSSubmitAssignmentComponent } from '../dialogs/submit-assignment/acme-sc-submit-assignment.component';
@@ -22,15 +23,21 @@ import { AcmeSSubmitAssignmentComponent } from '../dialogs/submit-assignment/acm
 export class AcmeSCAssignmentSubmissionComponent {
     @Input() assignment: IAssignmentEntity;
     @Input() roomType: string;
+    @Input() roomName: string;
     @Input() roomStatus: String;
+    @Input() assignmentTitle: string;
 
     loginEntity: ILoginEntity;
     userAssignment: IUserAssignmentEntity;
+    roomDetailsEntity: IRoomEntity;
 
     isProgress = false;
     isSuccessFull = false;
     isAssignmentFound = false;
     userSubmissionResponseMessage = '';
+    showSearchBox=false;
+    nickName: string;
+    fullName: string;
     stars;
  
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
@@ -39,11 +46,25 @@ export class AcmeSCAssignmentSubmissionComponent {
         public dialog: MatDialog, private router: Router) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
+        const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
+        const lastNameChar = (this.loginEntity.lastName.substring(0, 1)).toUpperCase();
+        this.nickName = firstNameChar.concat(lastNameChar);
+        this.fullName = this.loginEntity.firstName.concat(' ', this.loginEntity.lastName);
 
        
     }
 
     ngOnInit() {
+        this.roomDetailsEntity = {
+            _id: '', name: '',
+            owner: undefined,
+            email: '',
+            title: this.roomName,
+            description: undefined,
+            creationDate: undefined,
+            status: undefined
+
+        }
         this.getUserAssignment();
     }
 
@@ -55,10 +76,21 @@ export class AcmeSCAssignmentSubmissionComponent {
             this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
                 value => {
                     const response: any = value;
+                    this.userAssignment = response.data;
+                    let roomDetails: IRoomEntity = {
+                        _id: this.userAssignment.roomId, name: '',
+                        owner: undefined,
+                        email: this.userAssignment.roomOwner,
+                        title: this.roomName,
+                        description: undefined,
+                        creationDate: undefined,
+                        status: undefined
+
+                    }
+                    this.roomDetailsEntity = roomDetails;
                     this.isProgress = false;
                     this.isSuccessFull = true;
                     this.isAssignmentFound = true;
-                    this.userAssignment = response.data;
                 },
                 err => {
                     this.isProgress = false;
