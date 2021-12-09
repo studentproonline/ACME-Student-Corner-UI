@@ -6,7 +6,7 @@
 
     </div>
     <div fxFlex="1.5vw" fxLayoutAlign="center center"
-        [ngClass]="selected===true?'acme-sc-content-item-icon-selected' : 'acme-cs-mat-icon'">
+        [ngClass]="selected===true?'acme-sc-content-item-icon-selected' : 'acme-cs-mat-icon acme-sc-user-row'">
         <div class="UserInfoCircle" fxLayoutAlign="center center">
             <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center"  class="acme-cs-mat-icon"
             style="height:2vh;width:1vw;">
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div fxFlex fxLayoutAlign="start center"
-        [ngClass]="selected===true?'acme-sc-navigation-side-bar-item-text' : 'acme-sc-navigation-side-bar-item-text-default'">
+        [ngClass]="selected===true?'acme-sc-navigation-side-bar-item-text' : 'acme-sc-navigation-side-bar-item-text-default  acme-sc-user-row'">
         <span  class="acme-sc-room-user-name">{{user.userName}}</span>
     </div>
 </div>

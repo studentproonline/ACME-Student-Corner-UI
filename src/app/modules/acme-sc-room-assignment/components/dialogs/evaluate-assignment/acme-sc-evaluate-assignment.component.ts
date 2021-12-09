@@ -143,8 +143,8 @@ export class AcmeSCEvaluateAssignmentComponent {
 
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: this.acmesharedUiTuilitiesService.getSessionExpiredScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getSessionExpiredScreenHeight(),
+            width: '65vw',
+            height:'85vh',
             disableClose: true,
             data: {}
         });

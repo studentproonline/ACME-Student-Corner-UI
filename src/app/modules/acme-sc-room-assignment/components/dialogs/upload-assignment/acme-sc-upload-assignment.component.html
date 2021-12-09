@@ -1,18 +1,18 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
-    <div fxFlex="5%" fxFill class="acme-cs-heading">
+    <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>Create new Assignment</span>
     </div>
     <!--details-->
-    <div fxFlex="23%" fxFill>
+    <div fxFlex="20vh" fxFill>
         <div fxFlex fxFill>
             <form [formGroup]="createAssignmentFormGroup" fxFill>
                 <div fxFlexFill fxLayout="column">
                     <!--topic title-->
-                    <div fxFlex="50%" fxFill>
-                        <div fxFlexFill fxLayout="row" fxLayoutGap="1vw">
+                    <div fxFlex="9vh" fxFill>
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="1vh">
                             <!--Assignment title-->
                             <div fxFlex="70%" fxFill>
-                                <mat-form-field class="form-field" fxFill>
+                                <mat-form-field  class="form-field acme-form-input-field" fxFill>
                                     <mat-label class="acme-form-input-field">
                                         Title
                                     </mat-label>
@@ -26,7 +26,7 @@
                             </div>
                             <!--Assignment Expiry date-->
                             <div fxFlex="30%" fxFill>
-                                <mat-form-field class="form-field" fxFill>
+                                <mat-form-field class="form-field acme-form-input-field" fxFill>
                                     <mat-label class="acme-form-input-field">Choose a expiry date</mat-label>
                                     <input class="acme-form-input-field" required matInput [matDatepicker]="picker"
                                         formControlName="expiryDateControl" [min]="minDate">
@@ -41,8 +41,8 @@
                         </div>
                     </div>
                     <!--Assignment description-->
-                    <div fxFlex="50%" fxFill>
-                        <mat-form-field class="form-field" fxFill>
+                    <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
                                 Description
                             </mat-label>
@@ -59,28 +59,33 @@
         </div>
     </div>
     <!--Assignment Editor-->
-    <div fxFlex="0 0 60%" fxFill>
-        <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
+    <div fxFlex="45vh" fxFill>
+        <quill-editor class="acme-form-input-field" fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
         [required]="true"></quill-editor>
     </div>
-    <div fxFlex fxLayoutAlign="end end" fxFill>
-        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-            <div fxFlex fxLayoutAlign="start end" fxFill>
-                <button mat-raised-button color="accent" class="acme-sc-assignment-creation-confirm-button"
-                    (click)="createUpdateAssignment()" [disabled]="!createAssignmentFormGroup.controls['titleControl'].valid ||
-                        !createAssignmentFormGroup.controls['descriptionControl'].valid ||
-                        !createAssignmentFormGroup.controls['expiryDateControl'].valid||
-                        assignmentContent.trim()===''">
-                        {{buttonLabel}}
-                </button>
-            </div>
-            <div fxFlex fxLayoutAlign="end end" fxFill>
-                <button mat-raised-button color="warn" class="acme-sc-assignment-creation-close-button"
-                    (click)="cancelAssignmentCreation()">
-                    Cancel
-                </button>
+    <div fxFlex="7vh" fxLayoutAlign="end end" fxFill>
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex fxLayoutAlign="start end" fxFill>
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
+                            (click)="createUpdateAssignment()" [disabled]="!createAssignmentFormGroup.controls['titleControl'].valid ||
+                                !createAssignmentFormGroup.controls['descriptionControl'].valid ||
+                                !createAssignmentFormGroup.controls['expiryDateControl'].valid||
+                                assignmentContent.trim()===''">
+                                {{buttonLabel}}
+                        </button>
+                    </div>
+                    <div fxFlex fxLayoutAlign="end end" fxFill>
+                        <button fxFill mat-raised-button color="warn" class=" acme-sc-button acme-sc-assignment-creation-close-button"
+                            (click)="cancelAssignmentCreation()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+     
     </div>
     <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
 </div>

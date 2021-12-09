@@ -116,18 +116,18 @@
             </mat-tab>
         </mat-tab-group>
     </div>
-    <div fxFlex="12%" fxFill fxLayoutAlign="end end">
+    <div fxFlex fxFill fxLayoutAlign="end end">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
-            <div fxFlex fxFill fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-                    <div fxFlex="50%" fxLayoutAlign="start end">
-                        <button fxFill mat-raised-button color="accent" class="acme-sc-content-upload-confirm-button"
+                    <div fxFlex fxLayoutAlign="start end">
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
                             (click)="uploadContent()" [disabled]="!isValid()">
                             Upload
                         </button>
                     </div>
-                    <div fxFlex="50%" fxLayoutAlign="end end">
-                        <button fxFill mat-raised-button color="warn" class="acme-sc-content-upload-close-button"
+                    <div fxFlex fxLayoutAlign="end end">
+                        <button fxFill mat-raised-button color="warn" class=" acme-sc-button acme-sc-content-upload-close-button"
                             (click)="cancelUploadContent()">
                             Cancel
                         </button>

@@ -13,7 +13,7 @@
 
     <div fxFlex class="acme-sc-library-content-types-list">
         <div fxLayout="column" fxLayoutGap="1vh">
-            <div fxFlex class="acme-sc-navigation-side-bar-item">
+            <div fxFlex>
                 <div fxLayout="row" fxLayoutGap="0.4vw" (click)="allContentsItemClicked()"
                     [ngClass]="allContentsSelected===true?'acme-sc-navigation-side-bar-item-container' : 'acme-sc-navigation-side-bar-item-container-default'"
                     class="acme-sc-navigation-side-bar-item">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <!--documents-->
-            <div fxFlex class="acme-sc-navigation-side-bar-item">
+            <div fxFlex>
                 <div fxLayout="row" fxLayoutGap="0.4vw" (click)="documentContentsItemClicked()"
                     [ngClass]="documentsSelected===true?'acme-sc-navigation-side-bar-item-container' : 'acme-sc-navigation-side-bar-item-container-default'"
                     class="acme-sc-navigation-side-bar-item">
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <!--links-->
-            <div fxFlex class="acme-sc-navigation-side-bar-item">
+            <div fxFlex>
                 <div fxLayout="row" fxLayoutGap="0.4vw" (click)="linkContentsItemClicked()"
                     [ngClass]="linksSelected===true?'acme-sc-navigation-side-bar-item-container' : 'acme-sc-navigation-side-bar-item-container-default'"
                     class="acme-sc-navigation-side-bar-item">
