@@ -13,6 +13,7 @@ import { AcmeSCConferenceRoomSelfViewComponent } from './components/conference-r
 
 //services
 import { AcmeSCConferenceRoomLibraryService } from './services/acme-sc-conference-room.service';
+import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utiltities.services';
 
 export const agoraConfig: any = {
     AppID: null //setting null here
@@ -29,7 +30,7 @@ export const agoraConfig: any = {
         AcmeSCRoomConferenceRoutingModule,
         NgxAgoraModule.forRoot(agoraConfig)],
 
-    providers: [AcmeSCConferenceRoomLibraryService],
+    providers: [AcmeSCConferenceRoomLibraryService, AcmesharedUiTuilitiesService],
 
     entryComponents: []
 })
