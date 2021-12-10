@@ -1,12 +1,12 @@
 <div fxLayout="row" fxLayoutGap="0.4vw"  (click)="navigationItemClicked()"
     [ngClass]="selected===true?'acme-sc-navigation-side-bar-item-container' : 'acme-sc-navigation-side-bar-item-container-default'"
     class="acme-sc-navigation-side-bar-item">
-    <div fxFlex="2px" [ngClass]="{'acme-sc-navigation-side-bar-item-selection-bar':selected}">
+    <div fxFlex="0.1vw" [ngClass]="{'acme-sc-navigation-side-bar-item-selection-bar':selected}">
 
     </div>
-    <div fxFlex="24px" fxLayoutAlign="center center"
+    <div fxFlex="1.5vw" fxLayoutAlign="center center"
         [ngClass]="selected===true?'acme-sc-navigation-side-bar-item-icon-selected' : 'acme-cs-mat-icon'">
-        <mat-icon fontSet="material-icons-outlined" aria-hidden="false" aria-label="home icon">{{iconName}}</mat-icon>
+        <mat-icon class="acme-cs-mat-icon-default" fontSet="material-icons-outlined" aria-hidden="false" aria-label="home icon">{{iconName}}</mat-icon>
     </div>
     <div fxFlex fxLayoutAlign="start center"
         [ngClass]="selected===true?'acme-sc-navigation-side-bar-item-text' : 'acme-sc-navigation-side-bar-item-text-default'">

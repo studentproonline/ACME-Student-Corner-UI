@@ -24,6 +24,10 @@
 .acme-cs-mat-icon-darker {
     opacity: 0.7
 }
+.acme-cs-mat-icon-default {
+    height:3vh;
+    width: 2vw;
+}
 .acme-cs-navigation-item-icon {
     opacity: 0.7;
     color: $acme-sc-company-label-color;
@@ -209,4 +213,8 @@
 
 ::ng-deep .material-icons {
     font-size: 1vw !important;
+}
+
+::ng-deep .material-icons-outlined {
+    font-size: 3vh !important;
 }
