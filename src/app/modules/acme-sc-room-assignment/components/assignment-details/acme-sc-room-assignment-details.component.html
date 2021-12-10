@@ -48,13 +48,14 @@
             <div *ngIf="!isProgress && isSuccessFull" fxFlex fxFill>
                 <acme-sc-assignment-evaluation *ngIf="isAssignmentOwner" [assignment]="assignment"
                     [userId]="selectedUser" [roomType]="roomType" [roomStatus]="roomStatus"
-                    [roomName]="roomName">
+                    [roomName]="roomName" [roomId]="roomId">
 
                 </acme-sc-assignment-evaluation>
 
                 <acme-sc-assignment-submission *ngIf="!isAssignmentOwner" [assignment]="assignment"
                     [roomType]="roomType" [roomStatus]="roomStatus"
-                    [roomName]="roomName" [assignmentTitle]="assignmentTitle">
+                    [roomName]="roomName" [assignmentTitle]="assignmentTitle"
+                    [roomId]="roomId">
 
                 </acme-sc-assignment-submission>
             </div>

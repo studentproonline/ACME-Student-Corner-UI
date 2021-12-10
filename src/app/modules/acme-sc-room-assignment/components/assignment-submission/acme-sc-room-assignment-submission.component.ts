@@ -23,6 +23,7 @@ import { AcmeSSubmitAssignmentComponent } from '../dialogs/submit-assignment/acm
 export class AcmeSCAssignmentSubmissionComponent {
     @Input() assignment: IAssignmentEntity;
     @Input() roomType: string;
+    @Input() roomId: string;
     @Input() roomName: string;
     @Input() roomStatus: String;
     @Input() assignmentTitle: string;
@@ -56,7 +57,7 @@ export class AcmeSCAssignmentSubmissionComponent {
 
     ngOnInit() {
         this.roomDetailsEntity = {
-            _id: '', name: '',
+            _id: this.roomId, name: '',
             owner: undefined,
             email: '',
             title: this.roomName,

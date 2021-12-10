@@ -21,6 +21,7 @@ import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignmen
 })
 export class AcmeSCAssignmentEvaluationComponent {
     @Input() assignment: IAssignmentEntity;
+    @Input() roomId: string;
     @Input() roomType: string;
     @Input() roomName: string;
     @Input() userId: string = '';
@@ -44,7 +45,7 @@ export class AcmeSCAssignmentEvaluationComponent {
 
     ngOnInit() {
         this.roomDetailsEntity = {
-            _id: '', name: '',
+            _id: this.roomId, name: '',
             owner: undefined,
             email: '',
             title: this.roomName,
