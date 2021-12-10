@@ -66,7 +66,7 @@ export class AcmeSCAssignmentEvaluationComponent {
 
     reviewAssignment() {
         let mode;
-        if(this.userAssignment.status === 'Reviewed') {
+        if(this.userAssignment.status === 'Returned') {
             mode='Edit';
         } else {
             mode='New';
