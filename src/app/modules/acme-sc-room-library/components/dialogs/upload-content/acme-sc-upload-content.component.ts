@@ -136,6 +136,7 @@ export class AcmeSUploadContentComponent {
         dialogRef.afterClosed().subscribe(result => {
         });
     }
+    
     isValid() {
         if (this.selectedTab === 'document') {
             if (this.documentuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||

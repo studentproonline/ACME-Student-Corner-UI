@@ -26,14 +26,14 @@
                 </div>
                 <div fxFlex="20%" fxFill>
                     <span class="acme-sc-date-label"><b>Expiry date:</b>
-                        {{assignment.expiryDate|date:'medium'}}</span>
+                        {{assignment.expiryDate|date:'mediumDate'}}</span>
                 </div>
             </div>
         </div>
         <div fxFlex fxFill>
             <div fxLayout="row" fxLayoutGap="0.4vw" fxFill fxLayoutAlign="start center">
                 <div fxFlex fxFill fxLayoutAlign="start center">
-                    <span class="acme-sc-owner-label"><b>Created By:</b> {{assignment.firstName}}</span><span class="acme-sc-room-assignemt-owner" style="padding-left:0.4vw">{{assignment.lastName}}</span>
+                    <span class="acme-sc-owner-label"><b>Created By:</b> {{assignment.firstName}}</span><span class="acme-sc-owner-label" style="padding-left:0.4vw">{{assignment.lastName}}</span>
                 </div>
 
                 <!--status icon-->
@@ -102,7 +102,7 @@
 
                 <div fxFlex="15vw" fxFill fxLayoutAlign="end center">
                     <span class="acme-sc-date-label"><b>Created on:</b>
-                        {{assignment.createdAt|date:'medium'}}</span>
+                        {{assignment.createdAt|date:'mediumDate'}}</span>
                 </div>
             </div>
         </div>

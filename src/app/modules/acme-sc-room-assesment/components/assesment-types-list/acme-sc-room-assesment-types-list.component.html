@@ -1,0 +1,40 @@
+<div fxFlexFill fxLayout="column" class="acme-sc-navigation-side-bar">
+    <div fxFlex="20vh" fxFill>
+        <acme-sc-company-header></acme-sc-company-header>
+    </div>
+    <div fxFlex="5vh">
+        <div fxFlexFill fxLayout="row" fxLayoutAlign="center  center">
+            <div class="acme-sc-navigation-side-bar-title" fxFlex="10vw" fxLayoutAlign="center center">
+                <span>Assesment Types</span>
+            </div>
+        </div>
+    </div>
+    <div fxFlex class="acme-sc-room-assesment-types-list">
+        <div fxLayout="column" fxLayoutGap="1vh">
+            <div fxFlex (click)="allAssesmentsItemClicked()">
+                <acme-sc-room-assesment-type-item [itemName]="'All Assesments'" [iconName]="'select_all'"
+                    [selected]="allAssesmentsSelected">
+                </acme-sc-room-assesment-type-item>
+            </div>
+
+            <div fxFlex (click)="scheduledAssesmentsItemClicked()">
+                <acme-sc-room-assesment-type-item [itemName]="'Scheduled Assesments'" [iconName]="'schedule'"
+                    [selected]="ScheduledSelected">
+                </acme-sc-room-assesment-type-item>
+            </div>
+
+            <div fxFlex (click)="activeAssesmentsItemClicked()">
+                <acme-sc-room-assesment-type-item [itemName]="'Active Assesments'" [iconName]="'check_circle_outline'"
+                    [selected]="activesSelected">
+                </acme-sc-room-assesment-type-item>
+            </div>
+
+            <div fxFlex (click)="closedAssesmentsItemClicked()">
+                <acme-sc-room-assesment-type-item [itemName]="'Closed Assesments'" [iconName]="'lock'"
+                    [selected]="closedSelected">
+                </acme-sc-room-assesment-type-item>
+            </div>
+
+        </div>
+    </div>
+</div>

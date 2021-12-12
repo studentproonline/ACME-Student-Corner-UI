@@ -1,0 +1,27 @@
+@import '../../../shared/css/commom.scss';
+@import '../../../shared/css/variables.scss';
+
+.acme-sc-assesment-data-container {
+    background-color: $acme-sc-room-inactive-background-color;
+    border-radius: 0.4vw;
+    padding:0.4vw;
+    
+}
+
+.UserInfoCircle {
+    width: 5vw;
+    height:5vw;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    background: $acme-sc-navigation-bar-border-color;
+}
+
+.acme-sc-room-user-assesment-reviewer-remark {
+    font-weight: bold;
+    font-size:0.7vw;
+    padding:0.7vw;
+    width:100%;
+    height:100%;
+  
+}

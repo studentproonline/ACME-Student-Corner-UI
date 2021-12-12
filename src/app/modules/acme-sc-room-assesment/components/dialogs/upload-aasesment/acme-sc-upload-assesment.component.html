@@ -1,0 +1,108 @@
+<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+    <div fxFlex="5vh" fxLayoutAlign="center start" class="acme-cs-heading">
+        <span>Create new Assesment</span>
+    </div>
+    <!--details-->
+    <div fxFlex="30vh" fxFill>
+        <div fxFlex fxFill>
+            <form [formGroup]="createAssesmentFormGroup" fxFill>
+                <div fxFlexFill fxLayout="column">
+                    <!--Assesment title-->
+                    <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
+                            <mat-label class="acme-form-input-field">
+                                Title
+                            </mat-label>
+                            <input class="acme-form-input-field" required matInput placeholder="Title"
+                                formControlName="titleControl" autocomplete="off">
+                            <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['titleControl'].errors?.required ||
+                                createAssesmentFormGroup.controls['titleControl'].errors?.whiteSpace">
+                                Title is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <!--Assesment description-->
+                    <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
+                            <mat-label class="acme-form-input-field">
+                                Description
+                            </mat-label>
+                            <input class="acme-form-input-field" required matInput placeholder="Description"
+                                formControlName="descriptionControl" autocomplete="off">
+                            <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['descriptionControl'].errors?.required ||
+                                createAssesmentFormGroup.controls['descriptionControl'].errors?.whiteSpace">
+                                Description is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                     <!--Max marks-->
+                     <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
+                            <mat-label class="acme-form-input-field">
+                                Maximum Marks
+                            </mat-label>
+                            <input required type="Number" min="0" class="acme-form-input-field" required matInput placeholder="Max Marks"
+                                formControlName="maxMarksControl" autocomplete="off">
+                            <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['maxMarksControl'].errors?.required ||
+                                createAssesmentFormGroup.controls['maxMarksControl'].errors?.whiteSpace">
+                                Max Marks is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <!--Assesment group-->
+                    <div fxFlex="9vh" fxFill>
+                        <mat-form-field class="form-field acme-form-input-field" fxFill>
+                            <mat-label class="acme-form-input-field">
+                                Group
+                            </mat-label>
+                            <input required class="acme-form-input-field" required matInput placeholder="Group"
+                                formControlName="groupControl" autocomplete="off">
+                            <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['groupControl'].errors?.required ||
+                                createAssesmentFormGroup.controls['groupControl'].errors?.whiteSpace">
+                                Group is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="5vh" fxFill class="acme-sc-assesment-group-user-info">
+                        <span><B>Note:</B>Group will be used to generate report cards, make sure to provide
+                            same group name to all assesment you wish to group ex. Term 1 Assesment 2
+                        </span>
+                    </div>
+                    <!--File-->
+                    <div fxFlex="7vh">
+                        <label for="file-upload" class="acme-form-input-field custom-file-upload">
+                            Assesment Paper
+                        </label>
+                        <input formControlName="fileControl" id="file-upload" type="file" required
+                            class="form-control acme-form-input-field" (change)="onFileChange($event)"
+                            accept=".pdf, .doc,.docx, .txt, .ppt, .pptx" [attr.disabled]="fileSelectionDisable?'':null">
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                    </div>
+               
+                </div>
+            </form>
+        </div>
+    </div>
+    <div fxFlex fxLayoutAlign="end end" fxFill>
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex fxLayoutAlign="start end" fxFill>
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
+                            (click)="createUpdateAssesment()" [disabled]="!isValid()">
+                            {{buttonLabel}}
+                        </button>
+                    </div>
+                    <div fxFlex fxLayoutAlign="end end" fxFill>
+                        <button fxFill mat-raised-button color="warn"
+                            class=" acme-sc-button acme-sc-assesment-creation-close-button"
+                            (click)="cancelAssesmentCreation()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+</div>

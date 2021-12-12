@@ -1,17 +1,17 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 //entities
-import { IRoomUserEntity } from '../../../shared/entities/acme-sc-room-user.entity';
+import { IRoomUserEntity } from '../../entities/acme-sc-room-user.entity';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
-import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
+import { AcmesharedRoomService } from '../../services/acme-sc-shared-room.service';
 
 @Component({
-    selector: 'acme-sc-room-assignment-users-list',
-    templateUrl: './acme-sc-room-assignment-users-list.component.html',
-    styleUrls: ['./acme-sc-room-assignment-users-list.component.scss']
+    selector: 'acme-sc-room-users-list',
+    templateUrl: './acme-sc-room-users-list.component.html',
+    styleUrls: ['./acme-sc-room-users-list.component.scss']
 })
-export class AcmeSCRoomAssignmentUsersListComponent {
+export class AcmeSCRoomUsersListComponent {
 
     @Input() roomId: any;
     @Output() userClicked = new EventEmitter<IRoomUserEntity>();
@@ -59,7 +59,6 @@ export class AcmeSCRoomAssignmentUsersListComponent {
                 this.isSuccessFull = true;
                 this.sharedRoomUsersList = response.data;
                 this.selectedUserId = this.sharedRoomUsersList[0].userEmail;
-                console.log(this.sharedRoomUsersList[0]);
                 this.userClicked.emit( this.sharedRoomUsersList[0]);
             },
             err => {

@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
-    selector: 'acme-sc-room-assignment-user-item',
-    templateUrl: './acme-sc-asssignment-user-item.component.html',
-    styleUrls: ['./acme-sc-asssignment-user-item.component.scss']
+    selector: 'acme-sc-room-user-item',
+    templateUrl: './acme-sc-room-user-item.html',
+    styleUrls: ['./acme-sc-room-user-item.scss']
 })
-export class AcmeSCRoomAssignmentUserItemComponent {
+export class AcmeSCRoomUserItemComponent {
     @Output() itemClicked = new EventEmitter<any>();
     @Input() user: any;
     @Input() selected: boolean =false;

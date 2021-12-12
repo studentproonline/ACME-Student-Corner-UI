@@ -28,6 +28,9 @@ export class AcmeSCNavigationBarComponent {
     gotoAssignments() {
         this.router.navigateByUrl ( '/assignments?roomType='+ this.roomType + '&roomId='+ this.room._id);
     }
+    gotoAssesments() {
+        this.router.navigateByUrl ( '/assesments?roomType='+ this.roomType + '&roomId='+ this.room._id);
+    }
     gotoLibrary() {
         this.router.navigateByUrl ( '/library?roomType='+ this.roomType + '&roomId='+ this.room._id);
     }
