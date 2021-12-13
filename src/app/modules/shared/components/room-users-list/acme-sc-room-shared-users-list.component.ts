@@ -7,11 +7,11 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 import { AcmesharedRoomService } from '../../services/acme-sc-shared-room.service';
 
 @Component({
-    selector: 'acme-sc-room-users-list',
-    templateUrl: './acme-sc-room-users-list.component.html',
-    styleUrls: ['./acme-sc-room-users-list.component.scss']
+    selector: 'acme-sc-room-shared-users-list',
+    templateUrl: './acme-sc-room-shared-users-list.component.html',
+    styleUrls: ['./acme-sc-room-shared-users-list.component.scss']
 })
-export class AcmeSCRoomUsersListComponent {
+export class AcmeSCRoomSharedUsersListComponent {
 
     @Input() roomId: any;
     @Output() userClicked = new EventEmitter<IRoomUserEntity>();

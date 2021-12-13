@@ -55,8 +55,8 @@ export class AcmeSCAssesmentDetailsComponent {
                 this.roomId = params.roomId;
                 this.roomType = params.roomType;
                 this.roomName=params.roomName;
-                this.assesmentId = params.assignmentId;
-                this.assesmentTitle = params.assignmentTitle;
+                this.assesmentId = params.assesmentId;
+                this.assesmentTitle = params.assesmentTitle;
                 this.roomStatus =params.roomStatus;
                 this.getRole();
             });

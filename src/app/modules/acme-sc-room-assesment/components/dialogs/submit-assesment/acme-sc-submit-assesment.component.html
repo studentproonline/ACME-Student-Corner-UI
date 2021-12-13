@@ -1,0 +1,33 @@
+<div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+    <div fxFlex="5vh" fxFill class="acme-cs-heading">
+        <span>Submit Assesment</span>
+    </div>
+    <!--Assignment Editor-->
+    <div fxFlex="65vh" fxFill>
+        <quill-editor fxFlexFill [(ngModel)]="assesmentContent" [modules]="modules"
+            placeholder="Insert details here ..." [required]="true"></quill-editor>
+    </div>
+    <div fxFlex fxLayoutAlign="end end" fxFill>
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
+            <div fxFill fxFlex="7vh">
+                <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                    <div fxFlex fxLayoutAlign="start end" fxFill>
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
+                            (click)="createAssesmentEvaluation()" [disabled]="assesmentContent.trim()===''">
+                            {{buttonLabel}}
+                        </button>
+                    </div>
+                    <div fxFlex fxLayoutAlign="end end" fxFill>
+                        <button fxFill mat-raised-button color="warn"
+                            class="acme-sc-button acme-sc-assesment-submit-close-button"
+                            (click)="cancelAssesmentSubmission()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
+        </div>
+    </div>
+ 
+</div>

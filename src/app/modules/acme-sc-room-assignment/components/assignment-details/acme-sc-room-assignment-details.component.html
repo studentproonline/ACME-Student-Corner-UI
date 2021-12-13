@@ -3,9 +3,9 @@
     <div *ngIf="isAssignmentOwner" fxFlex="20vw" fxFill>
         <div fxFlexFill fxLayout="column">
             <div fxFlex>
-                <acme-sc-room-users-list [roomId]="roomId" (userClicked)="userSelected($event)">
+                <acme-sc-room-shared-users-list [roomId]="roomId" (userClicked)="userSelected($event)">
 
-                </acme-sc-room-users-list>
+                </acme-sc-room-shared-users-list>
             </div>
             <div class="acme-sc-company-label" fxFlex="5vh" fxLayoutAlign="center center">
                 <span>Powered By: <b>Bitstone Infotech</b> </span>

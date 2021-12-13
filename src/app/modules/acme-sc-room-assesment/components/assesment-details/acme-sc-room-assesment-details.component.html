@@ -3,9 +3,9 @@
     <div *ngIf="isContentOrRoomOwner" fxFlex="20vw" fxFill>
         <div fxFlexFill fxLayout="column">
             <div fxFlex>
-                <acme-sc-room-users-list [roomId]="roomId" (userClicked)="userSelected($event)">
+                <acme-sc-room-shared-users-list [roomId]="roomId" (userClicked)="userSelected($event)">
 
-                </acme-sc-room-users-list>
+                </acme-sc-room-shared-users-list>
             </div>
             <div class="acme-sc-company-label" fxFlex="5vh" fxLayoutAlign="center center">
                 <span>Powered By: <b>Bitstone Infotech</b> </span>
@@ -42,10 +42,17 @@
             </div>
             <!--Assesment container-->
             <div *ngIf="!isProgress && isSuccessFull" fxFlex fxFill>
-                <acme-sc-assesment-evaluation *ngIf="isContentOrRoomOwner" [assesment]="assesment" [userId]="selectedUser"
-                    [roomType]="roomType" [roomStatus]="roomStatus" [roomName]="roomName" [roomId]="roomId">
+                <acme-sc-assesment-evaluation *ngIf="isContentOrRoomOwner" [assesment]="assesment"
+                    [userId]="selectedUser" [roomType]="roomType" [roomStatus]="roomStatus" [roomName]="roomName"
+                    [roomId]="roomId" [fileName]="assesment.fileName">
 
                 </acme-sc-assesment-evaluation>
+
+                <acme-sc-assesment-submission *ngIf="!isContentOrRoomOwner" [assesment]="assesment" [roomType]="roomType"
+                    [roomStatus]="roomStatus" [roomName]="roomName" [assesmentTitle]="assesmentTitle"
+                    [roomId]="roomId" [fileName]="assesment.fileName">
+
+                </acme-sc-assesment-submission>
             </div>
         </div>
     </div>

@@ -1,0 +1,14 @@
+@import '../../../../shared/css/commom.scss';
+.acme-sc-assesment-submit-close-button {
+    background-color: darkorange !important;
+}
+
+::ng-deep .ql-tooltip {
+    left:0px !important
+}
+::ng-deep .ql-editing {
+    left:0px !important
+}
+::ng-deep .ql-container{
+    height:82% !important
+}

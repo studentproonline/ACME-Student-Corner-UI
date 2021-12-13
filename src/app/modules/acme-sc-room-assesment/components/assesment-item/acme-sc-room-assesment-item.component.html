@@ -13,11 +13,11 @@
                     </mat-icon>
                 </div>
                 <!--assesment title-->
-                <div (click)="openAssesment()" fxFlex fxFill fxLayoutAlign="start center" style="cursor:pointer;">
+                <div  fxFlex fxFill fxLayoutAlign="start center" style="cursor:pointer;">
                     <div fxLayout="row" fxLayoutGap="1vw" fxFill fxLayoutAlign="end center">
                         <div fxFlex>
                             <div fxLayout="column" fxLayoutGap="0.4vw">
-                                <div fxFlex="98%">
+                                <div fxFlex="98%" (click)="openAssesment()">
                                     <span class="acme-sc-content-link">{{assesment.title}} </span>
                                 </div>
                                 <div fxFlex="2%" *ngIf="isProgress">

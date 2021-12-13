@@ -159,7 +159,7 @@ export class AcmeSCRoomAssesmentItemComponent {
     
     openAssesment() {
         this.router.navigateByUrl('/assesments/details?roomId=' + this.assesment.roomId + '&roomType=' 
-        + this.roomType + '&assignmentId='+this.assesment._id +'&assignmentTitle='+this.assesment.title +
+        + this.roomType + '&assesmentId='+this.assesment._id +'&assesmentTitle='+this.assesment.title +
         '&roomStatus='+ this.roomStatus + '&roomName='+this.roomName);
     }
 

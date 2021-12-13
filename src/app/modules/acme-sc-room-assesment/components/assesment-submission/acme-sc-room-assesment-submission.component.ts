@@ -1,35 +1,35 @@
 import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeSCRoomAssesmentService } from '../../services/acme-sc-room-assesment.service';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
+import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { IAssesmentEntity } from '../../entities/assesment';
 import { IUserAssesmentEntity } from '../../entities/userassesment';
 import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-import { IAssesmentModel } from '../../models/assesment.model';
-import { IAssignmentEntity } from 'src/app/modules/acme-sc-room-assignment/entities/assignment';
-//import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignment/acme-sc-evaluate-assignment.component';
+import { AcmeSubmitAssesmentComponent } from '../dialogs/submit-assesment/acme-sc-submit-assesment.component';
 
 @Component({
-    selector: 'acme-sc-assesment-evaluation',
-    templateUrl: './acme-sc-room-assesment-evaluation.component.html',
-    styleUrls: ['./acme-sc-room-assesment-evaluation.component.scss']
+    selector: 'acme-sc-assesment-submission',
+    templateUrl: './acme-sc-room-assesment-submission.component.html',
+    styleUrls: ['./acme-sc-room-assesment-submission.component.scss']
 })
-export class AcmeSCAssesmentEvaluationComponent {
+export class AcmeSCAssesmentSubmissionComponent {
     @Input() assesment: IAssesmentEntity;
-    @Input() roomId: string;
     @Input() roomType: string;
+    @Input() roomId: string;
     @Input() roomName: string;
-    @Input() userId: string = '';
     @Input() roomStatus: String;
+    @Input() assesmentTitle: string;
     @Input() fileName: String;
 
+    loginEntity: ILoginEntity;
     userAssesment: IUserAssesmentEntity;
     roomDetailsEntity: IRoomEntity;
 
@@ -37,7 +37,12 @@ export class AcmeSCAssesmentEvaluationComponent {
     isfileDownloadProgress = false;
     isSuccessFull = false;
     isAssesmentFound = false;
-    userAssesmentResponseMessage = '';
+    userSubmissionResponseMessage = '';
+    showSearchBox = false;
+    nickName: string;
+    fullName: string;
+    grade;
+    marksObtained;
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService,
@@ -45,7 +50,11 @@ export class AcmeSCAssesmentEvaluationComponent {
         public dialog: MatDialog, private router: Router,
         private snackBar: MatSnackBar) {
 
-
+        this.loginEntity = this.acmeSCAuthorizationService.getSession();
+        const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
+        const lastNameChar = (this.loginEntity.lastName.substring(0, 1)).toUpperCase();
+        this.nickName = firstNameChar.concat(lastNameChar);
+        this.fullName = this.loginEntity.firstName.concat(' ', this.loginEntity.lastName);
     }
 
     ngOnInit() {
@@ -59,14 +68,7 @@ export class AcmeSCAssesmentEvaluationComponent {
             status: undefined
 
         }
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        const currentUser: SimpleChange = changes.userId;
-        if (currentUser) {
-            this.userId = currentUser.currentValue;
-            this.getUserAssesment();
-        }
+        this.getUserAssesment();
     }
 
     openAssesmentFile() {
@@ -88,14 +90,13 @@ export class AcmeSCAssesmentEvaluationComponent {
         );
     }
 
-    reviewAssesment() {
-    }
 
     getUserAssesment() {
         this.isProgress = true;
         this.isSuccessFull = false;
         this.isAssesmentFound = false;
-        this.acmeSCRoomAssesmentService.getUserAssesment(this.userId,
+
+        this.acmeSCRoomAssesmentService.getUserAssesment(this.loginEntity.email,
             this.assesment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
                 value => {
                     const response: any = value;
@@ -119,9 +120,9 @@ export class AcmeSCAssesmentEvaluationComponent {
                     this.isProgress = false;
                     this.isSuccessFull = false;
                     if (err.error && err.error.description) {
-                        this.userAssesmentResponseMessage = err.error.description;
+                        this.userSubmissionResponseMessage = err.error.description;
                     } else {
-                        this.userAssesmentResponseMessage = 'Server Error';
+                        this.userSubmissionResponseMessage = 'Server Error';
                     }
                     if (err.status === 401 || err.status === 401.1) {
                         //  show session expired dialog
@@ -129,9 +130,25 @@ export class AcmeSCAssesmentEvaluationComponent {
                     }
                     if (err.status === 404) {
                         this.isAssesmentFound = false;
+                        this.isSuccessFull = true;
                     }
                 }
             );
+    }
+
+    turnInAssesment() {
+        const dialogRef = this.dialog.open(AcmeSubmitAssesmentComponent, {
+            width: '65vw',
+            height: '85vh',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: {assesmentId: this.assesment._id }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data) {
+                this.getUserAssesment();
+            }
+        });
     }
 
     openSessionExpiredDialog(): void {
@@ -143,14 +160,6 @@ export class AcmeSCAssesmentEvaluationComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
-    }
-
-    goToAllassignments() {
-        this.router.navigateByUrl('/assesments?roomId=' + this.assesment.roomId + '&roomType=' + this.roomType);
-    }
-
-    gotoHome() {
-        this.router.navigateByUrl('/home?roomType=My Rooms');
     }
 
     _base64ToArrayBuffer(base64Data) {

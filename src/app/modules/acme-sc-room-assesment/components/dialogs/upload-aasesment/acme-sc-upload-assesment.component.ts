@@ -168,6 +168,7 @@ export class AcmeSUploadAssesmentComponent {
         formData.append('assesmentData', this.createAssesmentFormGroup.get('fileSourceControl')?.value);
         formData.append('title', this.createAssesmentFormGroup.get('titleControl')?.value);
         formData.append('description', this.createAssesmentFormGroup.get('descriptionControl')?.value);
+        formData.append('fileName', this.createAssesmentFormGroup.get('fileSourceControl')?.value.name);
         formData.append('group', this.createAssesmentFormGroup.get('groupControl')?.value);
         formData.append('maxMarks', this.createAssesmentFormGroup.get('maxMarksControl')?.value);
         formData.append('roomId', this.data.roomId);
@@ -184,6 +185,7 @@ export class AcmeSUploadAssesmentComponent {
     onFileChange(event: any) {
         if (event.target.files.length > 0) {
             const file = event.target.files[0];
+            console.log(file);
             this.createAssesmentFormGroup.patchValue({
                 fileSourceControl: file
             });

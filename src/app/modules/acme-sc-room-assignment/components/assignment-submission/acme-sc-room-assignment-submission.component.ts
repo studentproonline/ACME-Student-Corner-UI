@@ -1,6 +1,5 @@
 import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';

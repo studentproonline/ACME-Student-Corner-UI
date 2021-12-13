@@ -17,7 +17,7 @@ export class AcmeSCRoomAssesmentService {
     }
 
      // get assesments
-     getAssesments(roomId: string, token: any) {
+    getAssesments(roomId: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
         return this.httpService.get('/assesments/?roomId=' + roomId, headers).pipe(catchError(this.handleErrorObservable));
     }
@@ -56,6 +56,18 @@ export class AcmeSCRoomAssesmentService {
     getRoomById(roomId: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
         return this.httpService.get('/rooms/' + roomId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    //update assignment
+    getAssesmentFile(assesmentId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/assesments/file/' + assesmentId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // create user assesment evaluation
+    createUserAssignment(body: any, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.post('/assesmentEvaluations/', headers, body).pipe(catchError(this.handleErrorObservable));
     }
 
     // handle error

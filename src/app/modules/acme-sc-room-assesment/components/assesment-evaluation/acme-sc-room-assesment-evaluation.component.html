@@ -36,7 +36,6 @@
                 </svg>
                 <span>This assesment is no longer active !!!!</span>
             </div>
-
             <!--Review Assignment button-->
             <div fxFlex *ngIf="roomStatus !== 'Closed' && !isProgress && isSuccessFull && isAssesmentFound">
                 <div fxFlexFill fxLayout="row" fxLayoutAlign="end center">
@@ -49,6 +48,18 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!--assesment file link-->
+    <div (click)="openAssesmentFile()" *ngIf="roomStatus !== 'Closed' && !isProgress" fxFlex="5vh" fxFill>
+        <div fxFlexFill fxLayout="column">
+            <div fxFlex>
+                <span class="acme-sc-content-link">{{fileName}}</span>
+            </div>
+            <div *ngIf="isfileDownloadProgress" fxFlex="2vh">
+                <mat-progress-bar *ngIf="!isProgress" mode="indeterminate"></mat-progress-bar>
+            </div>  
+        </div>
+       
     </div>
     <!--no user selected-->
     <div *ngIf="userId ==='' && !isProgress" fxFlex fxFill fxLayoutAlign="center center">
@@ -100,7 +111,7 @@
                 </div>
             </div>
             <!--Reviewers Comment-->
-            <div *ngIf="userAssesment.status === 'Reviewed' || userAssesment.status === 'Submitted'"
+            <div *ngIf="userAssesment.status === 'Reviewed'"
                 style="padding-top:0.4vw">
                 <div class="acme-sc-assesment-data-container">
                     <quill-view [content]="userAssesment.evaluatedData"></quill-view>

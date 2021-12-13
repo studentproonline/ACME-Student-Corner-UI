@@ -12,6 +12,8 @@ import { AcmeSUploadAssesmentComponent } from './components/dialogs/upload-aases
 import { AcmeSCRoomAssesmentItemComponent } from './components/assesment-item/acme-sc-room-assesment-item.component';
 import { AcmeSCAssesmentDetailsComponent } from  './components/assesment-details/acme-sc-room-assesment-details.component';
 import { AcmeSCAssesmentEvaluationComponent } from './components/assesment-evaluation/acme-sc-room-assesment-evaluation.component';
+import { AcmeSCAssesmentSubmissionComponent } from './components/assesment-submission/acme-sc-room-assesment-submission.component';
+import { AcmeSubmitAssesmentComponent } from './components/dialogs/submit-assesment/acme-sc-submit-assesment.component';
 
 //services
 import { AcmeSCRoomAssesmentService } from './services/acme-sc-room-assesment.service';
@@ -29,7 +31,9 @@ import { QuillModule } from 'ngx-quill';
         AcmeSUploadAssesmentComponent,
         AcmeSCRoomAssesmentItemComponent,
         AcmeSCAssesmentDetailsComponent,
-        AcmeSCAssesmentEvaluationComponent],
+        AcmeSCAssesmentEvaluationComponent,
+        AcmeSCAssesmentSubmissionComponent,
+        AcmeSubmitAssesmentComponent],
 
     imports: [FlexLayoutModule,
         AcmeSCSharedModule,
