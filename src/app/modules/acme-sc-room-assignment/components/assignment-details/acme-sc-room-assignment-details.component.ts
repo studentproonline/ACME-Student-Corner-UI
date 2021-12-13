@@ -22,7 +22,6 @@ export class AcmeSCAssignmentDetailsComponent {
     assignmentTitle: string= '';
     isProgress = false;
     isSuccessFull = false;
-    isAssignmentOwner = false;
     showSearchBox = false;
     nickName;
     fullName;
@@ -33,6 +32,8 @@ export class AcmeSCAssignmentDetailsComponent {
     roomStatus;
     assignmentId;
     selectedUser='';
+    roomRole;
+    isContentOrRoomOwner= false;
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private route: ActivatedRoute,
@@ -56,7 +57,7 @@ export class AcmeSCAssignmentDetailsComponent {
                 this.assignmentId = params.assignmentId;
                 this.assignmentTitle = params.assignmentTitle;
                 this.roomStatus =params.roomStatus;
-                this.getAssignmentDetails();
+                this.getRole();
             });
     }
 
@@ -72,14 +73,35 @@ export class AcmeSCAssignmentDetailsComponent {
                 this.assignment = response.data;
                 this.assignmentTitle=this.assignment.title
 
-                if (this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-                    this.assignment.roomOwner.toUpperCase().trim() ||
-
-                    this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-                    this.assignment.owner.toUpperCase().trim()) {
-
-                    this.isAssignmentOwner = true;
+            },
+            err => {
+                this.isProgress = false;
+                this.isSuccessFull = false;
+                if (err.error && err.error.description) {
+                    this.roomAssignmentDetailsResponseMessage = err.error.description;
+                } else {
+                    this.roomAssignmentDetailsResponseMessage = 'Server Error';
                 }
+                if (err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
+            }
+        );
+    }
+
+    getRole() {
+        this.isProgress = true;
+        this.isSuccessFull = false;
+
+        this.acmeSCRoomAssignmentService.getUserRoomRole(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.roomRole = response.data;
+                if(this.roomRole.role === 'Owner' || this.roomRole.role === 'Admin') {
+                    this.isContentOrRoomOwner= true;
+                }
+                this.getAssignmentDetails();
             },
             err => {
                 this.isProgress = false;

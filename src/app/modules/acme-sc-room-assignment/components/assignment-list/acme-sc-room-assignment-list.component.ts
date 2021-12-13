@@ -31,6 +31,8 @@ export class AcmeSCRoomAssignmentListComponent {
 
     isMore = false;
     currentPageNumber = 0;
+    roomRole;
+    isContentOrRoomOwner= false;
 
     roomAssignmentsList: IAssignmentEntity[] = [];
     roomAssignmentsTotalList: IAssignmentEntity[] = [];
@@ -54,7 +56,7 @@ export class AcmeSCRoomAssignmentListComponent {
     }
 
     ngOnInit() {
-        this.getAssignments(0);
+        this.getRole();
     }
 
     refresAssignmentsContent() {
@@ -161,5 +163,34 @@ export class AcmeSCRoomAssignmentListComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
+    }
+
+    getRole() {
+        this.isProgress = true;
+        this.isSuccessFull = false;
+
+        this.acmeSCRoomLAssignmentService.getUserRoomRole(this.room._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.roomRole = response.data;
+                if(this.roomRole.role === 'Owner' || this.roomRole.role === 'Admin') {
+                    this.isContentOrRoomOwner= true;
+                }
+                this.getAssignments(0);
+            },
+            err => {
+                this.isProgress = false;
+                this.isSuccessFull = false;
+                if (err.error && err.error.description) {
+                    this.assignmentResponseMessage = err.error.description;
+                } else {
+                    this.assignmentResponseMessage = 'Server Error';
+                }
+                if (err.status === 401 || err.status === 401.1) {
+                    //  show session expired dialog
+                    this.openSessionExpiredDialog();
+                }
+            }
+        );
     }
 }

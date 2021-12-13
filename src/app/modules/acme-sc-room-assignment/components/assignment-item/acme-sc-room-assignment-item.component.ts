@@ -28,10 +28,10 @@ export class AcmeSCRoomAssignmentItemComponent {
     @Input() roomType: string
     @Input() roomName: string
     @Input() roomStatus: string
+    @Input() isContentOrRoomOwner:boolean = false;
     @Output() assignmentDeleted = new EventEmitter<IAssignmentEntity>();
     @Output() assignmentUpdated = new EventEmitter<IAssignmentEntity>();
 
-    isContentOrRoomOwner = false;
     isProgress = false;
     isSuccessFull = true;
 
@@ -43,14 +43,6 @@ export class AcmeSCRoomAssignmentItemComponent {
 
     ngOnInit() {
 
-        if (this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-            this.assignment.roomOwner.toUpperCase().trim() ||
-
-            this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-            this.assignment.owner.toUpperCase().trim()) {
-
-            this.isContentOrRoomOwner = true;
-        }
     }
 
     closeAssignment() {

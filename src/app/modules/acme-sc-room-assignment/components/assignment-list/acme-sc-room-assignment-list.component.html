@@ -54,7 +54,7 @@
                     <span>This room is no longer active !!!!</span>
                 </div>
                 <!-- new assignment button-->
-                <div *ngIf="roomAssignmentsTotalList.length > 0 && room.status === 'Active'" fxFlex fxFill>
+                <div *ngIf="roomAssignmentsTotalList.length > 0 && room.status === 'Active' && isContentOrRoomOwner" fxFlex fxFill>
                     <div fxFlexFill fxLayout="row" fxFill fxLayoutAlign="end center">
                         <div fxFlex="13vw" fxFill>
                             <button fxFill mat-raised-button color="accent" (click)="createNewAssignment()"
@@ -103,6 +103,7 @@
                             [roomType]="roomType"
                             [roomName]="room.title"
                             [roomStatus]="room.status"
+                            [isContentOrRoomOwner]="isContentOrRoomOwner"
                             (assignmentDeleted)="assignmentDeleted($event)"
                             (assignmentUpdated)="assignmentUpdated($event)">
 

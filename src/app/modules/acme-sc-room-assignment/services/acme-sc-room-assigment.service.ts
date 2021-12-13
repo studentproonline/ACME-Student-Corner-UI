@@ -40,6 +40,12 @@ export class AcmeSCRoomAssignmentService {
         return this.httpService.delete('/assignments/' + assignmentId, headers).pipe(catchError(this.handleErrorObservable));
     }
 
+    // get room Role
+    getUserRoomRole(roomId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/rooms/role/' + roomId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
     // get user assignment evaluation
     getUserAssignment(userId: string, assignmentId: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
