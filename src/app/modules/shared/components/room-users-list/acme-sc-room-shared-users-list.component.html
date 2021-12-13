@@ -79,9 +79,9 @@
         class="acme-sc-room-users-list">
         <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vh">
             <ng-scrollbar thumbClass="white-scrollbars">
-                <acme-sc-room-user-item *ngFor="let user of sharedRoomUsersList" [user]="user"
+                <acme-sc-room-shared-user-item *ngFor="let user of sharedRoomUsersList" [user]="user"
                     (itemClicked)="onUserSelected($event)" [selected]="getSelected(user)">
-                </acme-sc-room-user-item>
+                </acme-sc-room-shared-user-item>
             </ng-scrollbar>
         </div>
     </div>

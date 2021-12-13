@@ -14,7 +14,7 @@ import { AcmeSCUserPopupComponent } from './components/user-popup/acme-sc-user-p
 import { AcmeSCNavigationBarComponent } from './components/navigation-bar/acme-sc-navigation-bar.component';
 import { AcmeSCCompanyHeaderComponent } from './components/company-header/acme-sc-company-header.component';
 import { AcmeSCRoomSharedUsersListComponent } from './components/room-users-list/acme-sc-room-shared-users-list.component';
-import { AcmeSCRoomUserItemComponent } from './components/room-user-item/acme-sc-room-user-item';
+import { AcmeSCRoomSharedUserItemComponent } from './components/room-shared-user-item/acme-sc-room-shared-user-item';
 
 //dialogs
 import { AcmeSCUserConfirmationComponent } from './components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
@@ -41,7 +41,7 @@ import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
         AcmeSCUserConfirmationComponent,
         AcmeSCShareRoomComponent,
         AcmeSCRoomSharedUsersListComponent,
-        AcmeSCRoomUserItemComponent,
+        AcmeSCRoomSharedUserItemComponent,
         AcmeSCSessionExpiredComponent,
         AcmeSCContactinformationComponent,
         AcmeSCUserPopupComponent
@@ -60,7 +60,7 @@ import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
         AcmeSCUserConfirmationComponent,
         AcmeSCShareRoomComponent,
         AcmeSCRoomSharedUsersListComponent,
-        AcmeSCRoomUserItemComponent,
+        AcmeSCRoomSharedUserItemComponent,
         AcmeSCSessionExpiredComponent,
         AcmeSCContactinformationComponent,
         AcmeSCUserPopupComponent
