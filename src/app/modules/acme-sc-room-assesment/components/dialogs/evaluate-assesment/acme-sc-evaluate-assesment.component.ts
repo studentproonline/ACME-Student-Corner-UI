@@ -21,15 +21,16 @@ import ImageResize from 'quill-image-resize-module';
 Quill.register('modules/imageResize', ImageResize);
 
 @Component({
-    selector: 'acme-sc-submit-assesment',
-    templateUrl: './acme-sc-submit-assesment.component.html',
-    styleUrls: ['./acme-sc-submit-assesment.component.scss']
+    selector: 'acme-sc-evaluate-assesment',
+    templateUrl: './acme-sc-evaluate-assesment.component.html',
+    styleUrls: ['./acme-sc-evaluate-assesment.component.scss']
 })
-export class AcmeSubmitAssesmentComponent {
+export class AcmeEvaluateAssesmentComponent {
     isProgress = false;
-    submitAssesmentFormGroup: any;
+    evaluateAssesmentFormGroup: any;
     buttonLabel: string = 'Submit'
-    assesmentContent: string = '';
+    evaluationContent: string = '';
+    marksPlaceHolder;
 
     modules = {
         imageResize: { modules: ['Resize', 'DisplaySize', 'Toolbar'] },
@@ -52,28 +53,39 @@ export class AcmeSubmitAssesmentComponent {
         ]
     };
 
-    constructor(public dialogRef: MatDialogRef<AcmeSubmitAssesmentComponent>, private formBuilder: FormBuilder,
+    constructor(public dialogRef: MatDialogRef<AcmeEvaluateAssesmentComponent>, private formBuilder: FormBuilder,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
         public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
 
-        this.submitAssesmentFormGroup = this.formBuilder.group({
-            fileNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+        this.evaluateAssesmentFormGroup = this.formBuilder.group({
+            gradeControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
+            marksControl: ['', [Validators.required]],
             fileControl: ['', [Validators.required]],
             fileSourceControl: ['', [Validators.required]]
         });
 
+        this.marksPlaceHolder = 'Total Marks ' + this.data.userAssesment.totalMarks;
+
+    }
+
+    ngOnInit() {
+        if(this.data.userAssesment) {
+            this.evaluateAssesmentFormGroup.get('gradeControl')?.setValue(this.data.userAssesment.grade);
+            this.evaluateAssesmentFormGroup.get('marksControl')?.setValue(this.data.userAssesment.marksObtained);
+            this.evaluationContent = this.data.userAssesment.evaluatedData;
+        }
     }
 
     get f() {
-        return this.submitAssesmentFormGroup.controls;
+        return this.evaluateAssesmentFormGroup.controls;
     }
 
-    createAssesmentEvaluation() {
-        let body =this.createAssesmentSubmissionData();
+    submitAssesmentEvaluation() {
+        let body =this.createAssesmentEvaluationData();
         // show progress
         this.isProgress = true;
-        this.acmeSCRoomAssesmentService.createUserAssignment(body, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeSCRoomAssesmentService.evaluateUserAssesment(this.data.userAssesment._id,body, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
                 this.snackBar.open(' Assesment is successfully submitted.', '', {
@@ -95,16 +107,18 @@ export class AcmeSubmitAssesmentComponent {
         );
     }
 
-    createAssesmentSubmissionData() {
+    createAssesmentEvaluationData() {
         const formData = new FormData();
-        formData.append('assesmentData', this.submitAssesmentFormGroup.get('fileSourceControl')?.value);
-        formData.append('data',this.assesmentContent);
+        formData.append('assesmentData', this.evaluateAssesmentFormGroup.get('fileSourceControl')?.value);
+        formData.append('data',this.evaluationContent);
         formData.append('assesmentId', this.data.assesmentId);
-        formData.append('submittedFileName', this.submitAssesmentFormGroup.get('fileSourceControl')?.value.name);
+        formData.append('evaluatedFileName', this.evaluateAssesmentFormGroup.get('fileSourceControl')?.value.name);
+        formData.append('grade', this.evaluateAssesmentFormGroup.get('gradeControl')?.value);
+        formData.append('marksObtained', this.evaluateAssesmentFormGroup.get('marksControl')?.value);
         return formData;
     }
 
-    cancelAssesmentSubmission() {
+    cancelAssesmentEvaluation() {
         this.dialogRef.close();
     }
 
@@ -122,9 +136,11 @@ export class AcmeSubmitAssesmentComponent {
     onFileChange(event: any) {
         if (event.target.files.length > 0) {
             const file = event.target.files[0];
-            this.submitAssesmentFormGroup.patchValue({
+            this.evaluateAssesmentFormGroup.patchValue({
                 fileSourceControl: file
             });
         }
     }
+
+
 }

@@ -90,6 +90,44 @@ export class AcmeSCAssesmentSubmissionComponent {
         );
     }
 
+    GetEvaluatedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssesmentService.getUserAssesmentEvaluation(this.loginEntity.email,this.assesment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    GetSubmittedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssesmentService.getUserAssesmentSubmission(this.loginEntity.email,this.assesment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
 
     getUserAssesment() {
         this.isProgress = true;

@@ -6,6 +6,8 @@ export interface IUserAssesmentEntity {
     reviewedBy: string;
     reviewerFirstName: string;
     reviewerLastName: string;
+    submittedFileName: string;
+    evaluatedFileName: string;
     reviewedAt: Date;
     roomId: string;
     roomOwner: string;

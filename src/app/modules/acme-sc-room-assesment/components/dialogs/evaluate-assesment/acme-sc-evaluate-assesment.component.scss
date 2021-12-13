@@ -1,5 +1,7 @@
 @import '../../../../shared/css/commom.scss';
-.acme-sc-assesment-submit-close-button {
+@import '../../../../shared/css/variables.scss';
+
+.acme-sc-evaluate-submit-close-button {
     background-color: darkorange !important;
 }
 
@@ -13,6 +15,10 @@
     opacity: 0.7;
     color: white;
     font-size: 0.7vw
+}
+
+.acme-sc-total-marks-grade {
+    color:$acme-sc-company-label-color;
 }
 
 input[type="file"] {

@@ -20,7 +20,7 @@
                         fxFill>
                         <div fxFlexFill fxLayout="column">
                             <div fxFlex>
-                                <span class="acme-sc-content-link">{{fileName}}</span>
+                                <span class="acme-sc-label-default-message acme-sc-custom-label">Assesment Paper : </span><span class="acme-sc-content-link acme-sc-custom-link">{{fileName}}</span>
                             </div>
                             <div *ngIf="isfileDownloadProgress" fxFlex="2vh">
                                 <mat-progress-bar *ngIf="!isProgress" mode="indeterminate"></mat-progress-bar>
@@ -57,8 +57,11 @@
                 <span><b>Reviewed By:
                     </b>{{userAssesment.reviewerFirstName}}</span><span>{{userAssesment.reviewerLastName}}</span>
             </div>
-            <!--Grade-->
-            <!--marks-->
+            <!--submitted assignment-->
+            <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <span><b>Submitted File:</b></span><span (click)="GetSubmittedFile()" class="acme-sc-custom-link acme-sc-custom-submission">{{userAssesment.submittedFileName}}</span>
+            </div>
+            
             <!--room not active label-->
             <div fxLayoutAlign="center center"
                 *ngIf="(roomStatus === 'Closed' || assesment.status === 'Closed') && !isProgress && isSuccessFull"
@@ -114,19 +117,32 @@
             <div fxFlexFill fxLayout="row">
                 <div fxFlex="10vw">
                     <div *ngIf="userAssesment.status === 'Reviewed'"
-                        class="acme-sc-room-user-assignment-reviewer-remark">
+                        class="acme-sc-room-user-assesment-reviewer-remark">
                         <span>Reviewer Remarks</span>
                     </div>
                 </div>
-                <div fxFlex="40%">
+                <div fxFlex="15vw">
                     <div *ngIf="userAssesment.status === 'Reviewed'"
-                        class="acme-sc-room-user-assignment-reviewer-remark">
+                        class="acme-sc-room-user-assesment-reviewer-remark">
                         <span>Reviewed On: </span><span>{{userAssesment.reviewedAt|date:'mediumDate'}}</span>
                     </div>
                 </div>
+                <!--Evaluated assignment-->
+                <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                    <span><b>Evaluated File:</b></span><span style="padding-left: 0.4vw;" (click)="GetEvaluatedFile()"
+                        class="acme-sc-custom-link acme-sc-custom-submission">{{userAssesment.evaluatedFileName}}</span>
+                </div>
+                <!--Grade-->
+                <div *ngIf="isAssesmentFound" fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                    <span><b>Grade:</b></span><span class="acme-sc-grade-marks">{{userAssesment.grade}}</span>
+                </div>
+                <!--marks-->
+                <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                    <span><b>Marks: </b></span><span class="acme-sc-grade-marks" style="padding-left:0.4vw">{{userAssesment.marksObtained}} / {{userAssesment.totalMarks}} </span>
+                </div>
             </div>
             <div *ngIf="userAssesment.status === 'Reviewed'" style="padding-top:0.4vw">
-                <div class="acme-sc-assignment-data-container">
+                <div class="acme-sc-assesment-data-container">
                     <quill-view [content]="userAssesment.evaluatedData"></quill-view>
                 </div>
             </div>

@@ -14,7 +14,7 @@ import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { IAssesmentModel } from '../../models/assesment.model';
 import { IAssignmentEntity } from 'src/app/modules/acme-sc-room-assignment/entities/assignment';
-//import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignment/acme-sc-evaluate-assignment.component';
+import { AcmeEvaluateAssesmentComponent } from '../dialogs/evaluate-assesment/acme-sc-evaluate-assesment.component';
 
 @Component({
     selector: 'acme-sc-assesment-evaluation',
@@ -89,6 +89,56 @@ export class AcmeSCAssesmentEvaluationComponent {
     }
 
     reviewAssesment() {
+        const dialogRef = this.dialog.open(AcmeEvaluateAssesmentComponent, {
+            width: '65vw',
+            height: '85vh',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: {assesmentId: this.assesment._id, userAssesment: this.userAssesment }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.data) {
+                this.getUserAssesment();
+            }
+        });
+    }
+
+    GetEvaluatedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssesmentService.getUserAssesmentEvaluation(this.userId,this.assesment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    GetSubmittedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssesmentService.getUserAssesmentSubmission(this.userId,this.assesment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
     }
 
     getUserAssesment() {

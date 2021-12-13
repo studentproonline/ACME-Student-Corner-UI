@@ -17,6 +17,25 @@
     background: $acme-sc-navigation-bar-border-color;
 }
 
+.acme-sc-custom-link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.acme-sc-custom-evaluation {
+    color: $acme-sc-link-color;
+}
+
+.acme-sc-grade-marks {
+    font-weight: bold;
+    color: $acme-sc-company-label-color;
+    font-size: 1vw;
+}
+
+.acme-sc-custom-label {
+   color:$acme-sc-start-color;
+}
+
 .acme-sc-room-user-assesment-reviewer-remark {
     font-weight: bold;
     font-size:0.7vw;

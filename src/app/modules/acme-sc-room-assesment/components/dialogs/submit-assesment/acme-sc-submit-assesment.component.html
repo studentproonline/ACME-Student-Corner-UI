@@ -2,10 +2,31 @@
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>Submit Assesment</span>
     </div>
+    <div fxFlex="7vh" fxFill>
+        <div fxFlex fxFill>
+            <form [formGroup]="submitAssesmentFormGroup" fxFill>
+                <div fxFlexFill fxLayout="column">
+                   
+                     <!--File-->
+                     <div fxFlex="9vh">
+                        <label for="file-upload" class="acme-form-input-field custom-file-upload">
+                            Assesment File
+                        </label>
+                        <input formControlName="fileControl" id="file-upload" type="file" required
+                            class="form-control acme-form-input-field" (change)="onFileChange($event)"
+                            accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                        <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
+                    </div>
+               
+                </div>
+            </form>
+        </div>
+    </div>
     <!--Assignment Editor-->
-    <div fxFlex="65vh" fxFill>
+    <div fxFlex="55vh" fxFill>
         <quill-editor fxFlexFill [(ngModel)]="assesmentContent" [modules]="modules"
-            placeholder="Insert details here ..." [required]="true"></quill-editor>
+            placeholder="Insert yuor comments here ..." [required]="true"></quill-editor>
     </div>
     <div fxFlex fxLayoutAlign="end end" fxFill>
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
@@ -13,7 +34,8 @@
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
                     <div fxFlex fxLayoutAlign="start end" fxFill>
                         <button fxFill mat-raised-button color="accent" class="acme-sc-button"
-                            (click)="createAssesmentEvaluation()" [disabled]="assesmentContent.trim()===''">
+                            (click)="createAssesmentEvaluation()" [disabled]="assesmentContent.trim()==='' ||
+                                !submitAssesmentFormGroup.controls['fileControl'].valid">
                             {{buttonLabel}}
                         </button>
                     </div>
@@ -29,5 +51,5 @@
             <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
         </div>
     </div>
- 
+
 </div>

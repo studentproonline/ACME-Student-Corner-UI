@@ -58,16 +58,36 @@ export class AcmeSCRoomAssesmentService {
         return this.httpService.get('/rooms/' + roomId, headers).pipe(catchError(this.handleErrorObservable));
     }
 
-    //update assignment
+    // assesment file
     getAssesmentFile(assesmentId: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
         return this.httpService.get('/assesments/file/' + assesmentId, headers).pipe(catchError(this.handleErrorObservable));
     }
 
+   
     // create user assesment evaluation
     createUserAssignment(body: any, token: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        const headers = new HttpHeaders({ Authorization: token });
         return this.httpService.post('/assesmentEvaluations/', headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // user assesment evaluation
+    evaluateUserAssesment(userAssesmentId: string,body: any, token: any) {
+        const headers = new HttpHeaders({ Authorization: token });
+        return this.httpService.put('/assesmentEvaluations/evaluate/'+userAssesmentId, headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
+
+    // get user submission File
+    getUserAssesmentSubmission(userId: string, assesmentId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/assesmentEvaluations/file/'+assesmentId+'?userId=' + userId + '&fileType=Submitted', headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get  evaluated File
+    getUserAssesmentEvaluation(userId: string, assesmentId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/assesmentEvaluations/file/'+assesmentId+'?userId=' + userId + '&fileType=Evaluated', headers).pipe(catchError(this.handleErrorObservable));
     }
 
     // handle error
