@@ -4,6 +4,7 @@ export interface IAssesmentEntity {
     description: string;
     fileName: string;
     owner: string;
+    group:string;
     ownerFirstName: string;
     ownerLastName: string;
     conductedOn: Date;

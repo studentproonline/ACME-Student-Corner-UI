@@ -7,7 +7,7 @@
         <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType"></acme-sc-navigation-bar>
     </div>
     <!--assesment file link-->
-    <div (click)="openAssesmentFile()" *ngIf="roomStatus !== 'Closed' && !isProgress && assesment.status === 'Active'"
+    <div (click)="openAssesmentFile()" *ngIf="roomStatus !== 'Closed' && !isProgress"
         fxFlex="5vh" fxFill>
         <div fxFlexFill fxLayout="column">
             <div fxFlex>
@@ -40,6 +40,10 @@
             <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                 <span><b>Reviewed By:
                     </b>{{userAssesment.reviewerFirstName}}</span><span>{{userAssesment.reviewerLastName}}</span>
+            </div>
+            <!--group by-->
+            <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <span><b>Group:</b>{{assesment.group}}</span>
             </div>
             <!--submitted assignment-->
             <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
