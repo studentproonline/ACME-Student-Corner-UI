@@ -16,7 +16,7 @@ export class AcmeSCRoomAssesmentService {
         return this.httpService.post('/assesments/', headers, assesmentData).pipe(catchError(this.handleErrorObservable));
     }
 
-     // get assesments
+    // get assesments
     getAssesments(roomId: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
         return this.httpService.get('/assesments/?roomId=' + roomId, headers).pipe(catchError(this.handleErrorObservable));

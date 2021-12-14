@@ -35,6 +35,10 @@ export class AcmeSCNavigationBarComponent {
         this.router.navigateByUrl ( '/library?roomType='+ this.roomType + '&roomId='+ this.room._id);
     }
 
+    gotoReportCards() {
+        this.router.navigateByUrl ( '/reportcards?roomType='+ this.roomType + '&roomId='+ this.room._id);
+    }
+
     gotoConferenceCall() {
         this.router.navigateByUrl ( '/conference?roomType='+ this.roomType + '&roomId='+ this.room._id);
     }
