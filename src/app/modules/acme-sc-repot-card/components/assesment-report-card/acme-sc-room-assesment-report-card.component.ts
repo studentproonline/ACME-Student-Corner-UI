@@ -13,11 +13,6 @@ import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeSCReportCardCommentComponent } from '../dialogs/comments/acme-sc-report-card-comments.component';
 
-/*import jsPDF from 'jspdf';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import htmlToPdfmake from 'html-to-pdfmake';*/
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 

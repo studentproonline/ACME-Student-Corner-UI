@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [ "canvg", "raf" ],
             "outputPath": "dist/ACME-Student-Corner",
             "index": "src/index.html",
             "main": "src/main.ts",
