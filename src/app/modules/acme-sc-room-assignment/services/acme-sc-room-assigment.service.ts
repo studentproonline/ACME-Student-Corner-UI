@@ -54,19 +54,19 @@ export class AcmeSCRoomAssignmentService {
 
     // create user assignment evaluation
     createUserAssignment(body: any, token: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        const headers = new HttpHeaders({ Authorization: token });
         return this.httpService.post('/assignmentEvaluations/', headers, body).pipe(catchError(this.handleErrorObservable));
     }
 
     // update user assignment
     updateUserAssignment(assignmentEvaluationId: string, body: any, token: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        const headers = new HttpHeaders({Authorization: token });
         return this.httpService.put('/assignmentEvaluations/'+assignmentEvaluationId, headers, body).pipe(catchError(this.handleErrorObservable));
     }
 
     // update user evaluation assignment
     updateUserEvaluationAssignment(assignmentEvaluationId: string, body: any, token: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        const headers = new HttpHeaders({ Authorization: token });
         return this.httpService.put('/assignmentEvaluations/evaluate/'+assignmentEvaluationId, headers, body).pipe(catchError(this.handleErrorObservable));
     }
 

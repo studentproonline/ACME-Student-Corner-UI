@@ -1,4 +1,4 @@
 export interface IUserAssignmentModel {
-    assignmentId: String;
-    data: string;
+    assignmentId: string;
+    submitedData: string;
 }

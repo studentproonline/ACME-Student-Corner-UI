@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 
@@ -14,7 +15,6 @@ import { IUserAssignmentEvaluateModel } from '../../../models/user-assignment-ev
 
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
-import { IUserAssignmentEntity } from '../../../entities/userassignment';
 
 Quill.register('modules/imageResize', ImageResize);
 
@@ -29,8 +29,9 @@ export class AcmeSCEvaluateAssignmentComponent {
     assignmentContent: string = '';
     Submitselected = true;
     returnAssignmentSelected = false;
-    status ='Reviewed';
-    stars =1;
+    evaluateAssignmentFormGroup: any;
+    status = 'Reviewed';
+    stars = 1;
 
     starsArray: any[] = [{ 'id': 1, 'selected': false },
     { 'id': 2, 'selected': false },
@@ -62,7 +63,13 @@ export class AcmeSCEvaluateAssignmentComponent {
     constructor(public dialogRef: MatDialogRef<AcmeSCEvaluateAssignmentComponent>,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
+        private formBuilder: FormBuilder,
         public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+
+        this.evaluateAssignmentFormGroup = this.formBuilder.group({
+            fileControl: ['', [Validators.required]],
+            fileSourceControl: ['', [Validators.required]]
+        });
 
         if (data.mode === 'New') {
             this.buttonLabel = "Submit";
@@ -70,13 +77,17 @@ export class AcmeSCEvaluateAssignmentComponent {
             this.buttonLabel = "submit";
 
         }
-        this.selectStars( 1);
+        this.selectStars(1);
+    }
+
+    get f() {
+        return this.evaluateAssignmentFormGroup.controls;
     }
 
     ngOnInit() {
         if (this.data.mode !== 'New') {
             this.assignmentContent = this.data.userAssignment.evaluatedData;
-            this.selectStars( this.data.userAssignment.stars);
+            this.selectStars(this.data.userAssignment.stars);
         }
     }
 
@@ -86,33 +97,28 @@ export class AcmeSCEvaluateAssignmentComponent {
 
     selectStars(id) {
         this.stars = 1;
-        for(let i=0; i < id; i+=1) {
+        for (let i = 0; i < id; i += 1) {
             this.starsArray[i].selected = true;
         }
-        for(let i=id; i< 5; i+=1) {
+        for (let i = id; i < 5; i += 1) {
             this.starsArray[i].selected = false;
         }
     }
 
     selectAction(action) {
-        if(action === 'Submit') {
-            this.status= 'Reviewed';
+        if (action === 'Submit') {
+            this.status = 'Reviewed';
             this.Submitselected = true;
             this.returnAssignmentSelected = false;
         } else {
-            this.status= 'Returned';
+            this.status = 'Returned';
             this.Submitselected = false;
             this.returnAssignmentSelected = true;
         }
     }
 
     updateAssignmentEvaluation() {
-        let userAssigmentEvaluateModel: IUserAssignmentEvaluateModel = {
-            assignmentId: this.data.userAssignment.assignmentId,
-            data: this.assignmentContent,
-            status: this.status,
-            stars: this.stars
-        }
+        let userAssigmentEvaluateModel= this.createAssigmentEvaluationData();
         // show progress
         this.isProgress = true;
         this.acmeSCRoomAssignmentService.updateUserEvaluationAssignment(this.data.userAssignment._id, userAssigmentEvaluateModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
@@ -144,11 +150,32 @@ export class AcmeSCEvaluateAssignmentComponent {
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
             width: '65vw',
-            height:'85vh',
+            height: '85vh',
             disableClose: true,
             data: {}
         });
         dialogRef.afterClosed().subscribe(result => {
         });
+    }
+
+    onFileChange(event: any) {
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            this.evaluateAssignmentFormGroup.patchValue({
+                fileSourceControl: file
+            });
+        }
+    }
+   
+    createAssigmentEvaluationData() {
+
+        const formData = new FormData();
+        formData.append('assesmentData', this.evaluateAssignmentFormGroup.get('fileSourceControl')?.value);
+        formData.append('evaluatedData', this.assignmentContent);
+        formData.append('assignmentId', this.data.userAssignment.assignmentId);
+        formData.append('status', this.status);
+        formData.append('stars', this.stars.toString());
+        formData.append('evaluatedFileName', this.evaluateAssignmentFormGroup.get('fileSourceControl')?.value.name);
+        return formData;
     }
 }

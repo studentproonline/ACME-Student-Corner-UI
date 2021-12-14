@@ -2,8 +2,27 @@
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>Submit Assignment</span>
     </div>
+    <div fxFlex="7vh" fxFill>
+        <div fxFlex fxFill>
+            <form [formGroup]="submitAssignmentFormGroup" fxFill>
+                <div fxFlexFill fxLayout="column">
+                        <!--File-->
+                        <div fxFlex="9vh">
+                            <label for="file-upload" class="acme-form-input-field custom-file-upload">
+                                Assignment File
+                            </label>
+                            <input formControlName="fileControl" id="file-upload" type="file" required
+                                class="form-control acme-form-input-field" (change)="onFileChange($event)"
+                                accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
+                            <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                            <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <!--Assignment Editor-->
-    <div fxFlex="56vh" fxFill>
+    <div fxFlex="46vh" fxFill>
         <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
         [required]="true"></quill-editor>
     </div>
@@ -13,13 +32,13 @@
             <div fxFill fxFlex="7vh">
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
                     <div fxFlex fxLayoutAlign="start end" fxFill>
-                        <button mat-raised-button color="accent" class="acme-sc-button"
-                            (click)="createUpdateAssignment()" [disabled]="assignmentContent.trim()===''">
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
+                            (click)="createUpdateAssignment()" [disabled]="!assignmentContent || assignmentContent.trim()===''">
                                 {{buttonLabel}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end" fxFill>
-                        <button mat-raised-button color="warn" class="acme-sc-button acme-sc-assignment-submit-close-button"
+                        <button fxFill mat-raised-button color="warn" class="acme-sc-button acme-sc-assignment-submit-close-button"
                             (click)="cancelAssignmentSubmission()">
                             Cancel
                         </button>

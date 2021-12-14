@@ -14,7 +14,12 @@ import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialog
 import { AcmeSCReportCardCommentComponent } from '../dialogs/comments/acme-sc-report-card-comments.component';
 
 import jspdf from 'jspdf';
+//import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+
+import pdfMake from "pdfmake/build/pdfmake";  
+import pdfFonts from "pdfmake/build/vfs_fonts";  
+pdfMake.vfs = pdfFonts.pdfMake.vfs;   
 
 @Component({
     selector: 'acme-sc-assesment-report-card',
@@ -86,7 +91,7 @@ export class AcmeSCAssesmentReportCardComponent {
         let body: any = {};
         body.userId = this.selectedUser._id;
         body.roomId = this.roomId;
-        body.userEmail =this.selectedUser.userEmail;
+        body.userEmail = this.selectedUser.userEmail;
         body.assesmentGroup = this.assesmentgroup;
         body.teachersRemark = this.teachersRemark;
         body.otherInformation = this.otherInformation;
@@ -110,15 +115,15 @@ export class AcmeSCAssesmentReportCardComponent {
     getUserReportCard() {
         this.isProgress = true;
         this.isSuccessFull = false;
-        this.acmeSCRoomReportCardService.getReportCard(this.roomId, this.selectedUser.userEmail,this.assesmentgroup, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeSCRoomReportCardService.getReportCard(this.roomId, this.selectedUser.userEmail, this.assesmentgroup, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 const response: any = value;
                 this.isProgress = false;
                 this.isSuccessFull = true;
                 let reportCardData = response.data;
-                if(reportCardData) {
+                if (reportCardData) {
                     this.teachersRemark = reportCardData.teachersRemark;
-                    this.otherInformation =reportCardData.otherInformation
+                    this.otherInformation = reportCardData.otherInformation
                 }
             },
             err => {
@@ -231,7 +236,7 @@ export class AcmeSCAssesmentReportCardComponent {
         if (type = "teacher") {
             this.teachersRemark = '';
         } else {
-            this.otherInformation ='';
+            this.otherInformation = '';
         }
     }
 
@@ -253,17 +258,18 @@ export class AcmeSCAssesmentReportCardComponent {
     }
 
     generateReportCard(reportCardName) {
-        var data = document.getElementById('reportCardContainer');
-        html2canvas(data).then(canvas => {
-            // Few necessary setting options  
-            var imgWidth = 208;
-            var imgHeight = canvas.height * imgWidth / canvas.width;
+         var data = document.getElementById('reportCardContainer');
+         html2canvas(data).then(canvas => {
+             // Few necessary setting options  
+             var imgWidth = 208;
+             var imgHeight = canvas.height * imgWidth / canvas.width;
+             const contentDataURL = canvas.toDataURL('image/png')
+             let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+             var position = 0;
+             pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+             pdf.save(reportCardName + '_reportCard.pdf'); // Generated PDF 
+         });
          
-            const contentDataURL = canvas.toDataURL('image/png')
-            let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-            var position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-            pdf.save(reportCardName + '_reportCard.pdf'); // Generated PDF   
-        });
+        
     }
 }

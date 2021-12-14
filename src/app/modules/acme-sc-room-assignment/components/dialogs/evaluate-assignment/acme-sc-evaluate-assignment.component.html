@@ -27,8 +27,27 @@
             </div>
         </div>
     </div>
+    <div fxFlex="7vh" fxFill>
+        <div fxFlex fxFill>
+            <form [formGroup]="evaluateAssignmentFormGroup" fxFill>
+                <div fxFlexFill fxLayout="column">
+                      <!--File-->
+                      <div fxFlex="9vh">
+                        <label for="file-upload" class="acme-form-input-field custom-file-upload">
+                            Assignment File
+                        </label>
+                        <input formControlName="fileControl" id="file-upload" type="file" required
+                            class="form-control acme-form-input-field" (change)="onFileChange($event)"
+                            accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                        <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <!--Assignment Editor-->
-    <div fxFlex="56vh" fxFill>
+    <div fxFlex="46vh" fxFill>
         <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
         [required]="true"></quill-editor>
     </div>

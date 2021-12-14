@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 
 // services
@@ -9,12 +10,8 @@ import { AcmeSCRoomAssignmentService } from '../../../services/acme-sc-room-assi
 import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedUiTuilitiesService } from '../../../../shared/services/acme-sc-ui-utiltities.services';
 
-// models
-import { IUserAssignmentModel } from '../../../models/user-assignment.model';
-
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
-import { IUserAssignmentEntity } from '../../../entities/userassignment';
 
 Quill.register('modules/imageResize', ImageResize);
 
@@ -27,6 +24,7 @@ export class AcmeSSubmitAssignmentComponent {
     isProgress = false;
     buttonLabel: string = 'Create'
     assignmentContent: string = '';
+    submitAssignmentFormGroup: any;
 
     modules = {
         imageResize: { modules: ['Resize', 'DisplaySize', 'Toolbar'] },
@@ -52,7 +50,13 @@ export class AcmeSSubmitAssignmentComponent {
     constructor(public dialogRef: MatDialogRef<AcmeSSubmitAssignmentComponent>,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
+        private formBuilder: FormBuilder,
         public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+
+        this.submitAssignmentFormGroup = this.formBuilder.group({
+            fileControl: ['', [Validators.required]],
+            fileSourceControl: ['', [Validators.required]]
+        });
 
         if (data.mode === 'New') {
             this.buttonLabel = "Create";
@@ -62,28 +66,30 @@ export class AcmeSSubmitAssignmentComponent {
         }
     }
 
+    get f() {
+        return this.submitAssignmentFormGroup.controls;
+    }
+
     ngOnInit() {
         if (this.data.mode !== 'New') {
-            this.assignmentContent = this.data.userAssignment.data;
+            this.assignmentContent = this.data.userAssignment.submitedData;
         }
     }
 
     createUpdateAssignment() {
-        if(this.data.mode !== 'New') {
+        if (this.data.mode !== 'New') {
             this.updateAssignmentEvaluation();
-        } else{
+        } else {
             this.createAssignmentEvaluation();
         }
     }
 
     createAssignmentEvaluation() {
-        let userAssigmentModel: IUserAssignmentModel = {
-            assignmentId: this.data.assignment._id,
-            data:this.assignmentContent
-        }
+        
+        let userAssigmentModel=this.createAssigmentSubmissionData();
         // show progress
         this.isProgress = true;
-        this.acmeSCRoomAssignmentService.createUserAssignment( userAssigmentModel,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeSCRoomAssignmentService.createUserAssignment(userAssigmentModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
                 this.snackBar.open(' Assignment is successfully submitted.', '', {
@@ -106,13 +112,10 @@ export class AcmeSSubmitAssignmentComponent {
     }
 
     updateAssignmentEvaluation() {
-        let userAssigmentModel: IUserAssignmentModel = {
-            assignmentId: this.data.userAssignment.assignmentId,
-            data:this.assignmentContent
-        }
+        let userAssigmentModel=this.createAssigmentSubmissionData();
         // show progress
         this.isProgress = true;
-        this.acmeSCRoomAssignmentService.updateUserAssignment(this.data.userAssignment._id, userAssigmentModel,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeSCRoomAssignmentService.updateUserAssignment(this.data.userAssignment._id, userAssigmentModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
                 this.snackBar.open(' Assignment is successfully modified.', '', {
@@ -148,7 +151,30 @@ export class AcmeSSubmitAssignmentComponent {
         dialogRef.afterClosed().subscribe(result => {
         });
     }
+
+    onFileChange(event: any) {
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            this.submitAssignmentFormGroup.patchValue({
+                fileSourceControl: file
+            });
+        }
+    }
+
+    createAssigmentSubmissionData() {
+        
+        let userAssignmentId;
+        if (this.data.mode === 'New') {
+            userAssignmentId = this.data.assignmentId;
+        } else {
+            userAssignmentId = this.data.userAssignment.assignmentId;
+        }
+      
+        const formData = new FormData();
+        formData.append('assesmentData', this.submitAssignmentFormGroup.get('fileSourceControl')?.value);
+        formData.append('submitedData',this.assignmentContent);
+        formData.append('assignmentId', userAssignmentId);
+        formData.append('submittedFileName', this.submitAssignmentFormGroup.get('fileSourceControl')?.value.name);
+        return formData;
+    }
 }
-
-
-

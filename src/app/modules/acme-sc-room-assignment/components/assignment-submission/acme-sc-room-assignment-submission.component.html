@@ -41,6 +41,9 @@
             <div *ngIf="isAssignmentFound" fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                 <span><B>{{userAssignment.status}}</B></span>
             </div>
+            <div *ngIf="isAssignmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <span><b>Submitted File:</b></span><span style="padding-left: 0.4vw;" class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.submittedFileName}}</span>
+            </div>
              <!--Revieweed by-->
             <div *ngIf="isAssignmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                 <span><b>Reviewed By:
@@ -111,7 +114,7 @@
         <ng-scrollbar thumbClass="white-scrollbars">
             <div style="padding-top:0.4vw">
                 <div class="acme-sc-assignment-data-container">
-                    <quill-view [content]="userAssignment.data"></quill-view>
+                    <quill-view [content]="userAssignment.submitedData"></quill-view>
                 </div>
             </div>
             <div fxFlexFill fxLayout="row">

@@ -17,4 +17,6 @@ export interface IUserAssesmentEntity {
     marksObtained: number;
     totalMarks: number
     status: string;
+    assesmentTitle: string;
+    group: string;
 }

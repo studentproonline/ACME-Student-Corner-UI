@@ -114,11 +114,11 @@ export class AcmeSCAssignmentSubmissionComponent {
 
     turnInAssignment(mode) {
         const dialogRef = this.dialog.open(AcmeSSubmitAssignmentComponent, {
-            width: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenHeight(),
+            width: '60vw',
+            height: '78vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { mode: mode, userAssignment: this.userAssignment }
+            data: { mode: mode, userAssignment: this.userAssignment, assignmentId:this.assignment._id }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data) {

@@ -9,8 +9,10 @@ export interface IUserAssignmentEntity {
     reviewedAt: Date;
     roomId: string;
     roomOwner: string;
-    data: string;
+    submitedData: string;
+    submittedFileName: string;
     evaluatedData: string;
+    evaluatedFileName: string;
     stars: Number;
     status: string;
 }
