@@ -19,6 +19,7 @@ export class AcmeSCRoomUserItemComponent {
     @Input() user: IRoomUserEntity
     @Input() canRemoveUser: boolean = false;
     @Output() roomUserRemoved = new EventEmitter<IRoomUserEntity>();
+    @Output() roomUserRoleUpdated = new EventEmitter<IRoomUserEntity>();
 
     isProgress = false;
 
@@ -66,7 +67,7 @@ export class AcmeSCRoomUserItemComponent {
             }
         });
     }
-
+   
     // delete share room
     removeUser() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
@@ -92,6 +93,50 @@ export class AcmeSCRoomUserItemComponent {
                     duration: 3000
                 });
                 this.roomUserRemoved.emit(this.user);
+            },
+            err => {
+                this.isProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    // update user role
+    makeAdmin(istrue) {
+        const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
+            width: '500px',
+            height: '150',
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { message: 'This action will update user role.' }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.data === 'true') {
+                this.updateUserRole(istrue);
+            }
+        });
+    }
+
+    updateUserRole(istrue) {
+        this.isProgress = true;
+        let body: any = {};
+        body.roomId=this.user.roomId;
+        body.userEmail = this.user.userEmail;
+        if(istrue === 'true') {
+            body.role = 'Admin';
+        } else{
+            body.role="Participant";
+        }
+
+        this.acmesharedRoomService.updateUserRole(body,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                this.isProgress = false;
+                this.snackBar.open('Succesfully updated user role.', '', {
+                    duration: 3000
+                });
+                this.roomUserRoleUpdated.emit(this.user);
             },
             err => {
                 this.isProgress = false;

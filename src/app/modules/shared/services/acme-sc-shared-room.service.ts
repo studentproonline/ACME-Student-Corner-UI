@@ -68,6 +68,11 @@ export class AcmesharedRoomService {
         return this.httpService.post('/sharedrooms/removeuser/', headers, roomUser).pipe(catchError(this.handleErrorObservable));
     }
 
+    updateUserRole(body: any, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.post('/sharedrooms/updaterole/', headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
     // handle error
     private handleErrorObservable(error: Response | any){ 
         return throwError(error);

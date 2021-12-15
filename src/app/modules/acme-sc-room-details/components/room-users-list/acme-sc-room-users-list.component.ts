@@ -98,4 +98,9 @@ export class AcmeSCRoomUsersListComponent implements OnChanges {
     roomUserRemoved($event) {
         this.getSharedRoomUserList();
     }
+
+    // user role update event
+    roomUserRoleUpdated($event) {
+        this.getSharedRoomUserList();
+    }
 }

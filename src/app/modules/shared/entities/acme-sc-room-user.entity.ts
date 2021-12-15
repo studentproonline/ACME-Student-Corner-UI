@@ -3,5 +3,6 @@ export interface IRoomUserEntity {
     roomId: string;
     userEmail: string;
     userName: string;
+    role: string;
     status: string;
 }

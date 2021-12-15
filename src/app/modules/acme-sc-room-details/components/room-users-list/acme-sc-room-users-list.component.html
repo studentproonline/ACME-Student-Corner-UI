@@ -85,7 +85,9 @@
         <div fxLayout="column" fxFlexFill fxLayoutGap="1vh">
             <ng-scrollbar thumbClass="white-scrollbars">
                 <acme-sc-room-user-item *ngFor="let user of sharedRoomUsersList" [user]="user"
-                    [canRemoveUser]="isRoomOwner" (roomUserRemoved)="roomUserRemoved($event)">
+                    [canRemoveUser]="isRoomOwner"
+                    (roomUserRemoved)="roomUserRemoved($event)"
+                    (roomUserRoleUpdated)="roomUserRoleUpdated($event)">
                 </acme-sc-room-user-item>
             </ng-scrollbar>
         </div>
