@@ -64,6 +64,8 @@ export class AcmeSUploadAssignmentComponent {
             titleControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             descriptionControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             expiryDateControl: ['', [Validators.required]],
+            fileControl: ['', [Validators.required]],
+            fileSourceControl: ['', [Validators.required]]
         });
         this.minDate = new Date();
         if (data.mode === 'New') {
@@ -72,6 +74,10 @@ export class AcmeSUploadAssignmentComponent {
             this.buttonLabel = "Edit";
 
         }
+    }
+    
+    get f() {
+        return this.createAssignmentFormGroup.controls;
     }
 
     ngOnInit() {
@@ -91,15 +97,8 @@ export class AcmeSUploadAssignmentComponent {
         }
     }
     updateAssignment() {
-        let title = this.createAssignmentFormGroup.get('titleControl')?.value;
-        let description = this.createAssignmentFormGroup.get('descriptionControl')?.value;
-        let expiryDate = (this.createAssignmentFormGroup.get('expiryDateControl')?.value);
-
-        let assigmentModel: IAssignmentModel = {
-            title: title, description: description,
-            roomId: this.data.assignment.roomId, expiryDate: expiryDate,
-            data: this.assignmentContent, status: this.data.assignment.status
-        }
+       
+        let assigmentModel= this.createAssigmentData();
         // show progress
         this.isProgress = true;
         this.acmeSCRoomAssignmentService.updateAssignment(this.data.assignment._id, assigmentModel,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
@@ -126,15 +125,7 @@ export class AcmeSUploadAssignmentComponent {
     }
 
     createAssignment() {
-        let title = this.createAssignmentFormGroup.get('titleControl')?.value;
-        let description = this.createAssignmentFormGroup.get('descriptionControl')?.value;
-        let expiryDate = (this.createAssignmentFormGroup.get('expiryDateControl')?.value);
-
-        let assigmentModel: IAssignmentModel = {
-            title: title, description: description,
-            roomId: this.data.roomId, expiryDate: expiryDate,
-            data: this.assignmentContent, status: 'Active'
-        }
+        let assigmentModel= this.createAssigmentData();
         // show progress
         this.isProgress = true;
         this.acmeSCRoomAssignmentService.createAssignment(assigmentModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
@@ -175,4 +166,40 @@ export class AcmeSUploadAssignmentComponent {
         });
     }
 
+    onFileChange(event: any) {
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            this.createAssignmentFormGroup.patchValue({
+                fileSourceControl: file
+            });
+        }
+    }
+    
+    /**
+     * let assigmentModel: IAssignmentModel = {
+            title: title, description: description,
+            roomId: this.data.roomId, expiryDate: expiryDate,
+            data: this.assignmentContent, status: 'Active'
+        }
+     */
+    createAssigmentData() {
+        
+        let status;
+        if (this.data.mode === 'New') {
+            status = 'Active';
+        } else {
+            status = this.data.assignment.status;
+        }
+      
+        const formData = new FormData();
+        formData.append('title', this.createAssignmentFormGroup.get('titleControl')?.value);
+        formData.append('description',this.createAssignmentFormGroup.get('descriptionControl')?.value);
+        formData.append('status',status);
+        formData.append('roomId', this.data.roomId);
+        formData.append('expiryDate', this.createAssignmentFormGroup.get('expiryDateControl')?.value);
+        formData.append('data', this.assignmentContent);
+        formData.append('assesmentData', this.createAssignmentFormGroup.get('fileSourceControl')?.value);
+        formData.append('fileName', this.createAssignmentFormGroup.get('fileSourceControl')?.value.name);
+        return formData;
+    }
 }

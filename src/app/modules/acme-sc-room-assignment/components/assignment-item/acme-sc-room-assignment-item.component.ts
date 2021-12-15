@@ -142,9 +142,37 @@ export class AcmeSCRoomAssignmentItemComponent {
         });
     }
 
+    GetAssignmentFile() {
+        this.isProgress = true;
+        this.acmeSCRoomAssignmentService.getUserAssesmentFile(this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
     openAssignment() {
        this.router.navigateByUrl('/assignments/details?roomId=' + this.assignment.roomId + '&roomType=' 
         + this.roomType + '&assignmentId='+this.assignment._id +'&assignmentTitle='+this.assignment.title +
         '&roomStatus='+ this.roomStatus + '&roomName='+this.roomName);
+    }
+    _base64ToArrayBuffer(base64Data) {
+        const binary_string = window.atob(base64Data);
+        const len = binary_string.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes.buffer;
     }
 }

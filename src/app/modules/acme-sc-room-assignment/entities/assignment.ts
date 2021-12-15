@@ -10,5 +10,6 @@ export interface IAssignmentEntity {
     roomId: string;
     data: string;
     roomOwner: string;
+    fileName: string;
     status: string;
 }

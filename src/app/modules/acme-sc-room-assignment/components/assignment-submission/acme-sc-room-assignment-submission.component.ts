@@ -1,4 +1,5 @@
-import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
@@ -22,16 +23,15 @@ import { AcmeSSubmitAssignmentComponent } from '../dialogs/submit-assignment/acm
 export class AcmeSCAssignmentSubmissionComponent {
     @Input() assignment: IAssignmentEntity;
     @Input() roomType: string;
-    @Input() roomId: string;
     @Input() roomName: string;
     @Input() roomStatus: String;
-    @Input() assignmentTitle: string;
 
     loginEntity: ILoginEntity;
     userAssignment: IUserAssignmentEntity;
     roomDetailsEntity: IRoomEntity;
 
     isProgress = false;
+    isfileDownloadProgress = false;
     isSuccessFull = false;
     isAssignmentFound = false;
     userSubmissionResponseMessage = '';
@@ -43,7 +43,7 @@ export class AcmeSCAssignmentSubmissionComponent {
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog, private router: Router) {
+        public dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -56,7 +56,7 @@ export class AcmeSCAssignmentSubmissionComponent {
 
     ngOnInit() {
         this.roomDetailsEntity = {
-            _id: this.roomId, name: '',
+            _id: this.assignment.roomId, name: '',
             owner: undefined,
             email: '',
             title: this.roomName,
@@ -127,6 +127,63 @@ export class AcmeSCAssignmentSubmissionComponent {
         });
     }
 
+    GetAssignmentFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssignmentService.getUserAssesmentFile(this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    GetSubmittedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssignmentService.getUserAssignmentSubmission(this.loginEntity.email,this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    GetEvaluatedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssignmentService.getUserAssignmentEvaluation(this.loginEntity.email,this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
             width: this.acmesharedUiTuilitiesService.getSessionExpiredScreenWidth(),
@@ -138,12 +195,14 @@ export class AcmeSCAssignmentSubmissionComponent {
         });
     }
 
-    goToAllassignments() {
-        this.router.navigateByUrl('/assignments?roomId=' + this.assignment.roomId + '&roomType=' + this.roomType);
-    }
-
-    gotoHome() {
-        this.router.navigateByUrl('/home?roomType=My Rooms');
+    _base64ToArrayBuffer(base64Data) {
+        const binary_string = window.atob(base64Data);
+        const len = binary_string.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes.buffer;
     }
 
 

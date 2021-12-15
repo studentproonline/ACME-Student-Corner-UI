@@ -1,11 +1,13 @@
 import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeSCRoomAssignmentService } from '../../services/acme-sc-room-assigment.service';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
+import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { IAssignmentEntity } from '../../entities/assignment';
 import { IUserAssignmentEntity } from '../../entities/userassignment';
 import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
@@ -21,16 +23,17 @@ import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignmen
 })
 export class AcmeSCAssignmentEvaluationComponent {
     @Input() assignment: IAssignmentEntity;
-    @Input() roomId: string;
     @Input() roomType: string;
     @Input() roomName: string;
     @Input() userId: string = '';
     @Input() roomStatus: String;
 
+    loginEntity: ILoginEntity;
     userAssignment: IUserAssignmentEntity;
     roomDetailsEntity: IRoomEntity;
 
     isProgress = false;
+    isfileDownloadProgress = false;
     isSuccessFull = false;
     isAssignmentFound = false;
     userAssignmentResponseMessage = '';
@@ -38,14 +41,15 @@ export class AcmeSCAssignmentEvaluationComponent {
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog, private router: Router) {
-
+        public dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) {
+        
+        this.loginEntity = this.acmeSCAuthorizationService.getSession();
          
     }
 
     ngOnInit() {
         this.roomDetailsEntity = {
-            _id: this.roomId, name: '',
+            _id: this.assignment.roomId, name: '',
             owner: undefined,
             email: '',
             title: this.roomName,
@@ -129,6 +133,62 @@ export class AcmeSCAssignmentEvaluationComponent {
             );
     }
 
+    GetAssignmentFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssignmentService.getUserAssesmentFile(this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+    GetSubmittedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssignmentService.getUserAssignmentSubmission(this.userId,this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
+    GetEvaluatedFile() {
+        this.isfileDownloadProgress = true;
+        this.acmeSCRoomAssignmentService.getUserAssignmentEvaluation(this.userId,this.assignment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                this.isfileDownloadProgress = false;
+                var blob = new Blob([this._base64ToArrayBuffer(response.data.assesmentData)], { type: response.data.contentType });
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            },
+            err => {
+                this.isfileDownloadProgress = false;
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
             width: this.acmesharedUiTuilitiesService.getSessionExpiredScreenWidth(),
@@ -139,12 +199,13 @@ export class AcmeSCAssignmentEvaluationComponent {
         dialogRef.afterClosed().subscribe(result => {
         });
     }
-
-    goToAllassignments() {
-        this.router.navigateByUrl('/assignments?roomId=' + this.assignment.roomId + '&roomType=' + this.roomType);
-    }
-
-    gotoHome() {
-        this.router.navigateByUrl('/home?roomType=My Rooms');
+    _base64ToArrayBuffer(base64Data) {
+        const binary_string = window.atob(base64Data);
+        const len = binary_string.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes.buffer;
     }
 }

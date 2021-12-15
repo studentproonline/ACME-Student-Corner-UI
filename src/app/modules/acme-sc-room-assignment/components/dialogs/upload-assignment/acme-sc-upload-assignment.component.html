@@ -3,16 +3,27 @@
         <span>Create new Assignment</span>
     </div>
     <!--details-->
-    <div fxFlex="20vh" fxFill>
+    <div fxFlex="30vh" fxFill>
         <div fxFlex fxFill>
             <form [formGroup]="createAssignmentFormGroup" fxFill>
-                <div fxFlexFill fxLayout="column">
+                <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+                    <!--File-->
+                    <div fxFlex="5vh">
+                        <label for="file-upload" class="acme-form-input-field custom-file-upload">
+                            Assignment File
+                        </label>
+                        <input formControlName="fileControl" id="file-upload" type="file" required
+                            class="form-control acme-form-input-field" (change)="onFileChange($event)"
+                            accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                        <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
+                    </div>
                     <!--topic title-->
                     <div fxFlex="9vh" fxFill>
-                        <div fxFlexFill fxLayout="row" fxLayoutGap="1vh">
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="1vw">
                             <!--Assignment title-->
                             <div fxFlex="70%" fxFill>
-                                <mat-form-field  class="form-field acme-form-input-field" fxFill>
+                                <mat-form-field class="form-field acme-form-input-field" fxFill>
                                     <mat-label class="acme-form-input-field">
                                         Title
                                     </mat-label>
@@ -59,11 +70,11 @@
         </div>
     </div>
     <!--Assignment Editor-->
-    <div fxFlex="45vh" fxFill>
-        <quill-editor class="acme-form-input-field" fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
-        [required]="true"></quill-editor>
+    <div fxFlex="30vh" fxFill>
+        <quill-editor class="acme-form-input-field" fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules"
+            placeholder="Insert details here ..." [required]="true"></quill-editor>
     </div>
-    <div fxFlex="7vh" fxLayoutAlign="end end" fxFill>
+    <div fxFlex fxLayoutAlign="end end" fxFill>
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
             <div fxFill fxFlex="7vh">
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
@@ -73,11 +84,12 @@
                                 !createAssignmentFormGroup.controls['descriptionControl'].valid ||
                                 !createAssignmentFormGroup.controls['expiryDateControl'].valid||
                                 assignmentContent.trim()===''">
-                                {{buttonLabel}}
+                            {{buttonLabel}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end" fxFill>
-                        <button fxFill mat-raised-button color="warn" class=" acme-sc-button acme-sc-assignment-creation-close-button"
+                        <button fxFill mat-raised-button color="warn"
+                            class=" acme-sc-button acme-sc-assignment-creation-close-button"
                             (click)="cancelAssignmentCreation()">
                             Cancel
                         </button>
@@ -85,7 +97,7 @@
                 </div>
             </div>
         </div>
-     
+
     </div>
     <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
 </div>

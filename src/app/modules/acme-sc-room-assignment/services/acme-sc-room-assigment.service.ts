@@ -24,13 +24,13 @@ export class AcmeSCRoomAssignmentService {
 
     //create assignment
     createAssignment(body: any, token: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        const headers = new HttpHeaders({ Authorization: token });
         return this.httpService.post('/assignments/', headers, body).pipe(catchError(this.handleErrorObservable));
     }
 
     //update assignment
     updateAssignment(assignmentId: string, body: any, token: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        const headers = new HttpHeaders({ Authorization: token });
         return this.httpService.put('/assignments/' + assignmentId, headers, body).pipe(catchError(this.handleErrorObservable));
     }
 
@@ -68,6 +68,24 @@ export class AcmeSCRoomAssignmentService {
     updateUserEvaluationAssignment(assignmentEvaluationId: string, body: any, token: any) {
         const headers = new HttpHeaders({ Authorization: token });
         return this.httpService.put('/assignmentEvaluations/evaluate/'+assignmentEvaluationId, headers, body).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get  Assignment File
+    getUserAssesmentFile(assignmentId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/assignments/file/'+assignmentId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get user submission File
+    getUserAssignmentSubmission(userId: string, assignmentId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/assignmentEvaluations/file/'+assignmentId+'?userId=' + userId + '&fileType=Submitted', headers).pipe(catchError(this.handleErrorObservable));
+    }
+
+    // get  evaluated File
+    getUserAssignmentEvaluation(userId: string, assignmentId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/assignmentEvaluations/file/'+assignmentId+'?userId=' + userId + '&fileType=Evaluated', headers).pipe(catchError(this.handleErrorObservable));
     }
 
     // get room details

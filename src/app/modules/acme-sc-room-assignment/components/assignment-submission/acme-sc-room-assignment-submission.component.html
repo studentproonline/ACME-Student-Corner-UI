@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column"fxLayoutGap="0.4vw">
+<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
     <div fxFlex="15vh" fxFill>
         <div fxFlexFill fxLayout="row" fxFill>
             <div fxFlex="20vw" class="acme-sc-custom-company-header">
@@ -7,14 +7,27 @@
             <div fxFlex>
                 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
                     <div fxFlex="5vh" fxFill>
-                        <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
-                            [placeHolder]="''" [title]="assignmentTitle"
-                            [dislaySearchBox]="showSearchBox">
+                        <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName" [placeHolder]="''"
+                            [title]="assignment.title" [dislaySearchBox]="showSearchBox">
                         </acme-sc-main-header>
                     </div>
                     <div *ngIf="!isProgress && isSuccessFull" fxFlex="5vh">
                         <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType">
                         </acme-sc-navigation-bar>
+                    </div>
+                    <!--assignment file link-->
+                    <div (click)="GetAssignmentFile()"  *ngIf="roomStatus !== 'Closed' && !isProgress && assignment.status === 'Active' && assignment.fileName !== 'undefined'" fxFlex="5vh"
+                        fxFill>
+                        <div fxFlexFill fxLayout="column">
+                            <div fxFlex>
+                                <span class="acme-sc-label-default-message acme-sc-custom-label">Assignment File :
+                                </span><span
+                                    class="acme-sc-content-link acme-sc-custom-link">{{assignment.fileName}}</span>
+                            </div>
+                            <div *ngIf="isfileDownloadProgress" fxFlex="2vh">
+                                <mat-progress-bar *ngIf="!isProgress" mode="indeterminate"></mat-progress-bar>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,18 +55,25 @@
                 <span><B>{{userAssignment.status}}</B></span>
             </div>
             <div *ngIf="isAssignmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>Submitted File:</b></span><span style="padding-left: 0.4vw;" class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.submittedFileName}}</span>
+                <span><b>Submitted File:</b></span><span (click)="GetSubmittedFile()" style="padding-left: 0.4vw;"
+                    class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.submittedFileName}}</span>
             </div>
-             <!--Revieweed by-->
+            <!--Revieweed by-->
             <div *ngIf="isAssignmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                 <span><b>Reviewed By:
                     </b>{{userAssignment.reviewerFirstName}}</span><span>{{userAssignment.reviewerLastName}}</span>
             </div>
+
             <div *ngIf="isAssignmentFound" fxFlex="10vw" class="acme-sc-assignment-evaluation-stars">
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-                    <div fxFlex="2vw" *ngFor="let item of [].constructor(userAssignment.stars); let i = index" >
+                    <div fxFlex="2vw" *ngFor="let item of [].constructor(userAssignment.stars); let i = index">
                         <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="darkgoldenrod"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
+                                fill="darkgoldenrod">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                             </svg>
                         </mat-icon>
                     </div>
@@ -87,11 +107,11 @@
     <div *ngIf="!isAssignmentFound && !isProgress" fxFlex fxFill>
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2vh">
             <!--assignment not submitted icon-->
-            <div fxFlex="20vh"fxFill class="acme-cs-navigation-item-icon" fxLayoutAlign="center center">
-               <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 15h-2v-2h2v2zm0-4h-2V8h2v6zm-1-9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
+            <div fxFlex="20vh" fxFill class="acme-cs-navigation-item-icon" fxLayoutAlign="center center">
+                <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 15h-2v-2h2v2zm0-4h-2V8h2v6zm-1-9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
                 </svg>
             </div>
             <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
@@ -121,18 +141,24 @@
                 <div fxFlex="10vw">
                     <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
                         userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
-                        <span>Reviewer Remarks</span>
+                        <span><b>Reviewer Remarks</b></span>
                     </div>
                 </div>
-                <div fxFlex="40%">
+                <div fxFlex="15vw">
                     <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
                         userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
-                        <span>Last Reviewed On: </span><span>{{userAssignment.reviewedAt|date:'mediumDate'}}</span>
+                        <span><b>Last Reviewed On:</b>
+                        </span><span>{{userAssignment.reviewedAt|date:'mediumDate'}}</span>
                     </div>
+                </div>
+                <!--Reviewd file-->
+                <div *ngIf="isAssignmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                    <span><b>Reviewed File:</b></span><span (click)="GetEvaluatedFile()" style="padding-left: 0.4vw;"
+                        class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.evaluatedFileName}}</span>
                 </div>
             </div>
             <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned'
-             || userAssignment.status === 'Submitted'" style="padding-top:0.4vw">
+                || userAssignment.status === 'Submitted'" style="padding-top:0.4vw">
                 <div class="acme-sc-assignment-data-container">
                     <quill-view [content]="userAssignment.evaluatedData"></quill-view>
                 </div>
