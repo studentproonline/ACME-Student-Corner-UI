@@ -13,6 +13,6 @@ export interface IUserAssignmentEntity {
     submittedFileName: string;
     evaluatedData: string;
     evaluatedFileName: string;
-    stars: Number;
+    stars: string;
     status: string;
 }

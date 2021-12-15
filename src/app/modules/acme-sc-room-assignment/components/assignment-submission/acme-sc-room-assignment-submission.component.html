@@ -66,7 +66,7 @@
 
             <div *ngIf="isAssignmentFound" fxFlex="10vw" class="acme-sc-assignment-evaluation-stars">
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-                    <div fxFlex="2vw" *ngFor="let item of [].constructor(userAssignment.stars); let i = index">
+                    <div fxFlex="2vw" *ngFor="let item of [].constructor(+userAssignment.stars); let i = index">
                         <mat-icon fxLayoutAlign="center center" style="height:100%;width:100%;">
                             <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                                 fill="darkgoldenrod">

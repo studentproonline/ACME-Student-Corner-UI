@@ -87,7 +87,7 @@ export class AcmeSCEvaluateAssignmentComponent {
     ngOnInit() {
         if (this.data.mode !== 'New') {
             this.assignmentContent = this.data.userAssignment.evaluatedData;
-            this.selectStars(this.data.userAssignment.stars);
+            this.selectStars(+this.data.userAssignment.stars);
         }
     }
 
@@ -96,7 +96,7 @@ export class AcmeSCEvaluateAssignmentComponent {
     }
 
     selectStars(id) {
-        this.stars = 1;
+        this.stars = id;
         for (let i = 0; i < id; i += 1) {
             this.starsArray[i].selected = true;
         }
