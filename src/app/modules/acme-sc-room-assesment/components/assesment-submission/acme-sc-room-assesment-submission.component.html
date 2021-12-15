@@ -131,16 +131,16 @@
                     </div>
                 </div>
                 <!--Evaluated assignment-->
-                <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <div *ngIf="isAssesmentFound && userAssesment.status === 'Reviewed'" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                     <span><b>Evaluated File:</b></span><span style="padding-left: 0.4vw;" (click)="GetEvaluatedFile()"
                         class="acme-sc-custom-link acme-sc-custom-submission">{{userAssesment.evaluatedFileName}}</span>
                 </div>
                 <!--Grade-->
-                <div *ngIf="isAssesmentFound" fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <div *ngIf="isAssesmentFound && userAssesment.status === 'Reviewed'" fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                     <span><b>Grade:</b></span><span class="acme-sc-grade-marks">{{userAssesment.grade}}</span>
                 </div>
                 <!--marks-->
-                <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <div *ngIf="isAssesmentFound && userAssesment.status === 'Reviewed'" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                     <span><b>Marks: </b></span><span class="acme-sc-grade-marks" style="padding-left:0.4vw">{{userAssesment.marksObtained}} / {{userAssesment.totalMarks}} </span>
                 </div>
             </div>

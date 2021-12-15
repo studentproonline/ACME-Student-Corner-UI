@@ -31,6 +31,7 @@ export class AcmeEvaluateAssesmentComponent {
     buttonLabel: string = 'Submit'
     evaluationContent: string = '';
     marksPlaceHolder;
+    fileName: string='';
 
     modules = {
         imageResize: { modules: ['Resize', 'DisplaySize', 'Toolbar'] },
@@ -74,6 +75,7 @@ export class AcmeEvaluateAssesmentComponent {
             this.evaluateAssesmentFormGroup.get('gradeControl')?.setValue(this.data.userAssesment.grade);
             this.evaluateAssesmentFormGroup.get('marksControl')?.setValue(this.data.userAssesment.marksObtained);
             this.evaluationContent = this.data.userAssesment.evaluatedData;
+            this.fileName = this.data.userAssesment.evaluatedFileName;
         }
     }
 

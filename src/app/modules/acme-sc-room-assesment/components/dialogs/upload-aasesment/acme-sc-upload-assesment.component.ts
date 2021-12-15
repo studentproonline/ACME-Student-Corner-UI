@@ -14,9 +14,6 @@ import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whit
 import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { MatDialog } from '@angular/material/dialog';
 
-// models
-import { IAssesmentModel } from '../../../models/assesment.model';
-
 @Component({
     selector: 'acme-sc-upload-assesment',
     templateUrl: './acme-sc-upload-assesment.component.html',
@@ -26,7 +23,8 @@ export class AcmeSUploadAssesmentComponent {
     isProgress = false;
     createAssesmentFormGroup: any;
     buttonLabel: string = 'Create';
-    fileSelectionDisable = false;
+    fileName: string='';
+    dialogTitle = 'Create new Assesment';
 
     constructor(public dialogRef: MatDialogRef<AcmeSUploadAssesmentComponent>, private formBuilder: FormBuilder,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
@@ -46,7 +44,7 @@ export class AcmeSUploadAssesmentComponent {
             this.buttonLabel = "Create";
         } else {
             this.buttonLabel = "Edit";
-            
+            this.dialogTitle = 'Update Assesment';
         }
     }
 
@@ -57,11 +55,12 @@ export class AcmeSUploadAssesmentComponent {
 
     ngOnInit() {
         if (this.data.mode !== 'New') {
-            this.fileSelectionDisable = true;
             this.createAssesmentFormGroup.get('titleControl')?.setValue(this.data.assesment.title);
             this.createAssesmentFormGroup.get('descriptionControl')?.setValue(this.data.assesment.description);
             this.createAssesmentFormGroup.get('groupControl')?.setValue(this.data.assesment.group);
             this.createAssesmentFormGroup.get('maxMarksControl')?.setValue(this.data.assesment.maxMarks);
+            this.fileName = this.data.assesment.fileName;
+            this.dialogTitle = 'Update Assesment';
         }
     }
 
@@ -69,15 +68,15 @@ export class AcmeSUploadAssesmentComponent {
         if(this.data.mode !== 'New') {
             this.updateAssesment();
         } else{
-            this.fileSelectionDisable = true;
             this.createAssesment();
         }
     }
 
     updateAssesment() {
-        this.updateAssesmentData();
+        let postBody;
+        postBody = this.createAssesmentData();
         this.isProgress = true;
-        this.acmeSCRoomAssesmentService.updateAssesment( this.data.assesment._id,this.data.assesment,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeSCRoomAssesmentService.updateAssesment( this.data.assesment._id,postBody,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
                 this.snackBar.open('Assesment is successfully updated.', '', {
@@ -172,14 +171,10 @@ export class AcmeSUploadAssesmentComponent {
         formData.append('group', this.createAssesmentFormGroup.get('groupControl')?.value);
         formData.append('maxMarks', this.createAssesmentFormGroup.get('maxMarksControl')?.value);
         formData.append('roomId', this.data.roomId);
+        if (this.data.mode !== 'New') {
+            formData.append('status',  this.data.assesment.status);
+        }
         return formData;
-    }
-
-    updateAssesmentData() {
-        this.data.assesment.title = this.createAssesmentFormGroup.get('titleControl')?.value;
-        this.data.assesment.description = this.createAssesmentFormGroup.get('descriptionControl')?.value;
-        this.data.assesment.group = this.createAssesmentFormGroup.get('groupControl')?.value;
-        this.data.assesment.maxMarks = this.createAssesmentFormGroup.get('maxMarksControl')?.value;
     }
 
     onFileChange(event: any) {

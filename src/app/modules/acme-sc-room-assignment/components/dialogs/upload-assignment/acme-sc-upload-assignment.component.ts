@@ -33,6 +33,8 @@ export class AcmeSUploadAssignmentComponent {
     assignmentContent: string = '';
     minDate: Date;
     buttonLabel: string = 'Create'
+    fileName: string='';
+    dialogTitle = 'Create new Assignment';
 
     modules = {
         imageResize: { modules: ['Resize', 'DisplaySize', 'Toolbar'] },
@@ -86,6 +88,8 @@ export class AcmeSUploadAssignmentComponent {
             this.createAssignmentFormGroup.get('descriptionControl')?.setValue(this.data.assignment.description);
             this.createAssignmentFormGroup.get('expiryDateControl')?.setValue(this.data.assignment.expiryDate);
             this.assignmentContent = this.data.assignment.data;
+            this.fileName = this.data.assignment.fileName;
+            this.dialogTitle = 'Update Assignment';
         }
     }
 
@@ -172,6 +176,7 @@ export class AcmeSUploadAssignmentComponent {
             this.createAssignmentFormGroup.patchValue({
                 fileSourceControl: file
             });
+            this.fileName =this.createAssignmentFormGroup.get('fileSourceControl').value.name
         }
     }
     

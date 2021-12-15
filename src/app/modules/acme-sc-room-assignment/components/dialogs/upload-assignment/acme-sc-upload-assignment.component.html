@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Create new Assignment</span>
+        <span>{{dialogTitle}}</span>
     </div>
     <!--details-->
     <div fxFlex="30vh" fxFill>
@@ -15,8 +15,8 @@
                         <input formControlName="fileControl" id="file-upload" type="file" required
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
-                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
-                        <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required && fileName===''">File is required.</div>
+                        <div class="acme-sc-file-name">{{fileName}}</div>
                     </div>
                     <!--topic title-->
                     <div fxFlex="9vh" fxFill>

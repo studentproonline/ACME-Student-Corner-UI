@@ -30,7 +30,7 @@ export class AcmeSCRoomAssesmentService {
 
     //update assignment
     updateAssesment(assesmentId: string, body: any, token: any) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        const headers = new HttpHeaders({Authorization: token });
         return this.httpService.put('/assesments/' + assesmentId, headers, body).pipe(catchError(this.handleErrorObservable));
     }
 
