@@ -64,8 +64,8 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
 
     deleteComment() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: '32.5vw',
+            height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: 'This opearation will permanently delete the comment.' }

@@ -91,8 +91,8 @@ export class AcmeSCRoomLibraryContentItemComponent {
 
     deleteLibrarycontent() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: '32.5vw',
+            height: '13vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: 'This action will remove content from library.' }

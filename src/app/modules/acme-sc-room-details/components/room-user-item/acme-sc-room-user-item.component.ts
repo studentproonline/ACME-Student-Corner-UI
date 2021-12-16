@@ -55,8 +55,8 @@ export class AcmeSCRoomUserItemComponent {
 
     approveRejectUser(action, message) {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: '32.5vw',
+            height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: 'This action will ' + message + ' user request to join the room.' }
@@ -71,8 +71,8 @@ export class AcmeSCRoomUserItemComponent {
     // delete share room
     removeUser() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: '32.5vw',
+            height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: 'This action will remove user from the room.' }
@@ -106,8 +106,8 @@ export class AcmeSCRoomUserItemComponent {
     // update user role
     makeAdmin(istrue) {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: '32.5vw',
+            height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: 'This action will update user role.' }

@@ -98,8 +98,8 @@ export class AcmeSCAssesmentExplorerComponent {
     }
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: '700px',
-            height: '100px',
+            width: '45vw',
+            height: '14vh',
             disableClose: true,
             data: {}
         });
