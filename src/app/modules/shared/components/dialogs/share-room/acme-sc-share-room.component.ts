@@ -13,6 +13,9 @@ import { ISharedRoomModel } from '../../../models/acme-sc-shared-room.model';
 // validator
 import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-share-room',
     templateUrl: './acme-sc-share-room.component.html',
@@ -24,7 +27,8 @@ export class AcmeSCShareRoomComponent {
 
     constructor(public dialogRef: MatDialogRef<AcmeSCShareRoomComponent>, private formBuilder: FormBuilder,
         private acmesharedRoomService: AcmesharedRoomService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private snackBar: MatSnackBar, @Inject ( MAT_DIALOG_DATA ) public data: any) {
+        private snackBar: MatSnackBar, @Inject ( MAT_DIALOG_DATA ) public data: any,
+        private translateService: TranslateService) {
 
         this.shareRoomFormGroup = this.formBuilder.group({
             emailControl: ['', [Validators.required, Validators.email]],
@@ -47,7 +51,7 @@ export class AcmeSCShareRoomComponent {
           userName:  this.shareRoomFormGroup.controls[nameControl].value
         };
         if(sharedRoom.userEmail.toUpperCase() === this.acmeSCAuthorizationService.getSession().email.toUpperCase()) {
-            this.snackBar.open('You are an owner of this room, cannot share room to yourself', '', {
+            this.snackBar.open(this.translateService.instant('SHARED_DIALOG_SHARE_ROOM_YOURSELF_MESSAGE'), '', {
                 duration: 3000
             });
             return;
@@ -58,7 +62,7 @@ export class AcmeSCShareRoomComponent {
         this.acmesharedRoomService.sharedRoom(sharedRoom, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Room is succesfully shared with ' + this.shareRoomFormGroup.controls[emailControl].value, '', {
+                this.snackBar.open(this.translateService.instant('SHARED_DIALOG_SHARE_ROOM_SUCCESS_MESSAGE') + this.shareRoomFormGroup.controls[emailControl].value, '', {
                     duration: 3000
                 });
                 this.dialogRef.close();

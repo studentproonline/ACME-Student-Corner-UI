@@ -13,7 +13,7 @@
         <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
             <div fxFlex="5vh">
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
-                    [placeHolder]="'Start searching for a room by name'"
+                    [placeHolder]="translateService.instant('EXPLORER_SEARCH_LABEL')"
                     (userNameClicked)="userNameClicked($event)"
                     (searchTextchange)="searchTextchange($event)"></acme-sc-main-header>
             </div>

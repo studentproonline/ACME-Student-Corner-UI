@@ -18,6 +18,9 @@ import { apiConfig } from '../../../../config/config';
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 import { AcmeSCShareRoomComponent } from '../../../shared/components/dialogs/share-room/acme-sc-share-room.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-card',
     templateUrl: './acme-sc-room-card.component.html',
@@ -42,11 +45,12 @@ export class AcmeSCRoomComponent implements OnInit {
     constructor(private acmeRoomService: AcmeRoomService, private acmeFavRoomService: AcmeFavRoomService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService, private acmesharedRoomService: AcmesharedRoomService,
         private router: Router,private snackBar: MatSnackBar, public dialog: MatDialog,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        public translateService: TranslateService) {
     }
 
     ngOnInit() {
-        this.owner ="Owner: " +this.room.email;
+        this.owner =this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_OWNER_LABEL') +this.room.email;
         this.roomLink = apiConfig.host + '/shareRoom?roomId='+this.room._id;
     }
     getHeight() {
@@ -86,11 +90,11 @@ export class AcmeSCRoomComponent implements OnInit {
     updateRoom(status: string) {
         let displayMessage: string;
         if (status === 'Locked') {
-            displayMessage = 'User will no longer be able to post content in this room.'
+            displayMessage = this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_CLOSE_ROOM');
         } else if (status === 'Deleted') {
-            displayMessage = 'This action will permanently delete the room which cannot be undone.'
+            displayMessage = this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_PERMANENT_DELETE');
         } else if (status === 'Active') {
-            displayMessage = 'This action will open room for content posting.'
+            displayMessage = this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_OPEN_ROOM');
         }
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
             width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
@@ -122,7 +126,7 @@ export class AcmeSCRoomComponent implements OnInit {
                     if (status === 'Deleted') {
                         this.roomDeleted.emit();
                     } else {
-                        this.snackBar.open('Room status is succesfully changed', '', {
+                        this.snackBar.open(this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_STATUS_CHANGE'), '', {
                             duration: 3000
                         });
                     }
@@ -147,15 +151,15 @@ export class AcmeSCRoomComponent implements OnInit {
     // delete room
     deleteRoom(status: string) {
         switch (this.roomType) {
-            case 'My Rooms': {
+            case this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'): {
                 this.updateRoom(status);
                 break;
             }
-            case 'Favorites': {
+            case this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_FAVORITES'): {
                 this.deleteFavoriteRoom();
                 break;
             }
-            case 'Shared with Me': {
+            case this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_SHARED_WITH_ME'): {
                 this.deleteShareRoom();
                 break;
             }
@@ -175,7 +179,7 @@ export class AcmeSCRoomComponent implements OnInit {
         this.acmeFavRoomService.createFavRoom(favRoom, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Room is succesfully added to favorite list', '', {
+                this.snackBar.open(this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_ADDED_TO_FAV_LIST'), '', {
                     duration: 3000
                 });
             },
@@ -199,7 +203,7 @@ export class AcmeSCRoomComponent implements OnInit {
         this.acmeFavRoomService.deleteRoom(favRoom, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Room is succesfully removed from favorite list', '', {
+                this.snackBar.open(this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_FAV_LIST_REMOVED'), '', {
                     duration: 3000
                 });
                 this.sharedRoomDeleted.emit();
@@ -237,7 +241,7 @@ export class AcmeSCRoomComponent implements OnInit {
             height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will remove you from the shared room.' }
+            data: { message: this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_DELETE_SHARED_ROOM') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data === 'true') {
@@ -249,7 +253,7 @@ export class AcmeSCRoomComponent implements OnInit {
     // copy room link to clipboard
     copyRoomLinkToClipboard() {
         //
-        this.snackBar.open('Room invitation link copied to clipboard', '', {
+        this.snackBar.open(this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_LINK_COPIED_CLIPBOARD'), '', {
             duration: 3000
         });
     }
@@ -263,7 +267,7 @@ export class AcmeSCRoomComponent implements OnInit {
         this.acmesharedRoomService.deleteSharedRoom(sharedRoom, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Room is succesfully removed from favorite list', '', {
+                this.snackBar.open(this.translateService.instant('EXPLORER_ROOM_ROOM_CARD_ROOM_REMOVED_FAV_LIST'), '', {
                     duration: 3000
                 });
                 this.favRoomDeleted.emit();

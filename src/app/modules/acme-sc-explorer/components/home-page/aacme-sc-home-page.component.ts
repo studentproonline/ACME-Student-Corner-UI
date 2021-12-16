@@ -4,6 +4,9 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { Router, ActivatedRoute } from '@angular/router';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-home-page',
     templateUrl: './acme-sc-home-page.component.html',
@@ -21,7 +24,8 @@ export class AcmeSCMainPageComponent implements OnInit {
     filterText: string = '';
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private route: ActivatedRoute, private router: Router,) {
+        private route: ActivatedRoute, private router: Router,
+        public translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();

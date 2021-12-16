@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column">
     <div fxFlex="5vh" fxFill fxLayoutAlign="center" class="acme-cs-heading">
-        <span>Share your Room</span>
+        <span>{{'SHARED_DIALOG_SHARE_ROOM_HEADING_LABEL'|translate}}</span>
     </div>
     <div fxFlex="20vh" fxFill>
         <div fxFlex fxFill>
@@ -18,17 +18,17 @@
                                         <path d="M0 0h24v24H0z" fill="none" />
                                     </svg>
                                 </mat-icon>
-                                Email
+                                {{'SHARED_DIALOG_SHARE_ROOM_EMAIL'|translate}}
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Email"
+                            <input class="acme-form-input-field" required matInput placeholder="{{'SHARED_DIALOG_SHARE_ROOM_EMAIL'|translate}}"
                                 formControlName="emailControl" autocomplete="off">
                             <mat-error class="acme-form-input-field"
                                 *ngIf="shareRoomFormGroup.controls['emailControl'].errors?.email">
-                                Please enter a valid email address
+                                {{'SHARED_DIALOG_SHARE_ROOM_EMAIL_VALID'|translate}}
                             </mat-error>
                             <mat-error class="acme-form-input-field"
                                 *ngIf="shareRoomFormGroup.controls['emailControl'].errors?.required">
-                                Email is <strong>required</strong>
+                                {{'SHARED_DIALOG_SHARE_ROOM_EMAIL_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -36,13 +36,13 @@
                     <div fxFlex="9vh">
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
-                                Nick Name
+                               {{'SHARED_DIALOG_SHARE_ROOM_NICK_NAME'|translate}}
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Nick Name"
+                            <input class="acme-form-input-field" required matInput placeholder="{{'SHARED_DIALOG_SHARE_ROOM_NICK_NAME'|translate}}"
                                 formControlName="nameControl" autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="shareRoomFormGroup.controls['nameControl'].errors?.required ||
                                 shareRoomFormGroup.controls['nameControl'].errors?.whiteSpace">
-                                Name is <strong>required</strong>
+                               {{'SHARED_DIALOG_SHARE_ROOM_NICK_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -58,12 +58,12 @@
                         <button class="acme-sc-button" fxFill mat-raised-button color="accent"
                             class="acme-sc-share-confirmation-confirm-button" (click)="shareRoom()" [disabled]="!shareRoomFormGroup.controls['emailControl'].valid ||
                             !shareRoomFormGroup.controls['nameControl'].valid">
-                            Share
+                            {{'SHARED_DIALOG_SHARE_ROOM_BUTTON_SHARE_LABEL'|translate}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end">
                         <button class="acme-sc-button acme-sc-share-confirmation-close-button" fxFill mat-raised-button color="warn" (click)="cancelShare()">
-                            Cancel
+                            {{'SHARED_DIALOG_SHARE_ROOM_BUTTON_SHARE_CANCEL_LABEL'|translate}}
                         </button>
                     </div>
                 </div>

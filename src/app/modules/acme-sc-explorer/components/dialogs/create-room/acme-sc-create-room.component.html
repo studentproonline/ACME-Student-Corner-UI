@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Create Room</span>
+        <span>{{'EXPLORER_ROOM_CREATE_ROOM_DIALOG_LABEL'|translate}}</span>
     </div>
     <div fxFlex="20vh" fxFill>
         <div fxFlex>
@@ -19,11 +19,11 @@
                                 </mat-icon>
 
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Title"
+                            <input class="acme-form-input-field" required matInput placeholder="{{'EXPLORER_ROOM_CREATE_ROOM_TITLE'|translate}}"
                                 formControlName="titleControl">
                             <mat-error class="acme-form-input-field" *ngIf="createRoomFormGroup.controls['titleControl'].errors?.required ||
                                 createRoomFormGroup.controls['titleControl'].errors?.whiteSpace">
-                                Title is <strong>required</strong>
+                                {{'EXPLORER_ROOM_CREATE_ROOM_TITLE_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -40,11 +40,11 @@
                                     </svg>
                                 </mat-icon>
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Description"
+                            <input class="acme-form-input-field" required matInput placeholder="{{'EXPLORER_ROOM_CREATE_ROOM_DESCRIPTION'|translate}}"
                                 formControlName="descriptionControl">
                             <mat-error class="acme-form-input-field" *ngIf="createRoomFormGroup.controls['descriptionControl'].errors?.required ||
                                 createRoomFormGroup.controls['descriptionControl'].errors?.whiteSpace">
-                                Description is <strong>required</strong>
+                                {{'EXPLORER_ROOM_CREATE_ROOM_DESCRIPTION_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -60,13 +60,13 @@
                         <button class="acme-sc-button" mat-raised-button color="accent" fxFill
                             (click)="createRoom()" [disabled]="!createRoomFormGroup.controls['titleControl'].valid ||
                             !createRoomFormGroup.controls['descriptionControl'].valid || isProgress===true">
-                            Create Room
+                            {{'EXPLORER_ROOM_CREATE_ROOM_DIALOG_BUTTON_LABEL'|translate}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end" fxFill>
                         <button fxFill mat-raised-button color="warn" class="acme-sc-button acme-sc-room-creation-close-button"
                         (click)="closeButtonClicked($event)">
-                        Cancel
+                        {{'EXPLORER_ROOM_CANCEL_ROOM_DIALOG_BUTTON_LABEL'|translate}}
                     </button>
                     </div>
                 </div>
@@ -75,3 +75,4 @@
     </div>
     <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
     <div>
+        

@@ -12,6 +12,9 @@ import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc
 // validator
 import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-create-room',
     templateUrl: './acme-sc-create-room.component.html',
@@ -21,7 +24,8 @@ export class AcmeSCCreateRoomComponent {
     createRoomFormGroup: any;
     isProgress = false;
     constructor(public dialogRef: MatDialogRef<AcmeSCCreateRoomComponent>, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
-        private acmeRoomService: AcmeRoomService, private acmeSCAuthorizationService: AcmeSCAuthorizationService) {
+        private acmeRoomService: AcmeRoomService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
+        private translateService: TranslateService) {
 
         this.createRoomFormGroup = this.formBuilder.group({
             titleControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -48,7 +52,7 @@ export class AcmeSCCreateRoomComponent {
             value => {
                 const response: any = value;
                 this.isProgress = false; // end progress
-                this.snackBar.open('Room is succesfully created', '', {
+                this.snackBar.open(this.translateService.instant('EXPLORER_ROOM_CREATE_SUCCESS_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: room });

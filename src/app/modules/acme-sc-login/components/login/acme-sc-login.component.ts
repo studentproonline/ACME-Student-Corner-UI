@@ -103,7 +103,7 @@ export class AcmeSCLoginComponent {
                         this.acmeSCAuthorizationService.setSession(loginEntity);
                         loginEntity.id=response.data.id;
                         this.acmeScCookiesService.setCookies(loginEntity);
-                        this.router.navigateByUrl('/home?roomType=My Rooms');
+                        this.router.navigateByUrl('/home?roomType='+this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'));
                         return;
                     }
                     default: {

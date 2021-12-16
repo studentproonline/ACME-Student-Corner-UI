@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter} from '@angular/core';
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-navigation-sidebar',
@@ -10,16 +12,16 @@ export class AcmeSCNavigationSidebarComponent {
     @Output() navigationItemSelected = new EventEmitter<string>();
 
     navigationItemsList: any[]=[];
-    constructor() {
+    constructor(private translateService: TranslateService) {
         this.constructNavigationItemsList();
     }
 
     constructNavigationItemsList() {
-        this.addtNavigationItem('My Rooms','home', true);
-        this.addtNavigationItem('Shared with Me','people alt', false);
-        this.addtNavigationItem('Favorites','favorite border', false);
-        this.addtNavigationItem('Recent','update', false);
-        this.addtNavigationItem('Achievements','auto_awesome', false);
+        this.addtNavigationItem(this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'),'home', true);
+        this.addtNavigationItem(this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_SHARED_WITH_ME'),'people alt', false);
+        this.addtNavigationItem(this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_FAVORITES'),'favorite border', false);
+        this.addtNavigationItem(this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_RECENT'),'update', false);
+        this.addtNavigationItem(this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_ACHIEVEMENTS'),'auto_awesome', false);
     }
     
     addtNavigationItem(itemName: string, itemIcon: string,selected: boolean) {

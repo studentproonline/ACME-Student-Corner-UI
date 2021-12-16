@@ -4,13 +4,13 @@
     </div>
 
     <!--no room exists-->
-    <div fxFlex *ngIf="roomType==='My Rooms' && roomsList.length===0 && isSuccesfull && !isProgress">
+    <div fxFlex *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME') && roomsList.length===0 && isSuccesfull && !isProgress">
         <acme-sc-rooms-default (roomCreated)="roomCreated()"></acme-sc-rooms-default>
     </div>
 
     <!--no fav rooms exists-->
     <div fxFlex fxLayoutAlign="center center"
-        *ngIf="roomType==='Favorites' && roomsList.length===0 && isSuccesfull && !isProgress">
+        *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_FAVORITES') && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="20vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw">
@@ -20,14 +20,14 @@
                 </svg>
             </div>
             <div  fxFlex="5vh" fxLayoutAlign="center center">
-                <span class="acme-sc-label-default-message">You does not have any favorites added yet, please add rooms to your favorite list.</span>
+                <span class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_FAV_ROOMS_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>
 
     <!--no shared rooms exists-->
     <div fxFlex fxLayoutAlign="center center"
-        *ngIf="roomType==='Shared with Me' && roomsList.length===0 && isSuccesfull && !isProgress">
+        *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_SHARED_WITH_ME') && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="20vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="10vh"
@@ -51,14 +51,14 @@
                 </svg>
              </div>
             <div fxFlex="5vh" fxLayoutAlign="center center">
-                <span class="acme-sc-label-default-message">You are not part of any shared room yet, please contact room owners.</span>
+                <span class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_SHARED_ROOMS_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>
 
     <!--Achievements-->
     <div fxFlex fxLayoutAlign="center center"
-        *ngIf="roomType==='Achievements' && roomsList.length===0 && isSuccesfull && !isProgress">
+        *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_ACHIEVEMENTS') && roomsList.length===0 && isSuccesfull && !isProgress">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="20vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="10vh"
@@ -78,7 +78,7 @@
                 </svg>
             </div>
             <div fxFlex="5vh" fxLayoutAlign="center center">
-                <span class="acme-sc-label-default-message">You don't have any achievments yet, start discussing and win achievements.</span>
+                <span class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_ACHIEVEMENTS_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@
                 </svg>
             </div>
             <div fxFlex="5vh" fxLayoutAlign="center center">
-                <span class="acme-sc-label-default-messag">Fail to get rooms.</span>
+                <span class="acme-sc-label-default-messag">{{'EXPLORER_ROOM_LIST_FAIL_TO_GET_ROOMS'|translate}}</span>
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
         <div fxLayout="row" fxFlexFill>
             <div fxFlex="10vw" fxFill fxLayoutAlign="start center">
                 <div class="acme-sc-room-count">
-                    <span>Total rooms : </span>
+                    <span>{{'EXPLORER_ROOM_TOTAL_ROOMS'|translate}} : </span>
 
                 </div>
                 <div class="roomCountInfoCircle" fxLayoutAlign="center center">
@@ -112,12 +112,12 @@
             <div fxFlex fxFill>
                 <div fxLayout="row" fxFlexFill fxLayoutAlign="end center" fxLayoutGap="1vw">
                     <div fxFlex fxLayoutAlign="end center">
-                        <div fxLayoutAlign="center center" class="acme-sc-login-user-label"><span>Logged in as :
+                        <div fxLayoutAlign="center center" class="acme-sc-login-user-label"><span>{{'EXPLORER_ROOM_LIST_LOGGED_IN_LABEL'|translate}}
                                 <b>{{loggedInUser}}</b></span></div>
                     </div>
-                    <div *ngIf="roomType==='My Rooms'" fxFlex="13vw" fxFill fxLayoutAlign="end start">
+                    <div *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME')" fxFlex="13vw" fxFill fxLayoutAlign="end start">
                         <button fxFill mat-raised-button color="accent" (click)="createRoom()" class="acme-sc-button">
-                            Create New Room
+                            {{'EXPLORER_ROOM_CREATE_ROOM_BUTTON_LABEL'|translate}}
                         </button>
                     </div>
                 </div>

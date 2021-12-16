@@ -15,6 +15,9 @@ import { AcmeSCCreateRoomComponent } from '../dialogs/create-room/acme-sc-create
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { Observable } from 'rxjs';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
     selector: 'acme-sc-rooms-list',
@@ -23,7 +26,7 @@ import { Observable } from 'rxjs';
 })
 export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
-    @Input() roomType = 'My Rooms';
+    @Input() roomType = this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME');
     @Input() filterText = '';
     @Input() loggedInUser = '';
 
@@ -34,7 +37,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
     clientWidth= 0;
     clientHeight =0;
     cardHeight='';
-
+    
+    
     // your current result based on filters input
     filteredOptions: Observable<string[]>;
 
@@ -45,7 +49,8 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
         private acmeFavRoomService: AcmeFavRoomService,
         private acmesharedRoomService: AcmesharedRoomService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        public translateService: TranslateService) {
 
     }
     ngOnInit() {
@@ -177,20 +182,20 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
     getRooms() {
         this.isSuccesfull = true;
         switch (this.roomType) {
-            case 'My Rooms': {
+            case this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'): {
                 this.getRoomsList();
                 break;
             }
-            case 'Favorites': {
+            case this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_FAVORITES'): {
                 this.roomsList.length = 0;
                 this.getFavRoomsList();
                 break;
             }
-            case 'Shared with Me': {
+            case this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_SHARED_WITH_ME'): {
                 this.getSharedRoomsList();
                 break;
             }
-            case 'Achievements': {
+            case this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_ACHIEVEMENTS'): {
                 this.router.navigateByUrl('/achievements');
             }
             default:

@@ -31,9 +31,8 @@
         </svg>
     </div>
     <div fxFlex="5vh">
-        <span class="acme-sc-label-default-message">You do not own any discussion room yet, start by <B>creating new
-                discussion room</B> and invite other
-            users to join.
+        <span class="acme-sc-label-default-message">
+            {{'EXPLORER_ROOM_LIST_NO_ROOMS_DEFAULT_MESSAGE'|translate}}
         </span>
     </div>
     <!--upload button-->
@@ -41,7 +40,7 @@
         <div fxLayout="row" fxFlexFill fxLayoutAlign="center start">
             <div fxFlex="13vw" fxFill fxLayoutAlign="center start">
                 <button fxFill mat-raised-button color="accent" (click)="createRoom()" class="acme-sc-button">
-                    Create new discussion room
+                    {{'EXPLORER_ROOM_LIST_CREATE_NEW_ROOM_MESSAGE'|translate}}
                 </button>
             </div>
         </div>
