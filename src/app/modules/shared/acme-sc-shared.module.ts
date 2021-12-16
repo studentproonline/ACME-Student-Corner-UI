@@ -6,6 +6,7 @@ import { MaterialWrapperModule } from './material-wrapper.module';
 
 // services
 import { AcmeSCHttpService } from '../../core/services/acme-sc-http.service';
+import { HttpClient } from '@angular/common/http';
 
 // components
 import { AcmeSCMainHeaderComponent } from './components/main-header/acme-sc-main-header.component';
@@ -25,13 +26,24 @@ import { AcmeSCContactinformationComponent } from './components/dialogs/contact-
 // third party
 import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
 
+// localization
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
     imports: [MaterialWrapperModule,
         FormsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
         NgScrollbarModule,
-        CommonModule
+        CommonModule,
+        TranslateModule.forChild({
+            loader: {
+              provide: TranslateLoader,
+              useFactory: httpTranslateLoader,
+              deps: [HttpClient]
+            }
+          })
     ],
     declarations: [
         AcmeSCMainHeaderComponent,
@@ -63,9 +75,14 @@ import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
         AcmeSCRoomSharedUserItemComponent,
         AcmeSCSessionExpiredComponent,
         AcmeSCContactinformationComponent,
-        AcmeSCUserPopupComponent
+        AcmeSCUserPopupComponent,
+        TranslateModule
     ],
     providers: [ AcmeSCHttpService ]
 })
 
 export class AcmeSCSharedModule { }
+
+export function httpTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+  }

@@ -2,7 +2,7 @@
     <div fxFlex="5vh">
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
             <div class="acme-cs-heading" fxFlex fxFill fxLayoutAlign="center center">
-                <span>Create your User Account</span>
+                <span>{{'LOGIN_CREATE_NEW_ACCOUNT_BUTTON_LABEL'|translate}}</span>
             </div>
             <div fxFlex="35vw" style="position: absolute;" fxLayoutAlign="end center">
                 <mat-icon (click)='close($event)'class="acme-cs-mat-icon-pointer">
@@ -31,24 +31,24 @@
                                         <path d="M0 0h24v24H0z" fill="none" />
                                     </svg>
                                 </mat-icon>
-                                First Name
+                                {{'LOGIN_CREATE_ACCOUNT_FIRST_NAME_LABEL'|translate}}
                             </mat-label>
-                            <input fxFill class="acme-form-input-field" required matInput placeholder="First Name" formControlName="firstNameControl">
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="{{'LOGIN_CREATE_ACCOUNT_FIRST_NAME_LABEL'|translate}}" formControlName="firstNameControl">
 
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['firstNameControl'].errors?.required ||
                             createAccountFormGroup.controls['firstNameControl'].errors?.whiteSpace">
-                                First Name is <strong>required</strong>
+                               {{'LOGIN_CREATE_ACCOUNT_FIRST_NAME_REQUIRED_LABEL'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
                     <div fxFlex="8vh">
                         <!--Last Name-->
                         <mat-form-field class="form-field  acme-form-input-field" fxFill>
-                            <mat-label class="acme-form-input-field">Last Name</mat-label>
-                            <input fxFill class="acme-form-input-field" required matInput placeholder="Last Name" formControlName="lastNameControl">
+                            <mat-label class="acme-form-input-field">{{'LOGIN_CREATE_ACCOUNT_LAST_NAME_LABEL'|translate}}</mat-label>
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="{{'LOGIN_CREATE_ACCOUNT_LAST_NAME_LABEL'|translate}}" formControlName="lastNameControl">
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['lastNameControl'].errors?.required ||
                                 createAccountFormGroup.controls['lastNameControl'].errors?.whiteSpace">
-                                Last Name is <strong>required</strong>
+                                {{'LOGIN_CREATE_ACCOUNT_LAST_NAME_REQUIRED_LABEL'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -64,15 +64,15 @@
                                         <path d="M0 0h24v24H0z" fill="none" />
                                     </svg>
                                 </mat-icon>
-                                Email
+                                {{'LOGIN_CREATE_ACCOUNT_EMAIL_LABEL'|translate}}
                             </mat-label>
-                            <input fxFill class="acme-form-input-field" required matInput placeholder="Email" formControlName="emailControl"
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="{{'LOGIN_CREATE_ACCOUNT_EMAIL_LABEL'|translate}}" formControlName="emailControl"
                                 autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['emailControl'].errors?.email">
-                                Please enter a valid email address
+                               {{'LOGIN_CREATE_ACCOUNT_VALID_EMAIL_ADDRESS_LABEL'|translate}}
                             </mat-error>
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['emailControl'].errors?.required">
-                                Email is <strong>required</strong>
+                                {{'LOGIN_CREATE_ACCOUNT_EMAIL_REQUIRED_LABEL'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -88,14 +88,14 @@
                                             d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
                                     </svg>
                                 </mat-icon>
-                                Password
+                                {{'LOGIN_CREATE_ACCOUNT_PASSWORD_LABEL'|translate}}
                             </mat-label>
-                            <input fxFill class="acme-form-input-field" required matInput placeholder="Enter your password"
+                            <input fxFill class="acme-form-input-field" required matInput placeholder="{{'LOGIN_CREATE_ACCOUNT_ENTER_PASSWORD_LABEL'|translate}}"
                                 [type]="hide ? 'password' : 'text'" formControlName="passwordControl"
                                 autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['passwordControl'].errors?.required ||
                                 createAccountFormGroup.controls['passwordControl'].errors?.whiteSpace">
-                                Password is <strong>required</strong>
+                                {{'LOGIN_CREATE_ACCOUNT_CONFIRM_PASSWORD_REQUIRED_LABEL'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -111,17 +111,17 @@
                                             d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
                                     </svg>
                                 </mat-icon>
-                                confirm Password
+                                {{'LOGIN_CREATE_ACCOUNT_CONFIRM_PASSWORD_LABEL'|translate}}
                             </mat-label>
                             <input fxFill class="acme-form-input-field" required matInput placeholder="Retype your password"
                                 [type]="hide ? 'password' : 'text'" formControlName="confirmPasswordControl"
                                 autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAccountFormGroup.controls['confirmPasswordControl'].errors?.required ||
                                 createAccountFormGroup.controls['confirmPasswordControl'].errors?.whiteSpace">
-                                Password is <strong>required</strong>
+                                {{'LOGIN_CREATE_ACCOUNT_PASSWORD_REQUIRED_LABEL'|translate}}
                             </mat-error>
                             <mat-error *ngIf="createAccountFormGroup.controls['passwordControl'].error?.mismatch">
-                                Password not <strong>matched</strong>
+                               {{'LOGIN_CREATE_ACCOUNT_PASSWORD_NOT_MATCHED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -131,8 +131,9 @@
     </div>
 
     <div fxFlex="5vh" fxLayoutAlign="center" class="acme-sc-term-condition-label">
-        <mat-checkbox class="acme-form-input-field" id="agreementCheckBox" [checked]="agreementCheck" (change)="agreementChange($event)">I agree to
-            the terms & conditions</mat-checkbox>
+        <mat-checkbox class="acme-form-input-field" id="agreementCheckBox" [checked]="agreementCheck" (change)="agreementChange($event)">
+            {{'LOGIN_CREATE_ACCOUNT_TERMS_CONDITION_LABEL'|translate}}
+        </mat-checkbox>
     </div>
     <div fxFlex fxLayoutAlign="end end">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
@@ -144,7 +145,7 @@
                 !createAccountFormGroup.controls['passwordControl'].valid ||
                 !agreementCheck ||
                 !createAccountFormGroup.controls['confirmPasswordControl'].valid ||
-                isProgress===true">Sign Up
+                isProgress===true">{{'LOGIN_CREATE_ACCOUNT_SIGNUP_BUTTON_LABEL'|translate}}
         
                 </button>
             </div>

@@ -14,6 +14,8 @@ import { AcmeSCAccountService } from './services/acme-sc-user-account.service';
 import { AcmeSCLoginService } from './services/acme-sc-login.service';
 import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utiltities.services';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @NgModule({
     declarations: [AcmeSCLoginComponent,
         AcmeSCCreateAccountComponent,
@@ -25,7 +27,7 @@ import { AcmesharedUiTuilitiesService} from '../shared/services/acme-sc-ui-utilt
         AcmeSCLoginRoutingModule,
 
     ],
-    providers: [ AcmeSCAccountService, AcmeSCLoginService, AcmesharedUiTuilitiesService ],
+    providers: [ AcmeSCAccountService, AcmeSCLoginService, AcmesharedUiTuilitiesService, TranslateService ],
     entryComponents: []
 })
 export class AcmeStudentCornerLoginModule { }

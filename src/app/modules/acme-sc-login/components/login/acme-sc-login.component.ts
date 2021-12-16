@@ -18,6 +18,8 @@ import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-u
 import { AcmeSCActivateAccountComponent } from '../../dialogs/acme-sc-activate-account/acme-sc-activate-account.component';
 import { AcmeSCAccountPasswordResetComponent } from '../../dialogs/acme-sc-account-password-reset/acme-sc-account-password-reset';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-login',
@@ -33,7 +35,8 @@ export class AcmeSCLoginComponent {
     constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar,
         private loginService: AcmeSCLoginService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeScCookiesService: AcmeScCookiesService, private router: Router,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        public translateService: TranslateService) {
         this.loginFormGroup = this.formBuilder.group({
             emailControl: ['', [Validators.required, Validators.email]],
             passwordControl: ['', [Validators.required]],
@@ -73,14 +76,14 @@ export class AcmeSCLoginComponent {
         const password: any = this.loginFormGroup.controls[passwordControl].value;
 
         if (email.trim() === '') {
-            this.snackBar.open('Please provide email Id.', '', {
+            this.snackBar.open(this.translateService.instant('LOGIN_VALID_EMAIL_MESSAGE'), '', {
                 duration: 3000
             });
             return;
         }
 
         if (password.trim() === '') {
-            this.snackBar.open('Please provide valid password.', '', {
+            this.snackBar.open(this.translateService.instant('LOGIN_VALID_PASSWORD_MESSAGE'), '', {
                 duration: 3000
             });
             return;
@@ -104,7 +107,7 @@ export class AcmeSCLoginComponent {
                         return;
                     }
                     default: {
-                        this.snackBar.open('Invalid response code', '', {
+                        this.snackBar.open(this.translateService.instant('LOGIN_INVALID_RESPONSE_CODE'), '', {
                             duration: 3000
                         });
                         return;
@@ -134,7 +137,7 @@ export class AcmeSCLoginComponent {
                         duration: 3000
                     });
                 } else {
-                    this.snackBar.open('Unknown error', '', {
+                    this.snackBar.open(this.translateService.instant('LOGIN_UNKNOWN_ERROR'), '', {
                         duration: 3000
                     });
                 }

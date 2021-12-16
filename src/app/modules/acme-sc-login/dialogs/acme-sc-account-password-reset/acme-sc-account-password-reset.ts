@@ -11,6 +11,9 @@ import { WhiteSpaceValidator } from '../../../../core/validators/acme-sc-whitesp
 // models
 import { IResetPasswordModel } from '../../Models/acme-sc-account-password-reset.model';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-account-password-reset',
     templateUrl: './acme-sc-account-password-reset.html',
@@ -23,7 +26,7 @@ export class AcmeSCAccountPasswordResetComponent {
     otpGenerationMessage = '';
 
     constructor(public dialogRef: MatDialog, private formBuilder: FormBuilder, private acmeSCAccountService: AcmeSCAccountService,
-        @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar,) {
+        @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar, private translateService: TranslateService) {
 
         this.accountPasswordResetFormGroup = this.formBuilder.group({
             otpControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -46,11 +49,11 @@ export class AcmeSCAccountPasswordResetComponent {
         this.acmeSCAccountService.generateOtp(email).subscribe(
             value => {
                 this.isProgress = false;
-                this.otpGenerationMessage = 'OTP sent to your registered email id.';
+                this.otpGenerationMessage = this.translateService.instant('LOGIN_FORGOT_PASSWORD_OTP_SENT_SUCCESS_MESSAGE');
             },
             err => {
                 this.isProgress = false; // end progress
-                this.otpGenerationMessage = 'Fail to generate OTP';
+                this.otpGenerationMessage = this.translateService.instant('LOGIN_FORGOT_PASSWORD_OTP_SENT_FAIL_MESSAGE');
             }
         );
     }
@@ -73,15 +76,15 @@ export class AcmeSCAccountPasswordResetComponent {
          this.acmeSCAccountService.resetPassword(resetPassword).subscribe(
             value => {
                 this.isProgress = false;
-                this.otpGenerationMessage = 'Your password is succesfully reset, login with new password.';
-                this.snackBar.open('Your password is succesfully reset, login with new password', '', {
+                this.otpGenerationMessage = this.translateService.instant('LOGIN_FORGOT_PASSWORD_RESET_SUCCESSFUL_MESSAGE');
+                this.snackBar.open(this.translateService.instant('LOGIN_FORGOT_PASSWORD_RESET_SUCCESSFUL_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.dialogRef.closeAll();
             },
             err => {
                 this.isProgress = false; // end progress
-                this.otpGenerationMessage = 'Fail to reset password';
+                this.otpGenerationMessage = this.translateService.instant('LOGIN_FORGOT_PASSWORD_RESET_FAIL_MESSAGE');
             }
          );
     }

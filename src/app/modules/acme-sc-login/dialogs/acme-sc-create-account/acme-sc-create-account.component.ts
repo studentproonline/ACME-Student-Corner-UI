@@ -13,6 +13,9 @@ import { AcmeSCActivateAccountComponent } from '../acme-sc-activate-account/acme
 // validator
 import { WhiteSpaceValidator } from '../../../../core/validators/acme-sc-whitespace-validator';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-create-account',
     templateUrl: './acme-sc-create-account.component.html',
@@ -27,7 +30,8 @@ export class AcmeSCCreateAccountComponent {
 
     constructor(public dialogRef: MatDialog, private formBuilder: FormBuilder,
         private snackBar: MatSnackBar, private acmeSCAccountService: AcmeSCAccountService,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
 
         this.createAccountFormGroup = this.formBuilder.group({
             firstNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -71,13 +75,13 @@ export class AcmeSCCreateAccountComponent {
                         break;
                     }
                     case 'USER_ALREAY_EXISTS': {
-                        this.snackBar.open('User account with given email id already exists', '', {
+                        this.snackBar.open(this.translateService.instant('LOGIN_CREATE_ACCOUNT_SIGNUP_EMAIL_ALREADY_EXISTS'), '', {
                             duration: 3000
                         });
                         break;
                     }
                     default: {
-                        this.snackBar.open('Fail to create user account with unknown code', '', {
+                        this.snackBar.open(this.translateService.instant('LOGIN_CREATE_ACCOUNT_SIGNUP_FAIL_UNKNOWN'), '', {
                             duration: 3000
                         });
                         break;

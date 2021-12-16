@@ -9,7 +9,7 @@
                                 <div fxFlex="7vh">
                                     <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
                                         <div fxFlex class="acme-cs-heading">
-                                            Login to you account
+                                            {{'LOGIN_HEADER' | translate}}
                                         </div>
                                     </div>
                                 </div>
@@ -35,18 +35,18 @@
                                                         </div>
                                                         <div fxFlex fxFill>
                                                             <input class="acme-form-input-field" matInput
-                                                                placeholder="E-mail address"
+                                                                placeholder="{{'LOGIN_ENTER_EMAIL_ADDRESS_LABEL' | translate}}"
                                                                 formControlName="emailControl">
                                                         </div>
                                                     </div>
 
                                                     <mat-error class="acme-form-input-field"
                                                         *ngIf="loginFormGroup.controls['emailControl'].errors?.email">
-                                                        Please enter a valid email address
+                                                        {{'LOGIN_VALID_EMAIL_ADDRESS_LABEL' | translate}}
                                                     </mat-error>
                                                     <mat-error class="acme-form-input-field"
                                                         *ngIf="loginFormGroup.controls['emailControl'].errors?.required">
-                                                        Email is <strong>required</strong>
+                                                       {{'LOGIN_EMAIL_REQUIRED_LABEL'|translate}}
                                                     </mat-error>
                                                 </mat-form-field>
                                             </div>
@@ -69,7 +69,7 @@
                                                         </div>
                                                         <div fxFlex fxFill>
                                                             <input class="acme-form-input-field" matInput
-                                                                placeholder="Enter your password"
+                                                                placeholder="{{'LOGIN_ENTER_PASSWORD_LABEL'|translate}}"
                                                                 [type]="hide ? 'password' : 'text'"
                                                                 formControlName="passwordControl">
                                                         </div>
@@ -78,7 +78,7 @@
                                                     <mat-error class="acme-form-input-field"
                                                         *ngIf="loginFormGroup.controls['passwordControl'].errors?.required ||
                                                                   loginFormGroup.controls['passwordControl'].errors?.whiteSpace">
-                                                        Password is <strong>required</strong>
+                                                        {{'LOGIN_ENTER_PASSWORD_REQUIRED_LABEL'|translate}}
                                                     </mat-error>
                                                 </mat-form-field>
                                             </div>
@@ -87,14 +87,13 @@
                                 </div>
                                 <div fxFlex="7vh">
                                     <button mat-raised-button color="accent" (click)="login()" fxFill><span
-                                            class="acme-sc-button">Login</span></button>
+                                            class="acme-sc-button">{{'LOGIN_BUTTON_LABEL'|translate}}</span></button>
                                     <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
                                 </div>
                                 <div fxFlex="6vh"fxLayoutAlign="center center"
                                     (click)="openAccountResetPasswordDialog()">
                                     <a class="acme-sc-forget-password-label" id="resetPasswordButton" mat-button
-                                        routerLink="." color="primary">Forgot
-                                        Password?
+                                        routerLink="." color="primary">{{'LOGIN_FORGOT_PASSWORD_LABEL'|translate}}
                                     </a>
                                 </div>
                                 <div fxFlex="2vh">
@@ -102,7 +101,7 @@
                                         <div id="divider" fxFlex class="acme-cs-divider" fxLayoutAlign="start center">
                                         </div>
                                         <div class="acme-sc-or-label" fxFlex fxLayoutAlign="center center">
-                                            Or
+                                            {{'LOGIN_OR_LABEL'|translate}}
                                         </div>
                                         <div fxFlex class="acme-cs-divider" fxLayoutAlign="start center"></div>
                                     </div>
@@ -111,7 +110,7 @@
                                     <div fxFlexFill fxLayout="column" fxLayoutAlign="end center">
                                         <div fxFlex="7vh" fxFill fxLayoutAlign="end center">
                                             <button fxFill mat-raised-button color="warn" fxFill (click)="openCreateAccountDialog()"
-                                                class="acme-sc-button">Create a new account</button>
+                                                class="acme-sc-button">{{'LOGIN_CREATE_NEW_ACCOUNT_BUTTON_LABEL'|translate}}</button>
                                         </div>
                                     </div>
                                 </div>

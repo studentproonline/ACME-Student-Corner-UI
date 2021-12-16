@@ -2,7 +2,7 @@
     <div fxFlex="5vh">
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
             <div fxFlex class="acme-cs-heading" fxFill fxLayoutAlign="center center">
-                <span>Confirm your Email</span>
+                <span>{{'ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL'|translate}}</span>
             </div>
             <div fxFlex="30vw" style="position: absolute;" fxLayoutAlign="end end">
                 <mat-icon (click)='close($event)'class="acme-cs-mat-icon-pointer">
@@ -16,24 +16,24 @@
        </div>
    </div>
     <div fxFlex="2vh" fxFill fxLayoutAlign="center center" class="acme-sc-small-message">
-        <span>Please check your inbox for a confirmation email. Click the link in the email</span>
+        <span>{{'ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL_MESSAGE1'|translate}}</span>
     </div>
     <div fxFlex="2vh" fxFill fxLayoutAlign="center" class="acme-sc-small-message">
-        <span>to confirm your email address</span>
+        <span>{{'ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL_MESSAGE2'|translate}}</span>
     </div>
     <div fxFlex="3vh" fxFill fxLayoutAlign="center center" class="acme-sc-small-message">
-        <span>After you confirm click Login</span>
+        <span>{{'ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL_MESSAGE3'|translate}}</span>
     </div>
     <div fxFlex fxFill  fxLayoutAlign="end end">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
             <div fxFill fxFlex="7vh">
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
                     <div fxFlex fxFill (click)='close($event)'>
-                        <button fxFill class="acme-sc-button" fxFlexFill  mat-raised-button color="accent" >Login</button>
+                        <button fxFill class="acme-sc-button" fxFlexFill  mat-raised-button color="accent" >{{'ACCOUNT_ACTIVATION_LOGIN_BUTTON_LABEL'|translate}}</button>
                     </div>
                     <div fxFlex fxFill fxLayoutAlign="end end">
                         <button fxFill class="acme-sc-button acme-sc-resend-activation-email-button"  fxFlexFill  mat-raised-button (click)="resendEmailConfirmation()" [disabled]="isProgress===true" >
-                            Re-send activation email
+                           {{'ACCOUNT_ACTIVATION_RESEND_EMAIL_BUTTON_LABEL'|translate}}
                         </button>
                     </div>
                 </div>
