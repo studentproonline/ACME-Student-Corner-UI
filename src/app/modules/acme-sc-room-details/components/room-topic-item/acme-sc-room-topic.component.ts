@@ -25,11 +25,11 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
     closeColor = "warn";
     isProgress = false;
     isTopicOrRoomOwner = false;
- 
+
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService, private snackBar: MatSnackBar,
         private router: Router) {
-           
+
     }
 
     ngOnInit() {
@@ -38,13 +38,9 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
         } else {
             this.topicClosed = true;
         }
-        if (this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-                this.topic.roomOwner.toUpperCase().trim()||
-                
-                this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-                this.topic.owner.toUpperCase().trim()) {
-                
-                    this.isTopicOrRoomOwner = true;
+        const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
+        if (userRommRole === 'Owner' || userRommRole === 'Admin') {
+            this.isTopicOrRoomOwner = true;
         }
     }
 
@@ -55,7 +51,7 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
     }
 
     lauchTopic() {
-        this.router.navigateByUrl('/topics/comments?topicId='+this.topic._id+"&roomType="+this.roomType +'&roomName='+this.roomName);
+        this.router.navigateByUrl('/topics/comments?topicId=' + this.topic._id + "&roomType=" + this.roomType + '&roomName=' + this.roomName);
     }
 
     updateTopic($event) {
@@ -65,7 +61,7 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
         } else {
             newStatus = 'Active'
         }
-        this.isProgress = true; 
+        this.isProgress = true;
         this.acmeRoomTopicsService.updateRoomTopic(this.topic._id, newStatus, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress

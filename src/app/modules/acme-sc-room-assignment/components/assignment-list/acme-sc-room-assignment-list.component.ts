@@ -1,12 +1,11 @@
 import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { IAssignmentEntity } from '../../entities/assignment';
 
-import { MatDialog } from '@angular/material/dialog';
-import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-
 //dialogs
-import { AcmeSUploadAssignmentComponent } from '../dialogs/upload-assignment/acme-sc-upload-assignment.component'
+import { AcmeSUploadAssignmentComponent } from '../dialogs/upload-assignment/acme-sc-upload-assignment.component';
+import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 
 // services
 import { AcmeSCRoomAssignmentService } from '../../services/acme-sc-room-assigment.service';
@@ -56,7 +55,11 @@ export class AcmeSCRoomAssignmentListComponent {
     }
 
     ngOnInit() {
-        this.getRole();
+        const userRoomRole = this.acmeSCAuthorizationService.getUserRoomRole();
+        if(userRoomRole === 'Owner' || userRoomRole === 'Admin') {
+            this.isContentOrRoomOwner= true;
+        }
+        this.getAssignments(0);
     }
 
     refresAssignmentsContent() {
@@ -163,34 +166,5 @@ export class AcmeSCRoomAssignmentListComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
-    }
-
-    getRole() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-
-        this.acmeSCRoomLAssignmentService.getUserRoomRole(this.room._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.roomRole = response.data;
-                if(this.roomRole.role === 'Owner' || this.roomRole.role === 'Admin') {
-                    this.isContentOrRoomOwner= true;
-                }
-                this.getAssignments(0);
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.assignmentResponseMessage = err.error.description;
-                } else {
-                    this.assignmentResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
     }
 }

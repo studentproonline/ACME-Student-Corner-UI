@@ -51,7 +51,11 @@ export class AcmeSCRoomAssesmentListComponent {
     }
 
     ngOnInit() {
-        this.getRole();
+        const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
+        if(userRommRole === 'Owner' || userRommRole === 'Admin') {
+            this.isContentOrRoomOwner = true;
+        }
+        this.getAssesments();
     }
 
     refresAssesmentsContent() {
@@ -100,35 +104,6 @@ export class AcmeSCRoomAssesmentListComponent {
                 this.isSuccessFull = true;
                 this.roomAssesmentsList = response.data;
                 this.filteredroomAssesmentsList =  this.roomAssesmentsList;
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.assesmentResponseMessage = err.error.description;
-                } else {
-                    this.assesmentResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
-    }
-
-    getRole() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-
-        this.acmeSCRoomAssesmentService.getUserRoomRole(this.room._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.roomRole = response.data;
-                if(this.roomRole.role === 'Owner' || this.roomRole.role === 'Admin') {
-                    this.isContentOrRoomOwner= true;
-                }
-                this.getAssesments();
             },
             err => {
                 this.isProgress = false;

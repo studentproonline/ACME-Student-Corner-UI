@@ -10,9 +10,6 @@ import { AcmeSCRoomAssignmentService } from '../../../services/acme-sc-room-assi
 import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedUiTuilitiesService } from '../../../../shared/services/acme-sc-ui-utiltities.services';
 
-// models
-import { IUserAssignmentEvaluateModel } from '../../../models/user-assignment-evaluate.model';
-
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
 

@@ -55,9 +55,30 @@ export class AcmeSCRoomComponent implements OnInit {
         };
     }
 
+    getRoomDetails () {
+        this.isProgress = true;
+        this.acmeRoomService.getRoomById(this.room._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+            value => {
+                const response: any = value;
+                const roomDetailsResponse = response.data;
+                this.acmeSCAuthorizationService.setRoomDetails(roomDetailsResponse.room);
+                this.acmeSCAuthorizationService.setUserRoomRole(roomDetailsResponse.role);
+                sessionStorage.setItem('RoomDetails',JSON.stringify(roomDetailsResponse.room));
+                sessionStorage.setItem('UserRoomRole',JSON.stringify(roomDetailsResponse.role));
+                this.isProgress = false; // end progress
+                this.router.navigateByUrl('/roomDetails?roomId='+this.room._id +'&roomType='+this.roomType);
+            },
+            err => {
+                this.isProgress = false; // end progress
+                this.snackBar.open(err.error.description, '', {
+                    duration: 3000
+                });
+            }
+        );
+    }
     
     enterRoom() {
-        this.router.navigateByUrl('/roomDetails?roomId='+this.room._id +'&roomType='+this.roomType);
+        this.getRoomDetails();
         this.roomClicked.emit(this.room);
     }
 

@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
 
 // services
@@ -12,13 +13,10 @@ import { AcmesharedUiTuilitiesService } from '../../../../shared/services/acme-s
 import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
 
 import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-import { MatDialog } from '@angular/material/dialog';
+
 
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
-
-// models
-import { IAssignmentModel } from '../../../models/assignment.Model';
 
 Quill.register('modules/imageResize', ImageResize);
 

@@ -58,11 +58,13 @@ export class AcmeSCAssesmentDetailsComponent {
                 this.assesmentId = params.assesmentId;
                 this.assesmentTitle = params.assesmentTitle;
                 this.roomStatus =params.roomStatus;
-                this.getRole();
+                const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
+                if(userRommRole === 'Owner' || userRommRole === 'Admin') {
+                    this.isContentOrRoomOwner = true;
+                }
+                this.getAssesmentDetails();
             });
     }
-
-
 
     getAssesmentDetails() {
         this.isProgress = true;
@@ -75,37 +77,6 @@ export class AcmeSCAssesmentDetailsComponent {
                 this.isSuccessFull = true;
                 this.assesment = response.data;
                 this.assesmentTitle=this.assesment.title
-
-               
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.roomAssesmentDetailsResponseMessage = err.error.description;
-                } else {
-                    this.roomAssesmentDetailsResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
-    }
-
-    getRole() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-
-        this.acmeSCRoomAssesmentService.getUserRoomRole(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.roomRole = response.data;
-                if(this.roomRole.role === 'Owner' || this.roomRole.role === 'Admin') {
-                    this.isContentOrRoomOwner= true;
-                }
-                this.getAssesmentDetails();
             },
             err => {
                 this.isProgress = false;

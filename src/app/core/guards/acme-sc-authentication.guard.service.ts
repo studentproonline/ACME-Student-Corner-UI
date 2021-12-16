@@ -33,4 +33,19 @@ export class AcmeSCAuthguradServiceService {
     this.acmeSCAuthorizationService.setSession(loginEntity);
     return true;
   }
+
+  getRoomDetailsAndUserRole() {
+    if(this.router.routerState.snapshot.url === '/login' || 
+       this.router.routerState.snapshot.url.indexOf('/home')>=0) {
+      return true;
+    }
+    let roomDetails = JSON.parse(sessionStorage.getItem('RoomDetails'));
+    let roomUserRole = JSON.parse(sessionStorage.getItem('UserRoomRole'));
+    if(!roomDetails || !roomUserRole) {
+      this.router.navigateByUrl("/login");
+    }
+    this.acmeSCAuthorizationService.setRoomDetails(roomDetails);
+    this.acmeSCAuthorizationService.setUserRoomRole(roomUserRole);
+    return true;
+  }
 }

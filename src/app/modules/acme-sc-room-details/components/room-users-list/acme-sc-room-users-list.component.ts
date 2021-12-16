@@ -43,8 +43,8 @@ export class AcmeSCRoomUsersListComponent implements OnChanges {
             this.room = currentRoom.currentValue;
             if (this.room) {
                 this.getSharedRoomUserList();
-                if (this.acmeSCAuthorizationService.getSession().email.toUpperCase().trim() ===
-                    this.room.email.toUpperCase().trim()) {
+                const userRoomRole = this.acmeSCAuthorizationService.getUserRoomRole();
+                if(userRoomRole === 'Owner' || userRoomRole == 'Admin') {
                     this.isRoomOwner = true;
                 }
             }

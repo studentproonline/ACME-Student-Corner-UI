@@ -55,16 +55,7 @@ export class AcmeSCAssignmentSubmissionComponent {
     }
 
     ngOnInit() {
-        this.roomDetailsEntity = {
-            _id: this.assignment.roomId, name: '',
-            owner: undefined,
-            email: '',
-            title: this.roomName,
-            description: undefined,
-            creationDate: undefined,
-            status: undefined
-
-        }
+        this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
         this.getUserAssignment();
     }
 
@@ -77,17 +68,6 @@ export class AcmeSCAssignmentSubmissionComponent {
                 value => {
                     const response: any = value;
                     this.userAssignment = response.data;
-                    let roomDetails: IRoomEntity = {
-                        _id: this.userAssignment.roomId, name: '',
-                        owner: undefined,
-                        email: this.userAssignment.roomOwner,
-                        title: this.roomName,
-                        description: undefined,
-                        creationDate: undefined,
-                        status: undefined
-
-                    }
-                    this.roomDetailsEntity = roomDetails;
                     this.isProgress = false;
                     this.isSuccessFull = true;
                     this.isAssignmentFound = true;

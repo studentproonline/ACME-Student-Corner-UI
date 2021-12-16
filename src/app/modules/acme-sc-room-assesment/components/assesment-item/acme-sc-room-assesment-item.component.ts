@@ -15,7 +15,6 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
-import { IAssesmentModel } from '../../models/assesment.model';
 
 @Component({
     selector: 'acme-sc-room-assesment-item',

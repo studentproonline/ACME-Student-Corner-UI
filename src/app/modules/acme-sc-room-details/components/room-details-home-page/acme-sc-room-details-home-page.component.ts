@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
-import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
-
 import { AcmeRoomDetailsService } from '../../services/acme-sc-room-details.service';
-import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
-import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-import { MatDialog } from '@angular/material/dialog';
+import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
+import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
 @Component({
     selector: 'acme-sc-room-details-home-page',
@@ -34,7 +31,7 @@ export class AcmeSCRoomDetailsHomePageComponent {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
          private route: ActivatedRoute, private acmeRoomDetailsService: AcmeRoomDetailsService,
-         private router: Router, public dialog: MatDialog) {
+         public dialog: MatDialog) {
         
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -53,34 +50,12 @@ export class AcmeSCRoomDetailsHomePageComponent {
     }
 
     getRoomDetails() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-        this.acmeRoomDetailsService.getRoomById(this.roomId,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.isProgress = false;
-                this.isSuccessFull = true;
-                this.roomDetailsEntity=response.data;
-                this.roomName=this.roomDetailsEntity.title;
-                this.ownerName = this.roomDetailsEntity.email;
-                if(this.loginEntity.email.toUpperCase().trim() === this.roomDetailsEntity.email.toUpperCase().trim()) {
-                    this.isRoomOwner=true;
-                }
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.roomDetailsResponseMessage = err.error.description;
-                } else {
-                    this.roomDetailsResponseMessage = 'Server Error';
-                }
-                if(err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
+        this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
+        const userRoomRole = this.acmeSCAuthorizationService.getUserRoomRole();
+        if(userRoomRole === 'Owner' || userRoomRole === 'Admin') {
+            this.isRoomOwner = true;
+        }
+        this.isSuccessFull = true;
     }
 
     userNameClicked($event) {
@@ -89,16 +64,5 @@ export class AcmeSCRoomDetailsHomePageComponent {
     
     searchTextchange($event) {
       this.filterText = $event;
-    }
-
-    openSessionExpiredDialog(): void {
-        const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: '45.5vw',
-            height: '14vh',
-            disableClose: true,
-            data:{}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-        });
     }
 }

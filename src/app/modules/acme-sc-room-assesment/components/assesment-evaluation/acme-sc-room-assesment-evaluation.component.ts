@@ -12,8 +12,6 @@ import { IUserAssesmentEntity } from '../../entities/userassesment';
 import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-import { IAssesmentModel } from '../../models/assesment.model';
-import { IAssignmentEntity } from 'src/app/modules/acme-sc-room-assignment/entities/assignment';
 import { AcmeEvaluateAssesmentComponent } from '../dialogs/evaluate-assesment/acme-sc-evaluate-assesment.component';
 
 @Component({
@@ -49,16 +47,7 @@ export class AcmeSCAssesmentEvaluationComponent {
     }
 
     ngOnInit() {
-        this.roomDetailsEntity = {
-            _id: this.roomId, name: '',
-            owner: undefined,
-            email: '',
-            title: this.roomName,
-            description: undefined,
-            creationDate: undefined,
-            status: undefined
-
-        }
+        this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -150,17 +139,6 @@ export class AcmeSCAssesmentEvaluationComponent {
                 value => {
                     const response: any = value;
                     this.userAssesment = response.data;
-                    let roomDetails: IRoomEntity = {
-                        _id: this.userAssesment.roomId, name: '',
-                        owner: undefined,
-                        email: this.userAssesment.roomOwner,
-                        title: this.roomName,
-                        description: undefined,
-                        creationDate: undefined,
-                        status: undefined
-
-                    }
-                    this.roomDetailsEntity = roomDetails;
                     this.isProgress = false;
                     this.isSuccessFull = true;
                     this.isAssesmentFound = true;
@@ -193,14 +171,6 @@ export class AcmeSCAssesmentEvaluationComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
         });
-    }
-
-    goToAllassignments() {
-        this.router.navigateByUrl('/assesments?roomId=' + this.assesment.roomId + '&roomType=' + this.roomType);
-    }
-
-    gotoHome() {
-        this.router.navigateByUrl('/home?roomType=My Rooms');
     }
 
     _base64ToArrayBuffer(base64Data) {

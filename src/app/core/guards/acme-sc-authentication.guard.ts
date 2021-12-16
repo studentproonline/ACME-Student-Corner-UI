@@ -10,7 +10,8 @@ export class AcmeSCAuthenticationGuard implements CanActivate {
 
     }
     canActivate(): boolean {
-        if (!this.acmeSCAuthguradServiceService.gettoken()) {  
+        if (!this.acmeSCAuthguradServiceService.gettoken() || !this.acmeSCAuthguradServiceService.getRoomDetailsAndUserRole()) {  
+
             this.router.navigateByUrl("/login");  
         }  
         return this.acmeSCAuthguradServiceService.gettoken();  

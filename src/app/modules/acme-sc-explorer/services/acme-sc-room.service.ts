@@ -31,6 +31,12 @@ export class AcmeRoomService {
         return this.httpService.put('/rooms/'+ room._id, headers, room).pipe(catchError(this.handleErrorObservable));
     }
 
+    // get room details
+    getRoomById(roomId: string, token: any) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
+        return this.httpService.get('/rooms/' + roomId, headers).pipe(catchError(this.handleErrorObservable));
+    }
+
     
     // handle error
     private handleErrorObservable(error: Response | any){ 

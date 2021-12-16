@@ -50,7 +50,12 @@ export class AcmeSCAssesmentExplorerComponent {
             .subscribe(params => {
                 this.roomId = params.roomId;
                 this.roomType = params.roomType;
-                this.getRoomDetails();
+                this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
+                const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
+                if(userRommRole === 'Owner' || userRommRole === 'Admin') {
+                    this.isRoomOwner = true;
+                }
+                this.isSuccessFull = true;
             });
     }
 
@@ -65,46 +70,4 @@ export class AcmeSCAssesmentExplorerComponent {
     OnAssesmentTypeSelected($event) {
         this.contentFilterType =$event;
     }
-
-    getRoomDetails() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-        this.acmeSCRoomAssesmentService.getRoomById(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.isProgress = false;
-                this.isSuccessFull = true;
-                this.roomDetailsEntity = response.data;
-                this.roomName = response.data.title;
-                this.ownerName = response.data.email;
-                if (this.loginEntity.email.toUpperCase().trim() === response.data.email.toUpperCase().trim()) {
-                    this.isRoomOwner = true;
-                }
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.roomDetailsResponseMessage = err.error.description;
-                } else {
-                    this.roomDetailsResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
-    }
-    openSessionExpiredDialog(): void {
-        const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: '45vw',
-            height: '14vh',
-            disableClose: true,
-            data: {}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-        });
-    }
-
 }

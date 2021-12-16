@@ -48,16 +48,7 @@ export class AcmeSCAssignmentEvaluationComponent {
     }
 
     ngOnInit() {
-        this.roomDetailsEntity = {
-            _id: this.assignment.roomId, name: '',
-            owner: undefined,
-            email: '',
-            title: this.roomName,
-            description: undefined,
-            creationDate: undefined,
-            status: undefined
-
-        }
+        this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -98,17 +89,6 @@ export class AcmeSCAssignmentEvaluationComponent {
                 value => {
                     const response: any = value;
                     this.userAssignment = response.data;
-                    let roomDetails: IRoomEntity = {
-                        _id: this.userAssignment.roomId, name: '',
-                        owner: undefined,
-                        email: this.userAssignment.roomOwner,
-                        title: this.roomName,
-                        description: undefined,
-                        creationDate: undefined,
-                        status: undefined
-
-                    }
-                    this.roomDetailsEntity = roomDetails;
                     this.isProgress = false;
                     this.isSuccessFull = true;
                     this.isAssignmentFound = true;
@@ -199,6 +179,7 @@ export class AcmeSCAssignmentEvaluationComponent {
         dialogRef.afterClosed().subscribe(result => {
         });
     }
+    
     _base64ToArrayBuffer(base64Data) {
         const binary_string = window.atob(base64Data);
         const len = binary_string.length;

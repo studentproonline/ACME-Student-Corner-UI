@@ -8,9 +8,9 @@ import { AgoraClient, ClientEvent, NgxAgoraService, Stream, StreamEvent } from '
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeSCConferenceRoomLibraryService } from '../../services/acme-sc-conference-room.service';
+
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
-import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 
 @Component({
@@ -74,7 +74,12 @@ export class AcmeSCConferenceRoomComponent {
             .subscribe(params => {
                 this.roomId = params.roomId;
                 this.roomType = params.roomType;
-                this.getRoomDetails();
+                this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
+                const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
+                if(userRommRole === 'Owner' || userRommRole === 'Admin') {
+                    this.isRoomOwner = true;
+                }
+                this.isSuccessFull = true;
             });
 
     }
@@ -327,77 +332,6 @@ export class AcmeSCConferenceRoomComponent {
 
     filterSelectedCallIds() {
         return this.remoteCalls.filter(x => x !== this.selectedCallId);
-    }
-
-    gotoRoomsList() {
-        if (this.playing) {
-            this.leaveConferenceRoom('Home');
-        } else {
-            this.router.navigateByUrl('/home?roomType=' + this.roomType);
-        }
-    }
-
-    gotoTopics() {
-        if (this.playing) {
-            this.leaveConferenceRoom('RoomDetails');
-        } else {
-            this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
-        }
-    }
-
-    gotoLibrary() {
-        if (this.playing) {
-            this.leaveConferenceRoom('Library');
-        } else {
-            this.router.navigateByUrl('/library?roomType=' + this.roomType + '&roomId=' + this.roomId);
-        }
-    }
-
-    gotoHome() {
-        this.router.navigateByUrl ( '/home?roomType=My Rooms');
-    }
-
-    getRoomDetails() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-        this.acmeSCConferenceRoomLibraryService.getRoomById(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.isProgress = false;
-                this.isSuccessFull = true;
-                this.roomDetailsEntity = response.data;
-                this.roomName = response.data.title;
-                this.ownerName = response.data.email;
-                if (this.loginEntity.email.toUpperCase().trim() === response.data.email.toUpperCase().trim()) {
-                    this.isRoomOwner = true;
-                }
-                //this.uid = this.loginEntity.email;
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.conferenceRoomDetailsResponseMessage = err.error.description;
-                } else {
-                    this.conferenceRoomDetailsResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
-    }
-
-    openSessionExpiredDialog(): void {
-        const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: '700px',
-            height: '100px',
-            disableClose: true,
-            data: {}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-        });
     }
 
     leaveConferenceRoom(navigationArea) {
