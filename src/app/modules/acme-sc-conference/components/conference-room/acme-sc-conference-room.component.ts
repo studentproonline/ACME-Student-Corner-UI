@@ -13,6 +13,9 @@ import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-conference-room',
     templateUrl: './acme-sc-conference-room.component.html',
@@ -57,7 +60,8 @@ export class AcmeSCConferenceRoomComponent {
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCConferenceRoomLibraryService: AcmeSCConferenceRoomLibraryService,
         private route: ActivatedRoute, private router: Router,
-        public dialog: MatDialog, private snackBar: MatSnackBar) {
+        public dialog: MatDialog, private snackBar: MatSnackBar,
+        public translateService: TranslateService) {
 
         this.uid = Math.floor(Math.random() * 100);
 
@@ -170,7 +174,7 @@ export class AcmeSCConferenceRoomComponent {
             error => {
                 console.error(error)
                 if (this.localStream) {
-                    this.snackBar.open('Fail to join conference call', '', {
+                    this.snackBar.open(this.translateService.instant('ROOM_CONFERENCE_ROOM_JOIN_CONFERENCE_FAIL'), '', {
                         duration: 3000
                     });
                     this.localStream.stop();
@@ -340,7 +344,7 @@ export class AcmeSCConferenceRoomComponent {
             height: '150',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will remove you from conference.' }
+            data: { message: this.translateService.instant('ROOM_CONFERENCE_ROOM_REMOVE_FROM_CONFERENCE') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data === 'true') {
@@ -365,7 +369,7 @@ export class AcmeSCConferenceRoomComponent {
             height: '150',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will stop conference session.' }
+            data: { message: this.translateService.instant('ROOM_CONFERENCE_ROOM_STOP_CONFERENCE') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data === 'true') {

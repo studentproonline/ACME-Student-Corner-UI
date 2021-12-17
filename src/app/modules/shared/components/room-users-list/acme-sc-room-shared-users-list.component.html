@@ -6,11 +6,11 @@
     <div fxFlex="5vh" fxFill>
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center  center">
             <div class="acme-sc-navigation-side-bar-title" fxFlex="10vw" fxLayoutAlign="center center">
-                <span>Room users</span>
+                <span>{{'SHARED_USER_LIST_LABEL'|translate}}</span>
             </div>
             <!--refresh icon-->
             <div fxFlex="2vw" fxLayoutAlign="center center" style="padding-left:0.5vw" (click)="refreshUsersList()">
-                <mat-icon matTooltip="Refresh users list" fxLayoutAlign="center center"
+                <mat-icon matTooltip="{{'SHARED_USER_LIST_REFRESH_USER_LIST'|translate}}" fxLayoutAlign="center center"
                     class="acme-cs-mat-icon acme-cs-mat-icon-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="2vw"
                         fill="#000000">
@@ -37,7 +37,7 @@
                 </svg>
             </div>
             <div class="acme-sc-label-default-message" fxFlex="5vh" fxLayoutAlign="center center">
-                <span>Fail to get users list.</span>
+                <span>{{'SHARED_USER_LIST_ERROR'|translate}}</span>
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
                 </mat-icon>
             </div>
             <div class="acme-sc-label-default-message" fxFlex="5vh" fxLayoutAlign="center center">
-                <span>No users found</span>
+                <span>{{'SHARED_USER_LIST_NO_USERS'|translate}}</span>
             </div>
         </div>
     </div>

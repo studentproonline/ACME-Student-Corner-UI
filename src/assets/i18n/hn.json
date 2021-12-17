@@ -132,6 +132,11 @@
 
     "SHARED_MAIN_HEADER_HELP_LABEL": "मदद",
 
+    "SHARED_USER_LIST_LABEL": "कमरे के उपयोगकर्ता",
+    "SHARED_USER_LIST_REFRESH_USER_LIST": "उपयोगकर्ताओं की सूची ताज़ा करें",
+    "SHARED_USER_LIST_ERROR": "उपयोगकर्ता सूची प्राप्त करने में विफल",
+    "SHARED_USER_LIST_NO_USERS": "कोई उपयोग्कर्ता नहीं मिले",
+
     "ROOM_DETAILS_SEARCH_LABEL": "शीर्षक के आधार पर किसी विषय की खोज शुरू करें",
     "ROOM_DETAILS_ERROR_MESSAGE": "कमरे का विवरण प्राप्त करने में विफल, कृपया सिस्टम व्यवस्थापक से संपर्क करें",
     
@@ -457,5 +462,27 @@
     "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_ADD_COMMENT_TITLE": "टिप्पणी जोड़ें",
     "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_INSERT_COMMENT": "अपनी टिप्पणियाँ यहाँ डालें...",
     "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABEL_ADD_COMMENT": "टिप्पणी जोड़ें",
-    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABELCANCEL": "रद्द करें"
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABELCANCEL": "रद्द करें",
+
+    "ROOM_CONFERENCE_ROOM_TITLE": "सम्मेलन कक्ष",
+    "ROOM_CONFERENCE_ROOM_CALL": "कांफ्रेंस कॉल",
+    "ROOM_CONFERENCE_ROOM_FAIL_ERROR": "कॉन्फ़्रेंस प्रारंभ करने में विफल, कृपया सिस्टम व्यवस्थापक से संपर्क करें",
+    "ROOM_CONFERENCE_ROOM_ROOM_NOT_ACTIVE": "यह कमरा अब सक्रिय नहीं है !!!!",
+    "ROOM_CONFERENCE_ROOM_START_CONFERENCE_SESSION": "नया सम्मेलन सत्र शुरू करें",
+    "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_SESSION": "सम्मेलन सत्र बंद करो",
+    "ROOM_CONFERENCE_ROOM_CONNECT": "जुडिये",
+    "ROOM_CONFERENCE_ROOM_DISCONNECT": "डिस्कनेक्ट",
+    "ROOM_CONFERENCE_ROOM_PAUSE_VIDEO": "वीडियो रोकें",
+    "ROOM_CONFERENCE_ROOM_RESUME_VIDEO": "वीडियो फिर से शुरू करें",
+    "ROOM_CONFERENCE_ROOM_MUTE_AUDIO": "मूक ऑडियो",
+    "ROOM_CONFERENCE_ROOM_UNMUTE_AUDIO": "ऑडियो अनम्यूट करें",
+    "ROOM_CONFERENCE_ROOM_SHARE_SCREEN": "स्क्रीन साझा करना",
+    "ROOM_CONFERENCE_ROOM_WAITING_FOR_USERS": "उपयोगकर्ताओं के शामिल होने की प्रतीक्षा में",
+    "ROOM_CONFERENCE_ROOM_JOIN_CONFERENCE_FAIL": "कॉन्फ़्रेंस कॉल में शामिल होने में विफल",
+    "ROOM_CONFERENCE_ROOM_REMOVE_FROM_CONFERENCE": "यह क्रिया आपको कॉन्फ़्रेंस से हटा देगी",
+    "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE": "इस कार्रवाई से कॉन्फ़्रेंस सत्र रुक जाएगा",
+
+    "ROOM_CONFERENCE_ROOM_USER_LIST": "सम्मेलन उपयोगकर्ता",
+
+    "ROOM_CONFERENCE_ROOM_SELF_VIEW": "(मैं)"
 }

@@ -132,6 +132,11 @@
 
     "SHARED_MAIN_HEADER_HELP_LABEL": "Help",
 
+    "SHARED_USER_LIST_LABEL": "Room users",
+    "SHARED_USER_LIST_REFRESH_USER_LIST": "Refresh users list",
+    "SHARED_USER_LIST_ERROR": "Fail to get users list",
+    "SHARED_USER_LIST_NO_USERS": "No users found",
+
     "ROOM_DETAILS_SEARCH_LABEL": "Start searching for a topic by title",
     "ROOM_DETAILS_ERROR_MESSAGE": "Fail to get room details, please contact system administrator",
     "ROOM_DETAILS_USER_LIST_LABEL": "Room users",
@@ -457,5 +462,27 @@
     "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_ADD_COMMENT_TITLE": "Create new Assesment",
     "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_INSERT_COMMENT": "Insert yuor comments here ...",
     "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABEL_ADD_COMMENT": "Add Comment",
-    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABELCANCEL": "Cancel"
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABELCANCEL": "Cancel",
+
+    "ROOM_CONFERENCE_ROOM_TITLE": "Conference Room",
+    "ROOM_CONFERENCE_ROOM_CALL": "Conference call",
+    "ROOM_CONFERENCE_ROOM_FAIL_ERROR": "Fail to initialize conference, please contact system administrator",
+    "ROOM_CONFERENCE_ROOM_ROOM_NOT_ACTIVE": "This room is no longer active !!!!",
+    "ROOM_CONFERENCE_ROOM_START_CONFERENCE_SESSION": "Start new conference session",
+    "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_SESSION": "Stop conference session",
+    "ROOM_CONFERENCE_ROOM_CONNECT": "Connect",
+    "ROOM_CONFERENCE_ROOM_DISCONNECT": "Disconnect",
+    "ROOM_CONFERENCE_ROOM_PAUSE_VIDEO": "pause video",
+    "ROOM_CONFERENCE_ROOM_RESUME_VIDEO": "resume video",
+    "ROOM_CONFERENCE_ROOM_MUTE_AUDIO": "mute audio",
+    "ROOM_CONFERENCE_ROOM_UNMUTE_AUDIO": "unmute audio",
+    "ROOM_CONFERENCE_ROOM_SHARE_SCREEN": "share screen",
+    "ROOM_CONFERENCE_ROOM_WAITING_FOR_USERS": "Waiting for users to join",
+    "ROOM_CONFERENCE_ROOM_JOIN_CONFERENCE_FAIL": "Fail to join conference call",
+    "ROOM_CONFERENCE_ROOM_REMOVE_FROM_CONFERENCE": "This action will remove you from conference",
+    "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE": "This action will stop conference session",
+
+    "ROOM_CONFERENCE_ROOM_USER_LIST": "Conference Users",
+
+    "ROOM_CONFERENCE_ROOM_SELF_VIEW": "(Me)"
  }
