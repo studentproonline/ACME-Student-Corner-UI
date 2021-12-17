@@ -1,10 +1,10 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
     <div fxFlex="5vh" fxLayoutAlign="center start" class="acme-cs-heading">
-        <span>Create new Assesment</span>
+        <span>{{'ROOM_REPORT_CARD_REPORT_CARD_DIALOG_ADD_COMMENT_TITLE'|translate}}</span>
     </div>
     <div fxFlex="35vh" fxFill>
         <quill-editor fxFlexFill [(ngModel)]="commentData" [modules]="modules"
-            placeholder="Insert yuor comments here ..." [required]="true">
+            placeholder="{{'ROOM_REPORT_CARD_REPORT_CARD_DIALOG_INSERT_COMMENT'|translate}}" [required]="true">
         </quill-editor>
     </div>
     <div fxFlex fxLayoutAlign="end end" fxFill>
@@ -14,14 +14,14 @@
                     <div fxFlex fxLayoutAlign="start end" fxFill>
                         <button fxFill mat-raised-button color="accent" class="acme-sc-button"
                             (click)="addComment()" [disabled]="!commentData ||commentData.trim()===''">
-                            Add Comment
+                            {{'ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABEL_ADD_COMMENT'|translate}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end" fxFill>
                         <button fxFill mat-raised-button color="warn"
                             class="acme-sc-button acme-sc-report-card-comment-close-button"
                             (click)="cancelComment()">
-                            Cancel
+                            {{'ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABELCANCEL'|translate}}
                         </button>
                     </div>
                 </div>

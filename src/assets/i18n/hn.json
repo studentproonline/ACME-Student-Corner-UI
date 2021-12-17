@@ -425,5 +425,37 @@
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESSMENT_FILE_REQUIRED": "फ़ाइल की आवश्यकता है",
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_BUTTON_LABEL_SUBMIT": "प्रस्तुत करें",
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_BUTTON_LABEL_CANCEL": "रद्द करें",
-    "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESMENT_EVALUATED_SUCCESS": "मूल्यांकन का सफलतापूर्वक मूल्यांकन किया गया"
+    "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESMENT_EVALUATED_SUCCESS": "मूल्यांकन का सफलतापूर्वक मूल्यांकन किया गया",
+
+    "ROOM_REPORT_CARD_EXPLORE_ERROR": "रिपोर्ट कार्ड प्राप्त करने में विफल, कृपया सिस्टम व्यवस्थापक से संपर्क करें",
+
+    "ROOM_REPORT_CARD_GROUP_LIST_TITLE": "मूल्यांकन समूह",
+    "ROOM_REPORT_CARD_GROUP_LIST_ROOM_NOT_ACTIVE": "यह कमरा अब सक्रिय नहीं है !!!!",
+    "ROOM_REPORT_CARD_GROUP_LIST_NO_ASSESSMENTS": "रिपोर्ट कार्ड बनाने के लिए कोई आकलन उपलब्ध नहीं है",
+    "ROOM_REPORT_CARD_GROUP_LIST_SERVER_ERROR": "सर्वर त्रुटि",
+    "ROOM_REPORT_CARD_GROUP_LIST_NO_PRIVILAGE": "आपके पास रिपोर्ट कार्ड जनरेट करने का विशेषाधिकार नहीं है, केवल व्यवस्थापकों और कमरे के मालिकों को ही रिपोर्ट कार्ड बनाने की अनुमति है",
+
+    "ROOM_REPORT_CARD_REPORT_CARD_NO_PRIVILAGES": "आपके पास रिपोर्ट कार्ड जनरेट करने का विशेषाधिकार नहीं है, केवल व्यवस्थापकों और कमरे के मालिकों को ही रिपोर्ट कार्ड बनाने की अनुमति है",
+    "ROOM_REPORT_CARD_REPORT_CARD_USER_NO_ASSESSMENT": "चयनित उपयोगकर्ता के लिए रिपोर्ट कार्ड बनाने के लिए कोई आकलन उपलब्ध नहीं है",
+    "ROOM_REPORT_CARD_REPORT_CARD_TITLE": "रिपोर्ट कार्ड",
+    "ROOM_REPORT_CARD_REPORT_CARD_NAME": "नाम :",
+    "ROOM_REPORT_CARD_REPORT_CARD_TERM": "अवधि :",
+    "ROOM_REPORT_CARD_REPORT_CARD_DOWNLOAD": "रिपोर्ट कार्ड डाउनलोड करें",
+    "ROOM_REPORT_CARD_REPORT_CARD_SAVE": "रिपोर्ट कार्ड सहेजें",
+    "ROOM_REPORT_CARD_REPORT_CARD_ASSESSMENT": "मूल्यांकन",
+    "ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK": "शिक्षक की टिप्पणी",
+    "ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP": "शिक्षक टिप्पणी जोड़ें",
+    "ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP_REMOVE": "टिप्पणी हटाएं",
+    "ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION_TOOLTIP": "अन्य जानकारी जोड़ें",
+    "ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION": "अन्य जानकारीn",
+    "ROOM_REPORT_CARD_REPORT_CARD_SAVED_SUCCESS": "रिपोर्ट कार्ड सफलतापूर्वक सहेजा गया",
+    "ROOM_REPORT_CARD_REPORT_CARD_SERVER_ERROR": "सर्वर त्रुटि",
+
+    "ROOM_REPORT_CARD_REPORT_CARD_ITEM_GRADE": "ग्रेड :",
+    "ROOM_REPORT_CARD_REPORT_CARD_ITEM_MARKS": "प्राप्तांक",
+
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_ADD_COMMENT_TITLE": "टिप्पणी जोड़ें",
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_INSERT_COMMENT": "अपनी टिप्पणियाँ यहाँ डालें...",
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABEL_ADD_COMMENT": "टिप्पणी जोड़ें",
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABELCANCEL": "रद्द करें"
 }

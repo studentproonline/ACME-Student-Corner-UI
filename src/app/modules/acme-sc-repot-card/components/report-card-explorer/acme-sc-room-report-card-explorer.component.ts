@@ -51,41 +51,12 @@ export class AcmeSCReportCardExplorerComponent {
             .subscribe(params => {
                 this.roomId = params.roomId;
                 this.roomType = params.roomType;
-                this.getRoomDetails();
+                this.roomDetailsEntity= this.acmeSCAuthorizationService.getRoomDetails();
+                this.isSuccessFull= true;
             });
     }
 
-    getRoomDetails() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-        this.acmeSCRoomReportCardService.getRoomById(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.isProgress = false;
-                this.isSuccessFull = true;
-                this.roomDetailsEntity = response.data;
-                this.roomName = response.data.title;
-                this.ownerName = response.data.email;
-                if (this.loginEntity.email.toUpperCase().trim() === response.data.email.toUpperCase().trim()) {
-                    this.isRoomOwner = true;
-                }
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.roomDetailsResponseMessage = err.error.description;
-                } else {
-                    this.roomDetailsResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
-    }
-
+  
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
             width: '45vw',

@@ -24,7 +24,7 @@
             <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
                 <!--Assesment GroupsLabel-->
                 <div fxFlex="15vw" fxFill fxLayoutAlign="start center" class="acme-sc-navigation-item-title">
-                    Assesment Groups
+                   {{'ROOM_REPORT_CARD_GROUP_LIST_TITLE'|translate}}
                 </div>
                 <!--assesment group icon-->
                 <div fxFlex="2vw" fxFill fxLayoutAlign="start center" class="acme-cs-navigation-item-icon">
@@ -46,7 +46,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="red">
                         <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
                     </svg>
-                    <span>This room is no longer active !!!!</span>
+                    <span>{{'ROOM_REPORT_CARD_GROUP_LIST_ROOM_NOT_ACTIVE'|translate}}</span>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 </div>
                 <!--Empty topics message-->
                 <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
-                    <span>There is no assesments available to generate report card.</span>
+                    <span>{{'ROOM_REPORT_CARD_GROUP_LIST_NO_ASSESSMENTS'|translate}}</span>
                 </div>
             </div>
             <!--non empty list-->

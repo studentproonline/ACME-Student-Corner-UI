@@ -18,7 +18,7 @@
             <!--main header-->
             <div *ngIf="isContentOrRoomOwner" fxFlex="5vh" fxFill>
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
-                    [placeHolder]="'Start searching for a user by name'" [dislaySearchBox]="showSearchBox"
+                    [placeHolder]="''" [dislaySearchBox]="showSearchBox"
                     [title]="assesmentgroup">
                 </acme-sc-main-header>
             </div>
@@ -54,7 +54,7 @@
                         </svg>
                     </div>
                     <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
-                        <span>You are not allowed to generate or view report cards, only admins can generate or view report cards.</span>
+                        <span>{{'ROOM_REPORT_CARD_REPORT_CARD_NO_PRIVILAGES'|translate}}</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     </div>
                     <!--Empty topics message-->
                     <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
-                        <span>There is no assesments available to generate report card for selected user.</span>
+                        <span>{{'ROOM_REPORT_CARD_REPORT_CARD_USER_NO_ASSESSMENT'|translate}}</span>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                     <div fxFill fxFlex="10vh" class="acme-cs-heading acme-sc-report-card-heading">
                         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
                             <div fxFill fxFlex="7vh">
-                                <span>Report Card</span>
+                                <span>{{'ROOM_REPORT_CARD_REPORT_CARD_TITLE'|translate}}</span>
                             </div>
                             <div fxFlex="3vh" fxFill class="acme-sc-report-room-name">
                                 <span>{{roomName}}</span>
@@ -98,10 +98,10 @@
                             <div fxFlex fxFill>
                                 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
                                     <div fxFill fxFlex="3vh" class="acme-sc-navigation-side-bar-item-text ">
-                                        <span><b>Name:</b> {{selectedUser.userName}}</span>
+                                        <span><b>{{'ROOM_REPORT_CARD_REPORT_CARD_NAME'|translate}}</b> {{selectedUser.userName}}</span>
                                     </div>
                                     <div fxFill fxFlex="3vh" class="acme-sc-navigation-side-bar-item-text ">
-                                        <span><b>Term:</b> {{assesmentgroup}}</span>
+                                        <span><b>{{'ROOM_REPORT_CARD_REPORT_CARD_TERM'|translate}}</b> {{assesmentgroup}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -109,13 +109,13 @@
                             <div fxFlex fxFill  fxLayoutAlign="end end">
                                 <div fxFlexFill fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="0.4vw">
                                     <div fxFill fxFlex="13vw" fxLayoutAlign="end center">
-                                        <button (click)="generateReportCard(selectedUser.userName)" fxFill mat-raised-button color="accent" class="acme-sc-button">Download
-                                            Report Card
+                                        <button (click)="generateReportCard(selectedUser.userName)" fxFill mat-raised-button color="accent" class="acme-sc-button">
+                                            {{'ROOM_REPORT_CARD_REPORT_CARD_DOWNLOAD'|translate}}
                                         </button>
                                     </div>
                                     <div fxFill fxFlex="13vw" fxLayoutAlign="end center">
                                         <button (click)="saveReportCard()" fxFill mat-raised-button color="accent" class="acme-sc-button acme-sc-save-report-card-button">
-                                            Save Report Card
+                                            {{'ROOM_REPORT_CARD_REPORT_CARD_SAVE'|translate}}
                                         </button>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                                 <ng-scrollbar thumbClass="white-scrollbars">
                                     <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vh">
                                         <div fxFill fxFlex="5vh" class="acme-sc-company-title acme-sc-report-card-label-opacity">
-                                            <span>Assesment</span>
+                                            <span>{{'ROOM_REPORT_CARD_REPORT_CARD_ASSESSMENT'|translate}}</span>
                                         </div>
                                         <div fxFill fxFlex>
                                             <acme-sc-room-report-card-item
@@ -153,13 +153,13 @@
                                         <!--Teachers comment-->
                                         <div fxLayout="Row" fxFlexFill fxLayoutAlign="center center" fxLayoutGap="0.4vw">
                                             <div fxFill fxFlex="10vw" fxLayoutAlign="center center" class="acme-sc-report-card-label-opacity">
-                                                <span>Teacher's Remark</span>
+                                                <span>{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK'|translate}}</span>
                                             </div>
-                                            <div (click)="addComment('teacher')" matTooltip="Add teachers remark" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
+                                            <div (click)="addComment('teacher')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
                                                 </svg>
                                             </div>
-                                            <div (click)="RemoveComment('teacher')" matTooltip="Remove remark" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
+                                            <div (click)="RemoveComment('teacher')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP_REMOVE'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                                 </svg>
                                             </div>
@@ -175,13 +175,13 @@
                                         <!--others comment-->
                                         <div fxLayout="Row" fxFlexFill fxLayoutAlign="center center" fxLayoutGap="0.4vw">
                                             <div fxFill fxFlex="10vw" fxLayoutAlign="center center" class="acme-sc-report-card-label-opacity">
-                                                <span>Other Information</span>
+                                                <span>{{'ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION'|translate}}</span>
                                             </div>
-                                            <div (click)="addComment('other')" matTooltip="Add other information" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
+                                            <div (click)="addComment('other')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION_TOOLTIP'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
                                                 </svg>
                                             </div>
-                                            <div (click)="RemoveComment('other')" matTooltip="Remove remark" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
+                                            <div (click)="RemoveComment('other')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP_REMOVE'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                                 </svg>
                                             </div>

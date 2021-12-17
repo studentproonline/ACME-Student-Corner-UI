@@ -11,6 +11,9 @@ import { AcmeSCRoomReportCardService } from '../../services/acme-sc-room-report-
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-assesment-group-list',
     templateUrl: './acme-sc-room-assesment-group-list.component.html',
@@ -34,7 +37,8 @@ export class AcmeSCRoomAssesmentGroupListComponent {
 
     constructor(public dialog: MatDialog, private acmeSCRoomReportCardService: AcmeSCRoomReportCardService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -45,7 +49,11 @@ export class AcmeSCRoomAssesmentGroupListComponent {
     }
 
     ngOnInit() {
-        this.getRole();
+        const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
+        if(userRommRole === 'Owner' || userRommRole === 'Admin') {
+            this.isContentOrRoomOwner = true;
+        }
+        this.getAssesments();
     }
 
     assesmentGroupItemClicked($event) {
@@ -85,7 +93,7 @@ export class AcmeSCRoomAssesmentGroupListComponent {
                 if (err.error && err.error.description) {
                     this.assesmentResponseMessage = err.error.description;
                 } else {
-                    this.assesmentResponseMessage = 'Server Error';
+                    this.assesmentResponseMessage = this.translateService.instant('ROOM_REPORT_CARD_GROUP_LIST_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog
@@ -95,41 +103,7 @@ export class AcmeSCRoomAssesmentGroupListComponent {
         );
     }
 
-    getRole() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-
-        this.acmeSCRoomReportCardService.getUserRoomRole(this.room._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                const response: any = value;
-                this.roomRole = response.data;
-                if (this.roomRole.role === 'Owner' || this.roomRole.role === 'Admin') {
-                    this.isContentOrRoomOwner = true;
-                }
-                if (this.isContentOrRoomOwner) {
-                    this.getAssesments();
-                } else {
-                    this.isProgress = false;
-                    this.isSuccessFull = false;
-                    this.assesmentResponseMessage = 'You are not having privilages to generate report card, only admins and room owners are allowed to generate report card';
-                }
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.assesmentResponseMessage = err.error.description;
-                } else {
-                    this.assesmentResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
-    }
-
+  
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
             width: this.acmesharedUiTuilitiesService.getSessionExpiredScreenWidth(),

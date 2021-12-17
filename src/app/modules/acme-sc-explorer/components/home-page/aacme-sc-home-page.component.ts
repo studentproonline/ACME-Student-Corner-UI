@@ -18,7 +18,7 @@ export class AcmeSCMainPageComponent implements OnInit {
     nickName: string;
     fullName: string;
     email: string;
-    selectedNavigationItem: string = 'My Rooms';
+    selectedNavigationItem: string = this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME');
     isProgress = false;
     isSuccesfull= true;
     filterText: string = '';

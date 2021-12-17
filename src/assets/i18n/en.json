@@ -425,6 +425,37 @@
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESSMENT_FILE_REQUIRED": "File is required",
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_BUTTON_LABEL_SUBMIT": "Submit",
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_BUTTON_LABEL_CANCEL": "Cancel",
-    "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESMENT_EVALUATED_SUCCESS": "Assessment is successfully evaluated"
-  
+    "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESMENT_EVALUATED_SUCCESS": "Assessment is successfully evaluated",
+
+    "ROOM_REPORT_CARD_EXPLORE_ERROR": "Fail to get Report Cards, please contact system administrator",
+
+    "ROOM_REPORT_CARD_GROUP_LIST_TITLE": "Assessment Groups",
+    "ROOM_REPORT_CARD_GROUP_LIST_ROOM_NOT_ACTIVE": "This room is no longer active !!!!",
+    "ROOM_REPORT_CARD_GROUP_LIST_NO_ASSESSMENTS": "There is no assessments available to generate report card.",
+    "ROOM_REPORT_CARD_GROUP_LIST_SERVER_ERROR": "Server Error",
+    "ROOM_REPORT_CARD_GROUP_LIST_NO_PRIVILAGE": "You are not having privilages to generate report card, only admins and room owners are allowed to generate report card",
+
+    "ROOM_REPORT_CARD_REPORT_CARD_NO_PRIVILAGES": "You are not having privilages to generate report card, only admins and room owners are allowed to generate report card",
+    "ROOM_REPORT_CARD_REPORT_CARD_USER_NO_ASSESSMENT": "There is no assessments available to generate report card for selected user",
+    "ROOM_REPORT_CARD_REPORT_CARD_TITLE": "Report Card",
+    "ROOM_REPORT_CARD_REPORT_CARD_NAME": "Name :",
+    "ROOM_REPORT_CARD_REPORT_CARD_TERM": "Term :",
+    "ROOM_REPORT_CARD_REPORT_CARD_DOWNLOAD": "Download Report Card",
+    "ROOM_REPORT_CARD_REPORT_CARD_SAVE": "Save Report Card",
+    "ROOM_REPORT_CARD_REPORT_CARD_ASSESSMENT": "Assessment",
+    "ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK": "Teacher's Remark",
+    "ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP": "Add teachers remark",
+    "ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP_REMOVE": "Remove remark",
+    "ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION_TOOLTIP": "Add other information",
+     "ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION": "Other Information",
+    "ROOM_REPORT_CARD_REPORT_CARD_SAVED_SUCCESS": "Report Card is successfully saved",
+    "ROOM_REPORT_CARD_REPORT_CARD_SERVER_ERROR": "Server Error",
+
+    "ROOM_REPORT_CARD_REPORT_CARD_ITEM_GRADE": "Grade :",
+    "ROOM_REPORT_CARD_REPORT_CARD_ITEM_MARKS": "Marks :",
+
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_ADD_COMMENT_TITLE": "Create new Assesment",
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_INSERT_COMMENT": "Insert yuor comments here ...",
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABEL_ADD_COMMENT": "Add Comment",
+    "ROOM_REPORT_CARD_REPORT_CARD_DIALOG_BUTTON_LABELCANCEL": "Cancel"
  }

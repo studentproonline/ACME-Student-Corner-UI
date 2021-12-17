@@ -13,13 +13,16 @@ import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeSCReportCardCommentComponent } from '../dialogs/comments/acme-sc-report-card-comments.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 import jspdf from 'jspdf';
 //import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
-import pdfMake from "pdfmake/build/pdfmake";  
-import pdfFonts from "pdfmake/build/vfs_fonts";  
-pdfMake.vfs = pdfFonts.pdfMake.vfs;   
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
     selector: 'acme-sc-assesment-report-card',
@@ -54,7 +57,8 @@ export class AcmeSCAssesmentReportCardComponent {
         private route: ActivatedRoute,
         private acmeSCRoomReportCardService: AcmeSCRoomReportCardService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog, private snackBar: MatSnackBar) {
+        public dialog: MatDialog, private snackBar: MatSnackBar,
+        private translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -72,18 +76,12 @@ export class AcmeSCAssesmentReportCardComponent {
                 this.selectesUserName = params.selectedUser;
                 this.selectedUser.userEmail = this.selectesUserName;
                 this.assesmentgroup = params.assesmentgroup;
-                this.getRole();
+                const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
+                if (userRommRole === 'Owner' || userRommRole === 'Admin') {
+                    this.isContentOrRoomOwner = true;
+                }
             });
-        this.roomDetailsEntity = {
-            _id: this.roomId, name: '',
-            owner: undefined,
-            email: '',
-            title: this.roomName,
-            description: undefined,
-            creationDate: undefined,
-            status: undefined
-
-        }
+        this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
     }
 
     saveReportCard() {
@@ -98,7 +96,7 @@ export class AcmeSCAssesmentReportCardComponent {
         this.acmeSCRoomReportCardService.createReportCard(this.acmeSCAuthorizationService.getAccessToken(), body).subscribe(
             value => {
                 this.isSaveProgress = false;
-                this.snackBar.open(' Report Card is successfully saved.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_REPORT_CARD_REPORT_CARD_SAVED_SUCCESS'), '', {
                     duration: 3000
                 });
             },
@@ -132,7 +130,7 @@ export class AcmeSCAssesmentReportCardComponent {
                 if (err.error && err.error.description) {
                     this.roomAssesmentDetailsResponseMessage = err.error.description;
                 } else {
-                    this.roomAssesmentDetailsResponseMessage = 'Server Error';
+                    this.roomAssesmentDetailsResponseMessage = this.translateService.instant('ROOM_REPORT_CARD_REPORT_CARD_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog
@@ -150,19 +148,6 @@ export class AcmeSCAssesmentReportCardComponent {
             value => {
                 const response: any = value;
                 this.userAssesmentsList = response.data;
-                if (this.userAssesmentsList.length > 0) {
-                    let roomDetails: IRoomEntity = {
-                        _id: this.roomId, name: '',
-                        owner: this.userAssesmentsList[0].roomOwner,
-                        email: this.userAssesmentsList[0].roomOwner,
-                        title: this.roomName,
-                        description: undefined,
-                        creationDate: undefined,
-                        status: undefined
-
-                    }
-                    this.roomDetailsEntity = roomDetails;
-                }
                 this.getUserReportCard();
             },
             err => {
@@ -171,7 +156,7 @@ export class AcmeSCAssesmentReportCardComponent {
                 if (err.error && err.error.description) {
                     this.roomAssesmentDetailsResponseMessage = err.error.description;
                 } else {
-                    this.roomAssesmentDetailsResponseMessage = 'Server Error';
+                    this.roomAssesmentDetailsResponseMessage = this.translateService.instant('ROOM_REPORT_CARD_REPORT_CARD_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog
@@ -181,38 +166,7 @@ export class AcmeSCAssesmentReportCardComponent {
 
         );
     }
-
-    getRole() {
-        this.isProgress = true;
-        this.isSuccessFull = false;
-
-        this.acmeSCRoomReportCardService.getUserRoomRole(this.roomId, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
-            value => {
-                this.isProgress = false;
-                this.isSuccessFull = true;
-                const response: any = value;
-                this.roomRole = response.data;
-                if (this.roomRole.role === 'Owner' || this.roomRole.role === 'Admin') {
-                    this.isContentOrRoomOwner = true;
-                }
-                //this.getUserAssesments();
-            },
-            err => {
-                this.isProgress = false;
-                this.isSuccessFull = false;
-                if (err.error && err.error.description) {
-                    this.roomAssesmentDetailsResponseMessage = err.error.description;
-                } else {
-                    this.roomAssesmentDetailsResponseMessage = 'Server Error';
-                }
-                if (err.status === 401 || err.status === 401.1) {
-                    //  show session expired dialog
-                    this.openSessionExpiredDialog();
-                }
-            }
-        );
-    }
-
+   
     addComment(type) {
         const dialogRef = this.dialog.open(AcmeSCReportCardCommentComponent, {
             width: '65vw',
@@ -258,18 +212,16 @@ export class AcmeSCAssesmentReportCardComponent {
     }
 
     generateReportCard(reportCardName) {
-         var data = document.getElementById('reportCardContainer');
-         html2canvas(data).then(canvas => {
-             // Few necessary setting options  
-             var imgWidth = 208;
-             var imgHeight = canvas.height * imgWidth / canvas.width;
-             const contentDataURL = canvas.toDataURL('image/png')
-             let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-             var position = 0;
-             pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-             pdf.save(reportCardName + '_reportCard.pdf'); // Generated PDF 
-         });
-         
-        
+        var data = document.getElementById('reportCardContainer');
+        html2canvas(data).then(canvas => {
+            // Few necessary setting options  
+            var imgWidth = 208;
+            var imgHeight = canvas.height * imgWidth / canvas.width;
+            const contentDataURL = canvas.toDataURL('image/png')
+            let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+            var position = 0;
+            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+            pdf.save(reportCardName + '_reportCard.pdf'); // Generated PDF 
+        });
     }
 }
