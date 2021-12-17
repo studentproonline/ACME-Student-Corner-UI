@@ -44,6 +44,16 @@ export class AcmeSCLoginComponent {
 
         });
     }
+
+    changeLanguage(language) {
+        if(language === 'English') {
+            this.translateService.setDefaultLang('en');
+        } else{
+            this.translateService.setDefaultLang('hn');
+        }
+    }
+    
+
     openCreateAccountDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCCreateAccountComponent, {
             width: '40vw',

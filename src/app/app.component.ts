@@ -11,6 +11,6 @@ export class AppComponent {
   showCreateReport = false;
   constructor(public translate: TranslateService) {
     translate.addLangs(['en', 'hn']);
-    translate.setDefaultLang('hn');
+    translate.setDefaultLang('en');
   }
 }
