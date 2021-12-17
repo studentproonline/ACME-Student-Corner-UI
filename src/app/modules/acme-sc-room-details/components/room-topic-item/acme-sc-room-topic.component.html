@@ -40,10 +40,10 @@
                             class="acme-sc-room-topic-row">
                             <!--created by-->
                             <div fxFlex="70%" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                                <span><b>Created by: </b>{{topic.ownerFirstName }} {{topic.ownerLastName}}</span>
+                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_CREATED_BY'|translate}}</b>{{topic.ownerFirstName }} {{topic.ownerLastName}}</span>
                             </div>
                             <div fxFlex="30%" fxLayoutAlign="end center" class="acme-sc-date-label">
-                                <span><b>Started on: </b>{{topic.createdAt|date:'medium'}}</span>
+                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_STARTED_ON'|translate}}</b>{{topic.createdAt|date:'medium'}}</span>
                             </div>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
                                     <div fxFill fxFlex fxLayoutAlign="start center">
                                         <mat-slide-toggle fxFill (change)="updateTopic($event)"
                                             class="acme-sc-room-topic-close-toggle" [color]="closeColor"
-                                            [checked]="topicClosed" [disabled]="!topicClosedEnabled">Stop
-                                            discussion
+                                            [checked]="topicClosed" [disabled]="!topicClosedEnabled">
+                                            {{'ROOM_DETAILS_TOPIC_ITEM_STOP_DISCUSSION'|translate}}
                                         </mat-slide-toggle>
                                     </div>
                                     <div fxFlex *ngIf="isProgress">

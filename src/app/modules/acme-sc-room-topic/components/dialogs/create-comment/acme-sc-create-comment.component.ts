@@ -12,6 +12,9 @@ import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc
 // model
 import { IComment } from '../../../Models/comment';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 Quill.register('modules/imageResize', ImageResize);
 
 
@@ -48,7 +51,8 @@ export class AcmeSCSRoomCreateCommentComponent {
     constructor( public dialogRef: MatDialogRef<AcmeSCSRoomCreateCommentComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar,
         private acmeTopicCommentService: AcmeTopicCommentService,
-        private acmeSCAuthorizationService: AcmeSCAuthorizationService ) {
+        private acmeSCAuthorizationService: AcmeSCAuthorizationService,
+        private translateService: TranslateService ) {
 
     }
 
@@ -58,13 +62,13 @@ export class AcmeSCSRoomCreateCommentComponent {
         const sizeinMB= x / (1024*1024);
         
         if(!this.model || this.model.trim().length === 0) {
-            this.snackBar.open('you have not entered any comment, please provide you comment and then add.', '', {
+            this.snackBar.open(this.translateService.instant('ROOM_TOPIC_TOPIC_COMMENT_DIALOG_NO_COMMENT'), '', {
                 duration: 3000
             });
         }
 
         if(sizeinMB > 2) {
-            this.snackBar.open('You can add comment up to 2 MB, please reduce comment size and add again.', '', {
+            this.snackBar.open(this.translateService.instant('ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_SIZE'), '', {
                 duration: 3000
             });
         }
@@ -79,7 +83,7 @@ export class AcmeSCSRoomCreateCommentComponent {
             value => {
                 
                 this.isProgress = false; // end progress
-                this.snackBar.open('New comment is successfully added.', '', {
+                this.snackBar.open(this.translateService.instant('"ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_ADD_SUCCESS_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({data: 'Comment Added'});

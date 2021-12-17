@@ -7,9 +7,11 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
-
 //entities
 import { IRoomUserEntity } from '../../../shared/entities/acme-sc-room-user.entity';
+
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-room-users-list',
@@ -29,7 +31,8 @@ export class AcmeSCRoomUsersListComponent implements OnChanges {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmesharedRoomService: AcmesharedRoomService, public dialog: MatDialog,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
 
     }
 
@@ -72,7 +75,7 @@ export class AcmeSCRoomUsersListComponent implements OnChanges {
                 if (err.error && err.error.description) {
                     this.sharedRoomUsersResponseMessage = err.error.description;
                 } else {
-                    this.sharedRoomUsersResponseMessage = 'Server Error';
+                    this.sharedRoomUsersResponseMessage = this.translateService.instant('ROOM_DETAILS_USER_LIST_SERVER_ERROR');
                 }
             }
         );

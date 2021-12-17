@@ -8,6 +8,9 @@ import { AcmeRoomDetailsService } from '../../services/acme-sc-room-details.serv
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-details-home-page',
     templateUrl: './acme-sc-room-details-home-page.component.html',
@@ -31,7 +34,8 @@ export class AcmeSCRoomDetailsHomePageComponent {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
          private route: ActivatedRoute, private acmeRoomDetailsService: AcmeRoomDetailsService,
-         public dialog: MatDialog) {
+         public dialog: MatDialog,
+         public translateService: TranslateService) {
         
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();

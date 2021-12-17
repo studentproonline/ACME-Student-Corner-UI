@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 
 import { IRoomEntity } from '../../entities/acme-sc-room.entity';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-navigation-bar',
     templateUrl: './acme-sc-navigation-bar.component.html',
@@ -11,7 +14,7 @@ import { IRoomEntity } from '../../entities/acme-sc-room.entity';
 export class AcmeSCNavigationBarComponent {
     @Input() room: IRoomEntity;
     @Input() roomType: any;
-    constructor( private router: Router) {
+    constructor( private router: Router, private translateService: TranslateService) {
 
     }
 
@@ -19,7 +22,7 @@ export class AcmeSCNavigationBarComponent {
         this.router.navigateByUrl ( '/home?roomType='+ this.roomType);
     }
     gotoHome() {
-        this.router.navigateByUrl ( '/home?roomType=My Rooms');
+        this.router.navigateByUrl ( '/home?roomType='+this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'));
     }
 
     gotoTopics() {

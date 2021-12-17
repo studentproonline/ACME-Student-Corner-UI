@@ -7,7 +7,7 @@
             <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
                 <!--label-->
                 <div fxFlex="10%" class="acme-sc-topic-commennt-useful-label">
-                    <span>Was this helpful?</span>
+                    <span>{{'ROOM_TOPIC_TOPIC_COMMENT_HELPFUL_LABEL'|translate}}</span>
                 </div>
                 <!--Vote up-->
                 <div fxFlex="2%" class="acme-sc-topic-comment-vote" (click)="vote(1)">
@@ -42,7 +42,7 @@
                             roomOwner.toUpperCase().trim() === loggedInUser.toUpperCase().trim()" fxFlex="2%">
                     <div fxLayout="column">
                         <div fxFlex="98%">
-                            <mat-icon matTooltip="Delete comment" class="acme-cs-mat-icon" fxLayoutAlign="center end"
+                            <mat-icon matTooltip="{{'ROOM_TOPIC_TOPIC_COMMENT_DELETE'|translate}}" class="acme-cs-mat-icon" fxLayoutAlign="center end"
                                 style="height:100%;width:100%;">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                                     fill="#000000">
@@ -58,13 +58,13 @@
                     </div>
                 </div>
                 <div fxFlex class="acme-sc-topic-comment-container-footer-createdOn" fxLayoutAlign="start center">
-                    <span style="font-weight: bold">Commented By: </span> <span
+                    <span style="font-weight: bold">{{'ROOM_TOPIC_TOPIC_COMMENT_COMMENTED_BY'|translate}} </span> <span
                         style="padding-left: 0.4vw;">{{comment.commentedBy}}</span>
                 </div>
             </div>
         </div>
         <div fxFill fxFlex="20%" class="acme-sc-topic-comment-container-footer-createdOn" fxLayoutAlign="start center">
-            <span style="font-weight: bold">Commented On: </span> <span
+            <span style="font-weight: bold">{{'ROOM_TOPIC_TOPIC_COMMENT_COMMENTED_ON'|translate}} </span> <span
                 style="padding-left:0.4vw;padding-right: 0.4vw;">{{comment.commentedOn|date:'medium'}}</span>
         </div>
     </div>

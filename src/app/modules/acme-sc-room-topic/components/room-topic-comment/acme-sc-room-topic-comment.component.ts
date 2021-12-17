@@ -12,6 +12,8 @@ import { AcmeTopicCommentVoteService } from '../../services/acme-sc-topic-commen
 // model
 import { IVote } from '../../models/vote';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-room-topic-comment',
@@ -29,7 +31,8 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
     constructor( private acmeTopicCommentService: AcmeTopicCommentService,
         private acmeTopicCommentVoteService: AcmeTopicCommentVoteService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private snackBar: MatSnackBar,public dialog: MatDialog) {
+        private snackBar: MatSnackBar,public dialog: MatDialog,
+        private translateService: TranslateService) {
     }
     
     ngOnInit() {
@@ -50,7 +53,7 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
                 } else {
                     this.comment.thumbsDownCount =  this.comment.thumbsDownCount+1;
                 }
-                this.snackBar.open('Succesfully voted', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_TOPIC_TOPIC_COMMENT_VOTE_SUCCESS'), '', {
                     duration: 3000
                 });
             },
@@ -68,7 +71,7 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
             height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This opearation will permanently delete the comment.' }
+            data: { message: this.translateService.instant('ROOM_TOPIC_TOPIC_COMMENT_DELTE_WARNING_MESSAGE') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result.data === 'true') {
@@ -83,7 +86,7 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
         this.acmeTopicCommentService.deleteTopicComment(this.comment._id, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress= false;
-                this.snackBar.open('comment succesfully deleted.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_TOPIC_TOPIC_COMMENT_DELTE_SUCCESS_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.commentDeleted.emit();

@@ -14,7 +14,9 @@ import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 // services
 import { AcmeTopicCommentService } from '../../services/acme-sc-topic-comment.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
-import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
+
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-room-topic-comments-list',
@@ -48,7 +50,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
     constructor(private route: ActivatedRoute, private router: Router,
         public dialog: MatDialog, private acmeTopicCommentService: AcmeTopicCommentService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -130,7 +132,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
                 if (err.error && err.error.description) {
                     this.commentsResponseMessage = err.error.description;
                 } else {
-                    this.commentsResponseMessage = 'Server Error';
+                    this.commentsResponseMessage = this.translateService.instant('ROOM_TOPIC_TOPIC_COMMENT_LIST_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog
@@ -138,14 +140,6 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
                 }
             }
         );
-    }
-
-    goToAllTopics() {
-        this.router.navigateByUrl('/roomDetails?roomId=' + this.roomId + '&roomType=' + this.roomType);
-    }
-
-    gotoHome() {
-        this.router.navigateByUrl('/home?roomType=My Rooms');
     }
 
     createComment() {

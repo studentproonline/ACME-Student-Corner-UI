@@ -11,6 +11,9 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 import { AcmeRoomTopicsService } from '../../services/acme-sc-room-topics.service';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-topics-list',
     templateUrl: './acme-sc-room-topics-list-component.html',
@@ -32,7 +35,8 @@ export class AcmeSCRoomTopicsListComponent {
 
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private translateService: TranslateService,
+        public dialog: MatDialog) {
 
     }
 
@@ -97,7 +101,7 @@ export class AcmeSCRoomTopicsListComponent {
                 if (err.error && err.error.description) {
                     this.topicsResponseMessage = err.error.description;
                 } else {
-                    this.topicsResponseMessage = 'Server Error';
+                    this.topicsResponseMessage = this.translateService.instant('ROOM_DETAILS_TOPIC_LIST_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog

@@ -1,12 +1,12 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Add new Comment</span>
+        <span>{{'ROOM_TOPIC_TOPIC_COMMENT_DIALOG_LABEL'|translate}}</span>
     </div>
 
     <div fxFlex="42vh" fxFill>
         <div fxFlexFill fxLayout="column">
             <div fxFlex="80%">
-                <quill-editor fxFlexFill [(ngModel)]="model" [modules]="modules" placeholder="Insert comment here ..."
+                <quill-editor fxFlexFill [(ngModel)]="model" [modules]="modules" placeholder="{{'ROOM_TOPIC_TOPIC_COMMENT_DIALOG_INSERT_COMMENT_LABEL'|translate}}"
                     [required]="true"></quill-editor>
             </div>
         </div>
@@ -20,13 +20,13 @@
                     <div fxFlex fxLayoutAlign="start end" fxFill>
                         <button fxFill mat-raised-button color="accent" class="acme-sc-button"
                             (click)="createComment()" [disabled]="!model || model.length === 0">
-                            Add
+                            {{'ROOM_TOPIC_TOPIC_COMMENT_DIALOG_ADD_BUTTONLABEL'|translate}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end" fxFill>
                         <button fxFill mat-raised-button color="warn" class=" acme-sc-button acme-sc-comment-creation-close-button"
                             (click)="cancelCommentCreation()">
-                            Cancel
+                            {{'ROOM_TOPIC_TOPIC_COMMENT_DIALOG_CANCEL_BUTTONLABEL'|translate}}
                         </button>
                     </div>
                 </div>

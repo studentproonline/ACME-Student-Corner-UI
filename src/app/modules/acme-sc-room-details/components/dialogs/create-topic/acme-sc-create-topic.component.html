@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Create new discussion Topic</span>
+        <span>{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TOPIC_LABEL'|translate}}</span>
     </div>
     <div fxFlex="20vh" fxFill>
         <div fxFlex fxFill>
@@ -10,13 +10,14 @@
                     <div fxFlex="9vh" fxFill>
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
-                                Title
+                                {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TITLE'|translate}}
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Title"
+                            <input class="acme-form-input-field" required matInput
+                                placeholder="{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TITLE'|translate}}"
                                 formControlName="titleControl" autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="topicFormGroup.controls['titleControl'].errors?.required ||
                                 topicFormGroup.controls['titleControl'].errors?.whiteSpace">
-                                Title is <strong>required</strong>
+                                {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TITLE_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -24,21 +25,27 @@
                     <div fxFlex="9vh" fxFill>
                         <!--Topic Tags-->
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
-                            <mat-label class="acme-form-input-field">Associated Tags</mat-label>
+                            <mat-label class="acme-form-input-field">
+                                {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS'|translate}}</mat-label>
                             <mat-chip-list #chipList aria-label="Topic tags">
                                 <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
-                                    (removed)="removeTag(tag)" fxLayoutAlign="center center" class="acme-sc-topic-chip acme-form-input-field">
+                                    (removed)="removeTag(tag)" fxLayoutAlign="center center"
+                                    class="acme-sc-topic-chip acme-form-input-field">
                                     {{tag}}
-                                    <mat-icon fxLayoutAlign="center center" class="acme-cs-mat-icon acme-sc-topic-chip-close-icon">cancel</mat-icon>
+                                    <mat-icon fxLayoutAlign="center center"
+                                        class="acme-cs-mat-icon acme-sc-topic-chip-close-icon">cancel</mat-icon>
                                 </mat-chip>
-                                <input class="acme-form-input-field" placeholder="Associated tags" #fruitInput formControlName="tagControl"
-                                    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                <input class="acme-form-input-field" placeholder="Associated tags" #fruitInput
+                                    formControlName="tagControl" [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                     (matChipInputTokenEnd)="addTag($event)">
                             </mat-chip-list>
                         </mat-form-field>
                     </div>
                     <div fxFlex="2vh" fxFill class="acme-sc-topic-tags-message" fxLayoutAlign="center center">
-                            <span>To associate tag please press <b>Enter</b> after typing tag name.</span>
+                        <span>{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS_MESSAGE1'|translate}}
+                            <b>{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS_MESSAGE2'|translate}}</b>
+                            {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS_MESSAGE3'|translate}}</span>
                     </div>
                 </div>
             </form>
@@ -49,15 +56,15 @@
             <div fxFill fxFlex="7vh">
                 <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
                     <div fxFlex fxLayoutAlign="start end" fxFill>
-                        <button fxFill mat-raised-button color="accent" class="acme-sc-button"
-                            (click)="createTopic()" [disabled]="!topicFormGroup.controls['titleControl'].valid">
-                            Create
+                        <button fxFill mat-raised-button color="accent" class="acme-sc-button" (click)="createTopic()"
+                            [disabled]="!topicFormGroup.controls['titleControl'].valid">
+                            {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_BUTTON_CREATE_LABEL'|translate}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end" fxFill>
-                        <button fxFill mat-raised-button color="warn" class="acme-sc-button acme-sc-topic-creation-close-button"
-                            (click)="cancelTopicCreation()">
-                            Cancel
+                        <button fxFill mat-raised-button color="warn"
+                            class="acme-sc-button acme-sc-topic-creation-close-button" (click)="cancelTopicCreation()">
+                            {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_BUTTON_CANCEL_LABEL'|translate}}
                         </button>
                     </div>
                 </div>

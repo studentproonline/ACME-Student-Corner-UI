@@ -22,9 +22,9 @@
         <div fxFlexFill fxFlex="12vw" fxLayoutAlign="start center"
             class="acme-sc-navigation-side-bar-item-text acme-sc-room-user-name">
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">{{user.userName}}  <br> 
-                <span (click)="approveRejectUser('Approved','Approve')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-approve-link">Approve</span>
-                <span (click)="approveRejectUser('Rejected', 'Reject')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-reject-link">Reject</span>
-                <span *ngIf="user.status ==='Approved' && canRemoveUser" class="acme-sc-room-user-pending-link">Waiting for user to join</span>
+                <span (click)="approveRejectUser('Approved','Approve')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-approve-link">{{'ROOM_DETAILS_USER_ITEM_APPROVE'|translate}}</span>
+                <span (click)="approveRejectUser('Rejected', 'Reject')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-reject-link">{{'ROOM_DETAILS_USER_ITEM_REJECT'|translate}}</span>
+                <span *ngIf="user.status ==='Approved' && canRemoveUser" class="acme-sc-room-user-pending-link">{{'ROOM_DETAILS_USER_ITEM_WAITING_JOINING'|translate}}</span>
             </span>
               
         </div>
@@ -32,7 +32,7 @@
         <!--remove icon-->
         <div *ngIf="user.status ==='Active' && canRemoveUser" fxFlex="2vw" fxFlexFill fxLayoutAlign="end center" class="acme-sc-room-user-remove-icon"
             (click)="removeUser()">
-            <mat-icon matTooltip="Remove user" fxLayoutAlign="center center" style="height:3vh;width:2vw;"
+            <mat-icon matTooltip="{{'ROOM_DETAILS_USER_ITEM_REMOVE_USER'|translate}}" fxLayoutAlign="center center" style="height:3vh;width:2vw;"
                 class="acme-cs-mat-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="#000000">
                     <path d="M0 0h24v24H0z" fill="none" />
@@ -58,7 +58,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="100%" viewBox="0 0 24 24" width="100%" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M17,11c0.34,0,0.67,0.04,1,0.09V6.27L10.5,3L3,6.27v4.91c0,4.54,3.2,8.79,7.5,9.82c0.55-0.13,1.08-0.32,1.6-0.55 C11.41,19.47,11,18.28,11,17C11,13.69,13.69,11,17,11z"/><path d="M17,13c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C21,14.79,19.21,13,17,13z M17,14.38c0.62,0,1.12,0.51,1.12,1.12 s-0.51,1.12-1.12,1.12s-1.12-0.51-1.12-1.12S16.38,14.38,17,14.38z M17,19.75c-0.93,0-1.74-0.46-2.24-1.17 c0.05-0.72,1.51-1.08,2.24-1.08s2.19,0.36,2.24,1.08C18.74,19.29,17.93,19.75,17,19.75z"/></g></g>
                         </svg>
                     </mat-icon>
-                    <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">Make Admin</span>
+                    <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">{{'ROOM_DETAILS_USER_ITEM_MAKE_ADMIN'|translate}}</span>
                 </button>
                 <!--nonAdmin-->
                 <button *ngIf="user.role && user.role === 'Admin'" mat-menu-item (click)="makeAdmin('false')">
@@ -66,7 +66,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M22.27 21.73l-3.54-3.55L5.78 5.23 2.27 1.72 1 2.99 3.01 5H3v6c0 5.55 3.84 10.74 9 12 2.16-.53 4.08-1.76 5.6-3.41L21 23l1.27-1.27zM13 9.92l6.67 6.67C20.51 14.87 21 12.96 21 11V5l-9-4-5.48 2.44L11 7.92l2 2z"/>
                         </svg>
                     </mat-icon>
-                    <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">Remove as admin</span>
+                    <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">{{'ROOM_DETAILS_USER_ITEM_REMOVE_ADMIN'|translate}}</span>
                 </button>
             </mat-menu>
         </div>

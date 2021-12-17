@@ -7,10 +7,10 @@
     <div fxFlex="5vh">
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center  center">
             <div class="acme-sc-navigation-side-bar-title" fxFlex="8vw" fxLayoutAlign="center center">
-                <span>Room users</span>
+                <span>{{'ROOM_DETAILS_USER_LIST_LABEL'|translate}}</span>
             </div>
             <div *ngIf="this.isRoomOwner" class="acme-cs-mat-icon-pointer" fxFlex="2vw" fxLayoutAlign="center center" (click)="shareRoom()">
-                <mat-icon matTooltip="Invite user to join room" fxLayoutAlign="center center">
+                <mat-icon matTooltip="{{'ROOM_DETAILS_USER_LIST_INVITE_USER'|translate}}" fxLayoutAlign="center center">
                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                         fill="purple">
                         <path d="M0 0h24v24H0z" fill="none" />
@@ -20,7 +20,7 @@
                 </mat-icon>
             </div>
             <div fxFlex="2vw" fxLayoutAlign="center center" class="acme-cs-mat-icon-pointer" (click)="refreshUsersList()">
-                <mat-icon matTooltip="Refresh users list" fxLayoutAlign="center center">
+                <mat-icon matTooltip="{{'ROOM_DETAILS_USER_LIST_REFRESH'|translate}}" fxLayoutAlign="center center">
                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                         fill="#000000">
                         <path d="M0 0h24v24H0z" fill="none" />
@@ -44,7 +44,7 @@
                 </svg>
             </div>
             <div class="acme-sc-label-default-message" fxFlex="5vh" fxLayoutAlign="center center">
-                <span>Fail to get users list.</span>
+                <span>{{'ROOM_DETAILS_USER_LIST_FAIL_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@
 
             </div>
             <div class="acme-sc-label-default-message" fxFlex="5vh" fxLayoutAlign="center center">
-                <span>No users found</span>
+                <span>{{'ROOM_DETAILS_USER_LIST_FAIL_NO_USER_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>

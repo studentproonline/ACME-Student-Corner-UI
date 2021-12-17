@@ -8,6 +8,9 @@ import { ITopicEntity } from '../../entities/topic.entity';
 import { AcmeRoomTopicsService } from '../../services/acme-sc-room-topics.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-topic',
     templateUrl: './acme-sc-room-topic.component.html',
@@ -28,7 +31,8 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
 
     constructor(private acmeRoomTopicsService: AcmeRoomTopicsService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService, private snackBar: MatSnackBar,
-        private router: Router) {
+        private router: Router,
+        private translateService: TranslateService) {
 
     }
 
@@ -65,7 +69,7 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
         this.acmeRoomTopicsService.updateRoomTopic(this.topic._id, newStatus, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Topic is successfully updated.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_DETAILS_TOPIC_ITEM_TOPIC_UPDATED'), '', {
                     duration: 3000
                 });
             },

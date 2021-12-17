@@ -10,6 +10,9 @@ import { AcmeSCUserConfirmationComponent} from '../../../shared/components/dialo
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-user-item',
     templateUrl: './acme-sc-room-user-item.component.html',
@@ -25,7 +28,8 @@ export class AcmeSCRoomUserItemComponent {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmesharedRoomService: AcmesharedRoomService, public dialog: MatDialog,
-        private snackBar: MatSnackBar) {
+        private snackBar: MatSnackBar,
+        private translateService: TranslateService) {
 
     }
 
@@ -39,7 +43,7 @@ export class AcmeSCRoomUserItemComponent {
         this.acmesharedRoomService.approveRejectRequest(body,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false;
-                this.snackBar.open(action + ' room joing request', '', {
+                this.snackBar.open(action + this.translateService.instant('ROOM_DETAILS_USER_ITEM_JOINING'), '', {
                     duration: 3000
                 });
                 this.roomUserRemoved.emit(this.user);
@@ -59,7 +63,7 @@ export class AcmeSCRoomUserItemComponent {
             height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will ' + message + ' user request to join the room.' }
+            data: { message: this.translateService.instant('ROOM_DETAILS_USER_ITEM_THIS_ACTION_WILL') + message + this.translateService.instant('ROOM_DETAILS_USER_ITEM_JOIN_THE_ROOM') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result.data === 'true') {
@@ -75,7 +79,7 @@ export class AcmeSCRoomUserItemComponent {
             height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will remove user from the room.' }
+            data: { message: this.translateService.instant('ROOM_DETAILS_USER_ITEM_REMOVE_USER_WARNING') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result.data === 'true') {
@@ -89,7 +93,7 @@ export class AcmeSCRoomUserItemComponent {
         this.acmesharedRoomService.removeSharedRoomUser(this.user,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false;
-                this.snackBar.open('Succesfully removed user from the room.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_DETAILS_USER_ITEM_REMOVE_USER_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.roomUserRemoved.emit(this.user);
@@ -110,7 +114,7 @@ export class AcmeSCRoomUserItemComponent {
             height: '20vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will update user role.' }
+            data: { message: this.translateService.instant('ROOM_DETAILS_USER_ITEM_UPDATE_ROLE_WARNING') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result.data === 'true') {
@@ -133,7 +137,7 @@ export class AcmeSCRoomUserItemComponent {
         this.acmesharedRoomService.updateUserRole(body,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false;
-                this.snackBar.open('Succesfully updated user role.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_DETAILS_USER_ITEM_UPDATE_ROLE_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.roomUserRoleUpdated.emit(this.user);

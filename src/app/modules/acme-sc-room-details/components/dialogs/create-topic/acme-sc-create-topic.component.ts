@@ -15,6 +15,9 @@ import { ITopic } from '../../../Models/topic';
 // validator
 import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-create-topic',
     templateUrl: './acme-sc-create-topic.component.html',
@@ -31,7 +34,8 @@ export class AcmeSCSRoomCreateTopicComponent {
 
     constructor(public dialogRef: MatDialogRef<AcmeSCSRoomCreateTopicComponent>, private formBuilder: FormBuilder,
         private acmeRoomTopicsService: AcmeRoomTopicsService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
+        private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
+        private translateService: TranslateService) {
 
         this.topicFormGroup = this.formBuilder.group({
             titleControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -53,7 +57,7 @@ export class AcmeSCSRoomCreateTopicComponent {
         this.acmeRoomTopicsService.createRoomTopic(topic, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('New discussion topic is successfully created.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_SUCCESS_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({data: topic});
