@@ -3,8 +3,8 @@ export interface IAssignmentEntity {
     title: string;
     description: string;
     owner: string;
-    firstName: string;
-    lastName: string;
+    ownerFirstName: string;
+    ownerLastName: string;
     createdAt: Date;
     expiryDate: Date;
     roomId: string;

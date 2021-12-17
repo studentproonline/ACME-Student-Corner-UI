@@ -20,7 +20,7 @@
                         fxFill>
                         <div fxFlexFill fxLayout="column">
                             <div fxFlex>
-                                <span class="acme-sc-label-default-message acme-sc-custom-label">Assignment File :
+                                <span class="acme-sc-label-default-message acme-sc-custom-label">{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_FILE'|translate}}
                                 </span><span
                                     class="acme-sc-content-link acme-sc-custom-link">{{assignment.fileName}}</span>
                             </div>
@@ -55,12 +55,12 @@
                 <span><B>{{userAssignment.status}}</B></span>
             </div>
             <div *ngIf="isAssignmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>Submitted File:</b></span><span (click)="GetSubmittedFile()" style="padding-left: 0.4vw;"
+                <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_SUBMITTED_FILE'|translate}}</b></span><span (click)="GetSubmittedFile()" style="padding-left: 0.4vw;"
                     class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.submittedFileName}}</span>
             </div>
             <!--Revieweed by-->
             <div *ngIf="isAssignmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>Reviewed By:
+                <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_REVIEWED_BY'|translate}}
                     </b>{{userAssignment.reviewerFirstName}}</span><span>{{userAssignment.reviewerLastName}}</span>
             </div>
 
@@ -87,7 +87,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="red">
                     <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
                 </svg>
-                <span>This assignment is no longer active !!!!</span>
+                <span>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_NOT_ACTIVE'|translate}}</span>
             </div>
             <div fxFlex *ngIf="roomStatus !== 'Closed' && assignment.status !== 'Closed' && assignment.status !== 'Expired'
                                && !isProgress && isSuccessFull && isAssignmentFound &&
@@ -96,7 +96,7 @@
                     <div fxFlex="13vw" fxFill>
                         <button fxFill mat-raised-button color="accent" class="acme-sc-button"
                             (click)="turnInAssignment('Edit')">
-                            Edit assignment
+                            {{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_EDIT'|translate}}
                         </button>
                     </div>
                 </div>
@@ -115,14 +115,14 @@
                 </svg>
             </div>
             <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
-                <span>You have not yet submitted the assignment.</span>
+                <span>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_NOT_SUBMITTED'|translate}}</span>
             </div>
             <!--turn in button-->
             <div *ngIf="assignment.status ==='Active'" fxFlex="7vh" fxFill fxLayoutAlign="center start">
                 <div fxLayout="row" fxFlexFill fxLayoutAlign="center start">
                     <div fxFlex="13vw" fxFill fxLayoutAlign="center start">
                         <button fxFill mat-raised-button color="accent" (click)="turnInAssignment('New')"
-                            class="acme-sc-button">Turn in Assignment
+                            class="acme-sc-button">{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_TURN_IN'|translate}}
                         </button>
                     </div>
                 </div>
@@ -141,19 +141,19 @@
                 <div fxFlex="10vw">
                     <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
                         userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
-                        <span><b>Reviewer Remarks</b></span>
+                        <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_REVIEWER_REMARK'|translate}}</b></span>
                     </div>
                 </div>
                 <div fxFlex="15vw">
                     <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
                         userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
-                        <span><b>Last Reviewed On:</b>
+                        <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_LAST_REVIEWED_ON'|translate   }}</b>
                         </span><span>{{userAssignment.reviewedAt|date:'mediumDate'}}</span>
                     </div>
                 </div>
                 <!--Reviewd file-->
                 <div *ngIf="isAssignmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>Reviewed File:</b></span><span (click)="GetEvaluatedFile()" style="padding-left: 0.4vw;"
+                    <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_LAST_REVIEWED_FILE'|translate}}</b></span><span (click)="GetEvaluatedFile()" style="padding-left: 0.4vw;"
                         class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.evaluatedFileName}}</span>
                 </div>
             </div>

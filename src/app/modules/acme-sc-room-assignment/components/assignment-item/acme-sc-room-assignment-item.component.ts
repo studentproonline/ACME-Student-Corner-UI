@@ -17,6 +17,9 @@ import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-u
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 import { IAssignmentModel } from '../../models/assignment.Model';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-assignment-item',
     templateUrl: './acme-sc-room-assignment-item.component.html',
@@ -38,7 +41,8 @@ export class AcmeSCRoomAssignmentItemComponent {
     constructor(private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog,  private router: Router) {
+        public dialog: MatDialog,  private router: Router,
+        private translateService: TranslateService) {
     }
 
     ngOnInit() {
@@ -51,7 +55,7 @@ export class AcmeSCRoomAssignmentItemComponent {
             height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will close the assignment, which cannot be edited later.' }
+            data: { message: this.translateService.instant('ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_CLOSE_ASSIGNMENT_WARNING') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data === 'true') {
@@ -71,7 +75,7 @@ export class AcmeSCRoomAssignmentItemComponent {
          this.acmeSCRoomAssignmentService.updateAssignment(this.assignment._id,assigmentModel,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
              value => {
                  this.isProgress = false; // end progress
-                 this.snackBar.open(' Assignment is successfully deleted.', '', {
+                 this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_DELETED'), '', {
                      duration: 3000
                  });
                  this.assignmentDeleted.emit(this.assignment);
@@ -87,7 +91,7 @@ export class AcmeSCRoomAssignmentItemComponent {
 
     updateAssignment() {
         if(this.assignment.status == 'Closed') {
-            this.snackBar.open('Assignment is closed cannot edit', '', {
+            this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_EDIT_FAILED'), '', {
                 duration: 3000
             });
             return;
@@ -112,7 +116,7 @@ export class AcmeSCRoomAssignmentItemComponent {
         this.acmeSCRoomAssignmentService.deleteAssignment(this.assignment._id,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open(' Assignment is successfully deleted.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_DELETE_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.assignmentDeleted.emit(this.assignment);
@@ -133,7 +137,7 @@ export class AcmeSCRoomAssignmentItemComponent {
             height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will delete assignment.' }
+            data: { message: this.translateService.instant('ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_DELETE_WARNING') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data === 'true') {

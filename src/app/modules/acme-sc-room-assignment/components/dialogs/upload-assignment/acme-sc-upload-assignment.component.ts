@@ -14,6 +14,8 @@ import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whit
 
 import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
@@ -32,7 +34,7 @@ export class AcmeSUploadAssignmentComponent {
     minDate: Date;
     buttonLabel: string = 'Create'
     fileName: string='';
-    dialogTitle = 'Create new Assignment';
+    dialogTitle = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_LABEL_CREATE');
 
     modules = {
         imageResize: { modules: ['Resize', 'DisplaySize', 'Toolbar'] },
@@ -58,7 +60,8 @@ export class AcmeSUploadAssignmentComponent {
     constructor(public dialogRef: MatDialogRef<AcmeSUploadAssignmentComponent>, private formBuilder: FormBuilder,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
-        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
 
         this.createAssignmentFormGroup = this.formBuilder.group({
             titleControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -69,9 +72,9 @@ export class AcmeSUploadAssignmentComponent {
         });
         this.minDate = new Date();
         if (data.mode === 'New') {
-            this.buttonLabel = "Create";
+            this.buttonLabel = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_BUTTON_CREATE_LABEL');
         } else {
-            this.buttonLabel = "Edit";
+            this.buttonLabel = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_BUTTON_EDIT_LABEL');;
 
         }
     }
@@ -87,7 +90,7 @@ export class AcmeSUploadAssignmentComponent {
             this.createAssignmentFormGroup.get('expiryDateControl')?.setValue(this.data.assignment.expiryDate);
             this.assignmentContent = this.data.assignment.data;
             this.fileName = this.data.assignment.fileName;
-            this.dialogTitle = 'Update Assignment';
+            this.dialogTitle = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_LABEL_UPDATE');
         }
     }
 
@@ -106,7 +109,7 @@ export class AcmeSUploadAssignmentComponent {
         this.acmeSCRoomAssignmentService.updateAssignment(this.data.assignment._id, assigmentModel,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open(' Assignment is successfully updated.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_UPDATE_SUCCESS_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: assigmentModel });
@@ -133,7 +136,7 @@ export class AcmeSUploadAssignmentComponent {
         this.acmeSCRoomAssignmentService.createAssignment(assigmentModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('New assignment is successfully created.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_CREATE_SUCCESS_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: assigmentModel });

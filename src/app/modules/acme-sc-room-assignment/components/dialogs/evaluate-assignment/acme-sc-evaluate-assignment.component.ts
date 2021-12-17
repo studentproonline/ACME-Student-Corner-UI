@@ -8,7 +8,9 @@ import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dia
 // services
 import { AcmeSCRoomAssignmentService } from '../../../services/acme-sc-room-assigment.service';
 import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc-authorization.service';
-import { AcmesharedUiTuilitiesService } from '../../../../shared/services/acme-sc-ui-utiltities.services';
+
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
@@ -61,7 +63,7 @@ export class AcmeSCEvaluateAssignmentComponent {
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
         private formBuilder: FormBuilder,
-        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        public dialog: MatDialog, private translateService: TranslateService) {
 
         this.evaluateAssignmentFormGroup = this.formBuilder.group({
             fileControl: ['', [Validators.required]],
@@ -69,9 +71,9 @@ export class AcmeSCEvaluateAssignmentComponent {
         });
 
         if (data.mode === 'New') {
-            this.buttonLabel = "Submit";
+            this.buttonLabel = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_BUTTON_LABEL_SUBMIT');
         } else {
-            this.buttonLabel = "submit";
+            this.buttonLabel = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_BUTTON_LABEL_SUBMIT');
 
         }
         this.selectStars(1);
@@ -121,7 +123,7 @@ export class AcmeSCEvaluateAssignmentComponent {
         this.acmeSCRoomAssignmentService.updateUserEvaluationAssignment(this.data.userAssignment._id, userAssigmentEvaluateModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open(' Assignment Evaluation is successfully modified.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_EVALUATION_MODIFIED'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: userAssigmentEvaluateModel });

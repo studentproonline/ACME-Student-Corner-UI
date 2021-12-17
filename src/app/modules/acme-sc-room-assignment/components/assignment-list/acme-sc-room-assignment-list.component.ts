@@ -12,6 +12,9 @@ import { AcmeSCRoomAssignmentService } from '../../services/acme-sc-room-assigme
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-assignment-list',
     templateUrl: './acme-sc-room-assignment-list.component.html',
@@ -39,7 +42,8 @@ export class AcmeSCRoomAssignmentListComponent {
 
     constructor(public dialog: MatDialog, private acmeSCRoomLAssignmentService: AcmeSCRoomAssignmentService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -128,7 +132,7 @@ export class AcmeSCRoomAssignmentListComponent {
                 if (err.error && err.error.description) {
                     this.assignmentResponseMessage = err.error.description;
                 } else {
-                    this.assignmentResponseMessage = 'Server Error';
+                    this.assignmentResponseMessage = this.translateService.instant('ROOM_ASSIGNMENT_LIST_ASSIGNMENT_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog

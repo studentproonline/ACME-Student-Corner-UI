@@ -6,32 +6,32 @@
     <div fxFlex="5vh">
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center  center">
             <div class="acme-sc-navigation-side-bar-title" fxFlex="10vw" fxLayoutAlign="center center">
-                <span>Assignments Types</span>
+                <span>{{'ROOM_ASSIGNMENT_TYPES_LIST_TYPES'|translate}}</span>
             </div>
         </div>
     </div>
     <div fxFlex class="acme-sc-room-assignment-types-list">
         <div fxLayout="column" fxLayoutGap="1vh">
             <div fxFlex (click)="allAssignmentsItemClicked()">
-                <acme-sc-room-assignment-type-item [itemName]="'All Assignments'" [iconName]="'select_all'"
+                <acme-sc-room-assignment-type-item [itemName]="translateService.instant('ROOM_ASSIGNMENT_TYPES_LIST_TYPE_LIST_ITEM_NAME_ALL_ASSIGNMENTS')" [iconName]="'select_all'"
                     [selected]="allAssignmentsSelected">
 
                 </acme-sc-room-assignment-type-item>
             </div>
             <div fxFlex (click)="activeAssignmentsItemClicked()">
-                <acme-sc-room-assignment-type-item [itemName]="'Active Assignments'" [iconName]="'check_circle_outline'"
+                <acme-sc-room-assignment-type-item [itemName]="translateService.instant('ROOM_ASSIGNMENT_TYPES_LIST_TYPE_LIST_ITEM_NAME_ACTIVE_ASSIGNMENTS')" [iconName]="'check_circle_outline'"
                     [selected]="activesSelected">
 
                 </acme-sc-room-assignment-type-item>
             </div>
             <div ffxFlex (click)="expiredAssignmentsItemClicked()">
-                <acme-sc-room-assignment-type-item [itemName]="'Expired Assignments'" [iconName]="'pending_actions'"
+                <acme-sc-room-assignment-type-item [itemName]="translateService.instant('ROOM_ASSIGNMENT_TYPES_LIST_TYPE_LIST_ITEM_NAME_EXPIRED_ASSIGNMENTS')" [iconName]="'pending_actions'"
                     [selected]="expiredSelected">
 
                 </acme-sc-room-assignment-type-item>
             </div>
             <div fxFlex (click)="closedAssignmentsItemClicked()">
-                <acme-sc-room-assignment-type-item [itemName]="'Closed Assignments'" [iconName]="'lock'"
+                <acme-sc-room-assignment-type-item [itemName]="translateService.instant('ROOM_ASSIGNMENT_TYPES_LIST_TYPE_LIST_ITEM_NAME_CLOSED_ASSIGNMENTS')" [iconName]="'lock'"
                     [selected]="closedSelected">
 
                 </acme-sc-room-assignment-type-item>

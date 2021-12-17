@@ -15,6 +15,8 @@ import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeSCEvaluateAssignmentComponent } from '../dialogs/evaluate-assignment/acme-sc-evaluate-assignment.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-assignment-evaluation',
@@ -41,7 +43,8 @@ export class AcmeSCAssignmentEvaluationComponent {
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) {
+        public dialog: MatDialog, private router: Router, private snackBar: MatSnackBar,
+        private translateService: TranslateService) {
         
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
          
@@ -100,7 +103,7 @@ export class AcmeSCAssignmentEvaluationComponent {
                     if (err.error && err.error.description) {
                         this.userAssignmentResponseMessage = err.error.description;
                     } else {
-                        this.userAssignmentResponseMessage = 'Server Error';
+                        this.userAssignmentResponseMessage = this.translateService.instant('ROOM_ASSIGNMENT_EVALUATION_ASSIGNMENT_SERVER_ERROR');
                     }
                     if (err.status === 401 || err.status === 401.1) {
                         //  show session expired dialog
@@ -179,7 +182,7 @@ export class AcmeSCAssignmentEvaluationComponent {
         dialogRef.afterClosed().subscribe(result => {
         });
     }
-    
+
     _base64ToArrayBuffer(base64Data) {
         const binary_string = window.atob(base64Data);
         const len = binary_string.length;

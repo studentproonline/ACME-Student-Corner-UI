@@ -11,6 +11,9 @@ import { AcmeSCRoomAssignmentService } from '../../../services/acme-sc-room-assi
 import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedUiTuilitiesService } from '../../../../shared/services/acme-sc-ui-utiltities.services';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
 
@@ -52,7 +55,8 @@ export class AcmeSSubmitAssignmentComponent {
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
         private formBuilder: FormBuilder,
-        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
 
         this.submitAssignmentFormGroup = this.formBuilder.group({
             fileControl: ['', [Validators.required]],
@@ -60,9 +64,9 @@ export class AcmeSSubmitAssignmentComponent {
         });
 
         if (data.mode === 'New') {
-            this.buttonLabel = "Create";
+            this.buttonLabel = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_BUTTON_LABEL_CREATE');
         } else {
-            this.buttonLabel = "Turn in";
+            this.buttonLabel = this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_BUTTON_LABEL_TURNIN');
 
         }
     }
@@ -93,7 +97,7 @@ export class AcmeSSubmitAssignmentComponent {
         this.acmeSCRoomAssignmentService.createUserAssignment(userAssigmentModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open(' Assignment is successfully submitted.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_EVALUATION_CREATED'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: userAssigmentModel });
@@ -119,7 +123,7 @@ export class AcmeSSubmitAssignmentComponent {
         this.acmeSCRoomAssignmentService.updateUserAssignment(this.data.userAssignment._id, userAssigmentModel, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open(' Assignment is successfully modified.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_EVALUATION_MODIFIED'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: userAssigmentModel });

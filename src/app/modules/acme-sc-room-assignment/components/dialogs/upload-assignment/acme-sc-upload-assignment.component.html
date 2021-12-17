@@ -10,12 +10,12 @@
                     <!--File-->
                     <div fxFlex="5vh">
                         <label for="file-upload" class="acme-form-input-field custom-file-upload">
-                            Assignment File
+                            {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_FILE'|translate}}
                         </label>
                         <input formControlName="fileControl" id="file-upload" type="file" required
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
-                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required && fileName===''">File is required.</div>
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required && fileName===''">{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_FILE_REQUIRED'|translate}}</div>
                         <div class="acme-sc-file-name">{{fileName}}</div>
                     </div>
                     <!--topic title-->
@@ -25,27 +25,27 @@
                             <div fxFlex="70%" fxFill>
                                 <mat-form-field class="form-field acme-form-input-field" fxFill>
                                     <mat-label class="acme-form-input-field">
-                                        Title
+                                        {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_TITLE'|translate}}
                                     </mat-label>
-                                    <input class="acme-form-input-field" required matInput placeholder="Title"
+                                    <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_TITLE'|translate}}"
                                         formControlName="titleControl" autocomplete="off">
                                     <mat-error class="acme-form-input-field" *ngIf="createAssignmentFormGroup.controls['titleControl'].errors?.required ||
                                         createAssignmentFormGroup.controls['titleControl'].errors?.whiteSpace">
-                                        Title is <strong>required</strong>
+                                        {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_TITLE_REQUIRED'|translate}}
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <!--Assignment Expiry date-->
                             <div fxFlex="30%" fxFill>
                                 <mat-form-field class="form-field acme-form-input-field" fxFill>
-                                    <mat-label class="acme-form-input-field">Choose a expiry date</mat-label>
+                                    <mat-label class="acme-form-input-field">{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_EXPIRY_DATE'|translate}}</mat-label>
                                     <input class="acme-form-input-field" required matInput [matDatepicker]="picker"
                                         formControlName="expiryDateControl" [min]="minDate">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                     <mat-error class="acme-form-input-field"
                                         *ngIf="createAssignmentFormGroup.controls['titleControl'].errors?.required">
-                                        Expiry date is <strong>required</strong>
+                                        {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_EXPIRY_DATE_REQUIRED'|translate}}
                                     </mat-error>
                                 </mat-form-field>
                             </div>
@@ -55,13 +55,13 @@
                     <div fxFlex="9vh" fxFill>
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
-                                Description
+                                {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_DESCRIPTION'|translate}}
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Description"
+                            <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_DESCRIPTION'|translate}}"
                                 formControlName="descriptionControl" autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAssignmentFormGroup.controls['descriptionControl'].errors?.required ||
                                 createAssignmentFormGroup.controls['descriptionControl'].errors?.whiteSpace">
-                                Description is <strong>required</strong>
+                               {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_DESCRIPTION_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -72,7 +72,7 @@
     <!--Assignment Editor-->
     <div fxFlex="30vh" fxFill>
         <quill-editor class="acme-form-input-field" fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules"
-            placeholder="Insert details here ..." [required]="true"></quill-editor>
+            placeholder="{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_INSERT_DETAILS_LABEL'|translate}}" [required]="true"></quill-editor>
     </div>
     <div fxFlex fxLayoutAlign="end end" fxFill>
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
@@ -91,7 +91,7 @@
                         <button fxFill mat-raised-button color="warn"
                             class=" acme-sc-button acme-sc-assignment-creation-close-button"
                             (click)="cancelAssignmentCreation()">
-                            Cancel
+                            {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_BUTTON_CANCEL_LABEL'|translate}}
                         </button>
                     </div>
                 </div>

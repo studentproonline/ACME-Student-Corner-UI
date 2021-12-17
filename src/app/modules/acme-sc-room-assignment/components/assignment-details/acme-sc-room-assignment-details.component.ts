@@ -11,6 +11,9 @@ import { IAssignmentEntity } from '../../entities/assignment';
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-assignment-details',
     templateUrl: './acme-sc-room-assignment-details.component.html',
@@ -39,7 +42,8 @@ export class AcmeSCAssignmentDetailsComponent {
         private route: ActivatedRoute,
         private acmeSCRoomAssignmentService: AcmeSCRoomAssignmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog) {
+        public dialog: MatDialog,
+        private translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -80,7 +84,7 @@ export class AcmeSCAssignmentDetailsComponent {
                 if (err.error && err.error.description) {
                     this.roomAssignmentDetailsResponseMessage = err.error.description;
                 } else {
-                    this.roomAssignmentDetailsResponseMessage = 'Server Error';
+                    this.roomAssignmentDetailsResponseMessage = this.translateService.instant('ROOM_ASSIGNMENT_DETAILS_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog
@@ -109,7 +113,7 @@ export class AcmeSCAssignmentDetailsComponent {
                 if (err.error && err.error.description) {
                     this.roomAssignmentDetailsResponseMessage = err.error.description;
                 } else {
-                    this.roomAssignmentDetailsResponseMessage = 'Server Error';
+                    this.roomAssignmentDetailsResponseMessage = this.translateService.instant('ROOM_ASSIGNMENT_DETAILS_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog

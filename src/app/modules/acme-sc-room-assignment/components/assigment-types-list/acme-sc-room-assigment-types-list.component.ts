@@ -1,11 +1,18 @@
 import { Component, Output,  EventEmitter} from '@angular/core';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-assignment-types-list',
     templateUrl: './acme-sc-room-assigment-types-list.component.html',
     styleUrls: ['./acme-sc-room-assigment-types-list.component.scss']
 })
 export class AcmeSCRoomAssignmentTypesComponent {
+
+    constructor(public translateService: TranslateService) {
+
+    }
 
     allAssignmentsSelected =true;
     activesSelected =false;

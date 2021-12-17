@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Submit Assignment</span>
+        <span>{{'ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_LABEL'|translate}}</span>
     </div>
     <div fxFlex="7vh" fxFill>
         <div fxFlex fxFill>
@@ -9,12 +9,12 @@
                         <!--File-->
                         <div fxFlex="9vh">
                             <label for="file-upload" class="acme-form-input-field custom-file-upload">
-                                Assignment File
+                                {{'ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_FILE'|translate}}
                             </label>
                             <input formControlName="fileControl" id="file-upload" type="file" required
                                 class="form-control acme-form-input-field" (change)="onFileChange($event)"
                                 accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
-                            <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                            <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">{{'ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_FILE_REQUIRED'|translate}}</div>
                             <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
                         </div>
                 </div>
@@ -23,7 +23,7 @@
     </div>
     <!--Assignment Editor-->
     <div fxFlex="46vh" fxFill>
-        <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
+        <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="{{'ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_INSERT_DETAILS_LABEL'|translate}}"
         [required]="true"></quill-editor>
     </div>
 
@@ -40,7 +40,7 @@
                     <div fxFlex fxLayoutAlign="end end" fxFill>
                         <button fxFill mat-raised-button color="warn" class="acme-sc-button acme-sc-assignment-submit-close-button"
                             (click)="cancelAssignmentSubmission()">
-                            Cancel
+                            {{'ROOM_ASSIGNMENT_DIALOG_SUBMIT_ASSIGNMENT_BUTTON_LABEL_CANCEL'|translate}}
                         </button>
                     </div>
                 </div>

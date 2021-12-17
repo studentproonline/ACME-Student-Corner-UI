@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Evaluate Assignment</span>
+        <span>{{'ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_LABEL'|translate}}</span>
     </div>
     <div fxFlex="5vh" fxFill>
         <div fxFlexFill fxLayout="row" fxLayoutGap="1vw">
@@ -18,10 +18,10 @@
                 <div fxFlexFill fxLayout="row" fxLayoutGap="1vw" fxLayoutAlign="end center">
     
                     <div fxFill fxLayoutAlign="center center" (click)="selectAction('Submit')" fxFlex="5vw" [ngClass]="Submitselected===true?'acme-sc-submit-item' : 'acme-sc-submit-item-default'">
-                        <span>Accept</span>
+                        <span>{{'ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_ACCEPT'|translate}}</span>
                     </div>
                     <div fxFill fxLayoutAlign="center center" (click)="selectAction('Return')" fxFlex="5vw" [ngClass]="returnAssignmentSelected===true?'acme-sc-return-item' : 'acme-sc-return-item-default'">
-                        <span>Return</span>
+                        <span>{{'ROOM_ASSIGNMENT_DIALOGE_EVALUATE_ASSIGNMENT_RETURN'|translate}}</span>
                     </div>
                 </div>
             </div>
@@ -34,12 +34,12 @@
                       <!--File-->
                       <div fxFlex="9vh">
                         <label for="file-upload" class="acme-form-input-field custom-file-upload">
-                            Assignment File
+                            {{'ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_FILE'|translate}}
                         </label>
                         <input formControlName="fileControl" id="file-upload" type="file" required
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
-                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">{{'ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_FILE_REQUIRED'|translate}}</div>
                         <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
     </div>
     <!--Assignment Editor-->
     <div fxFlex="46vh" fxFill>
-        <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="Insert details here ..."
+        <quill-editor fxFlexFill [(ngModel)]="assignmentContent" [modules]="modules" placeholder="{{'ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_INSERT_DETAILS_LABEL'|translate}}"
         [required]="true"></quill-editor>
     </div>
     <div fxFlex fxLayoutAlign="end end" fxFill>
@@ -64,7 +64,7 @@
                     <div fxFlex fxLayoutAlign="end end" fxFill>
                         <button fxFill mat-raised-button color="warn" class="acme-sc-button acme-sc-assignment-submit-close-button"
                             (click)="cancelAssignmentSubmission()">
-                            Cancel
+                            {{'ROOM_ASSIGNMENT_DIALOG_EVALUATE_ASSIGNMENT_BUTTON_LABEL_CANCEL'|translate}}
                         </button>
                     </div>
                 </div>
