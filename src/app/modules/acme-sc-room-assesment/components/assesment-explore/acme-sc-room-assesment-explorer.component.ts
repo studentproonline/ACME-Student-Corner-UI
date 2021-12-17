@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
-import { AcmeSCRoomAssesmentService } from '../../services/acme-sc-room-assesment.service';
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
-import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-assesment-explorer',
@@ -33,9 +32,9 @@ export class AcmeSCAssesmentExplorerComponent {
     contentFilterType='All';
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private route: ActivatedRoute, private router: Router,
-        private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService,
-        public dialog: MatDialog) {
+        private route: ActivatedRoute, 
+        public dialog: MatDialog,
+        public translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();

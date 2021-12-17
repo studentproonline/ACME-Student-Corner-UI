@@ -11,13 +11,13 @@
                     <div fxFlex="9vh" fxFill>
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
-                                Title
+                                {{'ROOM_ASSESSMENT_DIALOG_TITLE'|translate}}
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Title"
+                            <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSESSMENT_DIALOG_TITLE'|translate}}"
                                 formControlName="titleControl" autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['titleControl'].errors?.required ||
                                 createAssesmentFormGroup.controls['titleControl'].errors?.whiteSpace">
-                                Title is <strong>required</strong>
+                                {{'ROOM_ASSESSMENT_DIALOG_TITLE_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -25,13 +25,13 @@
                     <div fxFlex="9vh" fxFill>
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
-                                Description
+                                {{'ROOM_ASSESSMENT_DIALOG_DESCRIPTION'|translate}}
                             </mat-label>
-                            <input class="acme-form-input-field" required matInput placeholder="Description"
+                            <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSESSMENT_DIALOG_DESCRIPTION'|translate}}"
                                 formControlName="descriptionControl" autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['descriptionControl'].errors?.required ||
                                 createAssesmentFormGroup.controls['descriptionControl'].errors?.whiteSpace">
-                                Description is <strong>required</strong>
+                               {{'ROOM_ASSESSMENT_DIALOG_DESCRIPTION_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -39,13 +39,13 @@
                      <div fxFlex="9vh" fxFill>
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
-                                Maximum Marks
+                                {{'ROOM_ASSESSMENT_DIALOG_MAX_MARKS'|translate}}
                             </mat-label>
-                            <input required type="Number" min="0" class="acme-form-input-field" required matInput placeholder="Max Marks"
+                            <input required type="Number" min="0" class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSESSMENT_DIALOG_MAX_MARKS'|translate}}"
                                 formControlName="maxMarksControl" autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['maxMarksControl'].errors?.required ||
                                 createAssesmentFormGroup.controls['maxMarksControl'].errors?.whiteSpace">
-                                Max Marks is <strong>required</strong>
+                                {{'ROOM_ASSESSMENT_DIALOG_MAX_MARKS_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -53,30 +53,29 @@
                     <div fxFlex="9vh" fxFill>
                         <mat-form-field class="form-field acme-form-input-field" fxFill>
                             <mat-label class="acme-form-input-field">
-                                Group
+                                {{'ROOM_ASSESSMENT_DIALOG_GROUP'|translate}}
                             </mat-label>
-                            <input required class="acme-form-input-field" required matInput placeholder="Group"
+                            <input required class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSESSMENT_DIALOG_GROUP'|translate}}"
                                 formControlName="groupControl" autocomplete="off">
                             <mat-error class="acme-form-input-field" *ngIf="createAssesmentFormGroup.controls['groupControl'].errors?.required ||
                                 createAssesmentFormGroup.controls['groupControl'].errors?.whiteSpace">
-                                Group is <strong>required</strong>
+                                {{'ROOM_ASSESSMENT_DIALOG_GROUP_REQUIRED'|translate}}
                             </mat-error>
                         </mat-form-field>
                     </div>
                     <div fxFlex="5vh" fxFill class="acme-sc-assesment-group-user-info">
-                        <span><B>Note:</B>Group will be used to generate report cards, make sure to provide
-                            same group name to all assesment you wish to group ex. Term 1 Assesment 2
+                        <span><B>{{'ROOM_ASSESSMENT_DIALOG_GROUP_MESSAGE1'|translate}}</B>{{'ROOM_ASSESSMENT_DIALOG_GROUP_MESSAGE2'|translate}}
                         </span>
                     </div>
                     <!--File-->
                     <div fxFlex="7vh">
                         <label for="file-upload" class="acme-form-input-field custom-file-upload">
-                            Assesment Paper
+                            {{'ROOM_ASSESSMENT_DIALOG_ASSESSMENT_FILE'|translate}}
                         </label>
                         <input formControlName="fileControl" id="file-upload" type="file" required
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
-                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required && fileName===''">File is required.</div>
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required && fileName===''">{{'ROOM_ASSESSMENT_DIALOG_ASSESSMENT_FILE_REQUIRED'|translate}}</div>
                         <div class="acme-sc-file-name">{{fileName}}</div>
                     </div>
                
@@ -98,7 +97,7 @@
                         <button fxFill mat-raised-button color="warn"
                             class=" acme-sc-button acme-sc-assesment-creation-close-button"
                             (click)="cancelAssesmentCreation()">
-                            Cancel
+                            {{'ROOM_ASSESSMENT_DIALOG_ASSESSMENT_BUTTON_LABEL_CANCEL'|translate}}
                         </button>
                     </div>
                 </div>

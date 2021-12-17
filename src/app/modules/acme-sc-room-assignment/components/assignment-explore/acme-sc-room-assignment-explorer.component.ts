@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-assignment-explorer',
     templateUrl: './acme-sc-room-assignment-explorer.component.html',
@@ -27,7 +30,8 @@ export class AcmeSCAssignmentExplorerComponent {
     contentFilterType='All';
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private route: ActivatedRoute ) {
+        private route: ActivatedRoute,
+        public translateService: TranslateService ) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();

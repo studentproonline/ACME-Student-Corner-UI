@@ -1,6 +1,5 @@
 import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
@@ -14,6 +13,9 @@ import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeSubmitAssesmentComponent } from '../dialogs/submit-assesment/acme-sc-submit-assesment.component';
+
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-assesment-submission',
@@ -47,8 +49,9 @@ export class AcmeSCAssesmentSubmissionComponent {
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog, private router: Router,
-        private snackBar: MatSnackBar) {
+        public dialog: MatDialog,
+        private snackBar: MatSnackBar,
+        private translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -140,7 +143,7 @@ export class AcmeSCAssesmentSubmissionComponent {
                     if (err.error && err.error.description) {
                         this.userSubmissionResponseMessage = err.error.description;
                     } else {
-                        this.userSubmissionResponseMessage = 'Server Error';
+                        this.userSubmissionResponseMessage = this.translateService.instant('ROOM_ASSESSMENT_SUBMISSION_SERVER_ERROR');
                     }
                     if (err.status === 401 || err.status === 401.1) {
                         //  show session expired dialog

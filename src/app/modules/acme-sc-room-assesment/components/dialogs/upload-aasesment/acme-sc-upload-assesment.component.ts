@@ -14,6 +14,9 @@ import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whit
 import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { MatDialog } from '@angular/material/dialog';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-upload-assesment',
     templateUrl: './acme-sc-upload-assesment.component.html',
@@ -24,12 +27,13 @@ export class AcmeSUploadAssesmentComponent {
     createAssesmentFormGroup: any;
     buttonLabel: string = 'Create';
     fileName: string='';
-    dialogTitle = 'Create new Assesment';
+    dialogTitle = this.translateService.instant('ROOM_ASSESSMENT_DIALOG_CREATE_NEW');
 
     constructor(public dialogRef: MatDialogRef<AcmeSUploadAssesmentComponent>, private formBuilder: FormBuilder,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
-        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
 
         this.createAssesmentFormGroup = this.formBuilder.group({
             titleControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -41,10 +45,10 @@ export class AcmeSUploadAssesmentComponent {
         });
         
         if (data.mode === 'New') {
-            this.buttonLabel = "Create";
+            this.buttonLabel = this.translateService.instant('ROOM_ASSESSMENT_DIALOG_ASSESSMENT_BUTTON_LABEL_CREATE');
         } else {
-            this.buttonLabel = "Edit";
-            this.dialogTitle = 'Update Assesment';
+            this.buttonLabel = this.translateService.instant('ROOM_ASSESSMENT_DIALOG_ASSESSMENT_BUTTON_LABEL_EDIT');
+            this.dialogTitle = this.translateService.instant('ROOM_ASSESSMENT_DIALOG_UPDATE');
         }
     }
 
@@ -60,7 +64,7 @@ export class AcmeSUploadAssesmentComponent {
             this.createAssesmentFormGroup.get('groupControl')?.setValue(this.data.assesment.group);
             this.createAssesmentFormGroup.get('maxMarksControl')?.setValue(this.data.assesment.maxMarks);
             this.fileName = this.data.assesment.fileName;
-            this.dialogTitle = 'Update Assesment';
+            this.dialogTitle = this.translateService.instant('ROOM_ASSESSMENT_DIALOG_UPDATE');
         }
     }
 
@@ -79,7 +83,7 @@ export class AcmeSUploadAssesmentComponent {
         this.acmeSCRoomAssesmentService.updateAssesment( this.data.assesment._id,postBody,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Assesment is successfully updated.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSESSMENT_DIALOG_ASSESSMENT_UPDATE_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: this.data.assesment });
@@ -105,7 +109,7 @@ export class AcmeSUploadAssesmentComponent {
         this.acmeSCRoomAssesmentService.uploadAssesment(this.acmeSCAuthorizationService.getAccessToken(), postBody).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('New assesment is successfully uploaded.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSESSMENT_DIALOG_ASSESSMENT_UPLOAD_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: postBody });

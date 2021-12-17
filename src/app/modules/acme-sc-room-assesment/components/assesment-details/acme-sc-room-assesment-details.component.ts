@@ -11,6 +11,9 @@ import { IAssesmentEntity } from '../../entities/assesment';
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-assesment-details',
     templateUrl: './acme-sc-room-assesment-details.component.html',
@@ -40,7 +43,8 @@ export class AcmeSCAssesmentDetailsComponent {
         private route: ActivatedRoute,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog) {
+        public dialog: MatDialog,
+        private translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -84,7 +88,7 @@ export class AcmeSCAssesmentDetailsComponent {
                 if (err.error && err.error.description) {
                     this.roomAssesmentDetailsResponseMessage = err.error.description;
                 } else {
-                    this.roomAssesmentDetailsResponseMessage = 'Server Error';
+                    this.roomAssesmentDetailsResponseMessage = this.translateService.instant('ROOM_ASSESSMENT_DETAILS_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog

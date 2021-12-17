@@ -1,5 +1,8 @@
 import { Component, Output,  EventEmitter} from '@angular/core';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-assesment-types-list',
     templateUrl: './acme-sc-room-assesment-types-list.component.html',
@@ -10,6 +13,10 @@ export class AcmeSCRoomAssesmentTypesComponent {
     activesSelected =false;
     ScheduledSelected =false;
     closedSelected =false;
+
+    constructor(public translateService: TranslateService) {
+
+    }
 
     @Output() itemClicked = new EventEmitter<string>();
 

@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Submit Assesment</span>
+        <span>{{'ROOM_ASSESSMENT_DIALOG_SUBMISSION_TITLE'|translate}}</span>
     </div>
     <div fxFlex="7vh" fxFill>
         <div fxFlex fxFill>
@@ -10,12 +10,12 @@
                      <!--File-->
                      <div fxFlex="9vh">
                         <label for="file-upload" class="acme-form-input-field custom-file-upload">
-                            Assesment File
+                            {{'ROOM_ASSESSMENT_DIALOG_SUBMISSION_ASSESSMENT_FILE'|translate}}
                         </label>
                         <input formControlName="fileControl" id="file-upload" type="file" required
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
-                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">File is required.</div>
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">{{'ROOM_ASSESSMENT_DIALOG_SUBMISSION_ASSESSMENT_FILE_REQUIRED'|translate}}</div>
                         <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
                     </div>
                
@@ -26,7 +26,7 @@
     <!--Assignment Editor-->
     <div fxFlex="55vh" fxFill>
         <quill-editor fxFlexFill [(ngModel)]="assesmentContent" [modules]="modules"
-            placeholder="Insert yuor comments here ..." [required]="true"></quill-editor>
+            placeholder="{{'ROOM_ASSESSMENT_DIALOG_SUBMISSION_INSERT_COMMENT'|translate}}" [required]="true"></quill-editor>
     </div>
     <div fxFlex fxLayoutAlign="end end" fxFill>
         <div fxFlexFill fxLayout="column" fxLayoutAlign="end end">
@@ -43,7 +43,7 @@
                         <button fxFill mat-raised-button color="warn"
                             class="acme-sc-button acme-sc-assesment-submit-close-button"
                             (click)="cancelAssesmentSubmission()">
-                            Cancel
+                            {{'ROOM_ASSESSMENT_DIALOG_SUBMISSION_BUTTON_LABEL_CANCEL'|translate}}
                         </button>
                     </div>
                 </div>

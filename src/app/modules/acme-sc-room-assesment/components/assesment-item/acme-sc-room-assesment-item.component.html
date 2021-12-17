@@ -27,14 +27,14 @@
                         </div>
                         <!--Start assesment-->
                         <div *ngIf="isContentOrRoomOwner && assesment.status ==='Scheduled'" fxFlex="2vw" fxLayoutAlign="start center" (click)="startAssesment()">
-                            <mat-icon  matTooltip="Start assesment">
+                            <mat-icon  matTooltip="{{'ROOM_ASSESMENT_ITEM_START_ASSESSMENT'|translate}}">
                                 <svg class="acme-cs-mat-start-icon" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                 </svg>
                             </mat-icon>
                         </div>
                         <!--Stop assesment-->
                         <div *ngIf="isContentOrRoomOwner && assesment.status ==='Active'" fxFlex="2vw" fxLayoutAlign="start center"  (click)="closeAssesment()">
-                            <mat-icon  matTooltip="stop assesment">
+                            <mat-icon  matTooltip="{{'ROOM_ASSESMENT_ITEM_STOP_ASSESSMENT'|translate}}">
                                 <svg class="acme-cs-mat-stop-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="3vh" viewBox="0 0 24 24" width="3vw"><rect fill="none" height="24" width="24"/><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M16,16H8V8h8V16z"/>
                                 </svg>
                             </mat-icon>
@@ -47,11 +47,11 @@
         <div fxFlex fxFill>
             <div fxLayout="row" fxLayoutGap="0.4vw" fxFill fxLayoutAlign="start center">
                 <div fxFlex fxFill fxLayoutAlign="start center">
-                    <span class="acme-sc-owner-label"><b>Created By:</b> {{assesment.ownerFirstName}}</span><span
+                    <span class="acme-sc-owner-label"><b>{{'ROOM_ASSESMENT_ITEM_CREATED_BY'|translate}}</b> {{assesment.ownerFirstName}}</span><span
                         class="acme-sc-owner-label" style="padding-left:0.4vw">{{assesment.ownerLastName}}</span>
                 </div>
                 <div fxFlex ="10vw" fxFill fxLayoutAlign="start center">
-                    <span class="acme-sc-owner-label"><b>Group:</b> {{assesment.group}}</span>
+                    <span class="acme-sc-owner-label"><b>{{'ROOM_ASSESMENT_ITEM_GROUP'|translate}}</b> {{assesment.group}}</span>
                 </div>
                 <!--status icon-->
                 <div fxFlex="2vw" fxFill fxLayoutAlign="start center">
@@ -77,7 +77,7 @@
                 <!--edit icon-->
                 <div *ngIf="isContentOrRoomOwner && assesment.status !=='Closed' && assesment.status !=='Active'" fxFlex="2vw" fxFill fxLayoutAlign="start center"
                     class="acme-cs-mat-icon-pointer" (click)="updateAssesment()">
-                    <mat-icon matTooltip="Edit assesment" fxLayoutAlign="start center">
+                    <mat-icon matTooltip="{{'ROOM_ASSESMENT_EDIT_ASSESSMENT'|translate}}" fxLayoutAlign="start center">
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="3vh"
                             viewBox="0 0 24 24" width="3vw" fill="purple">
                             <rect fill="none" height="24" width="24" />
@@ -90,7 +90,7 @@
                 <!--delete icon-->
                 <div *ngIf="isContentOrRoomOwner && assesment.status !=='Closed' && assesment.status !=='Active'" fxFlex="2vw" fxFill fxLayoutAlign="start center" class="acme-cs-mat-icon-pointer"
                     (click)="deleteAssesment()">
-                    <mat-icon matTooltip="Delete assesment" fxLayoutAlign="start center">
+                    <mat-icon matTooltip="{{'ROOM_ASSESMENT_DELETE_ASSESSMENT'|translate}}" fxLayoutAlign="start center">
                         <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw"
                             fill="darkred">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -100,7 +100,7 @@
                     </mat-icon>
                 </div>
                 <div *ngIf="assesment.status === 'Active' || assesment.status === 'Closed'" fxFlex="15vw" fxFill fxLayoutAlign="end center">
-                    <span class="acme-sc-date-label"><b>Conducted on:</b>
+                    <span class="acme-sc-date-label"><b>{{'ROOM_ASSESMENT_CONDUCTED_ON'|translate}}</b>
                         {{assesment.conductedOn|date:'mediumDate'}}</span>
                 </div>
             </div>

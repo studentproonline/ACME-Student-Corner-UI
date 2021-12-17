@@ -16,6 +16,9 @@ import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-u
 
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-assesment-item',
     templateUrl: './acme-sc-room-assesment-item.component.html',
@@ -42,7 +45,8 @@ export class AcmeSCRoomAssesmentItemComponent {
     constructor(private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog,  private router: Router) {
+        public dialog: MatDialog,  private router: Router,
+        private translateService: TranslateService) {
     }
 
     startAssesment() {
@@ -55,7 +59,7 @@ export class AcmeSCRoomAssesmentItemComponent {
 
     updateAssesment() {
         if(this.assesment.status == 'Closed') {
-            this.snackBar.open('Assesment is closed cannot edit', '', {
+            this.snackBar.open(this.translateService.instant('ROOM_ASSESMENT_ASSESSMENT_CLOSED_NO_EDIT'), '', {
                 duration: 3000
             });
             return;
@@ -80,7 +84,7 @@ export class AcmeSCRoomAssesmentItemComponent {
             height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will delete assesment.' }
+            data: { message: this.translateService.instant('ROOM_ASSESMENT_ASSESSMENT_DELETE_WARNING') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data === 'true') {
@@ -94,7 +98,7 @@ export class AcmeSCRoomAssesmentItemComponent {
         this.acmeSCRoomAssesmentService.deleteAssesment( this.assesment._id,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Assesment is successfully deleted.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSESMENT_ASSESSMENT_DELETE_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.assesmentDeleted.emit(this.assesment);
@@ -120,7 +124,7 @@ export class AcmeSCRoomAssesmentItemComponent {
         this.acmeSCRoomAssesmentService.updateAssesment( this.assesment._id,this.assesment,this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('Assesment is successfully updated.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSESMENT_ASSESSMENT_UPDATE_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.assesmentStatusUpdated.emit(this.assesment);

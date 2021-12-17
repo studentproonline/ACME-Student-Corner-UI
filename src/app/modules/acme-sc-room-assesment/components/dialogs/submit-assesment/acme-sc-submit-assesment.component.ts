@@ -14,6 +14,9 @@ import { AcmeSCRoomAssesmentService } from '../../../services/acme-sc-room-asses
 import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedUiTuilitiesService } from '../../../../shared/services/acme-sc-ui-utiltities.services';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 
 import Quill from 'quill';
 import ImageResize from 'quill-image-resize-module';
@@ -28,7 +31,7 @@ Quill.register('modules/imageResize', ImageResize);
 export class AcmeSubmitAssesmentComponent {
     isProgress = false;
     submitAssesmentFormGroup: any;
-    buttonLabel: string = 'Submit'
+    buttonLabel: string = this.translateService.instant('ROOM_ASSESSMENT_DIALOG_SUBMISSION_BUTTON_LABEL_SUBMIT');
     assesmentContent: string = '';
 
     modules = {
@@ -55,7 +58,8 @@ export class AcmeSubmitAssesmentComponent {
     constructor(public dialogRef: MatDialogRef<AcmeSubmitAssesmentComponent>, private formBuilder: FormBuilder,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
-        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+        public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
 
         this.submitAssesmentFormGroup = this.formBuilder.group({
             fileNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -76,7 +80,7 @@ export class AcmeSubmitAssesmentComponent {
         this.acmeSCRoomAssesmentService.createUserAssignment(body, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open(' Assesment is successfully submitted.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_ASSESSMENT_DIALOG_SUBMISSION_ASSESSMENT_SUBMIT_SUCCESS'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: body });

@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
-        <span>Evaluate Assesment</span>
+        <span>{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_TITLE'|translate}}</span>
     </div>
     <div fxFlex="15vh" fxFill>
         <div fxFlex fxFill>
@@ -12,34 +12,34 @@
                             <div fxFlex="20vh">
                                 <mat-form-field class="form-field acme-form-input-field" fxFill>
                                     <mat-label class="acme-form-input-field">
-                                        Marks
+                                        {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_MARKS'|translate}}
                                     </mat-label>
-                                    <input type="Number" min="0" required class="acme-form-input-field" required matInput placeholder="Marks"
+                                    <input type="Number" min="0" required class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_MARKS'|translate}}"
                                         formControlName="marksControl" autocomplete="off">
                                     <mat-error class="acme-form-input-field" *ngIf="evaluateAssesmentFormGroup.controls['marksControl'].errors?.required ||
                                         evaluateAssesmentFormGroup.controls['marksControl'].errors?.whiteSpace">
-                                        Marks is <strong>required</strong>
+                                       {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_MARKS_REQUIRED'|translate}}
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="acme-form-input-field" fxLayoutAlign="start center" fxFlex="20vh">
-                                <span>Out of : </span> <span style="padding-left: 1vw;"
+                                <span>{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_MARKS_OUT_OF'|translate}} </span> <span style="padding-left: 1vw;"
                                     class="acme-sc-total-marks-grade"><b> {{data.userAssesment.totalMarks}}</b></span>
                             </div>
                             <!--grade-->
                             <div fxFlex="25vh">
                                 <mat-form-field class="form-field acme-form-input-field" fxFill>
                                     <mat-label class="acme-form-input-field">
-                                        Grade
+                                        {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_GRADE'|translate}}
                                     </mat-label>
                                     <input required class="acme-form-input-field" required matInput
-                                        placeholder="Grade ex: A+" formControlName="gradeControl" autocomplete="off">
+                                        placeholder="{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_GRADE'|translate}}" formControlName="gradeControl" autocomplete="off">
                                     <mat-error class="acme-form-input-field" *ngIf="evaluateAssesmentFormGroup.controls['gradeControl'].errors?.required ||
                                         evaluateAssesmentFormGroup.controls['gradeControl'].errors?.whiteSpace">
-                                        Grade is <strong>required</strong>
+                                        {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_GRADE_REQUIRED'|translate}}
                                     </mat-error>
                                 </mat-form-field>
-                                <div class="acme-sc-owner-label">Grade Example: A+ A B+ B C+ C D</div>
+                                <div class="acme-sc-owner-label">{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_GRADE_EXAMPLE'|translate}}</div>
                             </div>
                         </div>
                     </div>
@@ -47,12 +47,12 @@
                     <div fxFlex="15vh">
 
                         <label for="file-upload" class="acme-form-input-field custom-file-upload">
-                            Assesment File
+                            {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESSMENT_FILE'|translate}}
                         </label>
                         <input formControlName="fileControl" id="file-upload" type="file" required
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
-                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required  && fileName===''">File is required.</div>
+                        <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required  && fileName===''">{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESSMENT_FILE_REQUIRED'|translate}}</div>
                         <div class="acme-sc-file-name">{{fileName}}</div>
                     </div>
 
@@ -83,7 +83,7 @@
                         <button fxFill mat-raised-button color="warn"
                             class="acme-sc-button acme-sc-evaluate-submit-close-button"
                             (click)="cancelAssesmentEvaluation()">
-                            Cancel
+                            {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_BUTTON_LABEL_CANCEL'|translate}}
                         </button>
                     </div>
                 </div>

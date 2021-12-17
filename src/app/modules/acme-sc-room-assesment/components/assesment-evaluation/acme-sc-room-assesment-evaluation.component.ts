@@ -1,7 +1,6 @@
 import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeSCRoomAssesmentService } from '../../services/acme-sc-room-assesment.service';
@@ -13,6 +12,9 @@ import { IRoomEntity } from '../../../shared/entities/acme-sc-room.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 import { AcmeEvaluateAssesmentComponent } from '../dialogs/evaluate-assesment/acme-sc-evaluate-assesment.component';
+
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-assesment-evaluation',
@@ -40,8 +42,9 @@ export class AcmeSCAssesmentEvaluationComponent {
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCRoomAssesmentService: AcmeSCRoomAssesmentService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
-        public dialog: MatDialog, private router: Router,
-        private snackBar: MatSnackBar) {
+        public dialog: MatDialog,
+        private snackBar: MatSnackBar,
+        private translateService: TranslateService) {
 
 
     }
@@ -149,7 +152,7 @@ export class AcmeSCAssesmentEvaluationComponent {
                     if (err.error && err.error.description) {
                         this.userAssesmentResponseMessage = err.error.description;
                     } else {
-                        this.userAssesmentResponseMessage = 'Server Error';
+                        this.userAssesmentResponseMessage = this.translateService.instant('ROOM_ASSESSMENT_EVALUATION_SERVER_ERROR');
                     }
                     if (err.status === 401 || err.status === 401.1) {
                         //  show session expired dialog

@@ -11,7 +11,7 @@
         fxFlex="5vh" fxFill>
         <div fxFlexFill fxLayout="column">
             <div fxFlex>
-                <span class="acme-sc-label-default-message acme-sc-custom-label">Assesment Paper : </span><span
+                <span class="acme-sc-label-default-message acme-sc-custom-label">{{'ROOM_ASSESSMENT_EVALUATION_ASSESSMENT_FILE'|translate}} </span><span
                     class="acme-sc-content-link acme-sc-custom-link">{{fileName}}</span>
             </div>
             <div *ngIf="isfileDownloadProgress" fxFlex="2vh">
@@ -38,16 +38,16 @@
             </div>
             <!--Revieweed by-->
             <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>Reviewed By:
+                <span><b>{{'ROOM_ASSESSMENT_EVALUATION_REVIEWED_BY'|translate}}
                     </b>{{userAssesment.reviewerFirstName}}</span><span>{{userAssesment.reviewerLastName}}</span>
             </div>
             <!--group by-->
             <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>Group:</b>{{assesment.group}}</span>
+                <span><b>{{'ROOM_ASSESSMENT_EVALUATION_GROUP'|translate}}</b>{{assesment.group}}</span>
             </div>
             <!--submitted assignment-->
             <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>Submitted File:</b></span><span style="padding-left: 0.4vw;" (click)="GetSubmittedFile()"
+                <span><b>{{'ROOM_ASSESSMENT_EVALUATION_SUBMITTED_FILE'|translate}}:</b></span><span style="padding-left: 0.4vw;" (click)="GetSubmittedFile()"
                     class="acme-sc-custom-link acme-sc-custom-evaluation">{{userAssesment.submittedFileName}}</span>
             </div>
 
@@ -57,7 +57,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="red">
                     <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
                 </svg>
-                <span>This assesment is no longer active !!!!</span>
+                <span>{{'ROOM_ASSESSMENT_EVALUATION_NOT_ACTIVE'|translate}}</span>
             </div>
             <!--Review Assignment button-->
             <div fxFlex *ngIf="roomStatus !== 'Closed' && !isProgress && isSuccessFull && isAssesmentFound">
@@ -65,7 +65,7 @@
                     <div fxFlex="13vw" fxFill>
                         <button fxFill mat-raised-button color="accent" class="acme-sc-button"
                             (click)="reviewAssesment()">
-                            Review assesment
+                            {{'ROOM_ASSESSMENT_EVALUATION_REVIEW_ASSESSMENT'|translate}}
                         </button>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                 </svg>
             </div>
             <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
-                <span>Please select user to view assignment.</span>
+                <span>{{'ROOM_ASSESSMENT_EVALUATION_SELECT_USER'|translate}}</span>
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
                 </svg>
             </div>
             <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
-                <span>User has not yet submitted the assesment.</span>
+                <span>{{'ROOM_ASSESSMENT_EVALUATION_USER_NOT_SUBMITTED'|translate}}</span>
             </div>
         </div>
     </div>
@@ -119,22 +119,22 @@
                 <div fxFlex="10vw">
                     <div *ngIf="userAssesment.status === 'Reviewed' || userAssesment.status === 'Submitted'"
                         class="acme-sc-room-user-assesment-reviewer-remark">
-                        <span>Reviewer Remarks</span>
+                        <span>{{'ROOM_ASSESSMENT_EVALUATION_REVIEWER_REMARKS'|translate}}</span>
                     </div>
                 </div>
                 <!--Evaluated assignment-->
                 <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>Evaluated File:</b></span><span style="padding-left: 0.4vw;" (click)="GetEvaluatedFile()"
+                    <span><b>{{'ROOM_ASSESSMENT_EVALUATION_EVALUATED_FILE'|translate}}</b></span><span style="padding-left: 0.4vw;" (click)="GetEvaluatedFile()"
                         class="acme-sc-custom-link acme-sc-custom-evaluation">{{userAssesment.evaluatedFileName}}</span>
                 </div>
                 <!--Grade-->
                 <div *ngIf="isAssesmentFound" fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>Grade:</b></span><span class="acme-sc-grade-marks"
+                    <span><b>{{'ROOM_ASSESSMENT_EVALUATION_GRADE'|translate}}</b></span><span class="acme-sc-grade-marks"
                         style="padding-left:0.4vw">{{userAssesment.grade}}</span>
                 </div>
                 <!--marks-->
                 <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>Marks: </b></span><span class="acme-sc-grade-marks"
+                    <span><b>{{'ROOM_ASSESSMENT_EVALUATION_MARKS'|translate}} </b></span><span class="acme-sc-grade-marks"
                         style="padding-left:0.4vw">{{userAssesment.marksObtained}} / {{userAssesment.totalMarks}}
                     </span>
                 </div>
