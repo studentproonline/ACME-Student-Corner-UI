@@ -137,6 +137,16 @@
     "SHARED_USER_LIST_ERROR": "उपयोगकर्ता सूची प्राप्त करने में विफल",
     "SHARED_USER_LIST_NO_USERS": "कोई उपयोग्कर्ता नहीं मिले",
 
+    "SHARED_CONTACT_INFORMATION_TITLE": "संपर्क करें",
+    "SHARED_CONTACT_INFORMATION_BUTTON_LABEL_CLOSE": "बंद करे",
+
+    "SHARED_SESSION_EXPIRED_TITLE": "आपका सत्र समाप्त हो गया है, कृपया पुनः लॉगिन करें",
+
+    "SHARED_USER_CONFIRMATION_TITLE": "अपनी कार्रवाई की समीक्षा करें",
+    "SHARED_USER_CONFIRMATION_CONFIRMATION": "क्या तुम वाकई जारी रखना चाहते हो?",
+
+    "SHARED_USER_POP_UP_LOGOUT": "लॉग आउट",
+
     "ROOM_DETAILS_SEARCH_LABEL": "शीर्षक के आधार पर किसी विषय की खोज शुरू करें",
     "ROOM_DETAILS_ERROR_MESSAGE": "कमरे का विवरण प्राप्त करने में विफल, कृपया सिस्टम व्यवस्थापक से संपर्क करें",
     

@@ -137,6 +137,16 @@
     "SHARED_USER_LIST_ERROR": "Fail to get users list",
     "SHARED_USER_LIST_NO_USERS": "No users found",
 
+    "SHARED_CONTACT_INFORMATION_TITLE": "Contact Us",
+    "SHARED_CONTACT_INFORMATION_BUTTON_LABEL_CLOSE": "Close",
+
+    "SHARED_SESSION_EXPIRED_TITLE": "Your session is exprired, please re-login",
+
+    "SHARED_USER_CONFIRMATION_TITLE": "Review your action",
+    "SHARED_USER_CONFIRMATION_CONFIRMATION": "Are you sure, you want to continue?",
+
+    "SHARED_USER_POP_UP_LOGOUT": "Logout",
+
     "ROOM_DETAILS_SEARCH_LABEL": "Start searching for a topic by title",
     "ROOM_DETAILS_ERROR_MESSAGE": "Fail to get room details, please contact system administrator",
     "ROOM_DETAILS_USER_LIST_LABEL": "Room users",
