@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatDialog } from '@angular/material/dialog';
 
 // services
 import { AcmeSCRoomLibraryService } from '../../../services/acme-sc-room-library.service';
@@ -14,7 +15,9 @@ import { AcmeSCAuthorizationService } from '../../../../../core/services/acme-sc
 import { WhiteSpaceValidator } from '../../../../../core/validators/acme-sc-whitespace-validator';
 
 import { AcmeSCSessionExpiredComponent } from '../../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
-import { MatDialog } from '@angular/material/dialog';
+
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-upload-content',
@@ -38,7 +41,8 @@ export class AcmeSUploadContentComponent {
     constructor(public dialogRef: MatDialogRef<AcmeSUploadContentComponent>, private formBuilder: FormBuilder,
         private acmeSCRoomLibraryService: AcmeSCRoomLibraryService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,
-        public dialog: MatDialog) {
+        public dialog: MatDialog,
+        private translateService: TranslateService) {
 
         this.documentuploadFormGroup = this.formBuilder.group({
             fileDescriptionControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
@@ -72,7 +76,7 @@ export class AcmeSUploadContentComponent {
         this.acmeSCRoomLibraryService.uploadDocument(this.acmeSCAuthorizationService.getAccessToken(), postBody).subscribe(
             value => {
                 this.isProgress = false; // end progress
-                this.snackBar.open('New content is successfully uploaded.', '', {
+                this.snackBar.open(this.translateService.instant('ROOM_LIBRARY_CONTENT_DIALOG_UPLOAD_SUCCESS_MESSAGE'), '', {
                     duration: 3000
                 });
                 this.dialogRef.close({ data: postBody });

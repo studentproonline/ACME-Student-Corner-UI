@@ -6,7 +6,7 @@
     <div fxFlex="5vh">
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center  center">
             <div class="acme-sc-navigation-side-bar-title" fxFlex="8vw" fxLayoutAlign="center center">
-                <span>Content Types</span>
+                <span>{{'ROOM_LIBRARY_CONTENT_TYPES_LABEL'|translate}}</span>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div fxFlex fxLayoutAlign="start center"
                         [ngClass]="allContentsSelected===true?'acme-sc-navigation-side-bar-item-text' : 'acme-sc-navigation-side-bar-item-text-default'">
-                        <span>All Contents</span>
+                        <span>{{'ROOM_LIBRARY_CONTENT_TYPES_ALL_CONTENT'|translate}}</span>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div fxFlex fxLayoutAlign="start center"
                         [ngClass]="documentsSelected===true?'acme-sc-navigation-side-bar-item-text' : 'acme-sc-navigation-side-bar-item-text-default'">
-                        <span>Documents</span>
+                        <span>{{'ROOM_LIBRARY_CONTENT_TYPES_DOCUMENT'|translate}}</span>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                     </div>
                     <div fxFlex fxLayoutAlign="start center"
                         [ngClass]="linksSelected===true?'acme-sc-navigation-side-bar-item-text' : 'acme-sc-navigation-side-bar-item-text-default'">
-                        <span>Links</span>
+                        <span>{{'ROOM_LIBRARY_CONTENT_TYPES_LINKS'|translate}}</span>
                     </div>
                 </div>
             </div>

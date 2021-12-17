@@ -199,5 +199,40 @@
     "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_CANCEL_BUTTONLABEL": "Cancel",
     "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_NO_COMMENT": "you have not entered any comment, please provide you comment and then add",
     "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_SIZE": "You can add comment up to 2 MB, please reduce comment size and add again",
-    "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_ADD_SUCCESS_MESSAGE": "New comment is successfully added"
+    "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_ADD_SUCCESS_MESSAGE": "New comment is successfully added",
+
+    "ROOM_LIBRARY_EXPLORER_ERROR": "Fail to get library contents, please contact system administrator",
+
+    "ROOM_LIBRARY_CONTENT_TYPES_LABEL": "Content Types",
+    "ROOM_LIBRARY_CONTENT_TYPES_ALL_CONTENT": "All Contents",
+    "ROOM_LIBRARY_CONTENT_TYPES_DOCUMENT": "Documents",
+    "ROOM_LIBRARY_CONTENT_TYPES_LINKS": "Links",
+
+    "ROOM_LIBRARY_CONTENT_LIST_LABEL": "Library",
+    "ROOM_LIBRARY_CONTENT_LIST_ROOM_NOT_ACTIVE": "This room is no longer active !!!!",
+    "ROOM_LIBRARY_CONTENT_LIST_UPLOAD_NEW_CONTENT": "Upload new content",
+    "ROOM_LIBRARY_CONTENT_LIST_NO_CONTENT": "There is no library content available, upload new content",
+    "ROOM_LIBRARY_CONTENT_LIST_SERVER_ERROR": "Server Error",
+
+    "ROOM_LIBRARY_CONTENT_ITEM_CREATED_BY": "Created By:",
+    "ROOM_LIBRARY_CONTENT_ITEM_CREATED_ON": "Created on:",
+    "ROOM_LIBRARY_CONTENT_ITEM_DELETE_WARNING": "This action will remove content from library",
+
+    "ROOM_LIBRARY_CONTENT_DIALOG_LABEL": "Upload new content",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT": "Documents",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION": "Description",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION_REQUIRED": "Description is required",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE1": "Associate Tags : please press",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE2": "Enter",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE3": "after typing to associate tag with the content.",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_CANCEL_TAG": "cancel",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_FILE_LABEL": "upload content",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK": "Links",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT": "Link",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_REQUIRED": "Link is required",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_DESCRIPTON": "Description",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_DESCRIPTION_REQUIRED": "Description is required",
+    "ROOM_LIBRARY_CONTENT_DIALOG_BUTTON_UPLOAD_LABEL": "Upload",
+    "ROOM_LIBRARY_CONTENT_DIALOG_BUTTON_CANCEL_LABEL": "Cancel",
+    "ROOM_LIBRARY_CONTENT_DIALOG_UPLOAD_SUCCESS_MESSAGE": "New content is successfully uploaded"
 }

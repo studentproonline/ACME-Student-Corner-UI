@@ -200,6 +200,40 @@
     "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_CANCEL_BUTTONLABEL": "रद्द करें",
     "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_NO_COMMENT": "आपने कोई टिप्पणी दर्ज नहीं की है, कृपया आपको टिप्पणी प्रदान करें और फिर जोड़ें",
     "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_SIZE": "आप 2 एमबी तक टिप्पणी जोड़ सकते हैं, कृपया टिप्पणी का आकार कम करें और फिर से जोड़ें",
-    "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_ADD_SUCCESS_MESSAGE": "नई टिप्पणी सफलतापूर्वक जोड़ी गई"
- 
+    "ROOM_TOPIC_TOPIC_COMMENT_DIALOG_COMMENT_ADD_SUCCESS_MESSAGE": "नई टिप्पणी सफलतापूर्वक जोड़ी गई",
+
+    "ROOM_LIBRARY_EXPLORER_ERROR": "पुस्तकालय सामग्री प्राप्त करने में विफल, कृपया सिस्टम व्यवस्थापक से संपर्क करें",
+
+    "ROOM_LIBRARY_CONTENT_TYPES_LABEL": "सामग्री प्रकार",
+    "ROOM_LIBRARY_CONTENT_TYPES_ALL_CONTENT": "सभी सामग्री",
+    "ROOM_LIBRARY_CONTENT_TYPES_DOCUMENT": "दस्तावेज़",
+    "ROOM_LIBRARY_CONTENT_TYPES_LINKS": "लिंक",
+    
+    "ROOM_LIBRARY_CONTENT_LIST_LABEL": "पुस्तकालय",
+    "ROOM_LIBRARY_CONTENT_LIST_ROOM_NOT_ACTIVE": "यह कमरा अब सक्रिय नहीं है !!!!",
+    "ROOM_LIBRARY_CONTENT_LIST_UPLOAD_NEW_CONTENT": "नई सामग्री अपलोड करें",
+    "ROOM_LIBRARY_CONTENT_LIST_NO_CONTENT": "कोई पुस्तकालय सामग्री उपलब्ध नहीं है, नई सामग्री अपलोड करें",
+    "ROOM_LIBRARY_CONTENT_LIST_SERVER_ERROR": "सर्वर त्रुटि",
+
+    "ROOM_LIBRARY_CONTENT_ITEM_CREATED_BY": "के द्वारा बनाई गई:",
+    "ROOM_LIBRARY_CONTENT_ITEM_CREATED_ON": "को निर्मित:",
+    "ROOM_LIBRARY_CONTENT_ITEM_DELETE_WARNING": "यह क्रिया लाइब्रेरी से सामग्री को हटा देगी",
+
+    "ROOM_LIBRARY_CONTENT_DIALOG_LABEL": "नई सामग्री अपलोड करें",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT": "दस्तावेज़",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION": "विवरण",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION_REQUIRED": "विवरण आवश्यक है",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE1": "सहयोगी टैग: कृपया दबाएं",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE2": "Enter",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE3": "टैग को सामग्री के साथ जोड़ने के लिए टाइप करने के बाद",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_CANCEL_TAG": "रद्द करना",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_FILE_LABEL": "सामग्री अपलोड करें",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK": "लिंक",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT": "लिंक",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_REQUIRED": "लिंक की आवश्यकता है",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_DESCRIPTON": "विवरण",
+    "ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_DESCRIPTION_REQUIRED": "विवरण आवश्यक है",
+    "ROOM_LIBRARY_CONTENT_DIALOG_BUTTON_UPLOAD_LABEL": "अपलोड",
+    "ROOM_LIBRARY_CONTENT_DIALOG_BUTTON_CANCEL_LABEL": "रद्द करें",
+    "ROOM_LIBRARY_CONTENT_DIALOG_UPLOAD_SUCCESS_MESSAGE": "नई सामग्री सफलतापूर्वक अपलोड की गई"
 }

@@ -1,6 +1,6 @@
 <div fxFlexFill fxLayout="column"  fxLayoutGap="0.4vw">
     <div fxFlex="5vh" fxLayoutAlign="center start" class="acme-cs-heading">
-        <span>Upload new content</span>
+        <span>{{'ROOM_LIBRARY_CONTENT_DIALOG_LABEL'|translate}}</span>
     </div>
     <div fxFlex>
         <mat-tab-group (selectedTabChange)="myTabSelectedTabChange($event)">
@@ -15,25 +15,25 @@
                                 d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z" />
                         </svg>
                     </mat-icon>
-                    <span class="acme-sc-tab">Documents</span>
+                    <span class="acme-sc-tab">{{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT'|translate}}</span>
                 </ng-template>
                 <!--upload document form-->
                 <form [formGroup]="documentuploadFormGroup">
                     <!--File Description-->
                     <mat-form-field class="form-field acme-form-input-field" fxFill>
                         <mat-label class="acme-form-input-field">
-                            Description
+                            {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION'|translate}}
                         </mat-label>
-                        <input class="acme-form-input-field" required matInput placeholder="Description" formControlName="fileDescriptionControl"
+                        <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION'|translate}}" formControlName="fileDescriptionControl"
                             autocomplete="off">
                         <mat-error *ngIf="documentuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
                             documentuploadFormGroup.controls['fileDescriptionControl'].errors?.whiteSpace">
-                            Description is <strong>required</strong>
+                            {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION_REQUIRED'|translate}}
                         </mat-error>
                     </mat-form-field>
                     <!--content Tags-->
-                    <mat-label class="acme-sc-user-info"><span> Associate Tags : please press
-                            <B>Enter</B> after typing to associate tag with the content.</span></mat-label>
+                    <mat-label class="acme-sc-user-info"><span> {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE1'|translate}}
+                            <B>Enter</B> {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE3'|translate}}.</span></mat-label>
                     <mat-form-field class="form-field acme-form-input-field" style="width:99%">
                         <mat-chip-list #chipList>
                             <mat-chip *ngFor="let tag of documentTags" [selectable]="selectable" [removable]="removable"
@@ -49,7 +49,7 @@
                     </mat-form-field>
                     <!--File-->
                     <label for="file-upload" class="acme-form-input-field custom-file-upload">
-                        upload content
+                        {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_FILE_LABEL'|translate}}
                     </label>
                     <input formControlName="fileControl" id="file-upload" type="file" class="form-control acme-form-input-field"
                         (change)="onFileChange($event)" accept=".pdf, .doc,.docx, .txt, .ppt, .pptx,.mp3,.mp4,.avi">
@@ -67,37 +67,37 @@
                                 d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
                         </svg>
                     </mat-icon>
-                    <span class="acme-sc-tab">Links</span>
+                    <span class="acme-sc-tab">{{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK'|translate}}</span>
                 </ng-template>
                 <!--upload link form-->
                 <form [formGroup]="linkuploadFormGroup">
                     <!--Link Description-->
                     <mat-form-field class="form-field acme-form-input-field" fxFill>
                         <mat-label acme-form-input-field>
-                            Link
+                            {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK'|translate}}
                         </mat-label>
                         <input class="acme-form-input-field" required matInput placeholder="Link : provide full url including http:// or https://"
                             formControlName="fileLinkControl" autocomplete="off">
                         <mat-error class="acme-form-input-field" *ngIf="linkuploadFormGroup.controls['fileLinkControl'].errors?.required ||
                             linkuploadFormGroup.controls['fileLinkControl'].errors?.whiteSpace">
-                            Link is <strong>required</strong>
+                            {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_REQUIRED'|translate}}
                         </mat-error>
                     </mat-form-field>
                     <!--File Description-->
                     <mat-form-field class="form-field acme-form-input-field" fxFill>
                         <mat-label class="acme-form-input-field">
-                            Description
+                            {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_DESCRIPTON'|translate}}
                         </mat-label>
                         <input class="acme-form-input-field" required matInput placeholder="Description" formControlName="fileDescriptionControl"
                             autocomplete="off">
                         <mat-error class="acme-form-input-field" *ngIf="linkuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
                             linkuploadFormGroup.controls['fileDescriptionControl'].errors?.whiteSpace">
-                            Description is <strong>required</strong>
+                           {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_DESCRIPTION_REQUIRED'|translate}}
                         </mat-error>
                     </mat-form-field>
                     <!--content Tags-->
-                    <mat-label class="acme-sc-user-info"><span> Associate Tags : please press
-                            <B>Enter</B> after typing to associate tag with the content.</span></mat-label>
+                    <mat-label class="acme-sc-user-info"><span> {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE1'|translate}}
+                            <B>Enter</B> {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_ASSOCIATED_TAG_MESSAGE3'|translate}}</span></mat-label>
                     <mat-form-field class="form-field acme-form-input-field" style="width:99%">
                         <mat-chip-list #chipList>
                             <mat-chip *ngFor="let tag of linkTags" [selectable]="selectable" [removable]="removable"
@@ -123,13 +123,13 @@
                     <div fxFlex fxLayoutAlign="start end">
                         <button fxFill mat-raised-button color="accent" class="acme-sc-button"
                             (click)="uploadContent()" [disabled]="!isValid()">
-                            Upload
+                            {{'ROOM_LIBRARY_CONTENT_DIALOG_BUTTON_UPLOAD_LABEL'|translate}}
                         </button>
                     </div>
                     <div fxFlex fxLayoutAlign="end end">
                         <button fxFill mat-raised-button color="warn" class=" acme-sc-button acme-sc-content-upload-close-button"
                             (click)="cancelUploadContent()">
-                            Cancel
+                            {{'ROOM_LIBRARY_CONTENT_DIALOG_BUTTON_CANCEL_LABEL'|translate}}
                         </button>
                     </div>
                 </div>

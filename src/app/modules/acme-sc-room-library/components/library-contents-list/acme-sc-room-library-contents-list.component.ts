@@ -7,11 +7,13 @@ import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialog
 
 import { AcmeSUploadContentComponent } from '../dialogs/upload-content/acme-sc-upload-content.component';
 
-
 // services
 import { AcmeSCRoomLibraryService } from '../../services/acme-sc-room-library.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
+
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-room-library-contents-list',
@@ -34,9 +36,8 @@ export class AcmeSCRoomTopicsListComponent {
 
     constructor(public dialog: MatDialog, private acmeSCRoomLibraryService: AcmeSCRoomLibraryService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
-
-      
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
+        private translateService: TranslateService) {
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -95,7 +96,7 @@ export class AcmeSCRoomTopicsListComponent {
                 if (err.error && err.error.description) {
                     this.libraryResponseMessage = err.error.description;
                 } else {
-                    this.libraryResponseMessage = 'Server Error';
+                    this.libraryResponseMessage = this.translateService.instant('ROOM_LIBRARY_CONTENT_LIST_SERVER_ERROR');
                 }
                 if (err.status === 401 || err.status === 401.1) {
                     //  show session expired dialog

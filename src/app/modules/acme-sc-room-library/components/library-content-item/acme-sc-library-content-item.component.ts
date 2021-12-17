@@ -10,6 +10,9 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-room-library-content',
     templateUrl: './acme-sc-library-content-item.component.html',
@@ -29,8 +32,8 @@ export class AcmeSCRoomLibraryContentItemComponent {
     constructor(private acmeSCRoomLibraryService: AcmeSCRoomLibraryService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private snackBar: MatSnackBar,
-        public dialog: MatDialog) {
-
+        public dialog: MatDialog,
+        private translateService: TranslateService) {
     }
 
     ngOnInit() {
@@ -95,7 +98,7 @@ export class AcmeSCRoomLibraryContentItemComponent {
             height: '13vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
-            data: { message: 'This action will remove content from library.' }
+            data: { message: this.translateService.instant('"ROOM_LIBRARY_CONTENT_ITEM_DELETE_WARNING') }
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data === 'true') {
