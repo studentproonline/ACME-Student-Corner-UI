@@ -44,7 +44,8 @@ export class AcmeSCSRoomCreateCommentComponent {
       [{ 'font': [] }],
       [{ 'align': [] }],
       ['clean'],                                        // remove formatting button
-      ['link', 'image', 'video']                         // link and image, video
+      ['link', 'image', 'video']   ,                      // link and image, video
+      ['voice ']
     ]
   };
     
