@@ -19,7 +19,7 @@
             </div>
         </div>
         <!--user name-->
-        <div fxFlexFill fxFlex="12vw" fxLayoutAlign="start center"
+        <div fxFlexFill fxFlex="11vw" fxLayoutAlign="start center"
             class="acme-sc-navigation-side-bar-item-text acme-sc-room-user-name">
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">{{user.userName}}  <br> 
                 <span (click)="approveRejectUser('Approved','Approve')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-approve-link">{{'ROOM_DETAILS_USER_ITEM_APPROVE'|translate}}</span>
