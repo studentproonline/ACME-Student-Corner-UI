@@ -15,6 +15,9 @@ export class AcmeSCNavigationSidebarComponent {
     constructor(private translateService: TranslateService) {
         this.constructNavigationItemsList();
     }
+    ngOnInit() {
+        
+    }
 
     constructNavigationItemsList() {
         this.addtNavigationItem(this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'),'home', true);

@@ -9,8 +9,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'ACME-Student-Corner';
   showCreateReport = false;
-  constructor(public translate: TranslateService) {
-    translate.addLangs(['en', 'hn']);
-    translate.setDefaultLang('en');
+  constructor(public translateService: TranslateService) {
+    translateService.addLangs(['en', 'hn', 'kn']);
+    let language = sessionStorage.getItem('language');
+    if (language) {
+      this.translateService.setDefaultLang(language);
+    } else {
+      translateService.setDefaultLang('en');
+    }
   }
 }

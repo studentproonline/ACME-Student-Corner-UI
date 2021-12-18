@@ -6,12 +6,16 @@ import { AcmeScCookiesService } from '../services/acme-sc-cookies.service';
 
 import { ILoginEntity } from '../entities/acme-sc-login.entity';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AcmeSCAuthguradServiceService {
   constructor(private router: Router, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
-    private acmeScCookiesService: AcmeScCookiesService) {
+    private acmeScCookiesService: AcmeScCookiesService,
+    private translateService: TranslateService) {
   }
   gettoken() {
     const cookies = this.acmeScCookiesService.getCookiesObject();
@@ -41,11 +45,16 @@ export class AcmeSCAuthguradServiceService {
     }
     let roomDetails = JSON.parse(sessionStorage.getItem('RoomDetails'));
     let roomUserRole = JSON.parse(sessionStorage.getItem('UserRoomRole'));
+    let language = sessionStorage.getItem('language');
     if(!roomDetails || !roomUserRole) {
       this.router.navigateByUrl("/login");
     }
     this.acmeSCAuthorizationService.setRoomDetails(roomDetails);
     this.acmeSCAuthorizationService.setUserRoomRole(roomUserRole);
+
+    if(language) {
+      this.translateService.setDefaultLang(language);
+    } 
     return true;
   }
 }

@@ -17,7 +17,7 @@
             <div fxFlex="5vh">
                 <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
                     (userNameClicked)="userNameClicked($event)" (searchTextchange)="searchTextchange($event)"
-                    [placeHolder]="'Start searching for a content by title'">
+                    [placeHolder]="this.translateService.instant('ROOM_REPORT_CARD_EXPLORE_SEARCH_TITLE')">
                 </acme-sc-main-header>
             </div>
             <!--progress-->

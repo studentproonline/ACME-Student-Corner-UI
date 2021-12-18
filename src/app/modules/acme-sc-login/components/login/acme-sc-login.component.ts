@@ -12,7 +12,6 @@ import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 import { AcmeSCLoginService } from '../../services/acme-sc-login.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeScCookiesService } from '../../../../core/services/acme-sc-cookies.service';
-import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 //dialogs
 import { AcmeSCActivateAccountComponent } from '../../dialogs/acme-sc-activate-account/acme-sc-activate-account.component';
@@ -35,7 +34,6 @@ export class AcmeSCLoginComponent {
     constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar,
         private loginService: AcmeSCLoginService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeScCookiesService: AcmeScCookiesService, private router: Router,
-        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
         public translateService: TranslateService) {
         this.loginFormGroup = this.formBuilder.group({
             emailControl: ['', [Validators.required, Validators.email]],
@@ -43,13 +41,19 @@ export class AcmeSCLoginComponent {
             roleControl: ['Student']
 
         });
+        sessionStorage.setItem('language','en');
     }
 
     changeLanguage(language) {
         if(language === 'English') {
             this.translateService.setDefaultLang('en');
-        } else{
+            sessionStorage.setItem('language','en');
+        } else if(language === 'Hindi'){
             this.translateService.setDefaultLang('hn');
+            sessionStorage.setItem('language','hn');
+        } else{
+          this.translateService.setDefaultLang('kn');
+          sessionStorage.setItem('language','kn');
         }
     }
     

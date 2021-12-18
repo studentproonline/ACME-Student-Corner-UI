@@ -144,6 +144,8 @@
 
     "SHARED_USER_CONFIRMATION_TITLE": "अपनी कार्रवाई की समीक्षा करें",
     "SHARED_USER_CONFIRMATION_CONFIRMATION": "क्या तुम वाकई जारी रखना चाहते हो?",
+    "SHARED_USER_CONFIRMATION_BUTTON_LABEL_CANCEL": "रद्द करें",
+    "SHARED_USER_CONFIRMATION_BUTTON_LABEL_CONFIRM": "पुष्टि करें",
 
     "SHARED_USER_POP_UP_LOGOUT": "लॉग आउट",
 
@@ -443,6 +445,7 @@
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESMENT_EVALUATED_SUCCESS": "मूल्यांकन का सफलतापूर्वक मूल्यांकन किया गया",
 
     "ROOM_REPORT_CARD_EXPLORE_ERROR": "रिपोर्ट कार्ड प्राप्त करने में विफल, कृपया सिस्टम व्यवस्थापक से संपर्क करें",
+    "ROOM_REPORT_CARD_EXPLORE_SEARCH_TITLE": "शीर्षक के आधार पर मूल्यांकन समूहों की खोज शुरू करें",
 
     "ROOM_REPORT_CARD_GROUP_LIST_TITLE": "मूल्यांकन समूह",
     "ROOM_REPORT_CARD_GROUP_LIST_ROOM_NOT_ACTIVE": "यह कमरा अब सक्रिय नहीं है !!!!",

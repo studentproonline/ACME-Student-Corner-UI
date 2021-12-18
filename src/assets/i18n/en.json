@@ -144,6 +144,8 @@
 
     "SHARED_USER_CONFIRMATION_TITLE": "Review your action",
     "SHARED_USER_CONFIRMATION_CONFIRMATION": "Are you sure, you want to continue?",
+    "SHARED_USER_CONFIRMATION_BUTTON_LABEL_CANCEL": "Cancel",
+    "SHARED_USER_CONFIRMATION_BUTTON_LABEL_CONFIRM": "Confirm",
 
     "SHARED_USER_POP_UP_LOGOUT": "Logout",
 
@@ -443,6 +445,7 @@
     "ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESMENT_EVALUATED_SUCCESS": "Assessment is successfully evaluated",
 
     "ROOM_REPORT_CARD_EXPLORE_ERROR": "Fail to get Report Cards, please contact system administrator",
+    "ROOM_REPORT_CARD_EXPLORE_SEARCH_TITLE": "Start searching for a assessment groups by title",
 
     "ROOM_REPORT_CARD_GROUP_LIST_TITLE": "Assessment Groups",
     "ROOM_REPORT_CARD_GROUP_LIST_ROOM_NOT_ACTIVE": "This room is no longer active !!!!",

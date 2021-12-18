@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
-import { AcmeSCRoomReportCardService } from '../../services/acme-sc-room-report-card.service';
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
 import { AcmeSCSessionExpiredComponent } from '../../../shared/components/dialogs/session-expired/acme-sc-session-expired.component';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'acme-sc-report-card-explorer',
@@ -35,8 +36,8 @@ export class AcmeSCReportCardExplorerComponent {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private route: ActivatedRoute, private router: Router,
-        private acmeSCRoomReportCardService: AcmeSCRoomReportCardService,
-        public dialog: MatDialog) {
+        public dialog: MatDialog,
+        public translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -84,7 +85,7 @@ export class AcmeSCReportCardExplorerComponent {
     groupItemClicked($event) {
         this.router.navigateByUrl('/reportcards/details?roomId=' + this.roomId + '&roomType=' 
         + this.roomType + '&assesmentgroup='+$event +
-        '&roomName='+this.roomName + '&selectedUser='+this.selectedUser);
+        '&roomName='+this.roomDetailsEntity.title + '&selectedUser='+this.selectedUser);
     }
 
     userNameClicked($event) {

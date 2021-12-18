@@ -54,7 +54,7 @@ export class AcmeSCRoomsListComponent implements OnInit, OnChanges {
 
     }
     ngOnInit() {
-       
+      
     }
 
     getWidth() {
