@@ -51,10 +51,10 @@ export class AcmeSCMainHeaderComponent {
     getRightClickMenuStyle() {
         return {
             position: 'absolute',
-            left: `${this.rightClickMenuPositionX-400}px`,
-            top: `${this.rightClickMenuPositionY+20}px`,
-            height: '30vh',
-            width: '25vw',
+            left: `${this.rightClickMenuPositionX-300}px`,
+            top: `${this.rightClickMenuPositionY+15}px`,
+            height: '20vh',
+            width: '20vw',
             'z-index': '100'
           }
     }

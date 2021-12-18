@@ -1,6 +1,6 @@
 <mat-card class="acme-sc-user-popup-card" fxFill>
-    <div class="acme-sc-user-popup-container" fxFlexFill fxLayout="column" fxLayoutGap=0.4vw>
-        <div fxFlex="5vh" fxLayoutAlign="end start">
+    <div class="acme-sc-user-popup-container" fxFlexFill fxLayout="column" fxLayoutGap=2vh>
+        <div fxFlex="2vh" fxLayoutAlign="end start">
             <div fxFlexFill fxLayout="row">
                 <div fxFlex="85%" fxLayoutAlign="center start" style="padding-left:15%">
                     <mat-icon [ngStyle]="{'cursor': 'pointer', 'opacity': '0.7','width':'3vw', 'height': '3vh'}" (click)="close()">
@@ -19,16 +19,16 @@
                 </div>
             </div>
         </div>
-        <div class="acme-sc-userName" fxFlex="5vh" fxLayoutAlign="center center">
+        <div class="acme-sc-userName" fxFlex="2vh" fxLayoutAlign="center center">
             <span><span>{{loginEntity.firstName}} </span>{{loginEntity.lastName}}</span>
         </div>
-        <div class="acme-sc-email" fxFlex="5vh" fxLayoutAlign="center center">
+        <div class="acme-sc-email" fxFlex="2vh" fxLayoutAlign="center center">
             <span>{{loginEntity.email}}</span>
         </div>
         <div fxFlex fxFill fxLayoutAlign="end end">
             <div fxFlexFill fxLayout="column"fxLayoutAlign="end end">
-                <div fxFill fxFlex="7vh">
-                    <button class="acme-sc-button" fxFill mat-raised-button color="warn" (click)="userLogOut()">
+                <div fxFill fxFlex="4vh" fxLayoutAlign="end end">
+                    <button class="acme-sc-logout-button" fxFill mat-raised-button color="warn" (click)="userLogOut()">
                         {{'SHARED_USER_POP_UP_LOGOUT'|translate}}
                     </button>
                 </div>

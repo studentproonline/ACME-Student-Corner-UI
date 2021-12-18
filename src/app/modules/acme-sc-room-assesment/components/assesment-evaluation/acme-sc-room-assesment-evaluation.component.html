@@ -37,7 +37,7 @@
                 <span><B>{{userAssesment.status}}</B></span>
             </div>
             <!--Revieweed by-->
-            <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+            <div *ngIf="isAssesmentFound" fxFlex="14vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                 <span><b>{{'ROOM_ASSESSMENT_EVALUATION_REVIEWED_BY'|translate}}
                     </b>{{userAssesment.reviewerFirstName}}</span><span>{{userAssesment.reviewerLastName}}</span>
             </div>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <!--Evaluated assignment-->
-                <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
+                <div *ngIf="isAssesmentFound" fxFlex="22vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
                     <span><b>{{'ROOM_ASSESSMENT_EVALUATION_EVALUATED_FILE'|translate}}</b></span><span style="padding-left: 0.4vw;" (click)="GetEvaluatedFile()"
                         class="acme-sc-custom-link acme-sc-custom-evaluation">{{userAssesment.evaluatedFileName}}</span>
                 </div>
