@@ -63,7 +63,7 @@ export class AcmeSCSRoomCreateCommentComponent {
 
     startRecognition() {
         if (!this.startVoiceCapture) {
-            this.acmeSCVoiceRecognitionService.init();
+            this.acmeSCVoiceRecognitionService.init(this.model);
             this.acmeSCVoiceRecognitionService.start();
             
         } else {

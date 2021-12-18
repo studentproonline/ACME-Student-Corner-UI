@@ -15,18 +15,17 @@ export class AcmeSCVoiceRecognitionService {
 
   constructor() { }
 
-  init() {
+  init(initalText) {
 
     this.recognition.interimResults = true;
     this.recognition.lang = 'en-US';
-
+    this.text= initalText;
     this.recognition.addEventListener('result', (e) => {
       const transcript = Array.from(e.results)
         .map((result) => result[0])
         .map((result) => result.transcript)
         .join('');
       this.tempWords = transcript;
-      console.log(transcript);
     });
   }
 
