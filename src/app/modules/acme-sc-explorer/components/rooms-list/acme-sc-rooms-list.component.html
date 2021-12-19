@@ -1,10 +1,11 @@
-<div  id='roomListContainer' #roomListContainer  fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+<div id='roomListContainer' #roomListContainer fxFlexFill fxLayout="column" fxLayoutGap="1vh">
     <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
     </div>
 
     <!--no room exists-->
-    <div fxFlex *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME') && roomsList.length===0 && isSuccesfull && !isProgress">
+    <div fxFlex
+        *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME') && roomsList.length===0 && isSuccesfull && !isProgress">
         <acme-sc-rooms-default (roomCreated)="roomCreated()"></acme-sc-rooms-default>
     </div>
 
@@ -14,13 +15,14 @@
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="10vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw">
-                        <path d="M0 0h24v24H0V0z" fill="none" />
-                        <path
-                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
             </div>
-            <div  fxFlex="5vh" fxLayoutAlign="center center">
-                <span class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_FAV_ROOMS_MESSAGE'|translate}}</span>
+            <div fxFlex="5vh" fxLayoutAlign="center center">
+                <span
+                    class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_FAV_ROOMS_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>
@@ -31,27 +33,28 @@
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="10vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="10vh"
-                        viewBox="0 0 24 24" width="10vw">
+                    viewBox="0 0 24 24" width="10vw">
+                    <g>
+                        <rect fill="none" height="24" width="24" />
+                    </g>
+                    <g>
+                        <g />
                         <g>
-                            <rect fill="none" height="24" width="24" />
+                            <path
+                                d="M16.67,13.13C18.04,14.06,19,15.32,19,17v3h4v-3C23,14.82,19.43,13.53,16.67,13.13z" />
+                            <path
+                                d="M15,12c2.21,0,4-1.79,4-4c0-2.21-1.79-4-4-4c-0.47,0-0.91,0.1-1.33,0.24C14.5,5.27,15,6.58,15,8s-0.5,2.73-1.33,3.76 C14.09,11.9,14.53,12,15,12z" />
+                            <path
+                                d="M9,12c2.21,0,4-1.79,4-4c0-2.21-1.79-4-4-4S5,5.79,5,8C5,10.21,6.79,12,9,12z M9,6c1.1,0,2,0.9,2,2c0,1.1-0.9,2-2,2 S7,9.1,7,8C7,6.9,7.9,6,9,6z" />
+                            <path
+                                d="M9,13c-2.67,0-8,1.34-8,4v3h16v-3C17,14.34,11.67,13,9,13z M15,18H3l0-0.99C3.2,16.29,6.3,15,9,15s5.8,1.29,6,2V18z" />
                         </g>
-                        <g>
-                            <g />
-                            <g>
-                                <path
-                                    d="M16.67,13.13C18.04,14.06,19,15.32,19,17v3h4v-3C23,14.82,19.43,13.53,16.67,13.13z" />
-                                <path
-                                    d="M15,12c2.21,0,4-1.79,4-4c0-2.21-1.79-4-4-4c-0.47,0-0.91,0.1-1.33,0.24C14.5,5.27,15,6.58,15,8s-0.5,2.73-1.33,3.76 C14.09,11.9,14.53,12,15,12z" />
-                                <path
-                                    d="M9,12c2.21,0,4-1.79,4-4c0-2.21-1.79-4-4-4S5,5.79,5,8C5,10.21,6.79,12,9,12z M9,6c1.1,0,2,0.9,2,2c0,1.1-0.9,2-2,2 S7,9.1,7,8C7,6.9,7.9,6,9,6z" />
-                                <path
-                                    d="M9,13c-2.67,0-8,1.34-8,4v3h16v-3C17,14.34,11.67,13,9,13z M15,18H3l0-0.99C3.2,16.29,6.3,15,9,15s5.8,1.29,6,2V18z" />
-                            </g>
-                        </g>
+                    </g>
                 </svg>
-             </div>
+            </div>
             <div fxFlex="5vh" fxLayoutAlign="center center">
-                <span class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_SHARED_ROOMS_MESSAGE'|translate}}</span>
+                <span
+                    class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_SHARED_ROOMS_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>
@@ -62,23 +65,23 @@
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="10vh" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="10vh"
-                        viewBox="0 0 24 24" width="5vw">
+                    viewBox="0 0 24 24" width="5vw">
+                    <g>
+                        <rect fill="none" height="24" width="24" x="0" />
+                    </g>
+                    <g>
                         <g>
-                            <rect fill="none" height="24" width="24" x="0" />
+                            <polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25" />
+                            <polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75" />
+                            <path
+                                d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z" />
                         </g>
-                        <g>
-                            <g>
-                                <polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25" />
-                                <polygon
-                                    points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75" />
-                                <path
-                                    d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z" />
-                            </g>
-                        </g>
+                    </g>
                 </svg>
             </div>
             <div fxFlex="5vh" fxLayoutAlign="center center">
-                <span class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_ACHIEVEMENTS_MESSAGE'|translate}}</span>
+                <span
+                    class="acme-sc-label-default-message">{{'EXPLORER_ROOM_LIST_NO_ACHIEVEMENTS_MESSAGE'|translate}}</span>
             </div>
         </div>
     </div>
@@ -87,7 +90,8 @@
     <div fxFlex *ngIf="!isSuccesfull" fxLayoutAlign="center center">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="10vh" fxLayoutAlign="center  center">
-                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="10vw" height="10vh" viewBox="0 0 24 24">
+                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="10vw" height="10vh"
+                    viewBox="0 0 24 24">
                     <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
                 </svg>
             </div>
@@ -112,10 +116,32 @@
             <div fxFlex fxFill>
                 <div fxLayout="row" fxFlexFill fxLayoutAlign="end center" fxLayoutGap="1vw">
                     <div fxFlex fxLayoutAlign="end center">
-                        <div fxLayoutAlign="center center" class="acme-sc-login-user-label"><span>{{'EXPLORER_ROOM_LIST_LOGGED_IN_LABEL'|translate}}
-                                <b>{{loggedInUser}}</b></span></div>
+                        <div fxLayoutAlign="center center" class="acme-sc-login-user-label">
+                            <mat-icon class="acme-cs-mat-icon-darker">
+                                <svg  xmlns="http://www.w3.org/2000/svg"
+                                enable-background="new 0 0 24 24" height="3vh" viewBox="0 0 24 24" width="3vh"
+                                fill="#000000">
+                                <g>
+                                    <rect fill="none" height="24" width="24" />
+                                </g>
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M17,11c0.34,0,0.67,0.04,1,0.09V6.27L10.5,3L3,6.27v4.91c0,4.54,3.2,8.79,7.5,9.82c0.55-0.13,1.08-0.32,1.6-0.55 C11.41,19.47,11,18.28,11,17C11,13.69,13.69,11,17,11z" />
+                                        <path
+                                            d="M17,13c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C21,14.79,19.21,13,17,13z M17,14.38c0.62,0,1.12,0.51,1.12,1.12 s-0.51,1.12-1.12,1.12s-1.12-0.51-1.12-1.12S16.38,14.38,17,14.38z M17,19.75c-0.93,0-1.74-0.46-2.24-1.17 c0.05-0.72,1.51-1.08,2.24-1.08s2.19,0.36,2.24,1.08C18.74,19.29,17.93,19.75,17,19.75z" />
+                                    </g>
+                                </g>
+                            </svg>
+                            </mat-icon>
+                           
+                            <span>
+                                {{loggedInUser}}
+                            </span>
+                        </div>
                     </div>
-                    <div *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME')" fxFlex="13vw" fxFill fxLayoutAlign="end start">
+                    <div *ngIf="roomType===translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME')"
+                        fxFlex="13vw" fxFill fxLayoutAlign="end start">
                         <button fxFill mat-raised-button color="accent" (click)="createRoom()" class="acme-sc-button">
                             {{'EXPLORER_ROOM_CREATE_ROOM_BUTTON_LABEL'|translate}}
                         </button>
@@ -128,8 +154,7 @@
     <div fxFlex *ngIf="roomsList.length> 0 && isSuccesfull && !isProgress">
         <ng-scrollbar thumbClass="white-scrollbars">
             <div fxLayout="row wrap" fxFlexFill fxLayoutGap="2vw">
-                <acme-sc-room-card  *ngFor="let room of filteredRoomsList"
-                     [roomType]="roomType" [room]="room"
+                <acme-sc-room-card *ngFor="let room of filteredRoomsList" [roomType]="roomType" [room]="room"
                     (roomDeleted)="roomDeleted()" (favRoomDeleted)="favRoomDeleted()"
                     (sharedRoomDeleted)="sharedRoomDeleted()" class="acme-sc-room-card">
                 </acme-sc-room-card>
