@@ -20,15 +20,15 @@
                 </mat-icon>
             </div>
             <!--active room icon-->
-            <div fxLayoutAlign="start center" fxFlex fxFill *ngIf="roomType=== this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME')">
+            <div fxLayoutAlign="start center" fxFlex="18.5vw" fxFill *ngIf="roomType=== this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME')">
                 <svg *ngIf="room.status === 'Active'" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="2vw" fill="gray"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
                 </svg>
-                <svg *ngIf="room.status === 'Locked'" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="2vw" fill="gray"><g fill="none"><path d="M0 0h24v24H0V0z"/><path d="M0 0h24v24H0V0z" opacity=".87"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+                <svg *ngIf="room.status === 'Locked'" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="2vw" fill="darkorange"><g fill="none"><path d="M0 0h24v24H0V0z"/><path d="M0 0h24v24H0V0z" opacity=".87"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
                 </svg>
             </div>
-            <div fxFlex="2.5vw" *ngIf="roomType=== this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME')"
+            <div fxFlex="4vw" *ngIf="roomType=== this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME')"
                 fxLayoutAlign="center center">
-                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+                <button class="acme-sc-menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
                     fxLayoutAlign="end center">
                     <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="end center" style="width:3vh;height:3vw">
                         <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
@@ -57,9 +57,12 @@
                         <mat-icon style="opacity:0.7;"
                             style="opacity:0.7;height:3vh;width:3vh">
                             <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="black">
-                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <g fill="none">
+                                    <path d="M0 0h24v24H0V0z" />
+                                    <path d="M0 0h24v24H0V0z" opacity=".87" />
+                                </g>
                                 <path
-                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
                             </svg>
                         </mat-icon>
                         <span class="acme-sc-apps-menu-item">{{'EXPLORER_ROOM_ROOM_CARD_LOCK_ROOM'|translate}}</span>
@@ -69,12 +72,9 @@
                         <mat-icon style="opacity:0.7;"
                             style="opacity:0.7;height:3vh;width:3vh">
                             <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="black">
-                                <g fill="none">
-                                    <path d="M0 0h24v24H0V0z" />
-                                    <path d="M0 0h24v24H0V0z" opacity=".87" />
-                                </g>
+                                <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path
-                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
                             </svg>
                         </mat-icon>
                         <span class="acme-sc-apps-menu-item">{{'EXPLORER_ROOM_ROOM_CARD_UNLOCK_ROOM'|translate}}</span>
