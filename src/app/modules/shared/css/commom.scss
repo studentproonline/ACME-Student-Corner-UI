@@ -138,7 +138,6 @@
     border-radius:0.5vw;
     border-style: solid;
     border-color: $acme-sc-navigation-bar-item-border-color;
-    font-weight: bold;
 }
 
 .acme-sc-navigation-side-bar-item-container{
@@ -157,8 +156,7 @@
 }
 .acme-sc-navigation-side-bar-item-text {
     color: black;
-    opacity: 0.7;
-    font-size: 0.9vw;
+    font-size: 1vw;
     overflow: hidden;
     white-space: nowrap; 
     text-overflow: ellipsis;
@@ -166,7 +164,7 @@
 .acme-sc-navigation-side-bar-item-text-default {
     opacity:0.5;
     color: black;
-    font-size: 0.9vw;
+    font-size: 1vw;
     overflow: hidden;
     white-space: nowrap; 
     text-overflow: ellipsis;
