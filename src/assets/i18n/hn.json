@@ -99,6 +99,7 @@
     "EXPLORER_ROOM_ROOM_CARD_LINK_COPIED_CLIPBOARD": "कक्ष आमंत्रण लिंक क्लिपबोर्ड पर कॉपी किया गया",
     "EXPLORER_ROOM_ROOM_CARD_ROOM_REMOVED_FAV_LIST": "कक्ष को पसंदीदा सूची से सफलतापूर्वक निकाल दिया गया",
     "EXPLORER_ROOM_ROOM_CARD_OWNER_LABEL": "मालिक: ",
+    "EXPLORER_ROOM_ROOM_CARD_CREATED_ON": "को निर्मित :",
 
     "EXPLORER_ROOM_CREATE_ROOM_DIALOG_LABEL": "कक्ष बनाना",
     "EXPLORER_ROOM_CREATE_ROOM_TITLE": "शीर्षक",

@@ -98,6 +98,7 @@
     "EXPLORER_ROOM_ROOM_CARD_LINK_COPIED_CLIPBOARD": "Room invitation link copied to clipboard",
     "EXPLORER_ROOM_ROOM_CARD_ROOM_REMOVED_FAV_LIST": "The room is successfully removed from the favorite list.",
     "EXPLORER_ROOM_ROOM_CARD_OWNER_LABEL": "Owner: ",
+    "EXPLORER_ROOM_ROOM_CARD_CREATED_ON": "Created on :",
 
     
     "EXPLORER_ROOM_CREATE_ROOM_DIALOG_LABEL": "Create Room",
