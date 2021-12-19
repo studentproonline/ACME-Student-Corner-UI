@@ -184,6 +184,7 @@
     "ROOM_DETAILS_TOPIC_ITEM_CREATED_BY": "द्वारा शुरू किया गया: ",
     "ROOM_DETAILS_TOPIC_ITEM_STARTED_ON": "इस समय पर शुरू किया: ",
     "ROOM_DETAILS_TOPIC_ITEM_STOP_DISCUSSION": "चर्चा बंद करो",
+    "ROOM_DETAILS_TOPIC_ITEM_START_DISCUSSION": "चर्चा शुरू करें",
     "ROOM_DETAILS_TOPIC_ITEM_TOPIC_UPDATED": "विषय सफलतापूर्वक अपडेट किया गया",
 
     "ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TOPIC_LABEL": "चर्चा का नया विषय बनाएँ",

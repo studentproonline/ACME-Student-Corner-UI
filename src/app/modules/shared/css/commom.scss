@@ -45,6 +45,7 @@
     width:2vw;
     height:4vh;
 }
+
 .acme-cs-heading {
     text-align: center;
     font-size: 1.5vw ;
@@ -266,4 +267,14 @@ input[type="file"] {
 
 ::ng-deep .material-icons-outlined {
     font-size: 3vh !important;
+}
+
+
+::ng-deep .mat-menu-panel {
+    min-height: 0 !important;
+}
+
+::ng-deep.mat-menu-content:not(:empty) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }

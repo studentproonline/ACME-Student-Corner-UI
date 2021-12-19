@@ -60,7 +60,7 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
 
     updateTopic($event) {
         let newStatus = ''
-        if ($event.checked === true) {
+        if ($event === 'Closed') {
             newStatus = 'Closed'
         } else {
             newStatus = 'Active'
@@ -72,6 +72,11 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
                 this.snackBar.open(this.translateService.instant('ROOM_DETAILS_TOPIC_ITEM_TOPIC_UPDATED'), '', {
                     duration: 3000
                 });
+                if(newStatus === 'Active') {
+                    this.topicClosed = false;
+                } else {
+                    this.topicClosed = true;
+                }
             },
             err => {
                 this.isProgress = false; // end progress

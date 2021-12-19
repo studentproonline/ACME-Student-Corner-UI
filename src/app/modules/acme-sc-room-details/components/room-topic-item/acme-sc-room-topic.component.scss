@@ -8,42 +8,20 @@
 }
 
 .acme-sc-room-topic-item-container{
-    height:7vw;
+    height:13.5vh;
     padding-top:0.4vw;
     padding-bottom: 0.4vw;
     border-radius: 0.4vw;
 }
 
 .acme-sc-topic-chip {
-    padding-left:8px;
-    font-size: 0.8vw;
+    padding-left:0.5vw;
+    font-size: 0.7vw;
     min-height: 0;
+    color:purple
 }
 
 .acme-sc-room-topic-row {
-    padding:0.4vh;
+    
+    padding-right:1vw;
 }
-
-.acme-sc-room-topic-close-toggle {
-    font-size: 0.7vw;
-    padding-right: 0.4vw;
-};
-
-::ng-deep .mat-chip-list-wrapper .mat-standard-chip {
-   margin-right: 4px !important;
-   margin-left: 4px !important;
-   margin-top: 0px !important;
-   margin-bottom: 0px !important;
-}
-
-::ng-deep .mat-slide-toggle-bar {
-    height:1vw !important;
-    width: 2vw !important;
-}
-
-::ng-deep .mat-slide-toggle-thumb {
-    height: 1.3vw !important;
-    width: 1.3vw !important;
-}
-
- 

@@ -16,10 +16,10 @@
             <!--topic details-->
             <div class="acme-sc-room-topic-item" fxFlex fxFill>
                 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
-                    <div fxFlex="45%" fxFlexFill>
+                    <div fxFlex="5vh" fxFlexFill>
                         <div fxLayout="row" class="acme-sc-room-topic-row" fxLayoutGap="0.4vw">
                             <!--question icon-->
-                            <div fxFlex="2vw">
+                            <div fxFlex="2vw" fxLayoutAlign="center center">
                                 <mat-icon fxLayoutAlign="center center" style="height:3vh;width:2vw">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
                                         width="100%" fill="darkgoldenrod">
@@ -33,43 +33,98 @@
                             <div (click)="lauchTopic()" fxFlex fxLayoutAlign="start center" style="cursor:pointer;">
                                 <span class="acme-sc-content-link">{{topic.title}}</span>
                             </div>
+                            <!--status icon-->
+                            <div fxFlex="2vw" fxLayoutAlign="center center">
+                                <mat-icon fxLayoutAlign="center center" style="opacity:0.7;"
+                                    style="opacity:0.7;height:3vh;width:3vw">
+                                     <!--Active-->
+                                    <svg *ngIf="!topicClosed" xmlns="http://www.w3.org/2000/svg" height="100%"
+                                        viewBox="0 0 24 24" width="100%" fill="gray">
+                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                                        <path
+                                            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                                    </svg>
+                                    <!--stopped-->
+                                    <svg *ngIf="topicClosed" xmlns="http://www.w3.org/2000/svg" height="100%"
+                                        viewBox="0 0 24 24" width="100%" fill="darkorange">
+                                        <g fill="none">
+                                            <path d="M0 0h24v24H0V0z" />
+                                            <path d="M0 0h24v24H0V0z" opacity=".87" />
+                                        </g>
+                                        <path
+                                            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                                    </svg>
+
+                                </mat-icon>
+                            </div>
+                            <!--start / stop discussion menu-->
+                            <div *ngIf="isTopicOrRoomOwner" fxFlex="3vw">
+                                <button mat-icon-button [matMenuTriggerFor]="menu" fxLayoutAlign="center center"
+                                    style="width:3vw;height:6vh">
+                                    <!--Active discussion-->
+                                    <mat-icon fxLayoutAlign="center center" style="width:3vh;height:3vw">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
+                                            width="100%" fill="#000000">
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                            <path
+                                                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                                        </svg>
+                                    </mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <!--stop discussion-->
+                                    <button *ngIf="!topicClosed" mat-menu-item (click)="updateTopic('Closed')">
+                                        <mat-icon style="opacity:0.7;" style="opacity:0.7;height:3vh;width:3vw">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
+                                                width="100%" fill="darkorange">
+                                                <g fill="none">
+                                                    <path d="M0 0h24v24H0V0z" />
+                                                    <path d="M0 0h24v24H0V0z" opacity=".87" />
+                                                </g>
+                                                <path
+                                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                                            </svg>
+                                        </mat-icon>
+                                        <span
+                                            class="acme-sc-apps-menu-item">{{'ROOM_DETAILS_TOPIC_ITEM_STOP_DISCUSSION'|translate}}</span>
+                                    </button>
+                                    <!--start discussion-->
+                                    <button *ngIf="topicClosed" mat-menu-item (click)="updateTopic('Started')">
+                                        <mat-icon style="opacity:0.7;" style="opacity:0.7;height:3vh;width:3vw">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
+                                                width="100%" fill="#000000">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path
+                                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                                            </svg>
+                                        </mat-icon>
+                                        <span
+                                            class="acme-sc-apps-menu-item">{{'ROOM_DETAILS_TOPIC_ITEM_START_DISCUSSION'|translate}}</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
                         </div>
                     </div>
-                    <div fxFlex="10%" fxFlexFill>
+                    <div fxFlex="2vh">
                         <div fxLayout="row" fxLayoutGap="0.4vw" fxLayoutAlign="end center"
                             class="acme-sc-room-topic-row">
                             <!--created by-->
                             <div fxFlex="70%" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_CREATED_BY'|translate}}</b>{{topic.ownerFirstName }} {{topic.ownerLastName}}</span>
+                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_CREATED_BY'|translate}}</b>{{topic.ownerFirstName }}
+                                    {{topic.ownerLastName}}</span>
                             </div>
                             <div fxFlex="30%" fxLayoutAlign="end center" class="acme-sc-date-label">
                                 <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_STARTED_ON'|translate}}</b>{{topic.createdAt|date:'medium'}}</span>
                             </div>
                         </div>
                     </div>
-                    <div fxFlex="45%" fxFlexFillfxLayoutAlign="start center">
-                        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-                            <div fxFlex="85%" fxLayoutAlign="start center">
-                                <mat-chip-list style="padding:0.4vw" #chipList aria-label="Topic tags"
-                                    fxLayoutAlign="start center">
-                                    <mat-chip [removable]="tagRemove" *ngFor="let tag of topic.tags"
-                                        fxLayoutAlign="center center" class="acme-sc-topic-chip">
-                                        {{tag}}
-                                    </mat-chip>
-                                </mat-chip-list>
-                            </div>
-                            <div *ngIf="isTopicOrRoomOwner" fxFlex="15%">
-                                <div fxFlexFill fxLayout="column" fxLayoutAlign="start center">
-                                    <div fxFill fxFlex fxLayoutAlign="start center">
-                                        <mat-slide-toggle fxFill (change)="updateTopic($event)"
-                                            class="acme-sc-room-topic-close-toggle" [color]="closeColor"
-                                            [checked]="topicClosed" [disabled]="!topicClosedEnabled">
-                                            {{'ROOM_DETAILS_TOPIC_ITEM_STOP_DISCUSSION'|translate}}
-                                        </mat-slide-toggle>
-                                    </div>
-                                    <div fxFlex *ngIf="isProgress">
-                                        <mat-progress-bar *ngIf="isProgress" mode="indeterminate"></mat-progress-bar>
-                                    </div>
+                    <div fxFlex="3vh" fxFlexFill fxLayoutAlign="start start">
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="1vw" fxFlexFill fxLayoutAlign="start start">
+                            <div fxFlex fxLayoutAlign="start center" fxLayoutGap="1vw">
+                                <div style="height:2vh" *ngFor="let tag of topic.tags" class="acme-sc-topic-chip" fxLayoutAlign="start start">
+                                    <span> 
+                                        [ {{tag}} ]
+                                    </span>
                                 </div>
                             </div>
                         </div>

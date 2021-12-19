@@ -1,10 +1,10 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
-    <div fxFlex="15vh" fxFill>
-        <div fxFlexFill fxLayout="row" fxFill>
-            <div fxFlex="20vw" class="acme-sc-custom-company-header">
+<div fxFlexFill fxLayout="column" fxLayoutGap="2vh">
+    <div fxFlex="13.7vh" fxFill>
+        <div fxFlexFill fxLayout="row" fxFill fxLayoutGap="0.4vw">
+            <div fxFlex="20vw" fxFill class="acme-sc-custom-company-header">
                 <acme-sc-company-header></acme-sc-company-header>
             </div>
-            <div fxFlex>
+            <div fxFlex fxFill>
                 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
                     <div fxFlex="5vh" fxFill>
                         <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName" [placeHolder]="''"
@@ -15,21 +15,23 @@
                         <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType">
                         </acme-sc-navigation-bar>
                     </div>
-                    <!--assignment file link-->
-                    <div (click)="GetAssignmentFile()"  *ngIf="roomStatus !== 'Closed' && !isProgress && assignment.status === 'Active' && assignment.fileName !== 'undefined'" fxFlex="5vh"
-                        fxFill>
-                        <div fxFlexFill fxLayout="column">
-                            <div fxFlex>
-                                <span class="acme-sc-label-default-message acme-sc-custom-label">{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_FILE'|translate}}
-                                </span><span
-                                    class="acme-sc-content-link acme-sc-custom-link">{{assignment.fileName}}</span>
-                            </div>
-                            <div *ngIf="isfileDownloadProgress" fxFlex="2vh">
-                                <mat-progress-bar *ngIf="!isProgress" mode="indeterminate"></mat-progress-bar>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
+            </div>
+        </div>
+    </div>
+    <!--assignment file link-->
+    <div (click)="GetAssignmentFile()"
+        *ngIf="roomStatus !== 'Closed' && !isProgress && assignment.status === 'Active' && assignment.fileName !== 'undefined'"
+        fxFlex="5vh" fxFill>
+        <div fxFlexFill fxLayout="column">
+            <div fxFlex>
+                <span
+                    class="acme-sc-label-default-message acme-sc-custom-label">{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_FILE'|translate}}
+                </span><span class="acme-sc-content-link acme-sc-custom-link">{{assignment.fileName}}</span>
+            </div>
+            <div *ngIf="isfileDownloadProgress" fxFlex="2vh">
+                <mat-progress-bar *ngIf="!isProgress" mode="indeterminate"></mat-progress-bar>
             </div>
         </div>
     </div>
@@ -55,7 +57,8 @@
                 <span><B>{{userAssignment.status}}</B></span>
             </div>
             <div *ngIf="isAssignmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_SUBMITTED_FILE'|translate}}</b></span><span (click)="GetSubmittedFile()" style="padding-left: 0.4vw;"
+                <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_SUBMITTED_FILE'|translate}}</b></span><span
+                    (click)="GetSubmittedFile()" style="padding-left: 0.4vw;"
                     class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.submittedFileName}}</span>
             </div>
             <!--Revieweed by-->
@@ -147,13 +150,14 @@
                 <div fxFlex="15vw">
                     <div *ngIf="userAssignment.status === 'Reviewed' || userAssignment.status === 'Returned' ||
                         userAssignment.status === 'Submitted'" class="acme-sc-room-user-assignment-reviewer-remark">
-                        <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_LAST_REVIEWED_ON'|translate   }}</b>
+                        <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_LAST_REVIEWED_ON'|translate }}</b>
                         </span><span>{{userAssignment.reviewedAt|date:'mediumDate'}}</span>
                     </div>
                 </div>
                 <!--Reviewd file-->
                 <div *ngIf="isAssignmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_LAST_REVIEWED_FILE'|translate}}</b></span><span (click)="GetEvaluatedFile()" style="padding-left: 0.4vw;"
+                    <span><b>{{'ROOM_ASSIGNMENT_SUBMISSION_ASSIGNMENT_LAST_REVIEWED_FILE'|translate}}</b></span><span
+                        (click)="GetEvaluatedFile()" style="padding-left: 0.4vw;"
                         class="acme-sc-custom-link acme-sc-custom-link-color">{{userAssignment.evaluatedFileName}}</span>
                 </div>
             </div>

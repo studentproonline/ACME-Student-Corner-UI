@@ -183,6 +183,7 @@
     "ROOM_DETAILS_TOPIC_ITEM_CREATED_BY": "Started by: ",
     "ROOM_DETAILS_TOPIC_ITEM_STARTED_ON": "Started on: ",
     "ROOM_DETAILS_TOPIC_ITEM_STOP_DISCUSSION": "Stop discussion",
+    "ROOM_DETAILS_TOPIC_ITEM_START_DISCUSSION": "Start discussion",
     "ROOM_DETAILS_TOPIC_ITEM_TOPIC_UPDATED": "The topic is successfully updated.",
 
     "ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TOPIC_LABEL": "Create a new Discussion Topic",
