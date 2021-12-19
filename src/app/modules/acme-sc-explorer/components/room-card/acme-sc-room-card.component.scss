@@ -1,14 +1,26 @@
 .acme-sc-room-card {
-    height:30vh;
+    border-radius: 0.5vw;
+    margin-left:0.4vw;
+    margin-bottom:0.4vw;
+    height:28vh;
     width:23vw;
     background-color: whitesmoke; 
     color: #222;
-    clip-path: polygon(0 23%, 0 7%, 4% 0, 29% 0, 32% 7%, 60% 7%, 98% 7%, 100% 10%, 100% 100%, 15% 100%, 0 100%, 0% 85%);
+    -webkit-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+    -moz-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+    box-shadow: 0 0 0.1vw 0.1vw lightgray;
+    //clip-path: polygon(0 23%, 0 7%, 4% 0, 29% 0, 32% 7%, 60% 7%, 98% 7%, 100% 10%, 100% 100%, 15% 100%, 0 100%, 0% 85%);
+}
+
+.acme-sc-room-card:hover {
+    -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+    -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+    box-shadow: 0 0 0.3vw 0.3vw lightgray;
 }
 
 .acme-sc-room-title {
-    font-weight: bold;
-    font-size: 1.05vw;
+    //font-weight: bold;
+    font-size: 1vw;
     padding: 0.4vw;
     white-space: nowrap !important;
     overflow: hidden !important;
