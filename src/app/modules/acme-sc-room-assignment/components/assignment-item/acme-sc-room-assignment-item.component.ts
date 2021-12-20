@@ -97,8 +97,8 @@ export class AcmeSCRoomAssignmentItemComponent {
             return;
         }   
         const dialogRef = this.dialog.open(AcmeSUploadAssignmentComponent, {
-            width: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenHeight(),
+            width: '65vw',
+            height: '85vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { mode: 'Edit', assignment: this.assignment }

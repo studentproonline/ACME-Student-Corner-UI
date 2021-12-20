@@ -9,6 +9,7 @@ import { AcmeSCUserConfirmationComponent} from '../../../shared/components/dialo
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmesharedRoomService } from '../../../shared/services/acme-sc-shared-room.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 //translation
 import { TranslateService } from '@ngx-translate/core';
@@ -28,6 +29,7 @@ export class AcmeSCRoomUserItemComponent {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmesharedRoomService: AcmesharedRoomService, public dialog: MatDialog,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
         private snackBar: MatSnackBar,
         private translateService: TranslateService) {
 
@@ -59,8 +61,8 @@ export class AcmeSCRoomUserItemComponent {
 
     approveRejectUser(action, message) {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '32.5vw',
-            height: '20vh',
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: this.translateService.instant('ROOM_DETAILS_USER_ITEM_THIS_ACTION_WILL') + message + this.translateService.instant('ROOM_DETAILS_USER_ITEM_JOIN_THE_ROOM') }
@@ -75,8 +77,8 @@ export class AcmeSCRoomUserItemComponent {
     // delete share room
     removeUser() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '32.5vw',
-            height: '20vh',
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: this.translateService.instant('ROOM_DETAILS_USER_ITEM_REMOVE_USER_WARNING') }
@@ -110,8 +112,8 @@ export class AcmeSCRoomUserItemComponent {
     // update user role
     makeAdmin(istrue) {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '32.5vw',
-            height: '20vh',
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: this.translateService.instant('ROOM_DETAILS_USER_ITEM_UPDATE_ROLE_WARNING') }

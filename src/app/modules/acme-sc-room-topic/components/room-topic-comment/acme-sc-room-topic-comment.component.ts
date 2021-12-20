@@ -8,6 +8,7 @@ import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dial
 import { AcmeTopicCommentService } from '../../services/acme-sc-topic-comment.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeTopicCommentVoteService } from '../../services/acme-sc-topic-comment-vote.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 // model
 import { IVote } from '../../models/vote';
@@ -32,6 +33,7 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
     constructor( private acmeTopicCommentService: AcmeTopicCommentService,
         private acmeTopicCommentVoteService: AcmeTopicCommentVoteService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
         private snackBar: MatSnackBar,public dialog: MatDialog,
         private translateService: TranslateService) {
     }
@@ -72,8 +74,8 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
 
     deleteComment() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '32.5vw',
-            height: '20vh',
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: this.translateService.instant('ROOM_TOPIC_TOPIC_COMMENT_DELTE_WARNING_MESSAGE') }

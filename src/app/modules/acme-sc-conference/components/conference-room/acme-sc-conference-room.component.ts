@@ -8,6 +8,7 @@ import { AgoraClient, ClientEvent, NgxAgoraService, Stream, StreamEvent } from '
 
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 import { AcmeSCConferenceRoomLibraryService } from '../../services/acme-sc-conference-room.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
@@ -59,6 +60,7 @@ export class AcmeSCConferenceRoomComponent {
     constructor(private ngxAgoraService: NgxAgoraService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCConferenceRoomLibraryService: AcmeSCConferenceRoomLibraryService,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
         private route: ActivatedRoute, private router: Router,
         public dialog: MatDialog, private snackBar: MatSnackBar,
         public translateService: TranslateService) {
@@ -340,8 +342,8 @@ export class AcmeSCConferenceRoomComponent {
 
     leaveConferenceRoom(navigationArea) {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: this.translateService.instant('ROOM_CONFERENCE_ROOM_REMOVE_FROM_CONFERENCE') }
@@ -365,8 +367,8 @@ export class AcmeSCConferenceRoomComponent {
 
     stopConferenceCallSession() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '500px',
-            height: '150',
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: this.translateService.instant('ROOM_CONFERENCE_ROOM_STOP_CONFERENCE') }

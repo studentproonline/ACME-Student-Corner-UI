@@ -7,6 +7,7 @@ import { ILibraryContentEntity } from '../../entities/library-content';
 // services
 import { AcmeSCRoomLibraryService } from '../../services/acme-sc-room-library.service';
 import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
+import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-ui-utiltities.services';
 
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
 
@@ -31,6 +32,7 @@ export class AcmeSCRoomLibraryContentItemComponent {
 
     constructor(private acmeSCRoomLibraryService: AcmeSCRoomLibraryService,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
+        private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
         private snackBar: MatSnackBar,
         public dialog: MatDialog,
         private translateService: TranslateService) {
@@ -94,8 +96,8 @@ export class AcmeSCRoomLibraryContentItemComponent {
 
     deleteLibrarycontent() {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
-            width: '32.5vw',
-            height: '13vh',
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { message: this.translateService.instant('"ROOM_LIBRARY_CONTENT_ITEM_DELETE_WARNING') }

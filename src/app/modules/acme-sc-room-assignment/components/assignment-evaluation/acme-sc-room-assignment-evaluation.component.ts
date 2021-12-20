@@ -70,8 +70,8 @@ export class AcmeSCAssignmentEvaluationComponent {
             mode='New';
         }
         const dialogRef = this.dialog.open(AcmeSCEvaluateAssignmentComponent, {
-            width: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenWidth(),
-            height: this.acmesharedUiTuilitiesService.getCreateAssignmentScreenHeight(),
+            width: '65vw',
+            height: '85vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { mode: mode, userAssignment: this.userAssignment }
