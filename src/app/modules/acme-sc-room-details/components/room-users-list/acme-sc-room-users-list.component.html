@@ -1,15 +1,16 @@
 <div fxFlexFill fxLayout="column" class="acme-sc-navigation-side-bar">
-    <div  fxFlex="20vh" fxFill>
+    <div fxFlex="20vh" fxFill>
         <acme-sc-company-header></acme-sc-company-header>
     </div>
- 
+
     <!--User Title>-->
     <div fxFlex="5vh">
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center  center">
             <div class="acme-sc-navigation-side-bar-title" fxFlex="8vw" fxLayoutAlign="center center">
                 <span>{{'ROOM_DETAILS_USER_LIST_LABEL'|translate}}</span>
             </div>
-            <div *ngIf="this.isRoomOwner" class="acme-cs-mat-icon-pointer" fxFlex="2vw" fxLayoutAlign="center center" (click)="shareRoom()">
+            <div *ngIf="this.isRoomOwner" class="acme-cs-mat-icon-pointer" fxFlex="2vw" fxLayoutAlign="center center"
+                (click)="shareRoom()">
                 <mat-icon matTooltip="{{'ROOM_DETAILS_USER_LIST_INVITE_USER'|translate}}" fxLayoutAlign="center center">
                     <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                         fill="purple">
@@ -19,10 +20,11 @@
                     </svg>
                 </mat-icon>
             </div>
-            <div fxFlex="2vw" fxLayoutAlign="center center" class="acme-cs-mat-icon-pointer" (click)="refreshUsersList()">
+            <div fxFlex="2vw" fxLayoutAlign="center center" class="acme-cs-mat-icon-pointer"
+                (click)="refreshUsersList()">
                 <mat-icon matTooltip="{{'ROOM_DETAILS_USER_LIST_REFRESH'|translate}}" fxLayoutAlign="center center">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
-                        fill="#000000">
+                    <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" height="100%"
+                        viewBox="0 0 24 24" width="100%" fill="#000000">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
                             d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
@@ -39,7 +41,8 @@
     <div *ngIf="!isSuccessFull && !isProgress" fxFlex fxLayoutAlign="center center">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex="20vh" fxLayoutAlign="center center">
-                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="10vw" height="10vh" viewBox="0 0 24 24">
+                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="10vw" height="10vh"
+                    viewBox="0 0 24 24">
                     <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
                 </svg>
             </div>
@@ -51,10 +54,11 @@
     <!--users list (empty list)-->
     <div fxFlex *ngIf="sharedRoomUsersList.length === 0 && isSuccessFull" fxLayoutAlign="center center"
         class="acme-sc-room-users-list">
-        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="acme-cs-navigation-item-icon">
-            <div fxFlex="5vh" fxLayoutAlign="center center">
-                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="5vh"
-                        viewBox="0 0 24 24" width="5vw">
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+            <div fxFlex="10vh" fxLayoutAlign="center center">
+                <div class="acme-sc-background-circle" fxLayoutAlign="center center">
+                    <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg"
+                        enable-background="new 0 0 24 24" viewBox="0 0 24 24">
                         <g>
                             <rect fill="none" height="24" width="24" />
                         </g>
@@ -71,8 +75,8 @@
                                     d="M9,13c-2.67,0-8,1.34-8,4v3h16v-3C17,14.34,11.67,13,9,13z M15,18H3l0-0.99C3.2,16.29,6.3,15,9,15s5.8,1.29,6,2V18z" />
                             </g>
                         </g>
-                </svg>
-
+                    </svg>
+                </div>
             </div>
             <div class="acme-sc-label-default-message" fxFlex="5vh" fxLayoutAlign="center center">
                 <span>{{'ROOM_DETAILS_USER_LIST_FAIL_NO_USER_MESSAGE'|translate}}</span>
@@ -85,8 +89,7 @@
         <div fxLayout="column" fxFlexFill fxLayoutGap="1vh">
             <ng-scrollbar thumbClass="white-scrollbars">
                 <acme-sc-room-user-item *ngFor="let user of sharedRoomUsersList" [user]="user"
-                    [canRemoveUser]="isRoomOwner"
-                    (roomUserRemoved)="roomUserRemoved($event)"
+                    [canRemoveUser]="isRoomOwner" (roomUserRemoved)="roomUserRemoved($event)"
                     (roomUserRoleUpdated)="roomUserRoleUpdated($event)">
                 </acme-sc-room-user-item>
             </ng-scrollbar>

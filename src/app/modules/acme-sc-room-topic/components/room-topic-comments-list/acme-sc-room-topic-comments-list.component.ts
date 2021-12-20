@@ -173,7 +173,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
 
     openSessionExpiredDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCSessionExpiredComponent, {
-            width: '45.5',
+            width: '45.5vw',
             height: '14vh',
             disableClose: true,
             data: {}

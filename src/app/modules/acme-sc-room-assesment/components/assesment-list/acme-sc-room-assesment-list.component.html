@@ -28,7 +28,7 @@
                 </div>
                 <!--assesment icon-->
                 <div fxFlex="2vw" fxFill fxLayoutAlign="start center" class="acme-cs-navigation-item-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="purple">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
                             d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
@@ -36,8 +36,9 @@
                 </div>
                 <!--Refresh  icon-->
                 <div fxFlex="2vw" fxFil fxLayoutAlign="start center" (click)="refresAssesmentsContent()"
-                    class="acme-cs-navigation-item-icon acme-cs-mat-icon-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="#000000">
+                    class="acme-cs-mat-icon-pointer">
+                    <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
                             d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
@@ -52,7 +53,8 @@
                     <span>{{'ROOM_ASSESMENT_LIST_ROOM_NOT_ACTIVE'|translate}}</span>
                 </div>
                 <!-- new assignment button-->
-                <div *ngIf="roomAssesmentsList.length > 0 && room.status === 'Active' && isContentOrRoomOwner" fxFlex fxFill>
+                <div *ngIf="roomAssesmentsList.length > 0 && room.status === 'Active' && isContentOrRoomOwner" fxFlex
+                    fxFill>
                     <div fxFlexFill fxLayout="row" fxFill fxLayoutAlign="end center">
                         <div fxFlex="13vw" fxFill>
                             <button fxFill mat-raised-button color="accent" (click)="createNewAssesment()"
@@ -66,22 +68,24 @@
         <!--content-->
         <div fxFlex fxFill>
             <!--empty list-->
-            <div *ngIf="roomAssesmentsList.length === 0" fxFlexFill fxLayout="column"
-                fxLayoutAlign="center  center" fxLayoutGap="0.4vw">
-                
+            <div *ngIf="roomAssesmentsList.length === 0" fxFlexFill fxLayout="column" fxLayoutAlign="center  center"
+                fxLayoutGap="0.4vw">
+
                 <div fxFlex="10vh" fxFill fxLayoutAlign="center  center" class="acme-cs-navigation-item-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw" fill="purple">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
-                    </svg>
+                    <div class="acme-sc-background-circle" fxLayoutAlign="center center">
+                        <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                        </svg>
+                    </div>
                 </div>
                 <!--Empty topics message-->
                 <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
                     <span>{{'ROOM_ASSESMENT_LIST_NO_ASSESSMENTS'|translate}}</span>
                 </div>
-                  <!--upload button-->
-                  <div *ngIf="room.status ==='Active'" fxFlex="7vh" fxFill fxLayoutAlign="center start">
+                <!--upload button-->
+                <div *ngIf="room.status ==='Active'" fxFlex="7vh" fxFill fxLayoutAlign="center start">
                     <div fxLayout="row" fxFlexFill fxLayoutAlign="center start">
                         <div fxFlex="13vw" fxFill fxLayoutAlign="center start">
                             <button fxFill mat-raised-button color="accent" (click)="createNewAssesment()"
@@ -91,21 +95,19 @@
                     </div>
                 </div>
             </div>
-             <!--non empty list-->
-             <div *ngIf="roomAssesmentsList.length > 0" fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+            <!--non empty list-->
+            <div *ngIf="roomAssesmentsList.length > 0" fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
                 <div fxLayout="column" fxFlexFill>
                     <ng-scrollbar thumbClass="white-scrollbars">
                         <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vh">
                             <acme-sc-room-assesment-item *ngFor="let assesment of filteredroomAssesmentsList"
-                            [assesment]="assesment" [roomOwner]="room.email"
-                            [roomType]="roomType"
-                            [roomName]="room.title"
-                            [roomStatus]="room.status"
-                            [isContentOrRoomOwner]="isContentOrRoomOwner"
-                            (assignmentDeleted)="assesmentDeleted($event)"
-                            (assesmentUpdated)="assesmentUpdated($event)"
-                            (assesmentStatusUpdated)="assesmentStatusUpdated($event)"
-                            (assesmentDeleted)="assesmentDeleted($event)">
+                                [assesment]="assesment" [roomOwner]="room.email" [roomType]="roomType"
+                                [roomName]="room.title" [roomStatus]="room.status"
+                                [isContentOrRoomOwner]="isContentOrRoomOwner"
+                                (assignmentDeleted)="assesmentDeleted($event)"
+                                (assesmentUpdated)="assesmentUpdated($event)"
+                                (assesmentStatusUpdated)="assesmentStatusUpdated($event)"
+                                (assesmentDeleted)="assesmentDeleted($event)">
 
                             </acme-sc-room-assesment-item>
                         </div>

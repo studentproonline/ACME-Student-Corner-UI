@@ -1,15 +1,14 @@
-<div fxFlexFill fxLayout="column"fxLayoutGap="0.4vw">
+<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
     <div fxFlex="16.5vh" fxFill>
         <div fxFlexFill fxLayout="row">
             <div fxFlex="20vw" class="acme-sc-custom-company-header">
                 <acme-sc-company-header></acme-sc-company-header>
             </div>
-            <div fxFlex class="acme-sc-container" >
+            <div fxFlex class="acme-sc-container">
                 <div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
                     <div fxFlex="5vh" fxFill>
-                        <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName"
-                            [placeHolder]="''" [title]="commentTitle"
-                            [dislaySearchBox]="showSearchBox">
+                        <acme-sc-main-header [userNickName]="nickName" [userFullName]="fullName" [placeHolder]="''"
+                            [title]="commentTitle" [dislaySearchBox]="showSearchBox">
                         </acme-sc-main-header>
                     </div>
                     <div *ngIf="!isProgress && isSuccessFull" fxFlex="7vh">
@@ -39,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="acme-sc-container"  fxFlex fxFill>
+    <div class="acme-sc-container" fxFlex fxFill>
         <!--Successfull call-->
         <div fxLayout="column" *ngIf="isSuccessFull && !isProgress" fxFlexFill fxLayoutGap="0.4vw">
             <!--title row-->
@@ -51,17 +50,20 @@
                     </div>
 
                     <!--comments icon-->
-                    <div fxFlex="2vw" fxLayoutAlign="start center" class="acme-cs-navigation-item-icon">
-                        <svg  xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw">
-                            <path d="M0 0h24v24H0z" fill="none"/><path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                    <div fxFlex="2vw" fxLayoutAlign="start center">
+                        <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg" height="3vh"
+                            viewBox="0 0 24 24" width="3vw">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
                         </svg>
                     </div>
 
                     <!--Refresh  icon-->
                     <div fxFlex="2vw" fxLayoutAlign="start center" (click)="refrshCommentsList()"
                         class="acme-cs-mat-icon-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw"
-                            fill="#000000">
+                        <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
                                 d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
@@ -98,12 +100,15 @@
                 <!--Empty List-->
                 <div *ngIf="commentsEntity.comments.length === 0" fxFlexFill fxLayout="column"
                     fxLayoutAlign="center  center" fxLayoutGap="0.4vw">
-                    <div fxFlex="0 0 10vh" fxFill fxLayoutAlign="center  center" class="acme-cs-navigation-item-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="10vh" viewBox="0 0 24 24" width="10vw">
-                            <path d="M0 0h24v24H0V0z" fill="none" />
-                            <path
-                                d="M19 1l-5 5v11l5-4.5V1zM1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6zm22 13.5V6c-.6-.45-1.25-.75-2-1v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5v2c1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5v-1.1z" />
-                        </svg>
+                    <div fxFlex="0 0 10vh" fxFill fxLayoutAlign="center  center">
+                        <div class="acme-sc-background-circle" fxLayoutAlign="center center">
+                            <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M19 1l-5 5v11l5-4.5V1zM1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6zm22 13.5V6c-.6-.45-1.25-.75-2-1v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5v2c1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5v-1.1z" />
+                            </svg>
+                        </div>
                     </div>
                     <!--Empty topics message-->
                     <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">

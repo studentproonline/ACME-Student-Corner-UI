@@ -1,6 +1,20 @@
 @import '../../../shared/css/commom.scss';
 @import '../../../shared/css/variables.scss';
 
+.UserInfoCircle {
+    width: 5vw;
+    height: 10vh;
+    border-radius: 50%;
+    font-size: 1vw;
+    margin-right:0.4vw;
+    color: #fff;
+    text-align: center;
+    background:lightgray;
+    -webkit-box-shadow: 0 0 0.3vw 0.3vw darkgray;
+    -moz-box-shadow: 0 0 0.3vw 0.3vw darkgray;
+    box-shadow: 0 0 0.3vw 0.3vw darkgray;
+}
+
 .acme-sc-report-card-data-container {
     background-color: $acme-sc-room-inactive-background-color;
     border-radius: 0.4vw;
@@ -19,13 +33,13 @@
 .acme-sc-report-card-heading {
     background-color: $acme-sc-custom-button-color-default;
     color: white;
-    font-size: 2.5vw;
+    font-size: 2vw;
 }
 
 .acme-sc-report-room-name {
     background-color: $acme-sc-custom-button-color-default;
     color: white;
-    font-size: 0.7vw;
+    font-size: 0.9vw;
 }
 
 .acme-sc-report-card-assesments-container {
