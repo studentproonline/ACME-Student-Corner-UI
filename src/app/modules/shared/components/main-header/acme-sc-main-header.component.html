@@ -1,18 +1,18 @@
 <div fxFlexFill fxLayout="column">
     <div fxFlex fxFill>
         <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw>
-            <div fxFlex="66.5vw" fxFill>
+            <div fxFlex="66vw" fxFill>
                 <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw fxLayoutAlign="center center">
-                    <div *ngIf="dislaySearchBox" fxFlex="60%" fxFlex.md="80%" fxFlex.sm="80%" fxFill
+                    <div *ngIf="dislaySearchBox" fxFlex="39vw" fxFill
                         class="searchBox">
 
                         <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw fxLayoutAlign="center center">
                             <!--search icon-->
-                            <div fxFlex="0 0 5%" fxFill fxLayoutAlign="center center">
+                            <div fxFlex="2vw" fxFill fxLayoutAlign="center center">
                                 <mat-label class="searchBoxLabel" fxLayoutAlign="center center">
-                                    <mat-icon class="acme-cs-mat-icon" style="width:75%;height:75%"
+                                    <mat-icon class="acme-cs-mat-icon"
                                         fxLayoutAlign="center center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                                        <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24">
                                             <path
                                                 d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
@@ -36,20 +36,19 @@
                     </div>
                 </div>
             </div>
-            <div fxFlex="10vw" fxFill>
+            <div fxFlex="8vw" fxFill>
                 <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw>
-                    <div fxFlex="0 0 50%" fxFill fxLayoutAlign="end center">
-                        <mat-icon class="acme-cs-mat-icon" matTooltip="{{'SHARED_MAIN_HEADER_HELP_LABEL'|translate}}" (click)="openHelp()"
-                            style="cursor: pointer;height:75%;width:75%" fxLayoutAlign="end center">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="75%" viewBox="0 0 24 24" width="75%"
-                                fill="blue">
+                    <div fxFlex="2vw" fxFill fxLayoutAlign="end center">
+                        <mat-icon class="acme-cs-mat-icon-pointer" matTooltip="{{'SHARED_MAIN_HEADER_HELP_LABEL'|translate}}" (click)="openHelp()"
+                            fxLayoutAlign="end center">
+                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path
                                     d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" />
                             </svg>
                         </mat-icon>
                     </div>
-                    <div fxFlex="0 0 50%" fxFill fxLayoutAlign="end center">
+                    <div fxFlex="8vw" fxFill fxLayoutAlign="end center">
                         <div matTooltip={{userFullName}} class="UserInfoCircle" fxLayoutAlign="center center"
                             (click)="nickNameClicked($event)">
                             {{userNickName}}
