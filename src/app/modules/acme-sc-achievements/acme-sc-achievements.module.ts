@@ -10,6 +10,7 @@ import { AcmeSCAchievementCardComponent } from './components/achievement-card/ac
 
 //services
 import { AcmeSCAchievementsService } from './services/acme-sc-achievements.service';
+import { AcmesharedUiTuilitiesService } from '../shared/services/acme-sc-ui-utiltities.services';
 
 // Google chart
 import { GoogleChartsModule } from 'angular-google-charts';
@@ -24,7 +25,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
         AcmeSCAchievementsRoutingModule,
         GoogleChartsModule],
 
-    providers: [AcmeSCAchievementsService],
+    providers: [AcmeSCAchievementsService, AcmesharedUiTuilitiesService],
 
     entryComponents: []
 })

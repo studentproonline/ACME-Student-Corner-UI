@@ -1,5 +1,14 @@
+@import '../../../shared/css/commom.scss';
 .acme-sc-achievement-bar-card {
-    padding:0
+    padding:0;
+    -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+    -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+    box-shadow: 0 0 0.3vw 0.3vw lightgray;
+}
+
+.acme-sc-achievement-icon {
+    height: 3vh;
+    width:2vw;
 }
 
 .acme-sc-achievement-bar-card-Title {
@@ -8,10 +17,9 @@
 }
 
 .acme-sc-achievements-message {
-    font-size: small;
-    color: purple;
-    font-weight: bold;
-    padding:24px
+    font-size: 0.8vw;
+    padding: 1vw;
+    color:black;
 }
 
 .acme-sc-badge-earned {

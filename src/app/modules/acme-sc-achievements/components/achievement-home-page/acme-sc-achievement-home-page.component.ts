@@ -7,6 +7,7 @@ import { AcmeSCAchievementsService } from '../../services/acme-sc-achievements.s
 
 // Entities 
 import { IAchievementsEntity } from '../../entities/achievements.entity';
+import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
 @Component({
     selector: 'acme-sc-achievement-home-page',
@@ -20,6 +21,7 @@ export class AcmeSCAchievementMainPageComponent {
     topicsUserLevelMessage;
     topicsMax;
     topicsBadgesEarned;
+    showSearchBox = false;
     topicsChartTitle = 'Toal topics posted';
 
     commentsPostedData: any = [
@@ -27,7 +29,7 @@ export class AcmeSCAchievementMainPageComponent {
     commentsUserLevelMessage;
     commentsMax;
     commentsBadgesEarned;
-    commentsChartTitle = 'Toal comments posted';
+    commentsChartTitle = 'Total comments posted';
 
     thumbsUpdData: any = [
     ];
@@ -44,18 +46,26 @@ export class AcmeSCAchievementMainPageComponent {
     isProgress = false;
     isSuccessFull = false;
     achievementsResponseMessage = '';
+    
+    loginEntity: ILoginEntity;
+    nickName: string;
+    fullName: string;
 
-   
 
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeSCAchievementsService: AcmeSCAchievementsService,
         private router: Router) {
+        this.loginEntity = this.acmeSCAuthorizationService.getSession();
+        const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
+        const lastNameChar = (this.loginEntity.lastName.substring(0, 1)).toUpperCase();
+        this.nickName = firstNameChar.concat(lastNameChar);
+        this.fullName = this.loginEntity.firstName.concat(' ', this.loginEntity.lastName);
         this.getAchievmentData();
     }
 
     gotoRooms() {
-        this.router.navigateByUrl ( '/home?roomType=My Rooms');
+        this.router.navigateByUrl('/home?roomType=My Rooms');
     }
 
     getAchievmentData() {
@@ -90,24 +100,24 @@ export class AcmeSCAchievementMainPageComponent {
 
     constructTopicsPostedData(achievementsEntity: IAchievementsEntity) {
         let topicPosted: any = [];
-      
+
         topicPosted.push('Topics');
         topicPosted.push(achievementsEntity.totalTopicsPost);
         this.topicsPostedData.push(topicPosted);
-        let data=this.calculateNextBadgeData(achievementsEntity.totalTopicsPost, 20);
-        this.topicsMax =data.max;
+        let data = this.calculateNextBadgeData(achievementsEntity.totalTopicsPost, 20);
+        this.topicsMax = data.max;
         this.topicsBadgesEarned = data.badgeEarned;
         this.topicsUserLevelMessage = data.remainingToAchiveBadge + " topic left to be posted to achieve new badge."
     }
 
     constructCommentsPostedData(achievementsEntity: IAchievementsEntity) {
         let commentsPosted: any = [];
-           
+
         commentsPosted.push('Comments');
         commentsPosted.push(achievementsEntity.totalCommentsPost);
         this.commentsPostedData.push(commentsPosted);
-        const data=this.calculateNextBadgeData(achievementsEntity.totalCommentsPost, 20);
-        this.commentsMax =data.max;
+        const data = this.calculateNextBadgeData(achievementsEntity.totalCommentsPost, 20);
+        this.commentsMax = data.max;
         this.commentsBadgesEarned = data.badgeEarned;
         this.commentsUserLevelMessage = data.remainingToAchiveBadge + " comments left to be posted to achieve new badge."
     }
@@ -117,8 +127,8 @@ export class AcmeSCAchievementMainPageComponent {
         thumbsUpRecieved.push('ThumbsUp');
         thumbsUpRecieved.push(achievementsEntity.thumbsUpvoteRecieved);
         this.thumbsUpdData.push(thumbsUpRecieved);
-        const data=this.calculateNextBadgeData(achievementsEntity.thumbsUpvoteRecieved, 20);
-        this.thumbsUpMax =data.max;
+        const data = this.calculateNextBadgeData(achievementsEntity.thumbsUpvoteRecieved, 20);
+        this.thumbsUpMax = data.max;
         this.thumbsUpBadgesEarned = data.badgeEarned;
         this.thumbsUpUserLevelMessage = data.remainingToAchiveBadge + " likes left to be recieved to achieve new badge."
     }
@@ -131,22 +141,22 @@ export class AcmeSCAchievementMainPageComponent {
     }
 
     calculateNextBadgeData(totalCount, badgeSlabNumber) {
-        let data: any ={};
+        let data: any = {};
         let remainingToAchiveBadge;
         if (totalCount < badgeSlabNumber) {
-            this.topicsMax=badgeSlabNumber;
+            this.topicsMax = badgeSlabNumber;
             data.badgeEarned = 0
-            data.max=badgeSlabNumber;
+            data.max = badgeSlabNumber;
             remainingToAchiveBadge = badgeSlabNumber - totalCount;
-            
-        } else{
-            let quotient = Math.floor(totalCount/badgeSlabNumber);
+
+        } else {
+            let quotient = Math.floor(totalCount / badgeSlabNumber);
             let remainder = totalCount % badgeSlabNumber;
-            data.badgeEarned =quotient;
-            data.max=badgeSlabNumber*(quotient+1);
-            remainingToAchiveBadge = (((badgeSlabNumber*(quotient+1)-remainder))-(badgeSlabNumber * quotient));
+            data.badgeEarned = quotient;
+            data.max = badgeSlabNumber * (quotient + 1);
+            remainingToAchiveBadge = (((badgeSlabNumber * (quotient + 1) - remainder)) - (badgeSlabNumber * quotient));
         }
-        data.remainingToAchiveBadge=remainingToAchiveBadge;
+        data.remainingToAchiveBadge = remainingToAchiveBadge;
         return data;
     }
 }
