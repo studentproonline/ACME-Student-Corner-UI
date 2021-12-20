@@ -30,16 +30,7 @@
 
     <!--server error-->
     <div *ngIf="!isSuccessFull && !isProgress" fxFlex fxLayoutAlign="center center">
-        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="10vh" fxLayoutAlign="center center">
-                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="10vw" height="10vh" viewBox="0 0 24 24">
-                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
-                </svg>
-            </div>
-            <div class="acme-sc-label-default-message" fxFlex="5vh" fxLayoutAlign="center center">
-                <span>{{'SHARED_USER_LIST_ERROR'|translate}}</span>
-            </div>
-        </div>
+        <acme-sc-server-error [errorMessage]="sharedRoomUsersResponseMessage"></acme-sc-server-error>
     </div>
 
     <!--users list (empty list)-->

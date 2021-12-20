@@ -58,7 +58,7 @@ export class AcmeSCAssesmentReportCardComponent {
         private acmeSCRoomReportCardService: AcmeSCRoomReportCardService,
         private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService,
         public dialog: MatDialog, private snackBar: MatSnackBar,
-        private translateService: TranslateService) {
+        public translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();

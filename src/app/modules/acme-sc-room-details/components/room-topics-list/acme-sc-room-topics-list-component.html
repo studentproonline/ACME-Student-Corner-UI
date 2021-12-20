@@ -6,17 +6,7 @@
 
     <!--Server Error-->
     <div *ngIf="!isSuccessFull && !isProgress" fxFlex fxFill fxLayoutAlign="center center">
-        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div fxFlex="20vh" fxFill fxLayoutAlign="center  center">
-                <svg style="fill:darkorange" xmlns="http://www.w3.org/2000/svg" width="10vw" height="10vh"
-                    viewBox="0 0 24 24">
-                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
-                </svg>
-            </div>
-            <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
-                <span>{{topicsResponseMessage}}</span>
-            </div>
-        </div>
+        <acme-sc-server-error [errorMessage]="topicsResponseMessage"></acme-sc-server-error>
     </div>
     <!--Successfull call-->
     <div fxLayout="column" *ngIf="isSuccessFull && !isProgress" fxFlexFill fxLayoutGap="0.4vw">
@@ -48,14 +38,7 @@
                     </svg>
                 </div>
 
-                <!--room not active label-->
-                <div fxLayoutAlign="center center" *ngIf="room.status!=='Active'" fxFlex="50vw"
-                    class="acme-sc-room-close-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="red">
-                        <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
-                    </svg>
-                    <span>{{'ROOM_DETAILS_TOPIC_LIST_ROOM_NOT_ACTIVE'|translate}}</span>
-                </div>
+                
 
                 <!-- new discussion button-->
                 <div *ngIf="roomTopicsList.length > 0 && room.status === 'Active'" fxFlex fxFill>
@@ -69,6 +52,19 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+        <!--room not active-->
+        <div fxFlex= "5vh" fxFill *ngIf="room.status!=='Active'" >
+            <div fxFlexFill fxLayout="row">
+                <!--room not active label-->
+                <div fxLayoutAlign="center center" fxFlex fxFill
+                    class="acme-sc-room-close-label">
+                    <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                    </svg>
+                    <span>{{'ROOM_DETAILS_TOPIC_LIST_ROOM_NOT_ACTIVE'|translate}}</span>
+                </div>
             </div>
         </div>
         <!--content-->

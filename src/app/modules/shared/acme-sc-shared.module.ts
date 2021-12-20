@@ -16,6 +16,7 @@ import { AcmeSCNavigationBarComponent } from './components/navigation-bar/acme-s
 import { AcmeSCCompanyHeaderComponent } from './components/company-header/acme-sc-company-header.component';
 import { AcmeSCRoomSharedUsersListComponent } from './components/room-users-list/acme-sc-room-shared-users-list.component';
 import { AcmeSCRoomSharedUserItemComponent } from './components/room-shared-user-item/acme-sc-room-shared-user-item';
+import { AcmeSCServerErrorComponent } from './components/server-error/acme-sc-server-error.component';
 
 //dialogs
 import { AcmeSCUserConfirmationComponent } from './components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
@@ -56,7 +57,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         AcmeSCRoomSharedUserItemComponent,
         AcmeSCSessionExpiredComponent,
         AcmeSCContactinformationComponent,
-        AcmeSCUserPopupComponent
+        AcmeSCUserPopupComponent,
+        AcmeSCServerErrorComponent
     ],
     exports: [
         NgScrollbarModule,
@@ -76,6 +78,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         AcmeSCSessionExpiredComponent,
         AcmeSCContactinformationComponent,
         AcmeSCUserPopupComponent,
+        AcmeSCServerErrorComponent,
         TranslateModule
     ],
     providers: [ AcmeSCHttpService ]
