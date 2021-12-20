@@ -27,6 +27,7 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
 
     loggedInUser: string;
     isProgress = false;
+    iscontentOrRoomOwner: boolean = false;
 
     constructor( private acmeTopicCommentService: AcmeTopicCommentService,
         private acmeTopicCommentVoteService: AcmeTopicCommentVoteService,
@@ -37,6 +38,10 @@ export class AcmeSCRoomTopicCommentComponent implements OnInit {
     
     ngOnInit() {
         this.loggedInUser =  this.acmeSCAuthorizationService.getSession().email;
+        const userRoomRole = this.acmeSCAuthorizationService.getUserRoomRole();
+        if( userRoomRole === 'Owner' || userRoomRole === 'Admin') {
+            this.iscontentOrRoomOwner = true;
+        }
     }
 
     vote(voteType: Number) {

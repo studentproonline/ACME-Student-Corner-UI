@@ -67,6 +67,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
                 this.roomType = params.roomType;
                 this.roomName = params.roomName;
                 this.commentTitle = params.commentTitle;
+                this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
                 this.getComments(0);
             });
     }
@@ -91,18 +92,7 @@ export class AcmeSCRoomTopicCommentsListComponent implements OnInit {
                
                 this.commentsEntity = response.data;
                 if (this.commentsEntity) {
-                    let roomDetails: IRoomEntity = {
-                        _id: this.commentsEntity.roomId, name: '',
-                        owner: undefined,
-                        email: this.commentsEntity.roomOwner,
-                        title: this.roomName,
-                        description: undefined,
-                        creationDate: undefined,
-                        status: undefined
-
-                    }
                     this.commentTitle = this.commentsEntity.topicTitle;
-                    this.roomDetailsEntity = roomDetails;
                     this.roomId = this.commentsEntity.roomId;
                     this.roomOwner = this.commentsEntity.roomOwner;
                     this.isProgress = false;
