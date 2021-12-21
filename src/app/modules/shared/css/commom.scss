@@ -24,9 +24,15 @@
     opacity: 0.7
 }
 .acme-cs-mat-icon-default {
-    height:3vh;
-    width: 2vw;
+    height:3.18vh;
+    width: 1.56vw;
 }
+
+.acme-cs-mat-icon-default-medium {
+    height:5vh;
+    width: 5vw;
+}
+
 
 .acme-cs-mat-start-icon {
     fill: $acme-sc-start-color;
@@ -38,21 +44,21 @@
 .acme-cs-navigation-item-icon {
     opacity: 0.7;
     fill:$acme-sc-company-label-color;
-    height:3vh;
-    width:3vh;
+    height:3.18vh;
+    width:1.56vw;
 }
 
 .acme-cs-navigation-item-icon-gray {
     fill:$acme-sc-color-default;
-    height:3vh;
-    width:3vh;
+    height:3.18vh;
+    width:1.56vw;
     opacity:0.7;
 }
 
 .acme-cs-navigation-item-icon-lightgray {
     fill:$acme-sc-color-default;
-    height:3vh;
-    width:3vh;
+    height:3.18vh;
+    width:1.56vw;
     opacity:0.5;
 }
 

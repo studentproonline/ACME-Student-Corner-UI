@@ -4,7 +4,7 @@
 
             <!--Home icon-->
             <div fxFlex="2vw" fxFill fxLayoutAlign="center center" class="acme-cs-mat-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="1.5vw" fill="#000000">
+                <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
                 </svg>
@@ -17,7 +17,7 @@
 
             <!--room type icon-->
             <div fxFlex="2vw" fxFill fxLayoutAlign="center center" class="acme-cs-mat-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="1.5vw" fill="#000000">
+                <svg class="acme-cs-mat-icon-default"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path
                         d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
@@ -31,7 +31,7 @@
 
             <!--room icon-->
             <div fxFlex="2vw" fxLayoutAlign="center center">
-                <svg width="1.5vw" height="3vh" viewBox="0 0 94 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="acme-cs-mat-icon-default" viewBox="0 0 94 89" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M87.5122 35.7754H77.2382V6.42123C77.2382 2.88056 74.3577 0 70.817 0H28.6203C25.0797 0 22.1991 2.88056 22.1991 6.42123V24.7676H6.42123C2.88056 24.7676 0 27.6482 0 31.1888V56.8738C0 60.4144 2.88056 63.295 6.42123 63.295H11.1913V74.3028C11.1913 76.7451 14.157 77.9813 15.8891 76.2486L28.8429 63.295H35.9589V67.8816C35.9589 71.4223 38.8395 74.3028 42.3801 74.3028H65.0906L78.0444 87.2565C79.7662 88.9786 82.7422 87.7636 82.7422 85.3107V74.3028H87.5122C91.0529 74.3028 93.9334 71.4223 93.9334 67.8816V42.1967C93.9334 38.656 91.0529 35.7754 87.5122 35.7754ZM27.703 6.42123C27.703 5.91542 28.1145 5.50391 28.6203 5.50391H70.817C71.3228 5.50391 71.7343 5.91542 71.7343 6.42123V35.7754H55.2226V31.1888C55.2226 27.6482 52.342 24.7676 48.8014 24.7676H27.703V6.42123ZM27.703 57.7911C26.9732 57.7911 26.2733 58.0811 25.7572 58.5972L16.6952 67.6591V60.543C16.6952 59.0232 15.4631 57.7911 13.9432 57.7911H6.42123C5.91542 57.7911 5.50391 57.3796 5.50391 56.8738V31.1888C5.50391 30.683 5.91542 30.2715 6.42123 30.2715H48.8014C49.3072 30.2715 49.7187 30.683 49.7187 31.1888V56.8738C49.7187 57.3796 49.3072 57.7911 48.8014 57.7911H27.703ZM88.4295 67.8816C88.4295 68.3874 88.018 68.7989 87.5122 68.7989H79.9902C78.4704 68.7989 77.2382 70.0311 77.2382 71.5509V78.6669L68.1762 69.6051C67.6602 69.089 66.9602 68.7989 66.2304 68.7989H42.3801C41.8743 68.7989 41.4628 68.3874 41.4628 67.8816V63.295H48.8014C52.342 63.295 55.2226 60.4144 55.2226 56.8738V41.2793H87.5122C88.018 41.2793 88.4295 41.6909 88.4295 42.1967V67.8816Z"
                         fill="slategray" />
@@ -71,8 +71,7 @@
                 <button mat-icon-button class="acme-sc-apps-button" [matMenuTriggerFor]="menu"
                     aria-label="Example icon-button with a menu" fxLayoutAlign="center center">
                     <mat-icon class="acme-sc-apps-icon" fxLayoutAlign="start start">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="1.5vw"
-                            fill="purple">
+                        <svg class="acme-cs-navigation-item-icon" class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
                                 d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
@@ -83,16 +82,16 @@
                 <mat-menu #menu="matMenu">
                     <!--topic-->
                     <button mat-menu-item (click)="gotoTopics()">
-                        <mat-icon style="opacity:0.7;" matTooltip="Go to Topics" style="opacity:0.7">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="purple"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/>
+                        <mat-icon>
+                            <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="purple"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/>
                             </svg>
                         </mat-icon>
                         <span class="acme-sc-apps-menu-item">{{'SHARED_NAVIGATION_BAR_APP_MENU_FORUM'|translate}}</span>
                     </button>
                     <!--Assignment-->
                     <button mat-menu-item (click)="gotoAssignments()">
-                        <mat-icon style="opacity:0.7;" matTooltip="Go to Topics" style="opacity:0.7">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="purple">
+                        <mat-icon>
+                            <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="purple">
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path
                                     d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
@@ -102,24 +101,24 @@
                     </button>
                      <!--Assesment-->
                      <button mat-menu-item (click)="gotoAssesments()">
-                        <mat-icon style="opacity:0.7;" matTooltip="Go to Topics" style="opacity:0.7">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="purple"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        <mat-icon>
+                            <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="purple"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                             </svg>
                         </mat-icon>
                         <span class="acme-sc-apps-menu-item">{{'SHARED_NAVIGATION_BAR_APP_MENU_ASSESSMENTS'|translate}}</span>
                     </button>
                      <!--Report card-->
                      <button mat-menu-item (click)="gotoReportCards()">
-                        <mat-icon style="opacity:0.7;" matTooltip="Go to Topics" style="opacity:0.7">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="purple"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z"/>
+                        <mat-icon>
+                            <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="purple"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z"/>
                             </svg>
                         </mat-icon>
                         <span class="acme-sc-apps-menu-item">{{'SHARED_NAVIGATION_BAR_APP_MENU_REPORT_CARDS'|translate}}</span>
                     </button>
                     <!--library menu item-->
                     <button mat-menu-item (click)="gotoLibrary()">
-                        <mat-icon style="opacity:0.7;" matTooltip="Go to Library" style="opacity:0.7">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
+                        <mat-icon>
+                            <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%"
                                 fill="purple">
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path
@@ -130,8 +129,8 @@
                     </button>
                     <!--conference menu item-->
                     <button mat-menu-item (click)="gotoConferenceCall()">
-                        <mat-icon style="opacity:0.7;" matTooltip="Go to Library" style="opacity:0.7">
-                            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="100%"
+                        <mat-icon>
+                            <svg class="acme-cs-navigation-item-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="100%"
                                 viewBox="0 0 24 24" width="100%" fill="purple">
                                 <rect fill="none" height="24" width="24" />
                                 <path

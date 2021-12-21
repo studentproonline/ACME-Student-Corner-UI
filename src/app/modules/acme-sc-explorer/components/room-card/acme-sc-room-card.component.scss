@@ -20,10 +20,14 @@
     box-shadow: 0 0 0.3vw 0.3vw lightgray;
 }
 
+.acme-sc-room-title-container {
+    padding:0.4vw;
+}
 .acme-sc-room-title {
     //font-weight: bold;
     font-size: 1.4vw;
     padding: 0.4vw;
+    opacity: 0.8;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
