@@ -120,6 +120,8 @@
     "SHARED_DIALOG_SHARE_ROOM_YOURSELF_MESSAGE": "You are an owner of this room, cannot share a room to yourself",
     "SHARED_DIALOG_SHARE_ROOM_SUCCESS_MESSAGE": "The room is successfully shared with ",
 
+    "SHARED_DIALOG_INFOMATION_DIALOG_BUTTON_CLOSE_LABEL": "Close",
+
     "SHARED_NAVIGATION_BAR_HOME": "Home",
     "SHARED_NAVIGATION_BAR_APP_MENU_FORUM": "Forum",
     "SHARED_NAVIGATION_BAR_APP_MENU_ASSIGNMENTS": "Assignments",
@@ -496,6 +498,7 @@
     "ROOM_CONFERENCE_ROOM_JOIN_CONFERENCE_FAIL": "Fail to join the conference call.",
     "ROOM_CONFERENCE_ROOM_REMOVE_FROM_CONFERENCE": "This action will remove you from the conference.",
     "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE": "This action will stop the conference session.",
+    "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_MESSAGE": "The Meeting owner has stopped the conference, the meeting will end now.",
 
     "ROOM_CONFERENCE_ROOM_USER_LIST": "Conference Users",
 

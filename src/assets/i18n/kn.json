@@ -120,6 +120,9 @@
     "SHARED_DIALOG_SHARE_ROOM_YOURSELF_MESSAGE": "ನೀವು ಈ ಕೋಣೆಯ ಮಾಲೀಕರಾಗಿರುವಿರಿ, ನಿಮಗಾಗಿ ಕೊಠಡಿಯನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಿಲ್ಲ",
     "SHARED_DIALOG_SHARE_ROOM_SUCCESS_MESSAGE": "ಅವರೊಂದಿಗೆ ಕೊಠಡಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಹಂಚಿಕೊಳ್ಳಲಾಗಿದೆ",
 
+    "SHARED_DIALOG_INFOMATION_DIALOG_BUTTON_CLOSE_LABEL": "ಮುಚ್ಚಿ",
+
+
     "SHARED_NAVIGATION_BAR_HOME": "ಮನೆ",
     "SHARED_NAVIGATION_BAR_APP_MENU_FORUM": "ವೇದಿಕೆ",
     "SHARED_NAVIGATION_BAR_APP_MENU_ASSIGNMENTS": "ಕಾರ್ಯಯೋಜನೆಯು",
@@ -496,6 +499,7 @@
     "ROOM_CONFERENCE_ROOM_JOIN_CONFERENCE_FAIL": "ಕಾನ್ಫರೆನ್ಸ್ ಕರೆಗೆ ಸೇರಲು ವಿಫಲವಾಗಿದೆ",
     "ROOM_CONFERENCE_ROOM_REMOVE_FROM_CONFERENCE": "ಈ ಕ್ರಿಯೆಯು ನಿಮ್ಮನ್ನು ಸಮ್ಮೇಳನದಿಂದ ತೆಗೆದುಹಾಕುತ್ತದೆ",
     "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE": "ಈ ಕ್ರಮವು ಸಮ್ಮೇಳನದ ಅಧಿವೇಶನವನ್ನು ನಿಲ್ಲಿಸುತ್ತದೆ",
+    "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_MESSAGE": "ಸಭೆಯ ಮಾಲೀಕರು ಸಮ್ಮೇಳನವನ್ನು ನಿಲ್ಲಿಸಿದ್ದಾರೆ, ಈಗ ಸಭೆ ಮುಕ್ತಾಯಗೊಳ್ಳುತ್ತದೆ.",
 
     "ROOM_CONFERENCE_ROOM_USER_LIST": "ಕಾನ್ಫರೆನ್ಸ್ ಬಳಕೆದಾರರು",
 

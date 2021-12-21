@@ -120,6 +120,8 @@
     "SHARED_DIALOG_SHARE_ROOM_YOURSELF_MESSAGE": "आप इस कमरे के मालिक हैं, आप अपने लिए कमरा साझा नहीं कर सकते",
     "SHARED_DIALOG_SHARE_ROOM_SUCCESS_MESSAGE": "कमरा सफलतापूर्वक इसके साथ साझा किया गया ",
 
+    "SHARED_DIALOG_INFOMATION_DIALOG_BUTTON_CLOSE_LABEL": "बंद करे",
+
     "SHARED_NAVIGATION_BAR_HOME": "घर",
     "SHARED_NAVIGATION_BAR_APP_MENU_FORUM": "मंच",
     "SHARED_NAVIGATION_BAR_APP_MENU_ASSIGNMENTS": "कार्य",
@@ -496,6 +498,7 @@
     "ROOM_CONFERENCE_ROOM_JOIN_CONFERENCE_FAIL": "कॉन्फ़्रेंस कॉल में शामिल होने में विफल",
     "ROOM_CONFERENCE_ROOM_REMOVE_FROM_CONFERENCE": "यह क्रिया आपको कॉन्फ़्रेंस से हटा देगी",
     "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE": "इस कार्रवाई से कॉन्फ़्रेंस सत्र रुक जाएगा",
+    "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_MESSAGE": "मीटिंग के मालिक ने कॉन्फ़्रेंस रोक दी है, मीटिंग अब खत्म होगी.",
 
     "ROOM_CONFERENCE_ROOM_USER_LIST": "सम्मेलन उपयोगकर्ता",
 

@@ -13,6 +13,7 @@ import { AcmesharedUiTuilitiesService } from '../../../shared/services/acme-sc-u
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
 import { AcmeSCUserConfirmationComponent } from '../../../shared/components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
+import { AcmeSCInformationComponent } from '../../../shared/components/dialogs/information-dialog/acme-sc-information.component';
 
 //translation
 import { TranslateService } from '@ngx-translate/core';
@@ -49,6 +50,7 @@ export class AcmeSCConferenceRoomComponent {
     conferenceRoomDetailsResponseMessage = '';
     conferenceAppId = '';
     conferenceToken = '';
+    startedBy = '';
     playing = false;
     pauseVideoStream = false;
     pauseAudioStream = false;
@@ -82,7 +84,7 @@ export class AcmeSCConferenceRoomComponent {
                 this.roomType = params.roomType;
                 this.roomDetailsEntity = this.acmeSCAuthorizationService.getRoomDetails();
                 const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
-                if(userRommRole === 'Owner' || userRommRole === 'Admin') {
+                if (userRommRole === 'Owner' || userRommRole === 'Admin') {
                     this.isRoomOwner = true;
                 }
                 this.isSuccessFull = true;
@@ -129,7 +131,7 @@ export class AcmeSCConferenceRoomComponent {
                 const response: any = value;
                 this.isTokenGenerationInProgress = false;
                 this.sessionStarted = false;
-                if(this.playing) {
+                if (this.playing) {
                     this.leaveCall();
                 }
                 this.sessionStarted = false;
@@ -154,6 +156,7 @@ export class AcmeSCConferenceRoomComponent {
                 this.isTokenGenerationInProgress = false;
                 this.conferenceToken = response.data.token;
                 this.conferenceAppId = response.data.appId;
+                this.startedBy = response.data.startedBy;
                 this.connectToStream();
             },
             err => {
@@ -317,14 +320,20 @@ export class AcmeSCConferenceRoomComponent {
         });
         this.client.on(ClientEvent.PeerLeave, evt => {
             const stream = evt.stream as Stream;
+            const index = this.connectedUsers.findIndex(user => user === evt.uid);
+            if (index !== -1) {
+                this.connectedUsers.splice(index, 1);
+            }
             if (stream) {
                 stream.stop();
                 this.remoteCalls = this.remoteCalls.filter(call => call !== `${this.getRemoteId(stream)}`);
-                const index = this.connectedUsers.findIndex(user => user === evt.uid);
-                if (index !== -1) {
-                    this.connectedUsers.splice(index, 1);
-                }
                 console.log(`${evt.uid} left from this channel`);
+            }
+            // stop streaming if owner stops the streaming
+            if (evt.uid.toLowerCase() === this.startedBy.toLowerCase() &&
+                evt.uid.toLowerCase() !== this.loginEntity.email.toLowerCase()) {
+                this.informConferenceStopped();
+                this.leaveCall();
             }
         });
     }
@@ -362,6 +371,20 @@ export class AcmeSCConferenceRoomComponent {
                     this.router.navigateByUrl('/library?roomType=' + this.roomType + '&roomId=' + this.roomId);
                 }
             }
+        });
+    }
+
+
+    informConferenceStopped() {
+        const dialogRef = this.dialog.open(AcmeSCInformationComponent, {
+            width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),
+            height: this.acmesharedUiTuilitiesService.getConfirmationScreenHeight(),
+            panelClass: 'acme-sc-custom-container',
+            disableClose: true,
+            data: { information: this.translateService.instant('ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_MESSAGE') }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+
         });
     }
 
