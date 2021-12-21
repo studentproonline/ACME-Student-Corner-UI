@@ -5,8 +5,7 @@
                 <!--assignment icon-->
                 <div fxFlex="2vw" class="acme-sc-room-assignment-row" fxFill fxLayoutAlign="center center">
                     <mat-icon>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh"
-                            fill="#000000">
+                        <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
                                 d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
@@ -45,14 +44,14 @@
                 <!--status icon-->
                 <div fxFlex="2vw" fxFill fxLayoutAlign="start center">
                     <mat-icon fxLayoutAlign="start center" style="opacity:0.5">
-                        <svg *ngIf="assignment.status==='Active'" xmlns="http://www.w3.org/2000/svg" height="3vh"
-                            viewBox="0 0 24 24" width="3vw" fill="darkgreen">
+                        <svg class="acme-cs-mat-icon-default" *ngIf="assignment.status==='Active'" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="darkgreen">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm5-2.5H7v-1l1-1v-2.61C8 9.27 9.03 7.47 11 7v-.5c0-.57.43-1 1-1s1 .43 1 1V7c1.97.47 3 2.28 3 4.39V14l1 1v1z" />
                         </svg>
-                        <svg *ngIf="assignment.status!=='Active'" xmlns="http://www.w3.org/2000/svg" height="100%"
-                            viewBox="0 0 24 24" width="100%" fill="red">
+                        <svg class="acme-cs-mat-icon-default" *ngIf="assignment.status!=='Active'" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="red">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm5-2.5H7v-1l1-1v-2.61C8 9.27 9.03 7.47 11 7v-.5c0-.57.43-1 1-1s1 .43 1 1V7c1.97.47 3 2.28 3 4.39V14l1 1v1z" />
@@ -67,8 +66,8 @@
                 <div *ngIf="isContentOrRoomOwner" fxFlex="2vw" fxFill fxLayoutAlign="start center"
                     class="acme-cs-mat-icon-pointer" (click)="updateAssignment()">
                     <mat-icon matTooltip="{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_EDIT'|translate}}" fxLayoutAlign="start center">
-                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="3vh"
-                            viewBox="0 0 24 24" width="3vw" fill="purple">
+                        <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                            viewBox="0 0 24 24" fill="purple">
                             <rect fill="none" height="24" width="24" />
                             <path
                                 d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z" />
@@ -79,8 +78,8 @@
                 <div class="acme-cs-mat-icon-pointer" *ngIf="isContentOrRoomOwner && assignment.status !=='Closed'"
                     fxFlex="2vw" fxFill fxLayoutAlign="start center" (click)="closeAssignment()">
                     <mat-icon matTooltip="{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_CLOSE'|translate}}" fxLayoutAlign="start center">
-                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="3vh"
-                            viewBox="0 0 24 24" width="3vw" fill="darkorange">
+                        <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                            viewBox="0 0 24 24" fill="darkorange">
                             <g>
                                 <rect fill="none" height="24" width="24" />
                             </g>
@@ -97,8 +96,7 @@
                 <div *ngIf="isContentOrRoomOwner" fxFlex="2vw" fxFill fxLayoutAlign="start center"
                     class="acme-cs-mat-icon-pointer" (click)="deleteAssignment()">
                     <mat-icon matTooltip="{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_DELETE'|translate}}" fxLayoutAlign="start center">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw"
-                            fill="darkred">
+                        <svg class="acme-cs-mat-icon-default acme-cs-mat-icon-darker" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="darkred">
                             <path d="M0 0h24v24H0V0z" fill="none" />
                             <path
                                 d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />
