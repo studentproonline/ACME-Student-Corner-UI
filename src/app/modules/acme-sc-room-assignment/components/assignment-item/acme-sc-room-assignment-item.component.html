@@ -1,10 +1,10 @@
 <div class="acme-sc-assignment-container">
-    <div fxLayout="column" class="acme-sc-room-assignment-title-container" fxLayoutGap="0.4vw">
-        <div fxFlex="50%" fxFill>
+    <div fxLayout="column" class="acme-sc-room-assignment-title-container" fxLayoutGap="vh">
+        <div fxFlex="3vh" fxFill>
             <div fxLayout="row" fxLayoutGap="1vw" fxFill>
                 <!--assignment icon-->
                 <div fxFlex="2vw" class="acme-sc-room-assignment-row" fxFill fxLayoutAlign="center center">
-                    <mat-icon>
+                    <mat-icon fxLayoutAlign="center center">
                         <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
@@ -34,8 +34,8 @@
                 </div>
             </div>
         </div>
-        <div fxFlex fxFill>
-            <div fxLayout="row" fxLayoutGap="0.4vw" fxFill fxLayoutAlign="start center">
+        <div fxFlex ="5vh" fxFill>
+            <div fxLayout="row" fxLayoutGap="0.4vw" fxFill fxLayoutAlign="start start">
                 <div fxFlex fxFill fxLayoutAlign="start center">
                     <span class="acme-sc-owner-label"><b>{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_CREATED_BY'|translate}}</b> {{assignment.ownerFirstName}}</span><span
                         class="acme-sc-owner-label" style="padding-left:0.4vw">{{assignment.ownerLastName}}</span>

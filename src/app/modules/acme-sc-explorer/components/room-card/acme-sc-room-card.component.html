@@ -38,10 +38,10 @@
                         </svg>
  
                 </button>
-                <mat-menu #menu="matMenu">
+                <mat-menu #menu="matMenu"  fxLayoutAlign="start center">
                     <!--Link-->
-                    <button  mat-menu-item (click)="copyRoomLinkToClipboard()">
-                        <mat-icon>
+                    <button  mat-menu-item (click)="copyRoomLinkToClipboard()" fxLayoutAlign="start center">
+                        <mat-icon fxLayoutAlign="start center">
                             <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path
@@ -51,8 +51,8 @@
                         <span class="acme-sc-apps-menu-item">{{'EXPLORER_ROOM_ROOM_CARD_COPY_INVITATION_LINK'|translate}}</span>
                     </button>
                     <!--Open Room-->
-                    <button *ngIf="room.status === 'Active'" mat-menu-item (click)="updateRoom('Locked')">
-                        <mat-icon>
+                    <button *ngIf="room.status === 'Active'" mat-menu-item (click)="updateRoom('Locked')" fxLayoutAlign="start center">
+                        <mat-icon fxLayoutAlign="start center">
                             <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g fill="none">
                                     <path d="M0 0h24v24H0V0z" />
@@ -65,8 +65,8 @@
                         <span class="acme-sc-apps-menu-item">{{'EXPLORER_ROOM_ROOM_CARD_LOCK_ROOM'|translate}}</span>
                     </button>
                     <!--Locked Room-->
-                    <button *ngIf="room.status === 'Locked'" mat-menu-item (click)="updateRoom('Active')">
-                        <mat-icon>
+                    <button *ngIf="room.status === 'Locked'" mat-menu-item (click)="updateRoom('Active')" fxLayoutAlign="start center">
+                        <mat-icon fxLayoutAlign="start center">
                             <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path
@@ -76,8 +76,8 @@
                         <span class="acme-sc-apps-menu-item">{{'EXPLORER_ROOM_ROOM_CARD_UNLOCK_ROOM'|translate}}</span>
                     </button>
                     <!--Delete Room-->
-                    <button mat-menu-item (click)="deleteRoom('Deleted')">
-                        <mat-icon>
+                    <button mat-menu-item (click)="deleteRoom('Deleted')" fxLayoutAlign="start center">
+                        <mat-icon  fxLayoutAlign="start center">
                             <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path

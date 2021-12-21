@@ -82,6 +82,7 @@ export class AcmeSCRoomAssignmentListComponent {
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.data) {
+                this.roomAssignmentsTotalList.length=0;
                 this.getAssignments(0);
             }
         });

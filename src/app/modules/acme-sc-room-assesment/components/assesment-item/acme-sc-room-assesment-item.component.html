@@ -1,10 +1,10 @@
 <div class="acme-sc-assesment-container">
     <div fxLayout="column" class="acme-sc-room-assesment-title-container" fxLayoutGap="0.4vw">
-        <div fxFlex="50%" fxFill>
+        <div fxFlex="3vh" fxFill>
             <div fxLayout="row" fxLayoutGap="1vw" fxFill>
                 <!--assesment icon-->
-                <div fxFlex="2vh" class="acme-sc-room-assesment-row" fxFill fxLayoutAlign="center center">
-                    <mat-icon>
+                <div fxFlex="2vw" class="acme-sc-room-assesment-row" fxFill fxLayoutAlign="center center">
+                    <mat-icon fxLayoutAlign="center center">
                         <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
@@ -15,9 +15,9 @@
                 <!--assesment title-->
                 <div  fxFlex fxFill fxLayoutAlign="start center" style="cursor:pointer;">
                     <div fxLayout="row" fxLayoutGap="1vw" fxFill fxLayoutAlign="end center">
-                        <div fxFlex>
-                            <div fxLayout="column" fxLayoutGap="0.4vw">
-                                <div fxFlex="98%" (click)="openAssesment()">
+                        <div fxFlex fxLayoutAlign="start center">
+                            <div fxLayout="column" fxLayoutGap="0.4vw" fxLayoutAlign="start center">
+                                <div fxFlex="98%" (click)="openAssesment()" fxLayoutAlign="start center">
                                     <span class="acme-sc-content-link">{{assesment.title}} </span>
                                 </div>
                                 <div fxFlex="2%" *ngIf="isProgress">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div fxFlex fxFill>
+        <div fxFlex="5vh" fxFill>
             <div fxLayout="row" fxLayoutGap="0.4vw" fxFill fxLayoutAlign="start center">
                 <div fxFlex fxFill fxLayoutAlign="start center">
                     <span class="acme-sc-owner-label"><b>{{'ROOM_ASSESMENT_ITEM_CREATED_BY'|translate}}</b> {{assesment.ownerFirstName}}</span><span

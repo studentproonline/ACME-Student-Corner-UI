@@ -146,10 +146,13 @@
             </div>
         </div>
     </div>
+    <div fxFlex="0.2vh" *ngIf="isSuccesfull && !isProgress && roomsList.length > 0" style="background-color: lightgray;">
+
+    </div>
     <!--list rooms non empty-->
     <div fxFlex *ngIf="roomsList.length> 0 && isSuccesfull && !isProgress">
         <ng-scrollbar thumbClass="white-scrollbars">
-            <div fxLayout="row wrap" fxFlexFill fxLayoutGap="2vw">
+            <div fxLayout="row wrap" fxFlexFill fxLayoutGap="1.4vw">
                 <acme-sc-room-card *ngFor="let room of filteredRoomsList" [roomType]="roomType" [room]="room"
                     (roomDeleted)="roomDeleted()" (favRoomDeleted)="favRoomDeleted()"
                     (sharedRoomDeleted)="sharedRoomDeleted()" class="acme-sc-room-card">

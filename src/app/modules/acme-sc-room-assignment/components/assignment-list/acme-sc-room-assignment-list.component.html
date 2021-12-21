@@ -92,7 +92,7 @@
             <div *ngIf="roomAssignmentsTotalList.length > 0" fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
                 <div fxLayout="column" fxFlexFill>
                     <ng-scrollbar thumbClass="white-scrollbars">
-                        <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vh">
+                        <div fxLayout="column" fxFlexFill fxLayoutGap="1vh">
                             <acme-sc-room-assignment-item *ngFor="let assignment of filteredroomAssignmentsList"
                                 [assignment]="assignment" [roomOwner]="room.email" [roomType]="roomType"
                                 [roomName]="room.title" [roomStatus]="room.status"
