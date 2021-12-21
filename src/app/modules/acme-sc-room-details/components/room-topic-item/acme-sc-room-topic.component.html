@@ -65,9 +65,8 @@
                                 <button mat-icon-button [matMenuTriggerFor]="menu" fxLayoutAlign="center center"
                                     style="width:3vw;height:6vh">
                                     <!--Active discussion-->
-                                    <mat-icon fxLayoutAlign="center center" style="width:3vh;height:3vw">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
-                                            width="100%" fill="#000000">
+                                    <mat-icon fxLayoutAlign="center center">
+                                        <svg class="acme-cs-navigation-item-icon-lightgray" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path
                                                 d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
@@ -77,9 +76,8 @@
                                 <mat-menu #menu="matMenu">
                                     <!--stop discussion-->
                                     <button *ngIf="!topicClosed" mat-menu-item (click)="updateTopic('Closed')">
-                                        <mat-icon style="opacity:0.7;" style="opacity:0.7;height:3vh;width:3vw">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
-                                                width="100%" fill="darkorange">
+                                        <mat-icon>
+                                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg">
                                                 <g fill="none">
                                                     <path d="M0 0h24v24H0V0z" />
                                                     <path d="M0 0h24v24H0V0z" opacity=".87" />
@@ -93,9 +91,8 @@
                                     </button>
                                     <!--start discussion-->
                                     <button *ngIf="topicClosed" mat-menu-item (click)="updateTopic('Started')">
-                                        <mat-icon style="opacity:0.7;" style="opacity:0.7;height:3vh;width:3vw">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
-                                                width="100%" fill="#000000">
+                                        <mat-icon>
+                                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                                 <path
                                                     d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
