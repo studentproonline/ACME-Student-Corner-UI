@@ -1,101 +1,87 @@
-<div fxFlexFill fxLayout="column" class="acme-cs-display-box">
-    <div fxFlex="48px" fxLayoutAlign="center center" class="acme-cs-heading">
-        <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
-            <div fxFlex=54px>
-                <mat-icon>
-                    <svg width="48" height="48" viewBox="0 0 2941 3738" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1598.03 96.9975C1551.84 -29.904 1373.01 -31.6868 1324.3 94.2688L807.442 1430.93L628.601 1886.68L10.447 3525.01C-25.1878 3619.45 43.3475 3720.73 144.27 3722.77L829.463 3736.62C870.832 3737.45 910.618 3720.72 938.952 3690.56L1356.89 3245.78C1415.13 3183.8 1513.79 3184.43 1571.23 3247.16L1977.2 3690.47C2004.89 3720.71 2044.01 3737.93 2085.01 3737.93H2794.67C2898.34 3737.93 2969.07 3633 2930.18 3536.9L2262.34 1886.68L2083.49 1430.93L1598.03 96.9975ZM1747.56 2800.69C1813.06 2800.69 1870.57 2844.26 1888.3 2907.32L2060.51 3520.12C2078.24 3583.18 2135.75 3626.76 2201.25 3626.76H2608.53C2711.57 3626.76 2782.27 3523.02 2744.59 3427.12L1743.29 878.354C1721.13 821.922 1666.42 785.032 1605.8 785.627L1311.98 788.507C1252.43 789.091 1199.19 825.739 1177.38 881.155L175.507 3427.04C137.762 3522.95 208.466 3626.76 311.54 3626.76H716.483C782.107 3626.76 839.689 3583.03 857.306 3519.81L1027.9 2907.63C1045.52 2844.42 1103.1 2800.69 1168.73 2800.69H1747.56Z"
-                            fill="grey" />
-                        <path
-                            d="M1853.66 1865.5C1570.47 1917.34 1457.31 2001.67 1457.31 2001.67C1457.31 2001.67 1273.64 1895.33 1060.96 1865.5C1060.96 1865.5 1249.96 1779.33 1365.57 1779.33H1549.06C1664.66 1779.33 1853.66 1865.5 1853.66 1865.5Z"
-                            fill="deeppink" />
-                        <path
-                            d="M2138.58 1937.06V2566.5C2138.58 2591.67 2118.76 2611.46 2093.53 2611.46C1853.88 2611.46 1663.47 2667.5 1485.08 2787.1H1482.37C1482.37 2788 1481.47 2788.9 1481.47 2788.9C1474.26 2792.49 1467.06 2794.29 1459.85 2794.29C1451.74 2794.29 1443.63 2791.59 1437.33 2787.1H1434.62C1256.23 2667.5 1065.82 2611.46 826.168 2611.46C800.937 2611.46 781.119 2591.67 781.119 2566.5V1937.06C781.119 1911.88 800.937 1892.1 826.168 1892.1C1073.93 1892.1 1272.45 1946.05 1459.85 2063.85C1647.25 1946.05 1845.77 1892.1 2093.53 1892.1C2118.76 1892.1 2138.58 1911.88 2138.58 1937.06Z"
-                            fill="deeppink" />
-                        <path
-                            d="M1456.47 1227.99C1275.23 1227.99 1127.79 1373.44 1127.79 1548.52C1127.79 1723.6 1275.23 1866.02 1456.47 1866.02C1637.72 1866.02 1785.15 1723.6 1785.15 1548.52C1785.15 1373.44 1637.72 1227.99 1456.47 1227.99Z"
-                            fill="deeppink" />
-                    </svg>
-                </mat-icon>
+<div fxFlexFill fxLayout="column" class="acme-cs-display-box" fxLayoutGap="1vh">
+    <div fxFlex="16vh" fxFill>
+        <div fxFlexFill fxLayout="row" fxFill fxLayoutGap="0.4vw">
+            <div fxFlex="20vw" fxFill class="acme-sc-custom-company-header">
+                <acme-sc-company-header></acme-sc-company-header>
             </div>
-            <div fxFlex=32% fxFlex.md="40%"><span>Welcome to ACME - Students Corner</span></div>
+            <div class="acme-cs-heading acme-sc-custom-title-heading" fxFlex fxFill fxLayoutAlign="center center">
+                <span style="padding-right: 20vw;">Let's Share and Learn</span>
+            </div>
         </div>
-
     </div>
-    <div fxFlex="48px" fxLayoutAlign="center center">
-        <span>Let's Share and Learn</span>
-    </div>
-    <div fxFlex fxLayoutAlign="center center">
-        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-            <div *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
-                <mat-icon *ngIf="isSuccessFull" class="acme-cs-mat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-                        <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z" />
-                        <path
-                            d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z" />
-                    </svg>
-                </mat-icon>
-                <mat-icon *ngIf="!isSuccessFull" class="acme-cs-mat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-                        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
-                    </svg>
-                </mat-icon>
+    <div fxFlex fxFill fxLayoutAlign="center center">
+        <div fxFlexFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1vh">
+            <!--progress-->
+            <div *ngIf="isProgress" fxFlex="10vh" fxFill fxLayoutAlign="center center">
+                <mat-spinner></mat-spinner>
             </div>
-            <div *ngIf="!isProgress" fxFlex fxLayoutAlign="center center">
-                <span>{{activationResponseMessage}}</span>
+            <div *ngIf="isProgress" fxFlex="10vh" fxFill fxLayoutAlign="center center">
+                <span class="acme-sc-activation-message-label">Activating user....</span>
             </div>
-
-            <!--Account not approved-->
-            <div *ngIf="!isProgress && notApproved" fxFlex fxLayoutAlign="center center">
+            <!--server error-->
+            <div *ngIf="!isProgress && !isSuccessFull" fxFlex fxLayoutAlign="center center">
+                <acme-sc-server-error [errorMessage]="activationResponseMessage"></acme-sc-server-error>
+            </div>
+            <!--success-->
+           <div *ngIf="!isProgress && isSuccessFull" fxFlex="10vh" fxLayoutAlign="center center">
+                <div fxFlex="10vh" fxFill fxLayoutAlign="center center">
+                    <div class="acme-sc-background-circle" fxLayoutAlign="center center">
+                        <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                            viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z" />
+                            <path
+                                d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!isProgress" fxFlex="5vh" fxFill fxLayoutAlign="center center"
+                class="acme-sc-label-default-message">
+                <span class="acme-sc-activation-message-label">{{activationResponseMessage}}</span>
+            </div>
+            <!--not approved-->
+            <div *ngIf="!isProgress && notApproved" fxFlex="10vh" fxLayoutAlign="center center">
                 <div fxFlexFill fxLayout="column">
                     <!--Email information-->
-                    <div fxFlex="32px" fxLayoutAlign="center center">
-                        <div fxFlexFill fxLayout="row" fxLayoutGap="16px">
-                            <div fxFlex="32px">
+                    <div fxFlex="5vh" fxLayoutAlign="center center">
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                            <div fxFlex="2vw">
                                 <mat-icon class="acme-cs-mat-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                        width="24px" fill="purple">
+                                    <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="gray">
                                         <path d="M0 0h24v24H0V0z" fill="none" />
                                         <path
                                             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
                                     </svg>
                                 </mat-icon>
                             </div>
-                            <div fxFlex fxLayoutGap="16px">
+                            <div fxFlex>
                                 <span>Email Information:</span><span>{{contactInformation.contactEmails}}</span>
                             </div>
                         </div>
                     </div>
-                    <!--Contact Numbers-->
-                    <div fxFlex="32px" fxLayoutAlign="center center">
-                        <div fxFlexFill fxLayout="row" fxLayoutGap="16px">
-                            <div fxFlex="32px">
+                      <!--contact information-->
+                      <div fxFlex="5vh" fxLayoutAlign="center center">
+                        <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
+                            <div fxFlex="2vw">
                                 <mat-icon class="acme-cs-mat-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                        width="24px" fill="purple">
+                                    <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="gray">
                                         <path d="M0 0h24v24H0V0z" fill="none" />
                                         <path
                                             d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z" />
                                     </svg>
                                 </mat-icon>
                             </div>
-                            <div fxFlex fxLayoutGap="16px">
+                            <div fxFlex>
                                 <span>Contact Numbers:</span><span>{{contactInformation.contactNumbers}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
-                <mat-spinner></mat-spinner>
-            </div>
-            <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
-                <span>Activating user....</span>
-            </div>
-            <div fxFlex fxLayoutAlign="center center">
+            
+            <div *ngIf="!isProgress" fxFlex="7vh" fxLayoutAlign="center center">
                 <button mat-raised-button color="accent" (click)="gotoLoginScreen()"
-                    class="acme-cs-login-button">Login</button>
+                    class=" acme-sc-button acme-cs-login-button">Login</button>
             </div>
         </div>
     </div>
