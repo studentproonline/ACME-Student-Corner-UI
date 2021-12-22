@@ -35,7 +35,8 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="!isProgress" fxFlex="5vh" fxFill fxLayoutAlign="center center"
+            <!--success message-->
+            <div *ngIf="!isProgress && isSuccessFull" fxFlex="5vh" fxFill fxLayoutAlign="center center"
                 class="acme-sc-label-default-message">
                 <span class="acme-sc-activation-message-label">{{activationResponseMessage}}</span>
             </div>
@@ -79,7 +80,7 @@
                 </div>
             </div>
             
-            <div *ngIf="!isProgress" fxFlex="7vh" fxLayoutAlign="center center">
+            <div *ngIf="!isProgress  && isSuccessFull" fxFlex="7vh" fxLayoutAlign="center center">
                 <button mat-raised-button color="accent" (click)="gotoLoginScreen()"
                     class=" acme-sc-button acme-cs-login-button">Login</button>
             </div>

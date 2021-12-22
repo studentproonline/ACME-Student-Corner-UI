@@ -1,7 +1,17 @@
+@import '../../../shared/css/commom.scss';
 .acme-cs-display-box {
-    padding:24px
+    padding:1.5vw
 }
 .acme-cs-login-button {
-    height:44px;
-    width:256px
+    height:7vh;
+    width:16vw
+}
+
+.acme-sc-custom-title-heading {
+    border-bottom-style: solid;
+    border-bottom-color: goldenrod;
+}
+
+.acme-sc-activation-message-label {
+    font-size: 1vw;
 }
