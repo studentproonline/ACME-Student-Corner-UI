@@ -42,42 +42,45 @@ export class AcmeSCLoginComponent {
             roleControl: ['Student']
 
         });
-        sessionStorage.setItem('language','en');
+        sessionStorage.setItem('language', 'en');
     }
 
     ngOnInit() {
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-            this.openDeviceOrientationDialog();
-          }else{
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            // if not landscape
+            if (window.innerHeight > window.innerWidth) {
+                this.openDeviceOrientationDialog();
+            }
+        } else {
             //not a mobile device
-          }
-    }
-
-    
-  openDeviceOrientationDialog(): void {
-    const dialogRef = this.dialog.open(AcmeSCDeviceOrientationComponent, {
-        width: '90vw',
-        height: '15vh',
-        disableClose: true,
-        data:{}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-    });
-}
-
-    changeLanguage(language) {
-        if(language === 'English') {
-            this.translateService.setDefaultLang('en');
-            sessionStorage.setItem('language','en');
-        } else if(language === 'Hindi'){
-            this.translateService.setDefaultLang('hn');
-            sessionStorage.setItem('language','hn');
-        } else{
-          this.translateService.setDefaultLang('kn');
-          sessionStorage.setItem('language','kn');
         }
     }
-    
+
+
+    openDeviceOrientationDialog(): void {
+        const dialogRef = this.dialog.open(AcmeSCDeviceOrientationComponent, {
+            width: '90vw',
+            height: '15vh',
+            disableClose: true,
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+        });
+    }
+
+    changeLanguage(language) {
+        if (language === 'English') {
+            this.translateService.setDefaultLang('en');
+            sessionStorage.setItem('language', 'en');
+        } else if (language === 'Hindi') {
+            this.translateService.setDefaultLang('hn');
+            sessionStorage.setItem('language', 'hn');
+        } else {
+            this.translateService.setDefaultLang('kn');
+            sessionStorage.setItem('language', 'kn');
+        }
+    }
+
 
     openCreateAccountDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCCreateAccountComponent, {
@@ -136,9 +139,9 @@ export class AcmeSCLoginComponent {
                     case 'USER_LOGGEDIN': {
                         const loginEntity: ILoginEntity = response.data;
                         this.acmeSCAuthorizationService.setSession(loginEntity);
-                        loginEntity.id=response.data.id;
+                        loginEntity.id = response.data.id;
                         this.acmeScCookiesService.setCookies(loginEntity);
-                        this.router.navigateByUrl('/home?roomType='+this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'));
+                        this.router.navigateByUrl('/home?roomType=' + this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'));
                         return;
                     }
                     default: {
@@ -162,7 +165,7 @@ export class AcmeSCLoginComponent {
                             break;
                         }
                     }
-                    if(err.status === 0) {
+                    if (err.status === 0) {
                         this.snackBar.open(err.message, '', {
                             duration: 3000
                         });
