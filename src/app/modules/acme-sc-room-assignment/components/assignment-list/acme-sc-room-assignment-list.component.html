@@ -78,7 +78,7 @@
                     <span>{{'ROOM_ASSIGNMENT_LIST_NO_ASSIGNMENT'|translate}}</span>
                 </div>
                 <!--upload button-->
-                <div *ngIf="room.status ==='Active'" fxFlex="7vh" fxFill fxLayoutAlign="center start">
+                <div *ngIf="room.status ==='Active' && isContentOrRoomOwner" fxFlex="7vh" fxFill fxLayoutAlign="center start">
                     <div fxLayout="row" fxFlexFill fxLayoutAlign="center start">
                         <div fxFlex="13vw" fxFill fxLayoutAlign="center start">
                             <button fxFill mat-raised-button color="accent" (click)="createNewAssignment()"
