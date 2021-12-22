@@ -145,8 +145,9 @@
                                     <button class="acme-sc-button" mat-raised-button color="accent" (click)="login()" fxFill>
                                         {{'LOGIN_BUTTON_LABEL'|translate}}
                                     </button>
-                                    <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
+                                  
                                 </div>
+                                <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
                                 <div fxFlex="6vh" fxLayoutAlign="center center"
                                     (click)="openAccountResetPasswordDialog()">
                                     <a class="acme-sc-forget-password-label" id="resetPasswordButton" mat-button
