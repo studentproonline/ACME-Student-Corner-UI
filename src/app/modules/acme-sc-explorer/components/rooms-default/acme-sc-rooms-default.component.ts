@@ -20,8 +20,8 @@ export class AcmeSCRoomsDefaultComponent {
     
     createRoom() {
         const dialogRef = this.dialog.open(AcmeSCCreateRoomComponent, {
-            width: '500px',
-            height: '300px',
+            width: '40vw',
+            height: '45vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}

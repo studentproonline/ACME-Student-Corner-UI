@@ -4,23 +4,3 @@
 .acme-sc-content-upload-close-button {
     background-color: darkorange !important;
 }
-.acme-sc-mat-label {
-    opacity: 0.5;
-    font-size:small
-}
-
-.custom-file-upload {
-    border: 0.1vh solid #ccc;
-    display: inline-block;
-    padding: 0.7vw;
-    cursor: pointer;
-    border-radius: 1vh;
-    background-color: $acme-sc-company-label-color;
-    opacity: 0.7;
-    color: white;
-    font-size: 0.7vw
-}
-
-input[type="file"] {
-    display: none;
-}

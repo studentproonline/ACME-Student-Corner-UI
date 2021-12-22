@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 .acme-cs-mat-card {
-    border-radius: 16px !important;
+    border-radius: 1vw !important;
     padding: 0 !important;
 }
 
@@ -9,7 +9,7 @@
     padding: 3vh;
  }
 .acme-sc-custom-container{
-    border-radius: 20px !important;
+    border-radius: 1.3vw !important;
     padding: 3vh !important;
  }
 .acme-cs-mat-icon {
@@ -225,10 +225,10 @@
 }
 
 .acme-sc-dialog-box {
-    padding:16px !important
+    padding:1vw !important
 }
 .acme-sc-custom-container .mat-dialog-container {
-    border-radius: 20px !important;
+    border-radius: 1.3vw !important;
  }
 
 .acme-sc-apps-menu-item {
