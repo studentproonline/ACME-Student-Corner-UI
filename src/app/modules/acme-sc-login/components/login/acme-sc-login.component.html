@@ -2,182 +2,175 @@
     <div fxFlex="34vw" fxFlex.md="50vw" fxFlex.sm="45vw" fxLayoutAlign="end">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center">
 
-            <div fxFlex="75vh" fxFlex.md="70vh" fxFlex.sm="75vh" fxFlex.xs="95vh" fxFill>
-                <div fxFlexFill fxLayout="row" fxLayoutAlign="center" style="padding:3.125vw">
-                    <div fxFlex fxFill>
-                        <mat-card fxFill class="acme-cs-mat-card">
-                            <div fxFlexFill fxLayout="column" fxLayoutGap="1vh" class="acme-sc-container">
-                                <div fxFlex="7vh">
-                                    <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
-                                        <div fxFlex="15vw" class="acme-cs-heading">
-                                            {{'LOGIN_HEADER' | translate}}
-                                        </div>
-                                        <div fxFlex="2vw" style="padding-right: 3vw;">
-                                            <button mat-icon-button [matMenuTriggerFor]="menu"
-                                                aria-label="Example icon-button with a menu" fxLayoutAlign="center center">
-                                                <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="end center"
-                                                    style="width:3vh;height:3vw">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="100%"
-                                                        viewBox="0 0 24 24" width="100%" fill="#000000">
-                                                        <path d="M0 0h24v24H0z" fill="none" />
-                                                        <path
-                                                            d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" />
-                                                    </svg>
-                                                </mat-icon>
-                                            </button>
-                                            <mat-menu #menu="matMenu">
-                                                <button mat-menu-item (click)="changeLanguage('English')">
-                                                    <mat-icon style="opacity:0.7;"
-                                                        style="opacity:0.7;height:3vh;width:3vh">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" height="100%"
-                                                            viewBox="0 0 24 24" width="100%" fill="#000000">
-                                                            <path d="M0 0h24v24H0z" fill="none" />
-                                                            <path
-                                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
-                                                        </svg>
-                                                    </mat-icon>
-                                                    <span class="acme-sc-apps-menu-item"
-                                                        style="font-size: 1vw;">English</span>
-                                                </button>
-                                                <button mat-menu-item (click)="changeLanguage('Hindi')">
-                                                    <mat-icon style="opacity:0.7;"
-                                                        style="opacity:0.7;height:3vh;width:3vh">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" height="100%"
-                                                            viewBox="0 0 24 24" width="100%" fill="#000000">
-                                                            <path d="M0 0h24v24H0z" fill="none" />
-                                                            <path
-                                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
-                                                        </svg>
-                                                    </mat-icon>
-                                                    <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">
-                                                        हिन्दी</span>
-                                                </button>
-                                                <button mat-menu-item (click)="changeLanguage('Kannada')">
-                                                    <mat-icon style="opacity:0.7;"
-                                                        style="opacity:0.7;height:3vh;width:3vh">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" height="100%"
-                                                            viewBox="0 0 24 24" width="100%" fill="#000000">
-                                                            <path d="M0 0h24v24H0z" fill="none" />
-                                                            <path
-                                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
-                                                        </svg>
-                                                    </mat-icon>
-                                                    <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">
-                                                        ಕನ್ನಡ</span>
-                                                </button>
-                                            </mat-menu>
-                                        </div>
-                                    </div>
+            <div fxFlex="60vh"fxFill>
+                <mat-card fxFill class="acme-cs-mat-card">
+                    <div fxFlexFill fxLayout="column" fxLayoutGap="1vh" class="acme-sc-container">
+                        <div fxFlex="7vh">
+                            <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+                                <div fxFlex="15vw" class="acme-cs-heading">
+                                    {{'LOGIN_HEADER' | translate}}
                                 </div>
-                                <div fxFlex="20vh" fxFlex.xs="25vh">
-                                    <form [formGroup]="loginFormGroup" fxFill>
-                                        <div fxFlexFill fxLayout="column">
-                                            <div fxFlex="10vh">
-                                                <!--Email address-->
-                                                <mat-form-field class="form-field acme-form-input-field" fxFill>
-                                                    <div fxFlexFill fxLayout="row" class="acme-sc-custom-input-field-height" fxLayoutGap="0.4vw" fxLayoutAlign="start start">
-                                                        <div fxFlex="2vw" class="acme-sc-custom-input-field-height" fxLayoutAlign="start start">
-                                                            <mat-label class="acme-form-input-field"
-                                                                fxLayoutAlign="start start">
-                                                                <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="start start">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="2vw"
-                                                                        height="3vh" viewBox="0 0 24 24">
-                                                                        <path
-                                                                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                                                        <path d="M0 0h24v24H0z" fill="none" />
-                                                                    </svg>
-                                                                </mat-icon>
-                                                            </mat-label>
-                                                        </div>
-                                                        <div fxFlex  class="acme-sc-custom-input-field-height">
-                                                            <input fxFill matInput
-                                                                placeholder="{{'LOGIN_ENTER_EMAIL_ADDRESS_LABEL' | translate}}"
-                                                                formControlName="emailControl">
-                                                        </div>
-                                                    </div>
-
-                                                    <mat-error class="acme-form-input-field"
-                                                        *ngIf="loginFormGroup.controls['emailControl'].errors?.email">
-                                                        {{'LOGIN_VALID_EMAIL_ADDRESS_LABEL' | translate}}
-                                                    </mat-error>
-                                                    <mat-error class="acme-form-input-field"
-                                                        *ngIf="loginFormGroup.controls['emailControl'].errors?.required">
-                                                        {{'LOGIN_EMAIL_REQUIRED_LABEL'|translate}}
-                                                    </mat-error>
-                                                </mat-form-field>
-                                            </div>
-                                            <div fxFlex="10vh">
-                                                <!--password-->
-                                                <mat-form-field class="form-field acme-form-input-field" fxFill>
-                                                    <div fxFlexFill fxLayout="row" class="acme-sc-custom-input-field-height" fxLayoutAlign="start start">
-                                                        <div fxFlex="2vw" class="acme-sc-custom-input-field-height" fxLayoutAlign="start start">
-                                                            <mat-label class="acme-form-input-field"
-                                                                fxLayoutAlign="start center" fxLayoutAlign="start start">
-                                                                <mat-icon class="acme-cs-mat-icon">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="2vw"
-                                                                        height="3vh" viewBox="0 0 24 24">
-                                                                        <path d="M0 0h24v24H0z" fill="none" />
-                                                                        <path
-                                                                            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-                                                                    </svg>
-                                                                </mat-icon>
-                                                            </mat-label>
-                                                        </div>
-                                                        <div fxFlex  class="acme-sc-custom-input-field-height">
-                                                            <input fxFill class="acme-form-input-field" matInput
-                                                                placeholder="{{'LOGIN_ENTER_PASSWORD_LABEL'|translate}}"
-                                                                [type]="hide ? 'password' : 'text'"
-                                                                formControlName="passwordControl" autocomplete="off">
-                                                        </div>
-
-                                                    </div>
-                                                    <mat-error class="acme-form-input-field"
-                                                        *ngIf="loginFormGroup.controls['passwordControl'].errors?.required ||
-                                                                  loginFormGroup.controls['passwordControl'].errors?.whiteSpace">
-                                                        {{'LOGIN_ENTER_PASSWORD_REQUIRED_LABEL'|translate}}
-                                                    </mat-error>
-                                                </mat-form-field>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div fxFlex="7vh" fxLayoutAlign="start center">
-                                    <button class="acme-sc-button" mat-raised-button color="accent" (click)="login()" fxFill>
-                                        {{'LOGIN_BUTTON_LABEL'|translate}}
+                                <div fxFlex="2vw" style="padding-right: 3vw;">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu" fxLayoutAlign="center center">
+                                        <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="end center"
+                                            style="width:3vh;height:3vw">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
+                                                width="100%" fill="#000000">
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" />
+                                            </svg>
+                                        </mat-icon>
                                     </button>
-                                  
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item (click)="changeLanguage('English')">
+                                            <mat-icon style="opacity:0.7;" style="opacity:0.7;height:3vh;width:3vh">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="100%"
+                                                    viewBox="0 0 24 24" width="100%" fill="#000000">
+                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                    <path
+                                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                                                </svg>
+                                            </mat-icon>
+                                            <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">English</span>
+                                        </button>
+                                        <button mat-menu-item (click)="changeLanguage('Hindi')">
+                                            <mat-icon style="opacity:0.7;" style="opacity:0.7;height:3vh;width:3vh">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="100%"
+                                                    viewBox="0 0 24 24" width="100%" fill="#000000">
+                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                    <path
+                                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                                                </svg>
+                                            </mat-icon>
+                                            <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">
+                                                हिन्दी</span>
+                                        </button>
+                                        <button mat-menu-item (click)="changeLanguage('Kannada')">
+                                            <mat-icon style="opacity:0.7;" style="opacity:0.7;height:3vh;width:3vh">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="100%"
+                                                    viewBox="0 0 24 24" width="100%" fill="#000000">
+                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                    <path
+                                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                                                </svg>
+                                            </mat-icon>
+                                            <span class="acme-sc-apps-menu-item" style="font-size: 1vw;">
+                                                ಕನ್ನಡ</span>
+                                        </button>
+                                    </mat-menu>
                                 </div>
-                                <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
-                                <div fxFlex="6vh" fxLayoutAlign="center center"
-                                    (click)="openAccountResetPasswordDialog()">
-                                    <a class="acme-sc-forget-password-label" id="resetPasswordButton" mat-button
-                                        routerLink="." color="primary">{{'LOGIN_FORGOT_PASSWORD_LABEL'|translate}}
-                                    </a>
-                                </div>
-                                <div fxFlex="2vh">
-                                    <div fxLayout="row">
-                                        <div id="divider" fxFlex class="acme-cs-divider" fxLayoutAlign="start center">
-                                        </div>
-                                        <div class="acme-sc-or-label" fxFlex fxLayoutAlign="center center">
-                                            {{'LOGIN_OR_LABEL'|translate}}
-                                        </div>
-                                        <div fxFlex class="acme-cs-divider" fxLayoutAlign="start center"></div>
-                                    </div>
-                                </div>
-                                <div fxFlex fxFill>
-                                    <div fxFlexFill fxLayout="column" fxLayoutAlign="end center">
-                                        <div fxFlex="7vh" fxFill fxLayoutAlign="end center">
-                                            <button fxFill mat-raised-button color="warn" fxFill
-                                                (click)="openCreateAccountDialog()"
-                                                class="acme-sc-button">{{'LOGIN_CREATE_NEW_ACCOUNT_BUTTON_LABEL'|translate}}</button>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-                        </mat-card>
+                        </div>
+                        <div fxFlex="20vh">
+                            <form [formGroup]="loginFormGroup" fxFill>
+                                <div fxFlexFill fxLayout="column">
+                                    <div fxFlex="10vh">
+                                        <!--Email address-->
+                                        <mat-form-field class="form-field acme-form-input-field" fxFill>
+                                            <div fxFlexFill fxLayout="row" class="acme-sc-custom-input-field-height"
+                                                fxLayoutGap="0.4vw" fxLayoutAlign="start start">
+                                                <div fxFlex="2vw" class="acme-sc-custom-input-field-height"
+                                                    fxLayoutAlign="start start">
+                                                    <mat-label class="acme-form-input-field"
+                                                        fxLayoutAlign="start start">
+                                                        <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="start start">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="2vw"
+                                                                height="3vh" viewBox="0 0 24 24">
+                                                                <path
+                                                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                            </svg>
+                                                        </mat-icon>
+                                                    </mat-label>
+                                                </div>
+                                                <div fxFlex class="acme-sc-custom-input-field-height">
+                                                    <input fxFill matInput
+                                                        placeholder="{{'LOGIN_ENTER_EMAIL_ADDRESS_LABEL' | translate}}"
+                                                        formControlName="emailControl">
+                                                </div>
+                                            </div>
+
+                                            <mat-error class="acme-form-input-field"
+                                                *ngIf="loginFormGroup.controls['emailControl'].errors?.email">
+                                                {{'LOGIN_VALID_EMAIL_ADDRESS_LABEL' | translate}}
+                                            </mat-error>
+                                            <mat-error class="acme-form-input-field"
+                                                *ngIf="loginFormGroup.controls['emailControl'].errors?.required">
+                                                {{'LOGIN_EMAIL_REQUIRED_LABEL'|translate}}
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="10vh">
+                                        <!--password-->
+                                        <mat-form-field class="form-field acme-form-input-field" fxFill>
+                                            <div fxFlexFill fxLayout="row" class="acme-sc-custom-input-field-height"
+                                                fxLayoutAlign="start start">
+                                                <div fxFlex="2vw" class="acme-sc-custom-input-field-height"
+                                                    fxLayoutAlign="start start">
+                                                    <mat-label class="acme-form-input-field"
+                                                        fxLayoutAlign="start center" fxLayoutAlign="start start">
+                                                        <mat-icon class="acme-cs-mat-icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="2vw"
+                                                                height="3vh" viewBox="0 0 24 24">
+                                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                                <path
+                                                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                                                            </svg>
+                                                        </mat-icon>
+                                                    </mat-label>
+                                                </div>
+                                                <div fxFlex class="acme-sc-custom-input-field-height">
+                                                    <input fxFill class="acme-form-input-field" matInput
+                                                        placeholder="{{'LOGIN_ENTER_PASSWORD_LABEL'|translate}}"
+                                                        [type]="hide ? 'password' : 'text'"
+                                                        formControlName="passwordControl" autocomplete="off">
+                                                </div>
+
+                                            </div>
+                                            <mat-error class="acme-form-input-field"
+                                                *ngIf="loginFormGroup.controls['passwordControl'].errors?.required ||
+                                                          loginFormGroup.controls['passwordControl'].errors?.whiteSpace">
+                                                {{'LOGIN_ENTER_PASSWORD_REQUIRED_LABEL'|translate}}
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div fxFlex="7vh" fxLayoutAlign="center center">
+                            <button class="acme-sc-button" mat-raised-button color="accent" (click)="login()" fxFill>
+                                {{'LOGIN_BUTTON_LABEL'|translate}}
+                            </button>
+
+                        </div>
+                        <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
+                        <div style="cursor: pointer;" fxFlex="2vh" fxLayoutAlign="center center" (click)="openAccountResetPasswordDialog()">
+                          <span class="acme-sc-owner-label"><u>{{'LOGIN_FORGOT_PASSWORD_LABEL'|translate}}</u></span>
+                        </div>
+                        <div fxFlex="2vh">
+                            <div fxLayout="row">
+                                <div id="divider" fxFlex class="acme-cs-divider" fxLayoutAlign="start center">
+                                </div>
+                                <div class="acme-sc-or-label" fxFlex fxLayoutAlign="center center">
+                                    {{'LOGIN_OR_LABEL'|translate}}
+                                </div>
+                                <div fxFlex class="acme-cs-divider" fxLayoutAlign="start center"></div>
+                            </div>
+                        </div>
+                        <div fxFlex fxFill>
+                            <div fxFlexFill fxLayout="column" fxLayoutAlign="end center">
+                                <div fxFlex="7vh" fxFill fxLayoutAlign="end center">
+                                    <button fxFill mat-raised-button color="warn" fxFill
+                                        (click)="openCreateAccountDialog()"
+                                        class="acme-sc-button">{{'LOGIN_CREATE_NEW_ACCOUNT_BUTTON_LABEL'|translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                </mat-card>
             </div>
         </div>
     </div>
