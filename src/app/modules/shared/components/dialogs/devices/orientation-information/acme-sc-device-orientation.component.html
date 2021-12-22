@@ -1,0 +1,16 @@
+<div class="acme-sc-device-orientation-container" fxFlexFill fxLayout="row" fxLayoutGap="0.4vw" fxLayoutAlign="center center">
+    <div class="acme-sc-custom-background-circle" fxFlex="10%" fxLayoutAlign="center center">
+        <mat-icon style="height:100%;width:100%" fxLayoutAlign="center center">
+            <svg class="acme-cs-mat-icon-default-medium" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="gray">
+                <path d="M0 0h24v24H0z" fill="none"/><path d="M1.01 7L1 17c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H3c-1.1 0-1.99.9-1.99 2zM19 7v10H5V7h14z"/>
+            </svg>
+        </mat-icon>
+    </div>
+    <div fxFlex="50%" fxFill class="acme-sc-device-orientation-message" fxLayoutAlign="center center">
+        <span>Please use your device in landscape orientation</span>
+    </div>
+    <div fxFlex="30%" fxFill>
+        <button class="acme-sc-ok-button" fxFill (click)="close()" mat-raised-button color="accent">Login</button>
+    </div>
+   
+</div>

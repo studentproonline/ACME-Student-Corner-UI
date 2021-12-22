@@ -18,6 +18,7 @@ import { AcmeSCRoomSharedUsersListComponent } from './components/room-users-list
 import { AcmeSCRoomSharedUserItemComponent } from './components/room-shared-user-item/acme-sc-room-shared-user-item';
 import { AcmeSCServerErrorComponent } from './components/server-error/acme-sc-server-error.component';
 import { AcmeSCInformationComponent } from './components/dialogs/information-dialog/acme-sc-information.component';
+import { AcmeSCDeviceOrientationComponent } from './components/dialogs/devices/orientation-information/acme-sc-device-orientation.component';
 
 //dialogs
 import { AcmeSCUserConfirmationComponent } from './components/dialogs/user-confirmation/acme-sc-user-confirmation.component';
@@ -60,7 +61,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         AcmeSCContactinformationComponent,
         AcmeSCUserPopupComponent,
         AcmeSCServerErrorComponent,
-        AcmeSCInformationComponent
+        AcmeSCInformationComponent,
+        AcmeSCDeviceOrientationComponent
     ],
     exports: [
         NgScrollbarModule,
@@ -82,6 +84,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         AcmeSCUserPopupComponent,
         AcmeSCServerErrorComponent,
         AcmeSCInformationComponent,
+        AcmeSCDeviceOrientationComponent,
         TranslateModule
     ],
     providers: [ AcmeSCHttpService ]

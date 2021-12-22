@@ -16,6 +16,7 @@ import { AcmeScCookiesService } from '../../../../core/services/acme-sc-cookies.
 //dialogs
 import { AcmeSCActivateAccountComponent } from '../../dialogs/acme-sc-activate-account/acme-sc-activate-account.component';
 import { AcmeSCAccountPasswordResetComponent } from '../../dialogs/acme-sc-account-password-reset/acme-sc-account-password-reset';
+import { AcmeSCDeviceOrientationComponent } from '../../../shared/components/dialogs/devices/orientation-information/acme-sc-device-orientation.component';
 
 //translation
 import { TranslateService } from '@ngx-translate/core';
@@ -43,6 +44,26 @@ export class AcmeSCLoginComponent {
         });
         sessionStorage.setItem('language','en');
     }
+
+    ngOnInit() {
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            this.openDeviceOrientationDialog();
+          }else{
+            //not a mobile device
+          }
+    }
+
+    
+  openDeviceOrientationDialog(): void {
+    const dialogRef = this.dialog.open(AcmeSCDeviceOrientationComponent, {
+        width: '90vw',
+        height: '15vh',
+        disableClose: true,
+        data:{}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+}
 
     changeLanguage(language) {
         if(language === 'English') {
