@@ -73,7 +73,7 @@ export class AcmeSCLoginComponent {
     openAccountResetPasswordDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCAccountPasswordResetComponent, {
             width: '45vw',
-            height: '60vh',
+            height: '64vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}

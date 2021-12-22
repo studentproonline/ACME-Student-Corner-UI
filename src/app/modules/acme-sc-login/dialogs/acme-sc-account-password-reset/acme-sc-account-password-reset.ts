@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 // validator
 import { WhiteSpaceValidator } from '../../../../core/validators/acme-sc-whitespace-validator';
+import { StrongPasswordValidator } from '../../../../core/validators/scme-sc-strong-password-validator';
 
 // models
 import { IResetPasswordModel } from '../../Models/acme-sc-account-password-reset.model';
@@ -31,7 +32,7 @@ export class AcmeSCAccountPasswordResetComponent {
         this.accountPasswordResetFormGroup = this.formBuilder.group({
             otpControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             emailControl: ['', [Validators.required, Validators.email]],
-            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
+            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace, StrongPasswordValidator.strongPassword,
                 ( control => this.confirmPassword ( control, this.accountPasswordResetFormGroup, 'confirmPasswordControl' ) )]],
             confirmPasswordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
                 ( control => this.confirmPassword ( control, this.accountPasswordResetFormGroup, 'passwordControl' ) ) ] ]
