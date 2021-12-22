@@ -12,6 +12,7 @@ import { AcmeSCActivateAccountComponent } from '../acme-sc-activate-account/acme
 
 // validator
 import { WhiteSpaceValidator } from '../../../../core/validators/acme-sc-whitespace-validator';
+import { StrongPasswordValidator } from '../../../../core/validators/scme-sc-strong-password-validator';
 
 //translation
 import { TranslateService } from '@ngx-translate/core';
@@ -37,7 +38,7 @@ export class AcmeSCCreateAccountComponent {
             firstNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             lastNameControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace]],
             emailControl: ['', [Validators.required, Validators.email]],
-            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
+            passwordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace, StrongPasswordValidator.strongPassword,
                 ( control => this.confirmPassword ( control, this.createAccountFormGroup, 'confirmPasswordControl' ) )]],
             confirmPasswordControl: ['', [Validators.required, WhiteSpaceValidator.whiteSpace,
                 ( control => this.confirmPassword ( control, this.createAccountFormGroup, 'passwordControl' ) ) ] ]

@@ -61,7 +61,7 @@ export class AcmeSCLoginComponent {
     openCreateAccountDialog(): void {
         const dialogRef = this.dialog.open(AcmeSCCreateAccountComponent, {
             width: '40vw',
-            height: '70vh',
+            height: '72vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: {}

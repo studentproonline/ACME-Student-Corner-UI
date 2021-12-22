@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column">
+<div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
     <div fxFlex="5vh">
         <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
             <div class="acme-cs-heading" fxFlex fxFill fxLayoutAlign="center center">
@@ -97,6 +97,12 @@
                                 createAccountFormGroup.controls['passwordControl'].errors?.whiteSpace">
                                 {{'LOGIN_CREATE_ACCOUNT_CONFIRM_PASSWORD_REQUIRED_LABEL'|translate}}
                             </mat-error>
+                            <mat-error class="acme-form-input-field"
+                            *ngIf="createAccountFormGroup.controls['passwordControl'].errors?.notStrong &&
+                            !createAccountFormGroup.controls['passwordControl'].errors?.required &&
+                            !createAccountFormGroup.controls['passwordControl'].errors?.whiteSpace">
+                             {{'LOGIN_CREATE_ACCOUNT_WEAK_PASSWORD_MESSAGE'|translate}}
+                        </mat-error>
                         </mat-form-field>
                     </div>
                     <div fxFlex="8vh">
@@ -129,7 +135,13 @@
             </form>
         </div>
     </div>
-
+     <!--password rule-->
+     <div fxFlex="1vh" fxFill class="acme-sc-password-rule-label" fxLayoutAlign="center center">
+        <span>{{'LOGIN_CREATE_ACCOUNT_PASSWORD_RULE'|translate}}</span>
+    </div>
+    <div fxFlex="1vh" fxFill class="acme-sc-password-rule-label" fxLayoutAlign="center center">
+        <span>{{'LOGIN_CREATE_ACCOUNT_PASSWORD_EXAMPLE'|translate}}</span>
+    </div>
     <div fxFlex="5vh" fxLayoutAlign="center" class="acme-sc-term-condition-label">
         <mat-checkbox class="acme-form-input-field" id="agreementCheckBox" [checked]="agreementCheck" (change)="agreementChange($event)">
             {{'LOGIN_CREATE_ACCOUNT_TERMS_CONDITION_LABEL'|translate}}

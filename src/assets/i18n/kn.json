@@ -31,6 +31,9 @@
     "LOGIN_CREATE_ACCOUNT_SIGNUP_BUTTON_LABEL": "ಸೈನ್ ಅಪ್ ಮಾಡಿ",
     "LOGIN_CREATE_ACCOUNT_SIGNUP_EMAIL_ALREADY_EXISTS": "ನೀಡಿರುವ ಇಮೇಲ್ ಐಡಿಯೊಂದಿಗೆ ಬಳಕೆದಾರ ಖಾತೆ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ",
     "LOGIN_CREATE_ACCOUNT_SIGNUP_FAIL_UNKNOWN": "ಅಜ್ಞಾತ ಕೋಡ್‌ನೊಂದಿಗೆ ಬಳಕೆದಾರ ಖಾತೆಯನ್ನು ರಚಿಸಲು ವಿಫಲವಾಗಿದೆ",
+    "LOGIN_CREATE_ACCOUNT_WEAK_PASSWORD_MESSAGE": "ಪಾಸ್ವರ್ಡ್ ಸಾಮರ್ಥ್ಯ ದುರ್ಬಲವಾಗಿದೆ",
+    "LOGIN_CREATE_ACCOUNT_PASSWORD_RULE": "ಪಾಸ್‌ವರ್ಡ್ ನಿಯಮ: ಆಲ್ಟೇಸ್ಟ್ 1 ದೊಡ್ಡಕ್ಷರ, 1 ಸಣ್ಣಕ್ಷರ, 1 ಸಂಖ್ಯೆ, 1 ವಿಶೇಷ ಅಕ್ಷರ ಮತ್ತು ಕನಿಷ್ಠ ಪಾಸ್‌ವರ್ಡ್ ಉದ್ದ 6.",
+    "LOGIN_CREATE_ACCOUNT_PASSWORD_EXAMPLE": "ಉದಾಹರಣೆ: Abcd!0",
 
 
     "LOGIN_FORGOT_PASSWORD_DIALOG_HEADING_LABEL": "ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ಮರುಹೊಂದಿಸಿ",
@@ -50,6 +53,9 @@
     "LOGIN_FORGOT_PASSWORD_RESET_FAIL_MESSAGE": "ಪಾಸ್ವರ್ಡ್ ಮರುಹೊಂದಿಸಲು ವಿಫಲವಾಗಿದೆ",
     "LOGIN_FORGOT_PASSWORD_OTP_SENT_SUCCESS_MESSAGE": "ನಿಮ್ಮ ನೋಂದಾಯಿತ ಇಮೇಲ್ ಐಡಿಗೆ OTP ಕಳುಹಿಸಲಾಗಿದೆ",
     "LOGIN_FORGOT_PASSWORD_OTP_SENT_FAIL_MESSAGE": "OTP ರಚಿಸಲು ವಿಫಲವಾಗಿದೆ",
+    "LOGIN_FORGOT_PASSWORD_WEAK_PASSWORD_MESSAGE": "ಪಾಸ್ವರ್ಡ್ ಸಾಮರ್ಥ್ಯ ದುರ್ಬಲವಾಗಿದೆ",
+    "LOGIN_FORGOT_PASSWORD_PASSWORD_RULE": "ಪಾಸ್‌ವರ್ಡ್ ನಿಯಮ: ಆಲ್ಟೇಸ್ಟ್ 1 ದೊಡ್ಡಕ್ಷರ, 1 ಸಣ್ಣಕ್ಷರ, 1 ಸಂಖ್ಯೆ, 1 ವಿಶೇಷ ಅಕ್ಷರ ಮತ್ತು ಕನಿಷ್ಠ ಪಾಸ್‌ವರ್ಡ್ ಉದ್ದ 6.",
+    "LOGIN_FORGOT_PASSWORD_PASSWORD_EXAMPLE": "ಉದಾಹರಣೆ: Abcd!0",
 
     "ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL": "ನಿಮ್ಮ ಇಮೇಲ್ ಅನ್ನು ದೃಢೀಕರಿಸಿ",
     "ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL_MESSAGE1": "ದೃಢೀಕರಣ ಇಮೇಲ್‌ಗಾಗಿ ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ. ಇಮೇಲ್‌ನಲ್ಲಿರುವ ಲಿಂಕ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ",

@@ -31,7 +31,9 @@
     "LOGIN_CREATE_ACCOUNT_SIGNUP_BUTTON_LABEL": "Sign Up",
     "LOGIN_CREATE_ACCOUNT_SIGNUP_EMAIL_ALREADY_EXISTS": "A user account with a given email id already exists.",
     "LOGIN_CREATE_ACCOUNT_SIGNUP_FAIL_UNKNOWN": "Fail to create a user account with unknown code",
-
+    "LOGIN_CREATE_ACCOUNT_WEAK_PASSWORD_MESSAGE": "Password strength is weak",
+    "LOGIN_CREATE_ACCOUNT_PASSWORD_RULE": "Password rule: alteast 1 uppercase, 1 lowercase, 1 number, 1 special charector and minimum  password length is 6.",
+    "LOGIN_CREATE_ACCOUNT_PASSWORD_EXAMPLE": "Example: Abcd!0",
 
     "LOGIN_FORGOT_PASSWORD_DIALOG_HEADING_LABEL": "Reset your Password",
     "LOGIN_FORGOT_PASSWORD_EMAIL_LABEL": "Email",
@@ -50,6 +52,9 @@
     "LOGIN_FORGOT_PASSWORD_RESET_FAIL_MESSAGE": "Fail to reset password.",
     "LOGIN_FORGOT_PASSWORD_OTP_SENT_SUCCESS_MESSAGE": "OTP sent to your registered email id.",
     "LOGIN_FORGOT_PASSWORD_OTP_SENT_FAIL_MESSAGE": "Fail to generate OTP.",
+    "LOGIN_FORGOT_PASSWORD_WEAK_PASSWORD_MESSAGE": "Password strength is weak",
+    "LOGIN_FORGOT_PASSWORD_PASSWORD_RULE": "Password rule: alteast 1 uppercase, 1 lowercase, 1 number, 1 special charector and minimum  password length is 6.",
+    "LOGIN_FORGOT_PASSWORD_PASSWORD_EXAMPLE": "Example: Abcd!0",
 
     "ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL": "Confirm your Email",
     "ACCOUNT_ACTIVATION_DIALOG_CONFIRM_EMAIL_MESSAGE1": "Please check your inbox for a confirmation email. Click the link in the email",
