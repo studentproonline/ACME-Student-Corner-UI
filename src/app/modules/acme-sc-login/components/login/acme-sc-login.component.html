@@ -2,7 +2,7 @@
     <div fxFlex="34vw" fxFlex.md="50vw" fxFlex.sm="45vw" fxLayoutAlign="end">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center">
 
-            <div fxFlex="75vh" fxFlex.md="70vh" fxFill>
+            <div fxFlex="75vh" fxFlex.md="70vh" fxFlex.sm="75vh" fxFlex.xs="90vh" fxFill>
                 <div fxFlexFill fxLayout="row" fxLayoutAlign="center" style="padding:3.125vw">
                     <div fxFlex fxFill>
                         <mat-card fxFill class="acme-cs-mat-card">
@@ -69,19 +69,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div fxFlex="20vh" fxFlex.sm="25vh">
+                                <div fxFlex="20vh" fxFlex.xs="25vh">
                                     <form [formGroup]="loginFormGroup" fxFill>
                                         <div fxFlexFill fxLayout="column">
                                             <div fxFlex="10vh">
                                                 <!--Email address-->
-                                                <mat-form-field class="form-field" fxFill>
-                                                    <div fxFlexFill fxLayout="row" fxLayoutGap="0.4vw">
-                                                        <div fxFlex="2vw" fxFill>
+                                                <mat-form-field class="form-field acme-form-input-field" fxFill>
+                                                    <div fxFlexFill fxLayout="row" class="acme-sc-custom-input-field-height" fxLayoutGap="0.4vw" fxLayoutAlign="start start">
+                                                        <div fxFlex="2vw" class="acme-sc-custom-input-field-height" fxLayoutAlign="start start">
                                                             <mat-label class="acme-form-input-field"
-                                                                fxLayoutAlign="center center">
-                                                                <mat-icon class="acme-cs-mat-icon">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%"
-                                                                        height="100%" viewBox="0 0 24 24">
+                                                                fxLayoutAlign="start start">
+                                                                <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="start start">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="2vw"
+                                                                        height="3vh" viewBox="0 0 24 24">
                                                                         <path
                                                                             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                                                                         <path d="M0 0h24v24H0z" fill="none" />
@@ -89,8 +89,8 @@
                                                                 </mat-icon>
                                                             </mat-label>
                                                         </div>
-                                                        <div fxFlex fxFill>
-                                                            <input class="acme-form-input-field" matInput
+                                                        <div fxFlex  class="acme-sc-custom-input-field-height">
+                                                            <input fxFill matInput
                                                                 placeholder="{{'LOGIN_ENTER_EMAIL_ADDRESS_LABEL' | translate}}"
                                                                 formControlName="emailControl">
                                                         </div>
@@ -108,14 +108,14 @@
                                             </div>
                                             <div fxFlex="10vh">
                                                 <!--password-->
-                                                <mat-form-field class="form-field" fxFill>
-                                                    <div fxFlexFill fxLayout="row">
-                                                        <div fxFlex="2vw" fxFill>
+                                                <mat-form-field class="form-field acme-form-input-field" fxFill>
+                                                    <div fxFlexFill fxLayout="row" class="acme-sc-custom-input-field-height" fxLayoutAlign="start start">
+                                                        <div fxFlex="2vw" class="acme-sc-custom-input-field-height" fxLayoutAlign="start start">
                                                             <mat-label class="acme-form-input-field"
-                                                                fxLayoutAlign="center center">
+                                                                fxLayoutAlign="start center" fxLayoutAlign="start start">
                                                                 <mat-icon class="acme-cs-mat-icon">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%"
-                                                                        height="100%" viewBox="0 0 24 24">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="2vw"
+                                                                        height="3vh" viewBox="0 0 24 24">
                                                                         <path d="M0 0h24v24H0z" fill="none" />
                                                                         <path
                                                                             d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
@@ -123,8 +123,8 @@
                                                                 </mat-icon>
                                                             </mat-label>
                                                         </div>
-                                                        <div fxFlex fxFill>
-                                                            <input class="acme-form-input-field" matInput
+                                                        <div fxFlex  class="acme-sc-custom-input-field-height">
+                                                            <input fxFill class="acme-form-input-field" matInput
                                                                 placeholder="{{'LOGIN_ENTER_PASSWORD_LABEL'|translate}}"
                                                                 [type]="hide ? 'password' : 'text'"
                                                                 formControlName="passwordControl" autocomplete="off">
@@ -141,9 +141,10 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div fxFlex="7vh">
-                                    <button mat-raised-button color="accent" (click)="login()" fxFill><span
-                                            class="acme-sc-button">{{'LOGIN_BUTTON_LABEL'|translate}}</span></button>
+                                <div fxFlex="7vh" fxLayoutAlign="start center">
+                                    <button class="acme-sc-button" mat-raised-button color="accent" (click)="login()" fxFill>
+                                        {{'LOGIN_BUTTON_LABEL'|translate}}
+                                    </button>
                                     <mat-progress-bar *ngIf="isProgress===true" mode="indeterminate"></mat-progress-bar>
                                 </div>
                                 <div fxFlex="6vh" fxLayoutAlign="center center"
