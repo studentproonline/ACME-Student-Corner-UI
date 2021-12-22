@@ -22,7 +22,7 @@
             <div *ngIf="isProgress" fxFlex="10vh" fxFill fxLayoutAlign="center center">
                 <span class="acme-sc-activation-message-label">Sending request for room share....</span>
             </div>
-            <!--default icon-->
+            <!--success-->
             <div *ngIf="!isProgress && isSuccessFull" fxFlex="10vh" fxLayoutAlign="center center">
                 <div fxFlex="5vh" fxFill fxLayoutAlign="center center">
                     <div class="acme-sc-background-circle" fxLayoutAlign="center center">
@@ -34,6 +34,7 @@
                     </div>
                 </div>
             </div>
+            
             <div *ngIf="!isProgress && isSuccessFull" fxFlex="5vh" fxLayoutAlign="center center">
                 <span class="acme-sc-activation-message-label">{{invitationResponseMessage}}</span>
             </div>
