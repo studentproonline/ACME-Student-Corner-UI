@@ -72,7 +72,7 @@ export class AcmeSCSharedRoomShareRequestComponent implements OnInit {
     getRoomDetails() {
         const dialogRef = this.dialog.open(AcmeSCGetRoomPublicDetailsComponent, {
             width: '32.5vw',
-            height: '46vh',
+            height: '40vh',
             panelClass: 'acme-sc-custom-container',
             disableClose: true,
             data: { roomId: this.roomId }

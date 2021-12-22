@@ -1,26 +1,28 @@
+@import '../../../shared/css/commom.scss';
+
 .acme-cs-display-box {
-    padding:24px
+    padding:1.5vw
 }
-.acme-ss-login-button {
-    height:44px;
-    width:256px
+.acme-cs-share-button {
+    height:7vh;
+    width:20vw
+}
+
+.acme-sc-custom-title-heading {
+    border-bottom-style: solid;
+    border-bottom-color: goldenrod;
+}
+
+.acme-sc-activation-message-label {
+    font-size: 0.8vw;
 }
 
 .acme-sc-account-email-label {
-    font-size: small;
+    font-size: 0.7vw;
     color: purple;
 }
-
-.acme-sc-create-account-label {
-    font-size: small;
-    color: purple;
-    font-weight: bold;
-    font-style: italic;
-}
-
 .acme-sc-get-room-details-label {
-    font-size: small;
-    color: blue;
+    font-size: 1vw;
     text-decoration: underline;
     cursor: pointer;
 }

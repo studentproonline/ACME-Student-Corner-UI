@@ -1,12 +1,17 @@
+@import '../../../../shared/css/commom.scss';
+
 .acme-sc-close-button {
     height:48px;
     width:100%
 }
 
+.acme-sc-activation-message-label {
+    font-size: 1vw;
+}
+
 .acme-sc-room-details {
-    font-size: small;
-    font-weight: bold;
-    color: purple;
+    font-size: 0.8vw;
+
 }
 
 .acme-sc-room-details-header {
