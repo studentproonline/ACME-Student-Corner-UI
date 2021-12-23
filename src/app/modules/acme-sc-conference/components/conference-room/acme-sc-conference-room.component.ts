@@ -299,9 +299,6 @@ export class AcmeSCConferenceRoomComponent {
             const id = this.getRemoteId(stream);
             if (!this.remoteCalls.length) {
                 this.remoteCalls.push(id);
-                if (this.remoteCalls.length === 1) {
-                    this.selectedCallId = this.remoteCalls[0];
-                }
                 setTimeout(() => stream.play(id), 1000);
             }
         });
@@ -344,11 +341,6 @@ export class AcmeSCConferenceRoomComponent {
     selectCallIdForLargeView(callId) {
         this.selectedCallId = callId;
     }
-
-    filterSelectedCallIds() {
-        return this.remoteCalls.filter(x => x !== this.selectedCallId);
-    }
-
     leaveConferenceRoom(navigationArea) {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
             width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),

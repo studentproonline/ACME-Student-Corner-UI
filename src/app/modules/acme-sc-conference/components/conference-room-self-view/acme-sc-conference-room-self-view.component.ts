@@ -21,7 +21,6 @@ export class AcmeSCConferenceRoomSelfViewComponent {
     }
 
     ngAfterViewInit() {
-        console.log(this.viewCard);
     }
 
     @HostListener('mousedown', ['$event'])
