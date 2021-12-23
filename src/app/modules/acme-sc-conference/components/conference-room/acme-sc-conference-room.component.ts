@@ -17,6 +17,7 @@ import { AcmeSCInformationComponent } from '../../../shared/components/dialogs/i
 
 //translation
 import { TranslateService } from '@ngx-translate/core';
+import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 
 @Component({
     selector: 'acme-sc-conference-room',
@@ -96,7 +97,9 @@ export class AcmeSCConferenceRoomComponent {
      * Attempts to connect to an online chat room where users can host and receive A/V streams.
      */
     join(onSuccess?: (uid: number | string) => void, onFailure?: (error: Error) => void): void {
-        this.client.join(this.conferenceToken, this.roomId, this.loginEntity.email, onSuccess, onFailure);
+        this.client.join(this.conferenceToken, this.roomId, 
+            this.loginEntity.email, 
+            onSuccess, onFailure);
     }
 
     /**

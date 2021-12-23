@@ -217,7 +217,7 @@
                                         <div class="container">
                                             <div class="box" (click)="selectCallIdForLargeView(callId)"
                                                 *ngFor="let callId of remoteCalls" [id]="callId">
-                                                <div class="acme-sc-owner-label">{{callId.split("-")[1]}}</div>
+                                                <div fxLayoutAlign="center center" class="acme-sc-owner-label"><span>{{callId.split("-")[1]}}</span></div>
                                             </div>
                                          
                                         </div>
