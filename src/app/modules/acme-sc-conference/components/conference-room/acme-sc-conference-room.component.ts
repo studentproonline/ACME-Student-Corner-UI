@@ -17,7 +17,6 @@ import { AcmeSCInformationComponent } from '../../../shared/components/dialogs/i
 
 //translation
 import { TranslateService } from '@ngx-translate/core';
-import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 
 @Component({
     selector: 'acme-sc-conference-room',
@@ -57,7 +56,7 @@ export class AcmeSCConferenceRoomComponent {
     pauseAudioStream = false;
     pauseScreenShare = true;
     sessionStarted = false;
-
+    mode = 'Lecture';
     selectedCallId: any
 
     constructor(private ngxAgoraService: NgxAgoraService,
@@ -78,7 +77,6 @@ export class AcmeSCConferenceRoomComponent {
     }
 
     ngOnInit() {
-
         this.route.queryParams
             .subscribe(params => {
                 this.roomId = params.roomId;
@@ -90,15 +88,15 @@ export class AcmeSCConferenceRoomComponent {
                 }
                 this.isSuccessFull = true;
             });
-
+        this.ngxAgoraService.AgoraRTC.Logger.setLogLevel(0);
     }
 
     /**
      * Attempts to connect to an online chat room where users can host and receive A/V streams.
      */
     join(onSuccess?: (uid: number | string) => void, onFailure?: (error: Error) => void): void {
-        this.client.join(this.conferenceToken, this.roomId, 
-            this.loginEntity.email, 
+        this.client.join(this.conferenceToken, this.roomId,
+            this.loginEntity.email,
             onSuccess, onFailure);
     }
 
@@ -110,9 +108,9 @@ export class AcmeSCConferenceRoomComponent {
         this.playing = true;
     }
 
-    startConferenceCallSession() {
+    startConferenceCallSession(mode) {
         this.isTokenGenerationInProgress = true;
-        this.acmeSCConferenceRoomLibraryService.startVideoConference(this.roomId, '120', this.acmeSCAuthorizationService.getAccessToken()).subscribe(
+        this.acmeSCConferenceRoomLibraryService.startVideoConference(this.roomId, '120', mode, this.acmeSCAuthorizationService.getAccessToken()).subscribe(
             value => {
                 const response: any = value;
                 this.isTokenGenerationInProgress = false;
@@ -160,7 +158,18 @@ export class AcmeSCConferenceRoomComponent {
                 this.conferenceToken = response.data.token;
                 this.conferenceAppId = response.data.appId;
                 this.startedBy = response.data.startedBy;
-                this.connectToStream();
+                this.mode = response.data.mode;
+                if (this.mode === 'Group') {
+
+                    this.connectToStream('rtc', 'host');
+                } else {
+                    if (this.isRoomOwner) {
+                        this.connectToStream('live', 'host');
+                    } else {
+                        this.connectLectureMode('audience');
+                    }
+                }
+
             },
             err => {
                 this.isTokenGenerationInProgress = false;
@@ -171,9 +180,26 @@ export class AcmeSCConferenceRoomComponent {
         );
     }
 
-    connectToStream() {
-        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
+    connectLectureMode(role) {
+        console.log('Lectur mode ' + role);
+        this.client = this.ngxAgoraService.createClient({ mode: 'live', codec: 'h264' }, false);
         this.client.init(this.conferenceAppId);
+        this.client.setClientRole(role);
+        this.assignClientHandlers();
+        this.join(success =>{
+            this.playing = true;
+            },error => {
+            console.error(error);
+        });
+    }
+
+    connectToStream(mode, role) {
+
+        this.client = this.ngxAgoraService.createClient({ mode: mode, codec: 'h264' }, false);
+        this.client.init(this.conferenceAppId);
+        if(mode === 'live') {
+            this.client.setClientRole(role);
+        }
         this.assignClientHandlers();
         //Added in this step to initialize the local A/V stream
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
@@ -189,14 +215,18 @@ export class AcmeSCConferenceRoomComponent {
                     this.localStream.close();
                 }
             }));
+        //this.client.enableAudioVolumeIndicator(); 
     }
 
     leaveCall() {
-        this.client.unpublish(this.localStream);
-        this.client.unsubscribe(this.localStream)
+              
+        if (this.localStream) {
+            this.client.unpublish(this.localStream);
+            this.client.unsubscribe(this.localStream)
+            this.localStream.stop();
+            this.localStream.close();
+        }
         this.client.leave();
-        this.localStream.stop();
-        this.localStream.close();
         this.playing = false;
         this.connectedUsers.length = 0;
     }
@@ -336,14 +366,16 @@ export class AcmeSCConferenceRoomComponent {
                 this.leaveCall();
             }
         });
+        /*this.client.on(ClientEvent.VolumeIndicator, function(evt){
+            evt.attr.forEach(function(volume, index){
+                    console.log(`${index} UID ${volume.uid} Level ${volume.level}`);
+            });
+        });*/
     }
     private getRemoteId(stream: Stream): string {
-        return `agora_remote-${stream.getId()}`;
+        return `${stream.getId()}`;
     }
 
-    selectCallIdForLargeView(callId) {
-        this.selectedCallId = callId;
-    }
     leaveConferenceRoom(navigationArea) {
         const dialogRef = this.dialog.open(AcmeSCUserConfirmationComponent, {
             width: this.acmesharedUiTuilitiesService.getConfirmationScreenWidth(),

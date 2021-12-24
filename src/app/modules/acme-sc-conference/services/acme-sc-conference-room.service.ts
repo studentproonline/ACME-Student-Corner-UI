@@ -24,9 +24,9 @@ export class AcmeSCConferenceRoomLibraryService {
     }
 
     // start video conference session
-    startVideoConference(roomId: string, minutes: string,  token: any) {
+    startVideoConference(roomId: string, minutes: string, mode: string, token: any) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: token });
-        return this.httpService.get('/agora/start?roomId='+ roomId + '&minutes=' + minutes, headers).pipe(catchError(this.handleErrorObservable));
+        return this.httpService.get('/agora/start?roomId='+ roomId + '&minutes=' + minutes + '&mode='+ mode, headers).pipe(catchError(this.handleErrorObservable));
     }
 
     // delete video conference session
