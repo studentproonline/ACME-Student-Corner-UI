@@ -493,6 +493,8 @@
     "ROOM_CONFERENCE_ROOM_ROOM_NOT_ACTIVE": "यह कमरा अब सक्रिय नहीं है !!!!",
     "ROOM_CONFERENCE_ROOM_START_CONFERENCE_SESSION": "नया सम्मेलन सत्र शुरू करें",
     "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_SESSION": "सम्मेलन सत्र बंद करो",
+    "ROOM_CONFERENCE_ROOM_GROUP_DISCUSSION": "समूह चर्चा",
+    "ROOM_CONFERENCE_ROOM_LECTURE": "भाषण",
     "ROOM_CONFERENCE_ROOM_CONNECT": "जुडिये",
     "ROOM_CONFERENCE_ROOM_DISCONNECT": "डिस्कनेक्ट",
     "ROOM_CONFERENCE_ROOM_PAUSE_VIDEO": "वीडियो रोकें",

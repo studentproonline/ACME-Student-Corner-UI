@@ -492,6 +492,8 @@
     "ROOM_CONFERENCE_ROOM_ROOM_NOT_ACTIVE": "This room is no longer active !!!!",
     "ROOM_CONFERENCE_ROOM_START_CONFERENCE_SESSION": "Start new conference session",
     "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_SESSION": "Stop conference session",
+    "ROOM_CONFERENCE_ROOM_GROUP_DISCUSSION": "Group discussion",
+    "ROOM_CONFERENCE_ROOM_LECTURE": "Lecture",
     "ROOM_CONFERENCE_ROOM_CONNECT": "Connect",
     "ROOM_CONFERENCE_ROOM_DISCONNECT": "Disconnect",
     "ROOM_CONFERENCE_ROOM_PAUSE_VIDEO": "pause video",

@@ -494,6 +494,8 @@
     "ROOM_CONFERENCE_ROOM_ROOM_NOT_ACTIVE": "ಈ ಕೊಠಡಿ ಇನ್ನು ಮುಂದೆ ಸಕ್ರಿಯವಾಗಿಲ್ಲ !!!!",
     "ROOM_CONFERENCE_ROOM_START_CONFERENCE_SESSION": "ಹೊಸ ಸಮ್ಮೇಳನ ಅಧಿವೇಶನವನ್ನು ಪ್ರಾರಂಭಿಸಿ",
     "ROOM_CONFERENCE_ROOM_STOP_CONFERENCE_SESSION": "ಸಮ್ಮೇಳನದ ಅಧಿವೇಶನವನ್ನು ನಿಲ್ಲಿಸಿ",
+    "ROOM_CONFERENCE_ROOM_GROUP_DISCUSSION": "ಗುಂಪು ಚರ್ಚೆ",
+    "ROOM_CONFERENCE_ROOM_LECTURE": "ಉಪನ್ಯಾಸ",
     "ROOM_CONFERENCE_ROOM_CONNECT": "ಸಂಪರ್ಕಿಸು",
     "ROOM_CONFERENCE_ROOM_DISCONNECT": "ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ",
     "ROOM_CONFERENCE_ROOM_PAUSE_VIDEO": "ವೀಡಿಯೊವನ್ನು ವಿರಾಮಗೊಳಿಸಿ",
