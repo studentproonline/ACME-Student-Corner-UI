@@ -3,15 +3,13 @@
         <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw>
             <div fxFlex="66vw" fxFill>
                 <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw fxLayoutAlign="center center">
-                    <div *ngIf="dislaySearchBox" fxFlex="39vw" fxFill
-                        class="searchBox">
+                    <div *ngIf="dislaySearchBox" fxFlex="39vw" fxFill class="searchBox">
 
                         <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw fxLayoutAlign="center center">
                             <!--search icon-->
                             <div fxFlex="2vw" fxFill fxLayoutAlign="center center">
                                 <mat-label class="searchBoxLabel" fxLayoutAlign="center center">
-                                    <mat-icon class="acme-cs-mat-icon"
-                                        fxLayoutAlign="center center">
+                                    <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="center center">
                                         <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24">
                                             <path
@@ -24,7 +22,8 @@
                             <!--search input-->
                             <div fxFlex fxFill fxLayoutAlign="start center">
                                 <input style="width:100%" matInput type="text" name="search" autocomplete="off"
-                                placeholder={{placeHolder}} class="searchInput" (input)="onSearchChange($event.target.value)">
+                                    placeholder={{placeHolder}} class="searchInput"
+                                    (input)="onSearchChange($event.target.value)">
                             </div>
                         </div>
                     </div>
@@ -39,9 +38,11 @@
             <div fxFlex="8vw" fxFill>
                 <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw>
                     <div fxFlex="2vw" fxFill fxLayoutAlign="end center">
-                        <mat-icon class="acme-cs-mat-icon-pointer" matTooltip="{{'SHARED_MAIN_HEADER_HELP_LABEL'|translate}}" (click)="openHelp()"
+                        <mat-icon class="acme-cs-mat-icon-pointer"
+                            matTooltip="{{'SHARED_MAIN_HEADER_HELP_LABEL'|translate}}" (click)="openHelp()"
                             fxLayoutAlign="end center">
-                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path
                                     d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" />
@@ -49,12 +50,24 @@
                         </mat-icon>
                     </div>
                     <div fxFlex="8vw" fxFill fxLayoutAlign="end center">
-                        <div matTooltip={{userFullName}} class="UserInfoCircle" fxLayoutAlign="center center"
-                            (click)="nickNameClicked($event)">
-                            {{userNickName}}
-                        </div>
-                        <acme-sc-user-popup *ngIf="showUserPopup" [ngStyle]="getRightClickMenuStyle()"
-                            (closed)="closePopup()" (logOut)="logout()"></acme-sc-user-popup>
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <div matTooltip={{userFullName}} class="UserInfoCircle"
+                                fxLayoutAlign="center center">
+                                {{userNickName}}
+                            </div>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item fxLayoutAlign="start center" (click)="logout()">
+                                <mat-icon fxLayoutAlign="start center">
+                                    <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                                    </svg>
+                                </mat-icon>
+                                <span class="acme-sc-apps-menu-item">{{'SHARED_USER_POP_UP_LOGOUT'|translate}}</span>
+                            </button>
+                        </mat-menu>
+                        <!--<acme-sc-user-popup *ngIf="showUserPopup" [ngStyle]="getRightClickMenuStyle()"
+                            (closed)="closePopup()" (logOut)="logout()">
+                        </acme-sc-user-popup>-->
                     </div>
                 </div>
             </div>
