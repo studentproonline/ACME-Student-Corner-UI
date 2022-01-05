@@ -228,6 +228,7 @@ export class AcmeSCConferenceRoomComponent {
         }
         this.client.leave();
         this.playing = false;
+        this.remoteCalls.length=0;
         this.connectedUsers.length = 0;
     }
 
@@ -272,7 +273,6 @@ export class AcmeSCConferenceRoomComponent {
                 this.ConnectToScreenShare();
             } else {
                 // switch to video
-                // switch to screen
                 this.leaveCall();
                 this.connectCall();
             }
