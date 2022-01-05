@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="row">
+<div fxFlexFill fxLayout="row" [ngClass]="'dark-theme'">
     <!--users types-->
     <div *ngIf="isContentOrRoomOwner" fxFlex="20vw" fxFill>
         <div fxFlexFill fxLayout="column">
@@ -138,11 +138,11 @@
                                                 <span>{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK'|translate}}</span>
                                             </div>
                                             <div (click)="addComment('teacher')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
-                                                <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                                <svg class="acme-cs-mat-icon-default acme-sc-report-card-action" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
                                                 </svg>
                                             </div>
                                             <div (click)="RemoveComment('teacher')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP_REMOVE'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
-                                                <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                                <svg class="acme-cs-mat-icon-default acme-sc-report-card-action" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                                 </svg>
                                             </div>
                                         </div>
@@ -160,11 +160,11 @@
                                                 <span>{{'ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION'|translate}}</span>
                                             </div>
                                             <div (click)="addComment('other')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_OTHER_INFORMATION_TOOLTIP'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
-                                                <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                                <svg class="acme-cs-mat-icon-default acme-sc-report-card-action" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
                                                 </svg>
                                             </div>
                                             <div (click)="RemoveComment('other')" matTooltip="{{'ROOM_REPORT_CARD_REPORT_CARD_TEACHER_REMARK_TOOLTIP_REMOVE'|translate}}" fxFill fxFlex="2vw" class="acme-cs-mat-icon-pointer" fxLayoutAlign="center center">
-                                                <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                                <svg class="acme-cs-mat-icon-default acme-sc-report-card-action" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vh" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                                 </svg>
                                             </div>
                                         </div>

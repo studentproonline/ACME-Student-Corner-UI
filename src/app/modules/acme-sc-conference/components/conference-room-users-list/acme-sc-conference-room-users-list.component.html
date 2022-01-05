@@ -1,21 +1,26 @@
-<div fxFlexFill fxLayout="column" class="acme-sc-conference-room-users-list-container">
-    <!--ACME icom-->
-    <div fxFlex="20vh" fxFill>
-        <acme-sc-company-header></acme-sc-company-header>
-    </div>
-
-    <!--Contents Title>-->
-    <div fxFlex="5vh" fxLayoutAlign="center start" class="acme-sc-navigation-side-bar-title">
-        <span>{{'ROOM_CONFERENCE_ROOM_USER_LIST'|translate}}</span>
-    </div>
-
-    <!--room user list-->
-    <div fxFlex class="acme-sc-conference-room-users-list">
-        <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vw">
-            <ng-scrollbar thumbClass="white-scrollbars">
-                <acme-sc-conference-room-user *ngFor="let user of connectedUsersNameList" [userName]="user">
-
-                </acme-sc-conference-room-user>
-            </ng-scrollbar>
+<div fxFlexFill fxLayout="column" [ngClass]="'dark-theme'">
+    <div fxFlex fxFill>
+        <div fxFlexFill fxLayout="column" class="acme-sc-conference-room-users-list-container">
+            <!--ACME icom-->
+            <div fxFlex="20vh" fxFill>
+                <acme-sc-company-header></acme-sc-company-header>
+            </div>
+        
+            <!--Contents Title>-->
+            <div fxFlex="5vh" fxLayoutAlign="center start" class="acme-sc-navigation-side-bar-title">
+                <span>{{'ROOM_CONFERENCE_ROOM_USER_LIST'|translate}}</span>
+            </div>
+        
+            <!--room user list-->
+            <div fxFlex class="acme-sc-conference-room-users-list">
+                <div fxLayout="column" fxFlexFill fxLayoutGap="0.4vw">
+                    <ng-scrollbar thumbClass="white-scrollbars">
+                        <acme-sc-conference-room-user *ngFor="let user of connectedUsersNameList" [userName]="user">
+        
+                        </acme-sc-conference-room-user>
+                    </ng-scrollbar>
+                </div>
+            </div>
         </div>
     </div>
+</div>

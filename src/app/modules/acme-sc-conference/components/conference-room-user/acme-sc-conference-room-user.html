@@ -1,20 +1,25 @@
-<div fxLayout="column" class="acme-sc-conference-room-user-item">
-    <div fxFlexFill fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="0.4vw">
-        <div fxFlex="20%" fxFill fxLayoutAlign="center center">
-            <div class="UserInfoCircle" fxLayoutAlign="center center">
-                <mat-icon matTooltip={{userName}} fxLayoutAlign="center center" style="height:80%;width:80%;"
-                    class="acme-cs-mat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="80%" viewBox="0 0 24 24" width="80%"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    </svg>
-                </mat-icon>
+<div fxLayout="column" fxFlexFill [ngClass]="'dark-theme'">
+    <div fxFlex fxFill>
+        <div fxLayout="column" class="acme-sc-conference-room-user-item">
+            <div fxFlexFill fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="0.4vw">
+                <div fxFlex="20%" fxFill fxLayoutAlign="center center">
+                    <div class="UserInfoCircle" fxLayoutAlign="center center">
+                        <mat-icon matTooltip={{userName}} fxLayoutAlign="center center" style="height:80%;width:80%;"
+                            class="acme-cs-mat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="80%" viewBox="0 0 24 24" width="80%"
+                                fill="#000000">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </mat-icon>
+                    </div>
+                </div>
+                <div fxFlex fxFill fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-user-name">
+                    <span>{{userName}}</span>
+                </div>
             </div>
-        </div>
-        <div fxFlex fxFill fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-user-name">
-            <span>{{userName}}</span>
         </div>
     </div>
 </div>
+

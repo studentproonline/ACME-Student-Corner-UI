@@ -1,23 +1,28 @@
-<div class="acme-sc-report-card-item-container">
-    <div fxLayout="column" class="aacme-sc-room-report-card-item-title-container" fxLayoutGap="0.4vw">
-        <div fxFlex fxFill>
-            <div fxLayout="row" fxLayoutGap="1vw" fxFill>
-                
-                <div fxFlex fxFill fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-report-card-item-color">
-                    <span>{{assesmentReportCardItem.assesmentTitle}} </span>
-                </div>
-                <!--Grade-->
-                <div fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-report-card-item-color">
-                    <span><b>{{'ROOM_REPORT_CARD_REPORT_CARD_ITEM_GRADE'|translate}}</b></span><span class="acme-sc-grade-marks"
-                        style="padding-left:0.4vw">{{assesmentReportCardItem.grade}}</span>
-                </div>
-                <!--marks-->
-                <div fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-report-card-item-color">
-                    <span><b>{{'ROOM_REPORT_CARD_REPORT_CARD_ITEM_MARKS'|translate}} </b></span><span class="acme-sc-grade-marks"
-                        style="padding-left:0.4vw">{{assesmentReportCardItem.marksObtained}} / {{assesmentReportCardItem.totalMarks}}
-                    </span>
+<div fxLayout="column"  [ngClass]="'dark-theme'">
+    <div fxFlex fxFill>
+        <div class="acme-sc-report-card-item-container">
+            <div fxLayout="column" class="aacme-sc-room-report-card-item-title-container" fxLayoutGap="0.4vw">
+                <div fxFlex fxFill>
+                    <div fxLayout="row" fxLayoutGap="1vw" fxFill>
+                        
+                        <div fxFlex fxFill fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-report-card-item-color">
+                            <span>{{assesmentReportCardItem.assesmentTitle}} </span>
+                        </div>
+                        <!--Grade-->
+                        <div fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-report-card-item-color">
+                            <span><b>{{'ROOM_REPORT_CARD_REPORT_CARD_ITEM_GRADE'|translate}}</b></span><span class="acme-sc-grade-marks"
+                                style="padding-left:0.4vw">{{assesmentReportCardItem.grade}}</span>
+                        </div>
+                        <!--marks-->
+                        <div fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-navigation-side-bar-item-text acme-sc-room-report-card-item-color">
+                            <span><b>{{'ROOM_REPORT_CARD_REPORT_CARD_ITEM_MARKS'|translate}} </b></span><span class="acme-sc-grade-marks"
+                                style="padding-left:0.4vw">{{assesmentReportCardItem.marksObtained}} / {{assesmentReportCardItem.totalMarks}}
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

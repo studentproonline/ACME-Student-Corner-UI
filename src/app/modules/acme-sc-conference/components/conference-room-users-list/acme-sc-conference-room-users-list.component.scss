@@ -1,11 +1,32 @@
 @import '../../../shared/css/commom.scss';
-.acme-sc-conference-room-users-list-container {
-    border-width: 0.03vw;
-    border-right-style: solid;
-    background-color:#fafafa;
-    border-color: lightgray;
+@import '../../../shared/css/variables.scss';
+
+.dark-theme {
+    .acme-sc-conference-room-users-list-container {
+        border-width: 0.03vw;
+        border-right-style: solid;
+        background-color:$acme-sc-secondary-background-dark;
+        border-color: lightgray;
+    }
+    
+    .acme-sc-conference-room-users-list{
+        border-top-style: outset;
+        border-color: gray;
+        padding:0.4vw;
+    }
 }
-.acme-sc-conference-room-users-list{
-    border-top-style: outset;
-    padding:0.4vw;
+
+.light-theme {
+    .acme-sc-conference-room-users-list-container {
+        border-width: 0.03vw;
+        border-right-style: solid;
+        background-color:#fafafa;
+        border-color: lightgray;
+    }
+    
+    .acme-sc-conference-room-users-list{
+        border-top-style: outset;
+        padding:0.4vw;
+    }
 }
+
