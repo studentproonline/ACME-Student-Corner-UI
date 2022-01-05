@@ -10,6 +10,11 @@
         background-color: $acme-sc-secondary-background-dark;
         border-radius:0.5vw;
     }
+    .acme-sc-library-content-chip {
+        padding-left:0.5vw;
+        font-size: 0.9vw;
+        color: seagreen;
+    }
 }
 
 .light-theme {
@@ -20,23 +25,15 @@
         background-color: $acme-sc-room-inactive-background-color;
         border-radius:0.5vw;
     }
+    
+    .acme-sc-library-content-chip {
+        padding-left:0.5vw;
+        font-size: 0.9vw;
+        color: black
+    }
+
 }
 
-
-
-
-.acme-sc-library-content-chip {
-    padding-left:0.5vw;
-    font-size: 0.9vw;
-}
-
-::ng-deep .mat-chip-list-wrapper .mat-standard-chip {
-    margin-right: 0.2vw !important;
-    margin-left: 0.2vw !important;
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
- }
- 
 
 .acme-sc-room-library-content-row {
     cursor: pointer;

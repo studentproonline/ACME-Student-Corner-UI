@@ -6,6 +6,9 @@ import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-au
 
 import { ILoginEntity } from '../../../../core/entities/acme-sc-login.entity';
 
+//translation
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'acme-sc-library-explorer',
     templateUrl: './acme-sc-room-library-explorer.component.html',
@@ -30,7 +33,8 @@ export class AcmeSCLibraryExplorerComponent {
 
     constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private route: ActivatedRoute,
-        public dialog: MatDialog) {
+        public dialog: MatDialog,
+        public translateService: TranslateService) {
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();

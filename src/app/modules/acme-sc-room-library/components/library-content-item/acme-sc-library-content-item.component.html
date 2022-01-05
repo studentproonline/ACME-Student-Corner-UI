@@ -6,9 +6,8 @@
                 <div fxLayout="row" fxLayoutGap="0.4vw">
                     <!--content icon -->
                     <div fxFlex="2vw" class="acme-sc-room-topic-row">
-                        <mat-icon *ngIf="libraryContent.contentType !=='link'" fxLayoutAlign="center center"
-                            style="height:100%;width:100%;">
-                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
+                        <mat-icon *ngIf="libraryContent.contentType !=='link'" fxLayoutAlign="center center">
+                            <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
                                 <g>
                                     <rect fill="none" height="24" width="24" />
                                     <path
@@ -17,7 +16,7 @@
                             </svg>
                         </mat-icon>
                         <mat-icon *ngIf="libraryContent.contentType ==='link'" fxLayoutAlign="center center">
-                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+                            <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path
                                     d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
@@ -50,20 +49,19 @@
                 </div>
             </div>
             <div fxFlex="3vh" fxFill>
-                <div fxLayout="row" fxLayoutGap="0.4vw">
-                    <div fxFlex fxFill fxLayoutAlign="start start">
-                        <mat-chip-list  style="padding:0.4vw" #chipList aria-label="Topic tags">
-                            <mat-chip [removable]="tagRemove" *ngFor="let tag of contentTags" fxLayoutAlign="start start"
-                                class="acme-sc-library-content-chip" [ngStyle]="getMinHeight()">
-                                {{tag}}
-                            </mat-chip>
-                        </mat-chip-list>
+                <div fxLayout="row" fxLayoutGap="0.4vw" fxFlexFill fxLayoutAlign="start start">
+                    <div fxFlex fxLayoutAlign="start center" fxLayoutGap="1vw">
+                        <div style="height:2vh" *ngFor="let tag of contentTags" class="acme-sc-library-content-chip">
+                            <span>
+                                [ {{tag}} ]
+                            </span>
+                        </div>
                     </div>
                     <!--Delete icon-->
                     <div fxLayoutAlign="end start" *ngIf="isContentOrRoomOwner" fxFlex="2vw"
                         class="acme-sc-room-library-content-row" fxFill>
                         <mat-icon matTooltip="Delete content" fxLayoutAlign="end start" (click)="deleteLibrarycontent()">
-                            <svg class="acme-cs-navigation-item-icon-lightgray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path
                                     d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z" />

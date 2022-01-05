@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFlexFill fxLayoutGap="1vh">
+<div fxLayout="column" fxFlexFill fxLayoutGap="1vh" [ngClass]="'dark-theme'">
     <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
     </div>
@@ -7,17 +7,25 @@
         <acme-sc-navigation-bar [room]="roomDetailsEntity" [roomType]="roomType"></acme-sc-navigation-bar>
     </div>
     <!--assesment file link-->
-    <div (click)="openAssesmentFile()" *ngIf="roomStatus !== 'Closed' && !isProgress"
-        fxFlex="5vh" fxFill>
+    <div (click)="openAssesmentFile()" *ngIf="roomStatus !== 'Closed' && !isProgress" fxFlex="5vh" fxFill>
         <div fxFlexFill fxLayout="column">
             <div fxFlex>
-                <span class="acme-sc-label-default-message acme-sc-custom-label">{{'ROOM_ASSESSMENT_EVALUATION_ASSESSMENT_FILE'|translate}} </span><span
-                    class="acme-sc-content-link acme-sc-custom-link">{{fileName}}</span>
+                <span
+                    class="acme-sc-label-default-message acme-sc-custom-label">{{'ROOM_ASSESSMENT_EVALUATION_ASSESSMENT_FILE'|translate}}
+                </span><span class="acme-sc-content-link acme-sc-custom-link">{{fileName}}</span>
             </div>
             <div *ngIf="isfileDownloadProgress" fxFlex="2vh">
                 <mat-progress-bar *ngIf="!isProgress" mode="indeterminate"></mat-progress-bar>
             </div>
         </div>
+    </div>
+    <!--not active label-->
+    <div fxLayoutAlign="center center" *ngIf="roomStatus === 'Closed' && !isProgress && isSuccessFull" fxFlex="50vw"
+        class="acme-sc-room-close-label">
+        <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="red">
+            <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+        </svg>
+        <span>{{'ROOM_ASSESSMENT_EVALUATION_NOT_ACTIVE'|translate}}</span>
     </div>
     <!--assesment details row-->
     <div *ngIf="!isProgress && isSuccessFull" fxFlex="5vh" fxFill>
@@ -25,7 +33,8 @@
             <!--status-->
             <div *ngIf="isAssesmentFound" fxFlex="2vw" fxLayoutAlign="start center">
                 <mat-icon fxLayoutAlign="center center" class="acme-cs-mat-icon">
-                    <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="darkgreen">
+                    <svg class="acme-cs-mat-icon-default acme-sc-assessment-status" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none" />
                         <path
                             d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm5-2.5H7v-1l1-1v-2.61C8 9.27 9.03 7.47 11 7v-.5c0-.57.43-1 1-1s1 .43 1 1V7c1.97.47 3 2.28 3 4.39V14l1 1v1z" />
@@ -37,27 +46,20 @@
             </div>
             <!--Revieweed by-->
             <div *ngIf="isAssesmentFound" fxFlex="14vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>{{'ROOM_ASSESSMENT_EVALUATION_REVIEWED_BY'|translate}}
-                    </b>{{userAssesment.reviewerFirstName}}</span><span>{{userAssesment.reviewerLastName}}</span>
+                <span>{{'ROOM_ASSESSMENT_EVALUATION_REVIEWED_BY'|translate}}
+                    {{userAssesment.reviewerFirstName}}</span><span>{{userAssesment.reviewerLastName}}</span>
             </div>
             <!--group by-->
             <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>{{'ROOM_ASSESSMENT_EVALUATION_GROUP'|translate}}</b>{{assesment.group}}</span>
+                <span>{{'ROOM_ASSESSMENT_EVALUATION_GROUP'|translate}}{{assesment.group}}</span>
             </div>
             <!--submitted assignment-->
             <div *ngIf="isAssesmentFound" fxFlex="20vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                <span><b>{{'ROOM_ASSESSMENT_EVALUATION_SUBMITTED_FILE'|translate}}:</b></span><span style="padding-left: 0.4vw;" (click)="GetSubmittedFile()"
+                <span>{{'ROOM_ASSESSMENT_EVALUATION_SUBMITTED_FILE'|translate}}:</span><span
+                    style="padding-left: 0.4vw;" (click)="GetSubmittedFile()"
                     class="acme-sc-custom-link acme-sc-custom-evaluation">{{userAssesment.submittedFileName}}</span>
             </div>
 
-            <!--not active label-->
-            <div fxLayoutAlign="center center" *ngIf="roomStatus === 'Closed' && !isProgress && isSuccessFull"
-                fxFlex="50vw" class="acme-sc-room-close-label">
-                <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="red">
-                    <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
-                </svg>
-                <span>{{'ROOM_ASSESSMENT_EVALUATION_NOT_ACTIVE'|translate}}</span>
-            </div>
             <!--Review Assignment button-->
             <div fxFlex *ngIf="roomStatus !== 'Closed' && !isProgress && isSuccessFull && isAssesmentFound">
                 <div fxFlexFill fxLayout="row" fxLayoutAlign="end center">
@@ -78,11 +80,11 @@
             <!--user icon-->
             <div fxFlex="10vh" fxFill fxLayoutAlign="center center">
                 <div class="acme-sc-background-circle" fxLayoutAlign="center center">
-                <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
+                    <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
                 </div>
             </div>
             <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
@@ -95,13 +97,13 @@
     <div *ngIf="!isProgress && userId !=='' && !isAssesmentFound" fxFlex fxFill fxLayoutAlign="center center">
         <div fxFlexFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.4vw">
             <!--icon-->
-            <div fxFlex="10vh" fxFill  fxLayoutAlign="center center">
+            <div fxFlex="10vh" fxFill fxLayoutAlign="center center">
                 <div class="acme-sc-background-circle" fxLayoutAlign="center center">
-                <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 15h-2v-2h2v2zm0-4h-2V8h2v6zm-1-9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
-                </svg>
+                    <svg class="acme-ac-default-svg-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 15h-2v-2h2v2zm0-4h-2V8h2v6zm-1-9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
+                    </svg>
                 </div>
             </div>
             <div fxFlex="5vh" fxFill fxLayoutAlign="center center" class="acme-sc-label-default-message">
@@ -117,28 +119,30 @@
                     <quill-view [content]="userAssesment.data"></quill-view>
                 </div>
             </div>
-            <div fxFlexFill fxLayout="row">
+            <div fxFlexFill fxLayout="row" style="padding-top: 1vh;">
                 <!--Reviewers Comment-->
                 <div fxFlex="10vw">
                     <div *ngIf="userAssesment.status === 'Reviewed' || userAssesment.status === 'Submitted'"
-                        class="acme-sc-room-user-assesment-reviewer-remark">
+                        class="acme-sc-owner-label">
                         <span>{{'ROOM_ASSESSMENT_EVALUATION_REVIEWER_REMARKS'|translate}}</span>
                     </div>
                 </div>
                 <!--Evaluated assignment-->
                 <div *ngIf="isAssesmentFound" fxFlex="22vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>{{'ROOM_ASSESSMENT_EVALUATION_EVALUATED_FILE'|translate}}</b></span><span style="padding-left: 0.4vw;" (click)="GetEvaluatedFile()"
+                    <span><b>{{'ROOM_ASSESSMENT_EVALUATION_EVALUATED_FILE'|translate}}</b></span><span
+                        style="padding-left: 0.4vw;" (click)="GetEvaluatedFile()"
                         class="acme-sc-custom-link acme-sc-custom-evaluation">{{userAssesment.evaluatedFileName}}</span>
                 </div>
                 <!--Grade-->
                 <div *ngIf="isAssesmentFound" fxFlex="5vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>{{'ROOM_ASSESSMENT_EVALUATION_GRADE'|translate}}</b></span><span class="acme-sc-grade-marks"
-                        style="padding-left:0.4vw">{{userAssesment.grade}}</span>
+                    <span>{{'ROOM_ASSESSMENT_EVALUATION_GRADE'|translate}}</span><span
+                        class="acme-sc-grade-marks" style="padding-left:0.4vw">{{userAssesment.grade}}</span>
                 </div>
                 <!--marks-->
                 <div *ngIf="isAssesmentFound" fxFlex="10vw" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                    <span><b>{{'ROOM_ASSESSMENT_EVALUATION_MARKS'|translate}} </b></span><span class="acme-sc-grade-marks"
-                        style="padding-left:0.4vw">{{userAssesment.marksObtained}} / {{userAssesment.totalMarks}}
+                    <span>{{'ROOM_ASSESSMENT_EVALUATION_MARKS'|translate}}</span><span
+                        class="acme-sc-grade-marks" style="padding-left:0.4vw">{{userAssesment.marksObtained}} /
+                        {{userAssesment.totalMarks}}
                     </span>
                 </div>
             </div>

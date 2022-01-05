@@ -1,20 +1,47 @@
 @import '../../../shared/css/commom.scss';
 @import '../../../shared/css/variables.scss';
 
-.acme-sc-assesment-data-container {
-    background-color: $acme-sc-room-inactive-background-color;
-    border-radius: 0.4vw;
-    padding:0.4vw;
-    
+.dark-theme {
+    .acme-sc-assesment-data-container {
+        background-color: #333333;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .acme-sc-custom-label {
+        color:seagreen;
+    }
+
+    .acme-sc-assessment-status {
+        fill: seagreen !important;
+        opacity: 1 !important;
+    }
+
+    ::ng-deep .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
 }
 
-.UserInfoCircle {
-    width: 5vw;
-    height:5vw;
-    border-radius: 50%;
-    color: #fff;
-    text-align: center;
-    background: $acme-sc-navigation-bar-border-color;
+.light-theme {
+    .acme-sc-assesment-data-container {
+        background-color: $acme-sc-room-inactive-background-color;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+
+    .acme-sc-assessment-status {
+        fill: darkgreen !important;
+    }
+    
+    .acme-sc-custom-label {
+        color:darkgreen;
+    }
+
+    ::ng-deep .ql-editor {
+        color:black !important;
+    }
+ 
 }
 
 .acme-sc-custom-link {
@@ -30,17 +57,4 @@
     font-weight: bold;
     color: $acme-sc-company-label-color;
     font-size: 1vw;
-}
-
-.acme-sc-custom-label {
-   color:$acme-sc-start-color;
-}
-
-.acme-sc-room-user-assesment-reviewer-remark {
-    font-weight: bold;
-    font-size:0.7vw;
-    padding:0.7vw;
-    width:100%;
-    height:100%;
-  
 }

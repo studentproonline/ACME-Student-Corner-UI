@@ -1,12 +1,42 @@
 @import '../../../shared/css/commom.scss';
 @import '../../../shared/css/variables.scss';
 
-.acme-sc-assignment-data-container {
-    background-color: $acme-sc-room-inactive-background-color;
-    border-radius: 0.4vw;
-    padding:0.4vw;
+.dark-theme {
+    .acme-sc-assigment-status {
+        fill: yellowgreen !important;
+    }
     
+    .acme-sc-assignment-data-container {
+        background-color: #333333;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    ::ng-deep .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
 }
+
+.light-theme {
+    .acme-sc-assigment-status {
+        fill: darkgreen !important;
+    }
+    
+    .acme-sc-assignment-data-container {
+        background-color: $acme-sc-room-inactive-background-color;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    ::ng-deep .ql-editor {
+        color:black !important;
+    }
+}
+
+.acme-sc-assignment-stars {
+    fill: goldenrod !important
+}
+
 
 .acme-sc-room-user-assignment-reviewer-remark {
     font-size:0.7vw;

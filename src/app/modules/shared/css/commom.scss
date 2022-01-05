@@ -76,16 +76,6 @@
     width:5vw;
     fill:red;
 }
-.acme-sc-label-default-message {
-    font-size: 1vw;
-    opacity: 0.7;
-}
-
-.acme-sc-room-close-label {
-    font-size:1vw;
-    background-color: $acme-sc-room-inactive-background-color;
-    opacity: 0.7;
-}
 
 .acme-sc-dialog-box {
     padding:1vw !important
@@ -133,8 +123,8 @@
 }
 
 .acme-sc-background-circle {
-    width: 5vw;
-    height: 10vh;
+    width: 10vh;
+    height:10vh;
     border-radius: 50%;
     font-size: 1vw;
     margin-right:0.4vw;
