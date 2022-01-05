@@ -4,6 +4,10 @@
     padding:0.4vw;
 }
 
+.acme-sc-room-list-action {
+  cursor: pointer;
+}
+
 ::ng-deep {
     ng-scrollbar.virtual-scroll {
       --scrollbar-size: 8px;

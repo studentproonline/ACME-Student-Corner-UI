@@ -1,7 +1,7 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+<div fxFlexFill fxLayout="column" [ngClass]="'dark-theme'">
     <div fxFlex="16.5vh" fxFill>
-        <div fxFlexFill fxLayout="row">
-            <div fxFlex="20vw" class="acme-sc-custom-company-header">
+        <div fxFlexFill fxLayout="row" class="acme-sc-title-container">
+            <div fxFlex="20vw">
                 <acme-sc-company-header></acme-sc-company-header>
             </div>
             <div fxFlex class="acme-sc-container">
@@ -20,7 +20,7 @@
         </div>
     </div>
     <!--Progress-->
-    <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
+    <div class="acme-sc-container" *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
     </div>
 
@@ -50,9 +50,8 @@
                     </div>
 
                     <!--Refresh  icon-->
-                    <div fxFlex="2vw" fxLayoutAlign="start center" (click)="refrshCommentsList()"
-                        class="acme-cs-mat-icon-pointer">
-                        <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg"
+                    <div class="acme-sc-comments-action" fxFlex="2vw" fxLayoutAlign="start center" (click)="refrshCommentsList()">
+                        <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
@@ -117,7 +116,7 @@
                     </div>
                 </div>
                 <!--non empty list-->
-                <div *ngIf="commentsEntity.comments.length > 0" fxFlexFill fxLayout="column">
+                <div *ngIf="commentsEntity.comments.length > 0" fxFlexFill fxLayout="column" class="acme-sc-custom-company-header">
                     <ng-scrollbar thumbClass="white-scrollbars">
                         <acme-sc-room-topic-comment *ngFor="let comment of commentsList" [comment]=comment
                             [roomOwner]="roomOwner" (commentDeleted)="commentDeleted()" fxLayoutGap="0.4vh">

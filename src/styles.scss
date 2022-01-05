@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~material-design-icons/iconfont/material-icons.css";
+@import "./app/modules/shared/css/variables.scss";
 
 html, body {
     height: 100%;
@@ -12,8 +13,282 @@ body {
     margin: 0;
 }
 
+.dark-theme {
+    .acme-sc-container {
+        padding: 3vh;
+        background-color: $acme-sc-primary-backgound-dark;
+    }
+    .acme-sc-navigation-side-bar {
+        border-width: 0.5px;
+        border-right-style: solid;
+        background-color:$acme-sc-secondary-background-dark;
+        border-color:$acme-sc-navigation-bar-border-color;
+    }
+    .acme-sc-company-sub-title {
+        font-size:0.66vw;
+        color: $acme-sc-company-label-color;
+        background-color:$acme-sc-secondary-background-dark;
+        border-color: $acme-sc-navigation-bar-border-color;
+    }
+    .acme-sc-navigation-side-bar-item-container{
+        background-color: $acme-sc-primary-backgound-dark;
+        cursor:pointer;
+    }
+    .acme-sc-navigation-side-bar-item-container-default{
+        background-color: $acme-sc-navigation-side-bar-item-background-color-dark;
+        cursor:pointer
+    }
+    .acme-sc-navigation-side-bar-item {
+        width:19vw;
+        height:4vw;
+        padding-top:0.4vw;
+        padding-bottom: 0.5vh;
+        border-radius:0.5vw;
+        border-style: solid;
+        border-color: $acme-sc-navigation-side-bar-item-border-color-dark;
+    }
+    .acme-sc-navigation-side-bar-item-text {
+        opacity:1 !important;
+        color: $acme-sc-text-color-dark;
+        font-size: 0.9vw;
+        overflow: hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+    }
+    .acme-sc-navigation-side-bar-item-text-default {
+        opacity:0.5 !important;
+        color: $acme-sc-text-color-dark;
+        font-size: 0.9vw;
+        overflow: hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+    }
+    .acme-sc-navigation-side-bar-item-selection-bar{
+        background-color: $acme-sc-company-label-color;
+    }
+    .acme-sc-navigation-side-bar-item-selection-bar-default{
+        background-color: $acme-sc-secondary-background-dark;
+    }
+    .acme-sc-navigation-side-bar-item-icon-selected {
+        color: $acme-sc-text-color-dark;
+        opacity:1
+    }
+    .acme-sc-navigation-side-bar-item-icon-default {
+        color: $acme-sc-text-color-dark;
+        opacity:0.7
+    }
+    
+
+    .acme-sc-navigation-side-bar-title {
+        font-size:1vw;
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+    }
+
+    .acme-sc-navigation-item-title {
+        
+        opacity: 0.7;
+        font-size: 1.2vw;
+        color: $acme-sc-text-color-dark;
+    }
+    .acme-sc-company-title {
+        font-size:1.2vw;
+        color:$acme-sc-text-color-dark;
+        opacity: 0.7;
+    }
+    .acme-cs-mat-icon-default {
+        height:3.18vh;
+        width: 1.56vw;
+        opacity: 0.7;
+        fill: $acme-sc-text-color-dark;
+    }
+    .acme-sc-company-label {
+        font-size:0.66vw;
+        color: $acme-sc-company-label-color;
+        background-color:$acme-sc-secondary-background-dark;
+        border-color: $acme-sc-navigation-bar-border-color;
+        border-width: 0.5px;
+        border-right-style: solid;
+    }
+    .acme-sc-default-text {
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+    }
+    .acme-sc-date-label {
+        padding-left:0.5vw;
+        font-size: 0.7vw;
+        color: $acme-sc-text-color-dark;
+    }
+    
+    .acme-sc-owner-label {
+        padding-left:0.5vw;
+        font-size: 0.7vw;
+        color: $acme-sc-text-color-dark;
+    }
+    
+    .mat-menu-panel {
+        min-height: 0 !important;
+        background-color: $acme-sc-secondary-background-dark !important;
+    }
+
+    .acme-sc-apps-menu-item {
+        font-size:0.8vw;
+        color: $acme-sc-text-color-dark;
+    }
+    .acme-sc-content-link {
+        cursor: pointer;
+        color: steelblue;
+        font-size: 1vw;
+        overflow: hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+    }
+    
+    .acme-sc-content-link:hover{
+        color:skyblue;
+    }  
+    
+
+}
+
+.light-theme {
+    .acme-sc-container {
+        padding: 3vh;
+        background-color: $acme-sc-primary-backgound-light;
+    }
+    .acme-sc-navigation-side-bar {
+        border-width: 0.5px;
+        border-right-style: solid;
+        background-color:$acme-sc-secondary-background-light;
+        border-color:$acme-sc-navigation-bar-border-color;
+    }
+    .acme-sc-company-sub-title {
+        font-size:0.66vw;
+        color: $acme-sc-company-label-color;
+        background-color:$acme-sc-secondary-background-light;
+        border-color: $acme-sc-navigation-bar-border-color;
+    }
+    .acme-sc-navigation-side-bar-item-container{
+        background-color: $acme-sc-primary-backgound-light;
+        cursor:pointer;
+    }
+    .acme-sc-navigation-side-bar-item-container-default{
+        background-color: $acme-sc-navigation-side-bar-item-background-color-light;
+        cursor:pointer
+    }
+    .acme-sc-navigation-side-bar-item {
+        width:19vw;
+        height:4vw;
+        padding-top:0.4vw;
+        padding-bottom: 0.5vh;
+        border-radius:0.5vw;
+        border-style: solid;
+        border-color: $acme-sc-navigation-side-bar-item-border-color-light;
+    }
+    .acme-sc-navigation-side-bar-title {
+        font-size:1vw;
+        color: $acme-sc-text-color-light;
+        opacity: 0.7;
+    }
+
+    .acme-sc-navigation-side-bar-item-text {
+        opacity:1 !important;
+        color: $acme-sc-text-color-light;
+        font-size: 0.9vw;
+        overflow: hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+    }
+    .acme-sc-navigation-side-bar-item-text-default {
+        opacity:0.5 !important;
+        color: $acme-sc-text-color-light;
+        font-size: 0.9vw;
+        overflow: hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+    }
+    .acme-sc-navigation-side-bar-item-selection-bar{
+        background-color: $acme-sc-company-label-color;
+    }
+    .acme-sc-navigation-side-bar-item-selection-bar-default{
+        background-color: $acme-sc-secondary-background-light;
+    }
+    
+    .acme-sc-navigation-side-bar-item-icon-selected {
+        color: $acme-sc-text-color-light;
+        opacity:1
+    }
+    .acme-sc-navigation-side-bar-item-icon-default {
+        color: $acme-sc-text-color-light;
+        opacity:0.7
+    }
+    .acme-sc-navigation-item-title {
+        
+        opacity: 0.7;
+        font-size: 1.2vw;
+        color: $acme-sc-text-color-light;
+    }
+    .acme-sc-company-title {
+        font-size:1.2vw;
+        color:$acme-sc-text-color-light;
+        opacity: 0.7;
+    }
+    
+    .acme-cs-mat-icon-default {
+        height:3.18vh;
+        width: 1.56vw;
+        opacity: 0.7;
+        fill: $acme-sc-text-color-light;
+    }
+        
+    .acme-sc-company-label {
+        font-size:0.66vw;
+        color: $acme-sc-company-label-color;
+        background-color:$acme-sc-secondary-background-light;
+        border-color: $acme-sc-navigation-bar-border-color;
+        border-width: 0.5px;
+        border-right-style: solid;
+    }
+    .acme-sc-default-text {
+        color: $acme-sc-text-color-light;
+        opacity: 0.7;
+    }
+    .acme-sc-date-label {
+        padding-left:0.5vw;
+        font-size: 0.7vw;
+        color: $acme-sc-text-color-light;
+    }
+
+    .acme-sc-owner-label {
+        padding-left:0.5vw;
+        font-size: 0.7vw;
+        color: $acme-sc-text-color-light;
+    }
+    .mat-menu-panel {
+        min-height: 0 !important;
+        background-color: white !important;
+    }
+    .acme-sc-apps-menu-item {
+        font-size:0.8vw;
+        color: $acme-sc-text-color-light;
+    }
+    .acme-sc-content-link {
+        cursor: pointer;
+        color: steelblue;
+        font-size: 1vw;
+        overflow: hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+    }
+    
+    .acme-sc-content-link:hover{
+        color:blue;
+    }    
+    
+}
+
 .acme-cs-mat-card {
-    border-radius: 16px !important;
+    border-radius: 1vw !important;
     padding: 0 !important;
 }
 .acme-cs-mat-icon {

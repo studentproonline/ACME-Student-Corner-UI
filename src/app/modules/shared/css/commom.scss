@@ -1,40 +1,11 @@
 @import './variables.scss';
 
-.acme-cs-mat-card {
-    border-radius: 1vw !important;
-    padding: 0 !important;
-}
-
-.acme-sc-container {
-    padding: 3vh;
- }
-.acme-sc-custom-container{
-    border-radius: 1.3vw !important;
-    padding: 3vh !important;
- }
-.acme-cs-mat-icon {
-    opacity: 0.5
-}
-
-.acme-cs-mat-icon-pointer {
-    cursor: pointer;
-}
-
-.acme-cs-mat-icon-darker {
-    opacity: 0.7
-}
-.acme-cs-mat-icon-default {
-    height:3.18vh;
-    width: 1.56vw;
-}
-
 .acme-cs-mat-icon-default-medium {
     height:5vh;
     width: 5vw;
 }
 
 .acme-cs-navigation-item-icon {
-    opacity: 0.7;
     fill:$acme-sc-company-label-color;
     height:3.18vh;
     width:1.56vw;
@@ -70,53 +41,10 @@
     opacity: 0.7;
 }
 
-.acme-sc-company-title {
-    font-size:1.2vw;
-}
-
-.acme-sc-company-sub-title {
-    font-size:0.66vw;
-    color: $acme-sc-company-label-color;
-    background-color:$acme-sc-navigation-bar-background-color;
-    border-color: $acme-sc-navigation-bar-border-color;
-}
-
-
-.acme-sc-company-label {
-    font-size:0.66vw;
-    color: $acme-sc-company-label-color;
-    background-color:$acme-sc-navigation-bar-background-color;
-    border-color: $acme-sc-navigation-bar-border-color;
-    border-width: 0.5px;
-    border-right-style: solid;
-}
-
-.acme-sc-owner-label {
-    padding-left:0.5vw;
-    font-size: 0.7vw;
-}
-
-.acme-sc-room-user-name {
-    color:$acme-sc-company-label-color;
-}
-
 .acme-sc-primary-color {
     color:$acme-sc-company-label-color;
 }
 
-.acme-sc-date-label {
-    padding-left:0.5vw;
-    font-size: 0.7vw;
-}
-
-.acme-sc-content-link {
-    cursor: pointer;
-    color: steelblue;
-    font-size: 1vw;
-    overflow: hidden;
-    white-space: nowrap; 
-    text-overflow: ellipsis;
-}
 
 .acme-sc-content-description {
     padding-left:0.5vw;
@@ -125,77 +53,12 @@
     color: purple;
 }
 
-.acme-sc-content-link:hover{
-    color:blue;
-}
 
 .acme-sc-file-name {
     font-size: 0.7vw;
     color:blue;
 }
 
-.acme-sc-navigation-item-title {
-    
-    opacity: 0.7;
-    font-size: 1.2vw;
-}
-
-
-.acme-sc-navigation-side-bar-title {
-    font-size:1vw;
-}
-
-
-.acme-sc-navigation-side-bar {
-    border-width: 0.5px;
-    border-right-style: solid;
-    background-color:$acme-sc-navigation-bar-background-color;
-    border-color:$acme-sc-navigation-bar-border-color;
-}
-
-.acme-sc-navigation-side-bar-item {
-    width:19vw;
-    height:4vw;
-    padding-top:0.4vw;
-    padding-bottom: 0.5vh;
-    border-radius:0.5vw;
-    border-style: solid;
-    border-color: $acme-sc-navigation-bar-item-border-color;
-}
-
-.acme-sc-navigation-side-bar-item-container{
-    background-color: $acme-sc-navigation-bar-item-color;
-    cursor:pointer;
-}
-.acme-sc-navigation-side-bar-item-container-default{
-    background-color: $acme-sc-navigation-bar-background-color;
-    cursor:pointer
-}
-.acme-sc-navigation-side-bar-item-selection-bar{
-    background-color: $acme-sc-company-label-color;
-}
-.acme-sc-navigation-side-bar-item-selection-bar-default{
-    background-color: $acme-sc-navigation-bar-background-color;
-}
-.acme-sc-navigation-side-bar-item-text {
-    color: black;
-    font-size: 0.9vw;
-    overflow: hidden;
-    white-space: nowrap; 
-    text-overflow: ellipsis;
-}
-.acme-sc-navigation-side-bar-item-text-default {
-    opacity:0.5;
-    color: black;
-    font-size: 0.9vw;
-    overflow: hidden;
-    white-space: nowrap; 
-    text-overflow: ellipsis;
-}
-.acme-sc-navigation-side-bar-item-icon-selected {
-    color: black;
-    opacity:0.7
-}
 .acme-ac-default-svg {
     height: 10vh;
     width:10vw;
@@ -230,11 +93,6 @@
 .acme-sc-custom-container .mat-dialog-container {
     border-radius: 1.3vw !important;
  }
-
-.acme-sc-apps-menu-item {
-    font-size:0.8vw;
-}
-
  
 .acme-form-input-field {
     font-size: 1.0vw;
@@ -316,11 +174,6 @@ input[type="file"] {
 
 ::ng-deep .material-icons-outlined {
     font-size: 3vh !important;
-}
-
-
-::ng-deep .mat-menu-panel {
-    min-height: 0 !important;
 }
 
 ::ng-deep.mat-menu-content:not(:empty) {

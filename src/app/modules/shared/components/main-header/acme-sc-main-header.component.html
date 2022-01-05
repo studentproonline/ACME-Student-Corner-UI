@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column">
+<div fxFlexFill fxLayout="column"[ngClass]="'dark-theme'">
     <div fxFlex fxFill>
         <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw>
             <div fxFlex="66vw" fxFill>
@@ -8,8 +8,8 @@
                         <div fxFlexFill fxLayout="row" fxLayoutGap=0.4vw fxLayoutAlign="center center">
                             <!--search icon-->
                             <div fxFlex="2vw" fxFill fxLayoutAlign="center center">
-                                <mat-label class="searchBoxLabel" fxLayoutAlign="center center">
-                                    <mat-icon class="acme-cs-mat-icon" fxLayoutAlign="center center">
+                                <mat-label fxLayoutAlign="center center">
+                                    <mat-icon fxLayoutAlign="center center">
                                         <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24">
                                             <path
@@ -41,7 +41,7 @@
                         <mat-icon class="acme-cs-mat-icon-pointer"
                             matTooltip="{{'SHARED_MAIN_HEADER_HELP_LABEL'|translate}}" (click)="openHelp()"
                             fxLayoutAlign="end center">
-                            <svg class="acme-cs-navigation-item-icon-gray" xmlns="http://www.w3.org/2000/svg"
+                            <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path

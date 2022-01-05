@@ -1,51 +1,118 @@
 @import '../../../shared/css/commom.scss';
-.acme-sc-room-card {
-    border-radius: 0.5vw;
-    margin-left:0.4vw;
-    margin-bottom:0.4vw;
-    height:28vh;
-    width:23.4vw;
-    background-color: whitesmoke; 
-    color: #222;
-    -webkit-box-shadow: 0 0 0.1vw 0.1vw lightgray;
-    -moz-box-shadow: 0 0 0.1vw 0.1vw lightgray;
-    box-shadow: 0 0 0.1vw 0.1vw lightgray;
-    //clip-path: polygon(0 23%, 0 7%, 4% 0, 29% 0, 32% 7%, 60% 7%, 98% 7%, 100% 10%, 100% 100%, 15% 100%, 0 100%, 0% 85%);
+@import '../../../shared/css/variables.scss';
+
+.dark-theme {
+    .acme-sc-room-card {
+        border-radius: 0.5vw;
+        margin-left:0.4vw;
+        margin-bottom:0.4vw;
+        height:28vh;
+        width:23.3vw;
+        color: #222;
+        -webkit-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        -moz-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        background-color:$acme-sc-secondary-background-dark; 
+    }
+    .acme-sc-room-card:hover {
+        -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+        -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+        box-shadow: 0 0 0.3vw 0.3vw lightgray;
+    }
+    
+    .acme-sc-room-title-container {
+        padding:0.4vw;
+        background-color: $acme-sc-primary-backgound-dark; 
+        cursor: pointer;
+    }
+    .acme-sc-room-title {
+        //font-weight: bold;
+        font-size: 1.4vw;
+        padding: 0.4vw;
+        opacity: 0.8;
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+   
+    .acme-sc-room-description {
+        padding: 0.4vw;
+        font-weight: lighter;
+        font-style: italic;
+        font-size: 0.8vw;
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+        white-space: nowrap !important;;
+        overflow: hidden !important;;
+        text-overflow: ellipsis !important;;
+    }
+    
+}
+.light-theme {
+    .acme-sc-room-card {
+        border-radius: 0.5vw;
+        margin-left:0.4vw;
+        margin-bottom:0.4vw;
+        height:28vh;
+        width:23.4vw;
+        color: #222;
+        -webkit-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        -moz-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        background-color: whitesmoke; 
+    }
+    .acme-sc-room-card:hover {
+        -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+        -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+        box-shadow: 0 0 0.3vw 0.3vw lightgray;
+    }
+    .acme-sc-room-title-container {
+        padding:0.4vw;
+        background-color: white; 
+        cursor: pointer;
+    }
+    
+    .acme-sc-room-title {
+        //font-weight: bold;
+        font-size: 1.4vw;
+        padding: 0.4vw;
+        opacity: 0.8;
+        color: $acme-sc-text-color-light;
+        opacity: 0.7;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    .acme-sc-room-description {
+        padding: 0.4vw;
+        font-weight: lighter;
+        font-style: italic;
+        font-size: 0.8vw;
+        color: $acme-sc-text-color-light;
+        opacity: 0.7;
+        white-space: nowrap !important;;
+        overflow: hidden !important;;
+        text-overflow: ellipsis !important;;
+    }
+    
 }
 
-
-.acme-sc-room-card:hover {
-    -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
-    -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
-    box-shadow: 0 0 0.3vw 0.3vw lightgray;
+.acme-sc-room-locked {
+    fill: darkorange !important;
 }
 
-.acme-sc-room-title-container {
-    padding:0.4vw;
+.acme-sc-room-favorite {
+    fill: green !important;
+    opacity: 1 !important;
 }
-.acme-sc-room-title {
-    //font-weight: bold;
-    font-size: 1.4vw;
-    padding: 0.4vw;
-    opacity: 0.8;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-}
-.acme-sc-room-description {
-    padding: 0.4vw;
-    font-weight: lighter;
-    font-style: italic;
-    font-size: 0.8vw;
-    white-space: nowrap !important;;
-    overflow: hidden !important;;
-    text-overflow: ellipsis !important;;
+
+.acme-sc-room-share {
+    fill: goldenrod !important;
+    opacity: 1 !important;
 }
 .acme-sc-room-card-action {
-    cursor: pointer;
-    opacity:0.7
-}
-.acme-sc-room-image {
     cursor: pointer;
 }
 .acme-sc-room-readonly {

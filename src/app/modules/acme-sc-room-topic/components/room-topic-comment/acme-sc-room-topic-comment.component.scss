@@ -1,24 +1,57 @@
 @import '../../../shared/css/commom.scss';
-.acme-sc-topic-comment-container {
-    background-color: whitesmoke;
-    border-radius: 0.4vw;
-    padding:0.4vw;
+@import '../../../shared/css/variables.scss';
+
+
+.dark-theme {
     
+    .acme-sc-topic-comment-container {
+        background-color:$acme-sc-secondary-background-dark;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .acme-sc-topic-commennt-useful-label {
+        font-size: 0.8vw;
+        color:$acme-sc-text-color-dark;
+    }
+    ::ng-deep .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
+}
+.light-theme {
+    
+    .acme-sc-topic-comment-container {
+        background-color: whitesmoke;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .acme-sc-topic-commennt-useful-label {
+        font-size: 0.8vw;
+        color:purple;
+    }
+    ::ng-deep .ql-editor {
+        color:black !important;
+    }
+}
+
+.acme-sc-topic-comment-vote-up {
+    fill: green;
+}
+
+.acme-sc-topic-comment-vote-down {
+    fill: darkorange;
 }
 
 .acme-sc-topic-comment-container-footer {
     height: 4.2vh;
 }
 
-.acme-sc-topic-commennt-useful-label {
-    font-size: 0.8vw;
-    color:purple;
-}
 .acme-sc-topic-comment-container-footer-createdOn {
     font-size: 0.7vw;
     padding-left: 0.4vw;
+    opacity: 1;
 }
-
 
 .acme-sc-topic-comment-vote {
     cursor: pointer;

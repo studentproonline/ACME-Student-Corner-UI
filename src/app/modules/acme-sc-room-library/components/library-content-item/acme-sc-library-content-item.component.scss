@@ -1,13 +1,28 @@
 @import '../../../shared/css/commom.scss';
 @import '../../../shared/css/variables.scss';
 
-.acme-sc-room-library-content-item {
-    width:100%;
-    height:12vh;
-    padding:0.4vw;
-    background-color: $acme-sc-room-inactive-background-color;
-    border-radius:0.5vw;
+
+.dark-theme {
+    .acme-sc-room-library-content-item {
+        width:100%;
+        height:12vh;
+        padding:0.4vw;
+        background-color: $acme-sc-secondary-background-dark;
+        border-radius:0.5vw;
+    }
 }
+
+.light-theme {
+    .acme-sc-room-library-content-item {
+        width:100%;
+        height:12vh;
+        padding:0.4vw;
+        background-color: $acme-sc-room-inactive-background-color;
+        border-radius:0.5vw;
+    }
+}
+
+
 
 
 .acme-sc-library-content-chip {

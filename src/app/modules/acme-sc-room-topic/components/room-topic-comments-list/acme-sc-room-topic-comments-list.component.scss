@@ -1,11 +1,40 @@
 @import '../../../shared/css/commom.scss';
+@import '../../../shared/css/variables.scss';
 
-.acme-sc-comments-loadmore{
-    font-size: 0.9vw;
-    font-weight: normal;
-    color: gray;
+.dark-theme {
+    .acme-sc-title-container {
+        background-color: $acme-sc-primary-backgound-dark;
+
+    }
+    
+    .acme-sc-comments-loadmore{
+        font-size: 0.9vw;
+        font-weight: normal;
+        color: $acme-sc-text-color-dark;
+        cursor: pointer;
+    }
+
+
+}
+
+.light-theme {
+    .acme-sc-title-container {
+        background-color: white;
+    }
+    
+    .acme-sc-comments-loadmore{
+        font-size: 0.9vw;
+        font-weight: normal;
+        color: gray;
+        cursor: pointer;
+    }
+
+}
+
+.acme-sc-comments-action {
     cursor: pointer;
 }
+
 
 .acme-load-more-label {
     font-size: 1vw;

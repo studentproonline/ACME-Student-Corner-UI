@@ -1,4 +1,5 @@
 @import '../../../shared/css/commom.scss';
+@import '../../../shared/css/variables.scss';
 .UserInfoCircle {
     width: 2.5vw;
     height: 2.5vw;
@@ -10,26 +11,73 @@
     background:purple;
     cursor:pointer
 }
-.searchBox {
-    border-style: solid;
-    border-width: 0.15vw;
-    border-radius: 0.4vw;
-    border-color: darkgray;
+.dark-theme {
+    .searchBox {
+        border-style: solid;
+        border-width: 0.15vw;
+        border-radius: 0.4vw;
+        border-color: gray;
+        background-color: $acme-sc-secondary-background-dark;
+        
+    }
+    .searchInput {
+        border-style: none;
+        font-size: 1vw;
+        background-color: $acme-sc-secondary-background-dark;
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+    }
+    ::placeholder { /* Most modern browsers support this now. */
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+    }
+    textarea:focus, input:focus{
+        outline: none;
+        caret-color: $acme-sc-text-color-dark;
+    }
+    .acme-sc-title {
+        font-size: 1.6vW;
+        opacity: 0.7;
+        color: $acme-sc-text-color-dark;
+        border-bottom-color: darkgoldenrod;
+        border-bottom-style: solid;
+    }
 }
 
-.searchBoxLabel {
-    font-size: 1.08vw;
+.light-theme {
+    .searchBox {
+        border-style: solid;
+        border-width: 0.15vw;
+        border-radius: 0.4vw;
+        border-color: darkgray;
+    }
+    .searchInput {
+        border-style: none;
+        font-size: 1vw;
+        background-color: $acme-sc-secondary-background-light;
+        color: $acme-sc-text-color-light;
+        opacity: 0.7;
+    }
+    ::placeholder { /* Most modern browsers support this now. */
+        color: $acme-sc-text-color-light;
+        opacity: 0.7;
+    }
+    textarea:focus, input:focus{
+        outline: none;
+        caret-color: $acme-sc-text-color-light;
+    }
+    .acme-sc-title {
+        font-size: 1.6vW;
+        opacity: 0.7;
+        border-bottom-color: darkgoldenrod;
+        border-bottom-style: solid;
+    }
 }
-.searchInput {
-    border-style: none;
-    font-size: 1.08vw;
-}
+
 :host ::ng-deep .mat-form-field-label {
     font-size: 1.08vw;
 }
-textarea:focus, input:focus{
-    outline: none;
-}
+
 
 .acme-sc-logout-text {
     font-size: small;
@@ -38,21 +86,7 @@ textarea:focus, input:focus{
     cursor: pointer;
 }
 
-.acme-sc-title {
-    font-size: 1.6vW;
-    opacity: 0.7;
-    border-bottom-color: darkgoldenrod;
-    border-bottom-style: solid;
-}
 
-.acme-form-input-field {
-    font-size: 1.0vw;
-}
-
-.acme-sc-search-form {
-    //height:100%;
-    width:97%;
-}
 
 /*::ng-deep .mat-form-field-infix {
    border-top: 0 !important;

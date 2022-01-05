@@ -1,6 +1,14 @@
-@import '../../../shared/css/variables.scss';
 @import '../../../shared/css/commom.scss';
+@import '../../../shared/css/variables.scss';
 
-.acme-header-container {
-    background-color: #fafafa;
+.dark-theme {
+    .acme-sc-company-header-container {
+        background-color: $acme-sc-secondary-background-dark;
+    }
+}
+
+.light-theme {
+    .acme-sc-company-header-container {
+        background-color: white;
+    }
 }

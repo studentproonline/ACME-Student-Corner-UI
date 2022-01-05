@@ -1,14 +1,31 @@
-.acme-sc-room-topic-votes-count {
-    font-size: 0.9vw;
-    font-weight: bold;
-    opacity: 0.5;
+@import '../../../shared/css/commom.scss';
+@import '../../../shared/css/variables.scss';
+.dark-theme {
+    .acme-sc-room-topic-votes-container {
+        background-color: $acme-sc-secondary-background-dark;
+        border-radius: 0.4vw;
+    }
+    .acme-sc-room-topic-votes-count {
+        font-size: 0.9vw;
+        color: white;
+    }
 }
 
-.acme-sc-room-topic-votes-label {
-    font-size: 0.9vw;
+.light-theme {
+    .acme-sc-room-topic-votes-container {
+        background-color: whitesmoke;
+        border-radius: 0.4vw;
+    }
+    .acme-sc-room-topic-votes-count {
+        font-size: 0.9vw;
+        opacity: 0.5;
+    }
 }
 
-.acme-sc-room-topic-votes-container {
-    background-color: whitesmoke;
-    border-radius: 0.4vw;
+.acme-sc-vote-up {
+    fill: darkgreen;
 }
+.acme-sc-vote-down {
+    fill: darkorange;
+}
+

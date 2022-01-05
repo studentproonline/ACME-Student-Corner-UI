@@ -1,4 +1,4 @@
-<div fxLayout="column" class="acme-sc-room-topic-item-container">
+<div fxLayout="column" class="acme-sc-room-topic-item-container" [ngClass]="'dark-theme'">
     <div fxFlex fxFill>
         <div fxLayout="row" fxFlexFill fxLayoutGap="0.4vw">
             <!--votes and comments section-->
@@ -20,9 +20,8 @@
                         <div fxLayout="row" class="acme-sc-room-topic-row" fxLayoutGap="0.4vw">
                             <!--question icon-->
                             <div fxFlex="2vw" fxLayoutAlign="center center">
-                                <mat-icon fxLayoutAlign="center center" style="height:3vh;width:2vw">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24"
-                                        width="100%" fill="darkgoldenrod">
+                                <mat-icon  fxLayoutAlign="center center">
+                                    <svg class="acme-cs-mat-icon-default acme-sc-topic-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none" />
                                         <path
                                             d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
@@ -42,13 +41,13 @@
                                 <mat-icon class="acme-cs-mat-icon-default" fxLayoutAlign="center center">
                                     <!--Active-->
                                     <svg class="acme-cs-mat-icon-default" *ngIf="!topicClosed"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray">
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0V0z" fill="none" />
                                         <path
                                             d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
                                     </svg>
                                     <!--stopped-->
-                                    <svg class="acme-cs-mat-icon-default" *ngIf="topicClosed"
+                                    <svg class="acme-cs-mat-icon-default acme-sc-topic-closed-icon" *ngIf="topicClosed"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="darkorange">
                                         <g fill="none">
                                             <path d="M0 0h24v24H0V0z" />
@@ -66,8 +65,8 @@
                                     aria-label="Example icon-button with a menu" fxLayoutAlign="center center"
                                     style="height:5vh;width:2.5vw">
                                     <mat-icon fxLayoutAlign="center center">
-                                        <svg class="acme-cs-navigation-item-icon-lightgray"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+                                        <svg class="acme-cs-mat-icon-default"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path
                                                 d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
@@ -78,9 +77,9 @@
                                     <!--stop discussion-->
                                     <button *ngIf="!topicClosed" mat-menu-item (click)="updateTopic('Closed')"
                                         fxLayoutAlign="center center">
-                                        <mat-icon class="acme-cs-mat-icon-darker" fxLayoutAlign="center center">
+                                        <mat-icon fxLayoutAlign="center center">
                                             <svg class="acme-cs-mat-icon-default" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24" fill="black">
+                                                viewBox="0 0 24 24">
                                                 <g fill="none">
                                                     <path d="M0 0h24v24H0V0z" />
                                                     <path d="M0 0h24v24H0V0z" opacity=".87" />
@@ -96,7 +95,7 @@
                                     <!--start discussion-->
                                     <button *ngIf="topicClosed" mat-menu-item (click)="updateTopic('Started')"
                                         fxLayoutAlign="center center">
-                                        <mat-icon class="acme-cs-mat-icon-darker" fxLayoutAlign="center center">
+                                        <mat-icon fxLayoutAlign="center center">
                                             <svg class="acme-cs-mat-icon-default"
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
                                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -117,11 +116,11 @@
                             class="acme-sc-room-topic-row">
                             <!--created by-->
                             <div fxFlex="70%" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_CREATED_BY'|translate}}</b>{{topic.ownerFirstName }}
+                                <span>{{'ROOM_DETAILS_TOPIC_ITEM_CREATED_BY'|translate}}{{topic.ownerFirstName }}
                                     {{topic.ownerLastName}}</span>
                             </div>
                             <div fxFlex="30%" fxLayoutAlign="end center" class="acme-sc-date-label">
-                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_STARTED_ON'|translate}}</b>{{topic.createdAt|date:'medium'}}</span>
+                                <span>{{'ROOM_DETAILS_TOPIC_ITEM_STARTED_ON'|translate}}{{topic.createdAt|date:'medium'}}</span>
                             </div>
                         </div>
                     </div>

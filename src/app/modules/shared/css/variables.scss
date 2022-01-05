@@ -1,7 +1,24 @@
 // variables
+// dark colors
+$acme-sc-text-color-dark: white;
+$acme-sc-primary-backgound-dark: #1e1e1e;
+$acme-sc-secondary-background-dark: #252526;
+$acme-sc-navigation-bar-border-color:lightgray;
+$acme-sc-navigation-side-bar-item-background-color-dark: #272523;
+$acme-sc-navigation-side-bar-item-border-color-dark: gray;
+
+
+// light colors
+$acme-sc-text-color-light: black;
+$acme-sc-primary-backgound-light: white;
+$acme-sc-secondary-background-light: #fafafa;
+$acme-sc-navigation-bar-border-color:lightgray;
+$acme-sc-navigation-side-bar-item-background-color-light: #fafafa;
+$acme-sc-navigation-side-bar-item-border-color-light: white;
+
 $container-padding: 1.5vw;
 
-$acme-sc-company-label-color: purple;
+$acme-sc-company-label-color: goldenrod;
 $acme-sc-beta-feature-color: darkgreen;
 $acme-sc-room-owner-color: #5f6368;
 $acme-sc-button-color: white;
@@ -19,7 +36,6 @@ $acme-sc-navigation-bar-background-color: #fafafa;
 $acme-sc-room-inactive-background-color: whitesmoke;
 $acme-sc-navigation-bar-item-color: #f1f1f1;
 $acme-sc-navigation-bar-item-border-color: white;
-$acme-sc-navigation-bar-border-color:lightgray;
 $acme-sc-navigation-bar-border-width:0.5px;
 $acme-sc-button-color: deeppink;
 $acme-sc-start-color: darkgreen;

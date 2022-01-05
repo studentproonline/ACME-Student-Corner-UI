@@ -28,6 +28,7 @@ export class AcmeSCMainHeaderComponent {
 
     constructor(private acmeScCookiesService: AcmeScCookiesService, private router: Router,
         public dialog: MatDialog, private acmesharedUiTuilitiesService: AcmesharedUiTuilitiesService) {
+            
     }
 
     onSearchChange(value) {

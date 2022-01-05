@@ -1,4 +1,4 @@
-<div id='roomListContainer' #roomListContainer fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+<div id='roomListContainer' #roomListContainer fxFlexFill fxLayout="column" fxLayoutGap="1vh" [ngClass]="'dark-theme'" >
     <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
     </div>
@@ -114,9 +114,8 @@
                 <div fxLayout="row" fxFlexFill fxLayoutAlign="end center" fxLayoutGap="1vw">
                     <div fxFlex fxLayoutAlign="end center">
                         <div fxLayoutAlign="center center" class="acme-sc-login-user-label" fxLayoutGap="0.4vw">
-                            <mat-icon class="acme-cs-mat-icon-darker" fxLayoutAlign="end center">
-                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="3vh"
-                                    viewBox="0 0 24 24" width="3vh" fill="#000000">
+                            <mat-icon class="acme-cs-mat-icon-default" fxLayoutAlign="end center">
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
                                     <g>
                                         <rect fill="none" height="24" width="24" />
                                     </g>
@@ -155,7 +154,7 @@
             <div fxLayout="row wrap" fxFlexFill fxLayoutGap="1.4vw">
                 <acme-sc-room-card *ngFor="let room of filteredRoomsList" [roomType]="roomType" [room]="room"
                     (roomDeleted)="roomDeleted()" (favRoomDeleted)="favRoomDeleted()"
-                    (sharedRoomDeleted)="sharedRoomDeleted()" class="acme-sc-room-card">
+                    (sharedRoomDeleted)="sharedRoomDeleted()" class="acme-sc-room-card-margin acme-sc-room-card">
                 </acme-sc-room-card>
             </div>
         </ng-scrollbar>
