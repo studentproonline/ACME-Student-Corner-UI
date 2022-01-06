@@ -144,6 +144,12 @@ body {
         opacity: 0.7;
         fill: $acme-sc-text-color-dark;
     }
+    .acme-cs-mat-icon-default-small {
+        height:2.5vh;
+        width: 1.4vw;
+        opacity: 0.7;
+        fill: $acme-sc-text-color-dark;
+    }
     .acme-cs-mat-form-icon {
         height:100%;
         width: 100%;
@@ -231,6 +237,7 @@ body {
     .acme-sc-link-color {
         color:goldenrod;
     }
+    
 }
 
 .light-theme {
@@ -289,7 +296,7 @@ body {
         border-color: $acme-sc-navigation-bar-border-color;
     }
     .acme-sc-navigation-side-bar-item-container{
-        background-color: $acme-sc-primary-backgound-light;
+        background-color: #f1f1f1;
         cursor:pointer;
     }
     .acme-sc-navigation-side-bar-item-container-default{
@@ -320,8 +327,8 @@ body {
         text-overflow: ellipsis;
     }
     .acme-sc-navigation-side-bar-item-text-default {
-        opacity:0.5 !important;
         color: $acme-sc-text-color-light;
+        opacity:0.7 !important;
         font-size: 0.9vw;
         overflow: hidden;
         white-space: nowrap; 
@@ -357,6 +364,12 @@ body {
     .acme-cs-mat-icon-default {
         height:3.18vh;
         width: 1.56vw;
+        opacity: 0.7;
+        fill: $acme-sc-text-color-light;
+    }
+    .acme-cs-mat-icon-default-small {
+        height:2.5vh;
+        width: 1.4vw;
         opacity: 0.7;
         fill: $acme-sc-text-color-light;
     }

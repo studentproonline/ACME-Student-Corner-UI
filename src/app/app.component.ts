@@ -19,7 +19,6 @@ export class AppComponent {
     } else {
       translateService.setDefaultLang('en');
     }
-
-    this.acmeSCThemingService.setTheme('dark-theme');
+    this.acmeSCThemingService.setTheme('light-theme');
   }
 }

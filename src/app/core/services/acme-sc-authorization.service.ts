@@ -10,6 +10,7 @@ export class AcmeSCAuthorizationService {
     private activeSession: ILoginEntity;
     roomDetailsEntity: IRoomEntity;
     roleResponse: any;
+    uiTheme: string;
 
     setSession(login: ILoginEntity) {
         this.activeSession = login;
@@ -42,5 +43,13 @@ export class AcmeSCAuthorizationService {
 
     getUserRoomRole(): any {
         return this.roleResponse;
+    }
+
+    setUiTheme(theme: string) {
+        this.uiTheme = theme;
+    }
+
+    getUiTheme(): string {
+        return this.uiTheme;
     }
 }
