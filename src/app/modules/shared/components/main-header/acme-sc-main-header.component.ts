@@ -31,8 +31,7 @@ export class AcmeSCMainHeaderComponent {
 
     lightTheme: boolean = false;
     darkTheme: boolean = false;
-    themeMode: string;
-
+ 
     constructor(private acmeScCookiesService: AcmeScCookiesService, private router: Router,
         public dialog: MatDialog,
         private acmeSCAuthorizationService: AcmeSCAuthorizationService,
@@ -43,16 +42,13 @@ export class AcmeSCMainHeaderComponent {
             if (theme === 'dark-theme') {
                 this.lightTheme = false;
                 this.darkTheme = true;
-                this.themeMode= theme;
             } else {
                 this.lightTheme = true;
                 this.darkTheme = false;
-                this.themeMode = 'light-theme'
             }
         } else {
             this.lightTheme = true;
             this.darkTheme = false;
-            this.themeMode = 'light-theme'
         }
 
     }

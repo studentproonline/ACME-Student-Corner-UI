@@ -1,41 +1,5 @@
 @import '../../../../shared/css/commom.scss';
-@import '../../../../shared/css/variables.scss';
 
-.dark-theme {
-    .acme-sc-user-confirmation-container {
-        background-color:$acme-sc-primary-backgound-dark;
-    }
-    .acme-sc-user-confirmation-heading {
-        font-size:1.4vw !important;
-        color: $acme-sc-text-color-dark;
-    }
-    .acme-sc-user-confirmation-message {
-        font-size:0.8vw;
-        color: $acme-sc-text-color-dark;
-    }
-    .acme-sc-user-confirmation-text {
-        font-size:1vw;
-        color: $acme-sc-text-color-dark;
-    }
-}
-
-.light-theme {
-    .acme-sc-user-confirmation-container {
-        background-color: white;
-    }
-    .acme-sc-user-confirmation-heading {
-        font-size:1.4vw !important;
-        color: $acme-sc-text-color-light;
-    }
-    .acme-sc-user-confirmation-message {
-        font-size:0.8vw;
-        color: $acme-sc-text-color-light;
-    }
-    .acme-sc-user-confirmation-text {
-        font-size:1vw;
-        color: $acme-sc-text-color-light;
-    }
-}
 .acme-sc-user-confirmation-close-button {
     background-color: darkorange !important;
     width:6.5vw;

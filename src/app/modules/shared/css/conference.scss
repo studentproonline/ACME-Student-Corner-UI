@@ -1,0 +1,127 @@
+@import './commom.scss';
+@import './variables.scss';
+
+.dark-theme {
+    .acme-sc-conference-room-viewer {
+        border-style: solid;
+        border-color:gray;
+        border-radius: 0.5vw;
+    
+    }
+
+    .acme-sc-stop-session {
+        fill: darkorange !important;
+        opacity: 1 !important;
+    }
+    .container {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        height:100%;
+    }
+
+    .container .box {
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+        min-width: 15vw;
+        max-width: 30vw;
+        max-height:30vh;
+        min-height:20vh;
+        overflow: hidden;
+        border-radius: 1vw;
+        padding: 1.4vh;
+        margin: 1vh;
+        -webkit-box-shadow: 0 0 0.3vw 0.3vw gray;
+        -moz-box-shadow: 0 0 0.3vw 0.3vw gray;
+        box-shadow: 0 0 0.3vw 0.3vw gray;
+    }
+    .acme-sc-conference-room-self-view-container {
+        padding:0.4vw;
+        background-color: #333333;
+
+    }
+    .acme-sc-conference-room-user-item {
+        width:100%;
+        height:4vw;
+        padding-top:0.4vw;
+        padding-bottom:0.2vw;
+        border-radius: 0.5vw;
+        border-style: solid;
+        border-color: gray;
+    }
+    .acme-sc-conference-room-users-list-container {
+        border-width: 0.03vw;
+        border-right-style: solid;
+        background-color:$acme-sc-secondary-background-dark;
+        border-color: lightgray;
+    }
+    
+    .acme-sc-conference-room-users-list{
+        border-top-style: outset;
+        border-color: gray;
+        padding:0.4vw;
+    }
+}
+
+.light-theme {
+    .acme-sc-conference-room-viewer {
+        border-style: solid;
+        border-color:whitesmoke;
+        border-radius: 0.5vw;
+    
+    }
+
+    .acme-sc-stop-session {
+        fill: red !important;
+    }
+    
+    .container {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        height:100%;
+    }
+
+    .container .box {
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+        min-width: 15vw;
+        max-width: 100%;
+        max-height:100%;
+        min-height:20vh;
+        overflow: hidden;
+        border-radius: 1vw;
+        padding: 1.4vh;
+        margin: 1vh;
+        -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+        -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
+        box-shadow: 0 0 0.3vw 0.3vw lightgray;
+    }
+    .acme-sc-conference-room-self-view-container {
+        padding:0.4vw;
+
+    }
+    .acme-sc-conference-room-user-item {
+        width:100%;
+        height:4vw;
+        padding-top:0.4vw;
+        padding-bottom:0.2vw;
+        border-radius: 0.5vw;
+        border-style: solid;
+        border-color: white;
+    }
+    .acme-sc-conference-room-users-list-container {
+        border-width: 0.03vw;
+        border-right-style: solid;
+        background-color:#fafafa;
+        border-color: lightgray;
+    }
+    
+    .acme-sc-conference-room-users-list{
+        border-top-style: outset;
+        padding:0.4vw;
+    }
+}
+

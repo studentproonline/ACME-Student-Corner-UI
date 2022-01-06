@@ -1,49 +1,6 @@
 @import '../../../shared/css/commom.scss';
 @import '../../../shared/css/variables.scss';
 
-.dark-theme {
-    .acme-sc-assesment-data-container {
-        background-color: #333333;
-        border-radius: 0.4vw;
-        padding:0.4vw;
-        
-    }
-    .acme-sc-custom-label {
-        color:seagreen;
-    }
-
-    .acme-sc-assessment-status {
-        fill: seagreen !important;
-        opacity: 1 !important;
-    }
-
-    ::ng-deep .ql-editor {
-        color:$acme-sc-text-color-dark !important;
-    }
-}
-
-.light-theme {
-    .acme-sc-assesment-data-container {
-        background-color: $acme-sc-room-inactive-background-color;
-        border-radius: 0.4vw;
-        padding:0.4vw;
-        
-    }
-
-    .acme-sc-assessment-status {
-        fill: darkgreen !important;
-    }
-    
-    .acme-sc-custom-label {
-        color:darkgreen;
-    }
-
-    ::ng-deep .ql-editor {
-        color:black !important;
-    }
- 
-}
-
 .acme-sc-custom-link {
     text-decoration: underline;
     cursor: pointer;

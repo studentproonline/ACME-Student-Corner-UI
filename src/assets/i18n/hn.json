@@ -140,6 +140,8 @@
     "SHARED_NAVIGATION_BAR_ROOM_OWNER_LABEL": "कमरे का मालिक:",
 
     "SHARED_MAIN_HEADER_HELP_LABEL": "मदद",
+    "SHARED_MAIN_HEADER_DARK_MODE": "डार्क मोड",
+    "SHARED_MAIN_HEADER_LIGHT_MODE": "लाइट मोड",
 
     "SHARED_USER_LIST_LABEL": "कमरे के उपयोगकर्ता",
     "SHARED_USER_LIST_REFRESH_USER_LIST": "उपयोगकर्ताओं की सूची ताज़ा करें",

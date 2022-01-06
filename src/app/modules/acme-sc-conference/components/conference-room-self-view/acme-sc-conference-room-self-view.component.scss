@@ -1,22 +1,6 @@
 @import '../../../shared/css/commom.scss';
 @import '../../../shared/css/variables.scss';
 
-.dark-theme {
-    
-    .acme-sc-conference-room-self-view-container {
-        padding:0.4vw;
-        background-color: #333333;
-
-    }
-}
-
-.light-theme {
-    
-    .acme-sc-conference-room-self-view-container {
-        padding:0.4vw;
-
-    }
-}
 .acme-sc-conference-room-self-view-card {
     position: fixed;
     right: 2.5vw;

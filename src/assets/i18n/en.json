@@ -139,6 +139,8 @@
     "SHARED_NAVIGATION_BAR_ROOM_OWNER_LABEL": "Room Owner:",
 
     "SHARED_MAIN_HEADER_HELP_LABEL": "Help",
+    "SHARED_MAIN_HEADER_DARK_MODE": "Dark Mode",
+    "SHARED_MAIN_HEADER_LIGHT_MODE": "Light Mode",
 
     "SHARED_USER_LIST_LABEL": "Room users",
     "SHARED_USER_LIST_REFRESH_USER_LIST": "Refresh users list",

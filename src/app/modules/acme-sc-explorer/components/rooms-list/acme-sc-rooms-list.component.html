@@ -154,7 +154,7 @@
             <div fxLayout="row wrap" fxFlexFill fxLayoutGap="1.4vw">
                 <acme-sc-room-card *ngFor="let room of filteredRoomsList" [roomType]="roomType" [room]="room"
                     (roomDeleted)="roomDeleted()" (favRoomDeleted)="favRoomDeleted()"
-                    (sharedRoomDeleted)="sharedRoomDeleted()" class="acme-sc-room-card-margin acme-sc-room-card">
+                    (sharedRoomDeleted)="sharedRoomDeleted()" class="acme-sc-room-card-margin">
                 </acme-sc-room-card>
             </div>
         </ng-scrollbar>

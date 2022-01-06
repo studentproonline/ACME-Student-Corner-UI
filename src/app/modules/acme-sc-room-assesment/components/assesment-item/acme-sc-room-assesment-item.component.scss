@@ -1,45 +1,4 @@
 @import '../../../shared/css/commom.scss';
-@import '../../../shared/css/variables.scss';
-
-.dark-theme {
-    .acme-sc-room-assesment-title-container {
-        height: 9vh;
-        background-color: #333333;
-    }
-    .acme-sc-assesment-container {
-        background-color: #333333;
-        border-radius: 0.4vw;
-        padding:0.4vw;
-        
-    }
-    .acme-sc-start-assessment {
-        fill: seagreen !important;
-        opacity: 1 !important;
-    }
-    .acme-sc-stop-assessment {
-        fill: darkorange !important;
-        opacity: 1 !important;
-    }
-}
-
-.light-theme {
-    
-    .acme-sc-room-assesment-title-container {
-        height: 9vh;
-    }
-    .acme-sc-assesment-container {
-        background-color: whitesmoke;
-        border-radius: 0.4vw;
-        padding:0.4vw;
-        
-    }
-    .acme-sc-start-assessment {
-        fill: darkgreen !important;
-    }
-    .acme-sc-stop-assessment {
-        fill: red !important;
-    }
-}
 
 .acme-sc-assesment-action {
     cursor: pointer;

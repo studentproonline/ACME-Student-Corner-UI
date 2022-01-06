@@ -86,6 +86,21 @@
         opacity: 0.7;
         color: $acme-sc-text-color-dark
     }
+    .acme-sc-user-confirmation-container {
+        background-color:$acme-sc-primary-backgound-dark;
+    }
+    .acme-sc-user-confirmation-heading {
+        font-size:1.4vw !important;
+        color: $acme-sc-text-color-dark;
+    }
+    .acme-sc-user-confirmation-message {
+        font-size:0.8vw;
+        color: $acme-sc-text-color-dark;
+    }
+    .acme-sc-user-confirmation-text {
+        font-size:1vw;
+        color: $acme-sc-text-color-dark;
+    }
 
 }
 
@@ -164,5 +179,20 @@
         font-size: 1vw;
         opacity: 0.7;
         color: $acme-sc-text-color-light
+    }
+    .acme-sc-user-confirmation-container {
+        background-color: white;
+    }
+    .acme-sc-user-confirmation-heading {
+        font-size:1.4vw !important;
+        color: $acme-sc-text-color-light;
+    }
+    .acme-sc-user-confirmation-message {
+        font-size:0.8vw;
+        color: $acme-sc-text-color-light;
+    }
+    .acme-sc-user-confirmation-text {
+        font-size:1vw;
+        color: $acme-sc-text-color-light;
     }
 }

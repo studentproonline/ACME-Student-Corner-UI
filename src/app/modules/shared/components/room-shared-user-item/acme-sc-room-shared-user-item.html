@@ -9,7 +9,7 @@
         [ngClass]="selected===true?'acme-sc-content-item-icon-selected' : 'acme-cs-mat-icon acme-sc-user-row'">
         <div class="UserInfoCircle" fxLayoutAlign="center center">
             <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center"
-                style="height:2vh;width:1vw;opacity: 0.5;">
+                style="height:2vh;width:1vw">
                 
                 <!--non admin-->
                 <svg class="acme-cs-mat-form-icon" *ngIf="!user.role || user.role !== 'Admin'" xmlns="http://www.w3.org/2000/svg" height="100%"

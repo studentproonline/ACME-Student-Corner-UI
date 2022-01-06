@@ -23,13 +23,13 @@
         color: #222;
         -webkit-box-shadow: 0 0 0.1vw 0.1vw lightgray;
         -moz-box-shadow: 0 0 0.1vw 0.1vw lightgray;
-        box-shadow: 0 0 1px 1px lightgray;
+        box-shadow: 0 0  0.1vw 0.1vw lightgray;
         background-color:$acme-sc-secondary-background-dark; 
     }
     .acme-sc-room-card:hover {
         -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
         -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
-        box-shadow: 0 0 2px 2px lightgray;
+        box-shadow:0 0 0.3vw 0.3vw lightgray;
     }
     
     .acme-sc-room-title-container {

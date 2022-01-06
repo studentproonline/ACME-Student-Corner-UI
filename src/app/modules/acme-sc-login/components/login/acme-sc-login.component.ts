@@ -21,6 +21,10 @@ import { AcmeSCDeviceOrientationComponent } from '../../../shared/components/dia
 //translation
 import { TranslateService } from '@ngx-translate/core';
 
+// Theming service
+import { AcmeSCThemingService } from '../../../shared/services/acme-sc-theming.service';
+
+
 @Component({
     selector: 'acme-sc-login',
     templateUrl: './acme-sc-login.component.html',
@@ -35,7 +39,8 @@ export class AcmeSCLoginComponent {
     constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar,
         private loginService: AcmeSCLoginService, private acmeSCAuthorizationService: AcmeSCAuthorizationService,
         private acmeScCookiesService: AcmeScCookiesService, private router: Router,
-        public translateService: TranslateService) {
+        public translateService: TranslateService,
+        private acmeSCThemingService: AcmeSCThemingService) {
         this.loginFormGroup = this.formBuilder.group({
             emailControl: ['', [Validators.required, Validators.email]],
             passwordControl: ['', [Validators.required]],
@@ -141,6 +146,13 @@ export class AcmeSCLoginComponent {
                         this.acmeSCAuthorizationService.setSession(loginEntity);
                         loginEntity.id = response.data.id;
                         this.acmeScCookiesService.setCookies(loginEntity);
+                        const theme = localStorage.getItem('Theme');
+                        if(!theme) {
+                            this.acmeSCThemingService.setTheme('dark-theme');
+                            localStorage.setItem('Theme', 'dark-theme');
+                        } else {
+                            this.acmeSCThemingService.setTheme(theme);
+                        }
                         this.router.navigateByUrl('/home?roomType=' + this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'));
                         return;
                     }
