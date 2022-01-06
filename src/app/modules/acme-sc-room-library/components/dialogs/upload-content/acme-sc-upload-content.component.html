@@ -25,7 +25,7 @@
                         </mat-label>
                         <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION'|translate}}" formControlName="fileDescriptionControl"
                             autocomplete="off">
-                        <mat-error *ngIf="documentuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
+                        <mat-error class=" acme-form-input-field acme-sc-error" *ngIf="documentuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
                             documentuploadFormGroup.controls['fileDescriptionControl'].errors?.whiteSpace">
                             {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_DOCUMENT_DESCRIPTION_REQUIRED'|translate}}
                         </mat-error>
@@ -71,12 +71,12 @@
                 <form [formGroup]="linkuploadFormGroup">
                     <!--Link Description-->
                     <mat-form-field class="form-field acme-form-input-field" fxFill>
-                        <mat-label acme-form-input-field>
+                        <mat-label class="acme-form-input-field">
                             {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK'|translate}}
                         </mat-label>
                         <input class="acme-form-input-field" required matInput placeholder="Link : provide full url including http:// or https://"
                             formControlName="fileLinkControl" autocomplete="off">
-                        <mat-error class="acme-form-input-field" *ngIf="linkuploadFormGroup.controls['fileLinkControl'].errors?.required ||
+                        <mat-error class="acme-form-input-field acme-sc-error" *ngIf="linkuploadFormGroup.controls['fileLinkControl'].errors?.required ||
                             linkuploadFormGroup.controls['fileLinkControl'].errors?.whiteSpace">
                             {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_REQUIRED'|translate}}
                         </mat-error>
@@ -88,7 +88,7 @@
                         </mat-label>
                         <input class="acme-form-input-field" required matInput placeholder="Description" formControlName="fileDescriptionControl"
                             autocomplete="off">
-                        <mat-error class="acme-form-input-field" *ngIf="linkuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
+                        <mat-error class="acme-form-input-field acme-sc-error" *ngIf="linkuploadFormGroup.controls['fileDescriptionControl'].errors?.required ||
                             linkuploadFormGroup.controls['fileDescriptionControl'].errors?.whiteSpace">
                            {{'ROOM_LIBRARY_CONTENT_DIALOG_TAB_LINK_INPUT_DESCRIPTION_REQUIRED'|translate}}
                         </mat-error>

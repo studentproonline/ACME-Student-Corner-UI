@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+<div fxFlexFill fxLayout="column" fxLayoutGap="1vh" [ngClass]="'dark-theme'">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>{{'ROOM_ASSESSMENT_DIALOG_SUBMISSION_TITLE'|translate}}</span>
     </div>
@@ -16,7 +16,7 @@
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
                         <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required">{{'ROOM_ASSESSMENT_DIALOG_SUBMISSION_ASSESSMENT_FILE_REQUIRED'|translate}}</div>
-                        <div class="acme-sc-file-name">{{f.fileSourceControl.value.name}}</div>
+                        <div class="acme-sc-file-name" style="padding-top: 1vh;">{{f.fileSourceControl.value.name}}</div>
                     </div>
                
                 </div>

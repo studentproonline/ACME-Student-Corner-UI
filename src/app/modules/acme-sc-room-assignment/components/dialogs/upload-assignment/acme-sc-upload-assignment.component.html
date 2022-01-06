@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw" [ngClass]="'dark-theme'">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>{{dialogTitle}}</span>
     </div>
@@ -29,7 +29,7 @@
                                     </mat-label>
                                     <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_TITLE'|translate}}"
                                         formControlName="titleControl" autocomplete="off">
-                                    <mat-error class="acme-form-input-field" *ngIf="createAssignmentFormGroup.controls['titleControl'].errors?.required ||
+                                    <mat-error class="acme-form-input-field acme-sc-error" *ngIf="createAssignmentFormGroup.controls['titleControl'].errors?.required ||
                                         createAssignmentFormGroup.controls['titleControl'].errors?.whiteSpace">
                                         {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_TITLE_REQUIRED'|translate}}
                                     </mat-error>
@@ -41,9 +41,9 @@
                                     <mat-label class="acme-form-input-field">{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_EXPIRY_DATE'|translate}}</mat-label>
                                     <input class="acme-form-input-field" required matInput [matDatepicker]="picker"
                                         formControlName="expiryDateControl" [min]="minDate">
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker-toggle class="acme-sc-expiry-date-icon" matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
-                                    <mat-error class="acme-form-input-field"
+                                    <mat-error class="acme-form-input-field acme-sc-error"
                                         *ngIf="createAssignmentFormGroup.controls['titleControl'].errors?.required">
                                         {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_EXPIRY_DATE_REQUIRED'|translate}}
                                     </mat-error>
@@ -59,7 +59,7 @@
                             </mat-label>
                             <input class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_DESCRIPTION'|translate}}"
                                 formControlName="descriptionControl" autocomplete="off">
-                            <mat-error class="acme-form-input-field" *ngIf="createAssignmentFormGroup.controls['descriptionControl'].errors?.required ||
+                            <mat-error class="acme-form-input-field acme-sc-error" *ngIf="createAssignmentFormGroup.controls['descriptionControl'].errors?.required ||
                                 createAssignmentFormGroup.controls['descriptionControl'].errors?.whiteSpace">
                                {{'ROOM_ASSIGNMENT_DIALOG_ASSIGNMENT_DESCRIPTION_REQUIRED'|translate}}
                             </mat-error>

@@ -73,7 +73,7 @@
                         </div>
                         <!--status icon-->
                         <div fxFlex="3vw" fxFill fxLayoutAlign="end center">
-                            <mat-icon fxLayoutAlign="end center" style="opacity:0.5">
+                            <mat-icon fxLayoutAlign="end center">
                                 <svg class="acme-cs-mat-icon-default acme-sc-start-assessment" *ngIf="assesment.status!=='Closed'"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path d="M0 0h24v24H0z" fill="none" />
@@ -111,9 +111,7 @@
                         <div *ngIf="isContentOrRoomOwner && assesment.status !=='Closed' && assesment.status !=='Active'"
                             fxFlex="2vw" fxFill fxLayoutAlign="start center" class="acme-cs-mat-icon-pointer"
                             (click)="deleteAssesment()">
-                            <mat-icon style="opacity: 0.7;"
-                                matTooltip="{{'ROOM_ASSESMENT_DELETE_ASSESSMENT'|translate}}"
-                                fxLayoutAlign="start center">
+                            <mat-icon matTooltip="{{'ROOM_ASSESMENT_DELETE_ASSESSMENT'|translate}}" fxLayoutAlign="start center">
                                 <svg class="acme-cs-mat-icon-default acme-sc-assesment-action" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24">
                                     <path d="M0 0h24v24H0V0z" fill="none" />

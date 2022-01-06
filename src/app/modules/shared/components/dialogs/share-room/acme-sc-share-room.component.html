@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column">
+<div fxFlexFill fxLayout="column" class="acme-sc-dialog-container">
     <div fxFlex="5vh" fxFill fxLayoutAlign="center" class="acme-cs-heading">
         <span>{{'SHARED_DIALOG_SHARE_ROOM_HEADING_LABEL'|translate}}</span>
     </div>
@@ -22,11 +22,11 @@
                             </mat-label>
                             <input class="acme-form-input-field" required matInput placeholder="{{'SHARED_DIALOG_SHARE_ROOM_EMAIL'|translate}}"
                                 formControlName="emailControl" autocomplete="off">
-                            <mat-error class="acme-form-input-field"
+                            <mat-error class="acme-form-input-field acme-sc-error"
                                 *ngIf="shareRoomFormGroup.controls['emailControl'].errors?.email">
                                 {{'SHARED_DIALOG_SHARE_ROOM_EMAIL_VALID'|translate}}
                             </mat-error>
-                            <mat-error class="acme-form-input-field"
+                            <mat-error class="acme-form-input-field acme-sc-error"
                                 *ngIf="shareRoomFormGroup.controls['emailControl'].errors?.required">
                                 {{'SHARED_DIALOG_SHARE_ROOM_EMAIL_REQUIRED'|translate}}
                             </mat-error>
@@ -40,7 +40,7 @@
                             </mat-label>
                             <input class="acme-form-input-field" required matInput placeholder="{{'SHARED_DIALOG_SHARE_ROOM_NICK_NAME'|translate}}"
                                 formControlName="nameControl" autocomplete="off">
-                            <mat-error class="acme-form-input-field" *ngIf="shareRoomFormGroup.controls['nameControl'].errors?.required ||
+                            <mat-error class="acme-form-input-field acme-sc-error" *ngIf="shareRoomFormGroup.controls['nameControl'].errors?.required ||
                                 shareRoomFormGroup.controls['nameControl'].errors?.whiteSpace">
                                {{'SHARED_DIALOG_SHARE_ROOM_NICK_REQUIRED'|translate}}
                             </mat-error>

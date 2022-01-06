@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw">
+<div fxFlexFill fxLayout="column" fxLayoutGap="0.4vw"  [ngClass]="'dark-theme'">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TOPIC_LABEL'|translate}}</span>
     </div>
@@ -15,7 +15,7 @@
                             <input class="acme-form-input-field" required matInput
                                 placeholder="{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TITLE'|translate}}"
                                 formControlName="titleControl" autocomplete="off">
-                            <mat-error class="acme-form-input-field" *ngIf="topicFormGroup.controls['titleControl'].errors?.required ||
+                            <mat-error class="acme-form-input-field acme-sc-error" *ngIf="topicFormGroup.controls['titleControl'].errors?.required ||
                                 topicFormGroup.controls['titleControl'].errors?.whiteSpace">
                                 {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_TITLE_REQUIRED'|translate}}
                             </mat-error>
@@ -43,7 +43,7 @@
                         </mat-form-field>
                     </div>
                     <div fxFlex="2vh" fxFill class="acme-sc-topic-tags-message" fxLayoutAlign="center center">
-                        <span>{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS_MESSAGE1'|translate}}
+                        <span class="acme-sc-default-text">{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS_MESSAGE1'|translate}}
                             <b>{{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS_MESSAGE2'|translate}}</b>
                             {{'ROOM_DETAILS_TOPIC_ITEM_DIALOG_CREATE_ASSOCIATED_TAGS_MESSAGE3'|translate}}</span>
                     </div>

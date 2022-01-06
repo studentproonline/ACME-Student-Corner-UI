@@ -1,6 +1,24 @@
 @import '../../../../shared/css/commom.scss';
 @import '../../../../shared/css/variables.scss';
 
+.dark-theme {
+    ::ng-deep .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
+    ::ng-deep .ql-editor.ql-blank::before{
+        color:$acme-sc-text-color-dark !important;
+    }
+}
+
+.light-theme {
+    ::ng-deep .ql-editor {
+        color:black !important;
+    }
+    ::ng-deep .ql-editor.ql-blank::before{
+        color:black !important;
+    }
+}
+
 .acme-sc-evaluate-submit-close-button {
     background-color: darkorange !important;
 }

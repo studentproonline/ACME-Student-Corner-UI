@@ -1,4 +1,4 @@
-<div fxFlexFill fxLayout="column" fxLayoutGap="1vh">
+<div fxFlexFill fxLayout="column" fxLayoutGap="1vh" [ngClass]="'dark-theme'">
     <div fxFlex="5vh" fxFill class="acme-cs-heading">
         <span>{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_TITLE'|translate}}</span>
     </div>
@@ -16,7 +16,7 @@
                                     </mat-label>
                                     <input type="Number" min="0" required class="acme-form-input-field" required matInput placeholder="{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_MARKS'|translate}}"
                                         formControlName="marksControl" autocomplete="off">
-                                    <mat-error class="acme-form-input-field" *ngIf="evaluateAssesmentFormGroup.controls['marksControl'].errors?.required ||
+                                    <mat-error class="acme-form-input-field acme-sc-error" *ngIf="evaluateAssesmentFormGroup.controls['marksControl'].errors?.required ||
                                         evaluateAssesmentFormGroup.controls['marksControl'].errors?.whiteSpace">
                                        {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_MARKS_REQUIRED'|translate}}
                                     </mat-error>
@@ -34,7 +34,7 @@
                                     </mat-label>
                                     <input required class="acme-form-input-field" required matInput
                                         placeholder="{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_GRADE'|translate}}" formControlName="gradeControl" autocomplete="off">
-                                    <mat-error class="acme-form-input-field" *ngIf="evaluateAssesmentFormGroup.controls['gradeControl'].errors?.required ||
+                                    <mat-error class="acme-form-input-field acme-sc-error" *ngIf="evaluateAssesmentFormGroup.controls['gradeControl'].errors?.required ||
                                         evaluateAssesmentFormGroup.controls['gradeControl'].errors?.whiteSpace">
                                         {{'ROOM_ASSESSMENT_DIALOG_EVALUATION_GRADE_REQUIRED'|translate}}
                                     </mat-error>
@@ -53,7 +53,7 @@
                             class="form-control acme-form-input-field" (change)="onFileChange($event)"
                             accept=".pdf, .doc,.docx, .txt, .ppt, .pptx">
                         <div class="acme-sc-error" *ngIf="f.fileControl.errors?.required  && fileName===''">{{'ROOM_ASSESSMENT_DIALOG_EVALUATION_ASSESSMENT_FILE_REQUIRED'|translate}}</div>
-                        <div class="acme-sc-file-name">{{fileName}}</div>
+                        <div class="acme-sc-file-name" style="padding-top:1vh">{{fileName}}</div>
                     </div>
 
                 </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <!--Assesment Editor-->
-    <div fxFlex="45vh" fxFill>
+    <div fxFlex="45vh" fxFill style="padding-top: 1vh;">
         <quill-editor fxFlexFill [(ngModel)]="evaluationContent" [modules]="modules"
             placeholder="Insert yuor comments here ..." [required]="true">
         </quill-editor>

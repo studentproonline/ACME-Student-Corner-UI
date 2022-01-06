@@ -18,6 +18,46 @@ body {
         padding: 3vh;
         background-color: $acme-sc-primary-backgound-dark;
     }
+    .acme-sc-dialog-container {
+        background-color: $acme-sc-primary-backgound-dark;
+    }
+    .acme-sc-dialog-box {
+        padding:1vw !important;
+        background-color: $acme-sc-primary-backgound-dark;
+    }
+    .acme-sc-custom-container .mat-dialog-container {
+        border-radius: 1.3vw !important;
+        background-color: $acme-sc-primary-backgound-dark;
+     }
+     
+    .acme-cs-heading {
+        text-align: center;
+        font-size: 1.5vw ;
+        opacity: 0.7;
+        color: $acme-sc-text-color-dark;
+    }
+    .acme-form-input-field {
+        font-size: 1.0vw;
+        color:$acme-sc-text-color-dark;
+    }
+         
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: $acme-sc-text-color-dark !important;
+    }
+
+    .mat-input-element::placeholder{
+
+        color:$acme-sc-text-color-dark !important;
+        opacity: 0.5;
+        font-size: 0.7vw;
+    }
+
+    .acme-sc-user-info {
+        font-size: 0.7vw;
+        font-style: italic;
+        opacity: 0.7;
+        color: $acme-sc-text-color-dark;
+    }
     .acme-sc-navigation-side-bar {
         border-width: 0.5px;
         border-right-style: solid;
@@ -100,6 +140,12 @@ body {
         opacity: 0.7;
         fill: $acme-sc-text-color-dark;
     }
+    .acme-cs-mat-form-icon {
+        height:100%;
+        width: 100%;
+        opacity: 0.7;
+        fill: $acme-sc-text-color-dark;
+    }
     .acme-sc-company-label {
         font-size:0.66vw;
         color: $acme-sc-company-label-color;
@@ -149,12 +195,33 @@ body {
     
     .acme-sc-content-link:hover{
         color:skyblue;
-    }  
+    } 
+    
+    .acme-sc-content-description {
+        padding-left:0.5vw;
+        font-size: 0.8vw;
+        font-style: italic;
+        color: goldenrod;
+    }
+
+    .acme-sc-tab {
+        opacity: 0.5;
+        font-size:1vw;
+        color: $acme-sc-text-color-dark;
+    }
+        
+    .acme-sc-file-name {
+        font-size: 0.7vw;
+        color:skyblue;
+    }
     
     .acme-sc-room-close-label {
         font-size:1vw;
         background-color:#333333;
         opacity: 0.7;
+    }
+    .acme-sc-error {
+        color: darkorange !important
     }
 }
 
@@ -162,6 +229,39 @@ body {
     .acme-sc-container {
         padding: 3vh;
         background-color: $acme-sc-primary-backgound-light;
+    }
+    .acme-sc-dialog-container {
+        background-color: white;
+    }
+    .acme-sc-dialog-box {
+        padding:1vw !important
+    }
+    .acme-sc-custom-container .mat-dialog-container {
+        border-radius: 1.3vw !important;
+     }
+    .acme-cs-heading {
+        text-align: center;
+        font-size: 1.5vw ;
+        opacity: 0.7;
+        color: $acme-sc-text-color-light;
+    }
+    .acme-form-input-field {
+        font-size: 1.0vw;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: $acme-sc-text-color-light !important;
+    }
+    .mat-input-element::placeholder{
+
+        color:$acme-sc-text-color-light !important;
+        opacity: 0.5;
+        font-size: 0.7vw;
+    }
+    .acme-sc-user-info {
+        font-size: 0.7vw;
+        font-style: italic;
+        opacity: 0.7;
+        color: $acme-sc-text-color-light;
     }
     .acme-sc-navigation-side-bar {
         border-width: 0.5px;
@@ -247,6 +347,12 @@ body {
         opacity: 0.7;
         fill: $acme-sc-text-color-light;
     }
+    .acme-cs-mat-form-icon {
+        height:100%;
+        width: 100%;
+        opacity: 0.7;
+        fill: $acme-sc-text-color-light;
+    }
         
     .acme-sc-company-label {
         font-size:0.66vw;
@@ -296,13 +402,32 @@ body {
     .acme-sc-content-link:hover{
         color:blue;
     } 
+    
+    .acme-sc-content-description {
+        padding-left:0.5vw;
+        font-size: 0.8vw;
+        font-style: italic;
+        color: purple;
+    }
+    .acme-sc-tab {
+        opacity: 0.5;
+        font-size:1vw;
+        color: $acme-sc-text-color-light;
+    }
+      
+    .acme-sc-file-name {
+        font-size: 0.7vw;
+        color:blue;
+    }
        
     .acme-sc-room-close-label {
         font-size:1vw;
         background-color: $acme-sc-room-inactive-background-color;
         opacity: 0.7;
     }
-    
+    .acme-sc-error {
+        color: red !important
+    }
 }
 
 .acme-cs-mat-card {
@@ -310,7 +435,7 @@ body {
     padding: 0 !important;
 }
 .acme-cs-mat-icon {
-    opacity: 0.5
+    opacity:1
 }
 
 .acme-cs-mat-icon-darker {
@@ -321,10 +446,8 @@ body {
     padding:16px !important
 }
 
- 
-.acme-form-input-field {
-    font-size: 1.0vw;
-}
 .mat-raised-button.mat-warn {
     background-color: darkorange !important;
 }
+
+

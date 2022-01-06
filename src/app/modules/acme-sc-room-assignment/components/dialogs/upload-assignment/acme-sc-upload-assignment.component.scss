@@ -1,4 +1,31 @@
 @import '../../../../shared/css/commom.scss';
+@import '../../../../shared/css/variables.scss';
+
+.dark-theme {
+    .acme-sc-expiry-date-icon {
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+    }
+    ::ng-deep .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
+    ::ng-deep .ql-editor.ql-blank::before{
+        color:$acme-sc-text-color-dark !important;
+    }
+}
+
+.light-theme {
+    .acme-sc-expiry-date-icon {
+        color: black;
+        opacity: 0.7;
+    }
+    ::ng-deep .ql-editor {
+        color:black !important;
+    }
+    ::ng-deep .ql-editor.ql-blank::before{
+        color:black !important;
+    }
+}
 .acme-sc-assignment-creation-close-button {
     background-color: darkorange !important;
 }
