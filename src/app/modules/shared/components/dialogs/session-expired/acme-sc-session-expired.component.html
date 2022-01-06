@@ -1,17 +1,22 @@
-<div class="acme-sc-session-expired-container" fxFlexFill fxLayout="row" fxLayoutGap="0.4vw" fxLayoutAlign="center center">
+<div fxFlexFill fxLayout="column" [ngClass]="'dark-theme'">
+    <div fxFill>
+        <div class="acme-sc-session-expired-container" fxFlexFill fxLayout="row" fxLayoutGap="0.4vw" fxLayoutAlign="center center">
 
-    <div fxFlex="10%" fxFill fxLayoutAlign="center center">
-        <mat-icon style="height:100%;width:100%" fxLayoutAlign="center center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="darkorange">
-                <path d="M10.01 21.01c0 1.1.89 1.99 1.99 1.99s1.99-.89 1.99-1.99h-3.98zM12 6c2.76 0 5 2.24 5 5v7H7v-7c0-2.76 2.24-5 5-5zm0-4.5c-.83 0-1.5.67-1.5 1.5v1.17C7.36 4.85 5 7.65 5 11v6l-2 2v1h18v-1l-2-2v-6c0-3.35-2.36-6.15-5.5-6.83V3c0-.83-.67-1.5-1.5-1.5zM11 8h2v4h-2zm0 6h2v2h-2z"/>
-            </svg>
-        </mat-icon>
+            <div fxFlex="10%" fxFill fxLayoutAlign="center center">
+                <mat-icon style="height:100%;width:100%" fxLayoutAlign="center center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 24 24" width="100%" fill="darkorange">
+                        <path d="M10.01 21.01c0 1.1.89 1.99 1.99 1.99s1.99-.89 1.99-1.99h-3.98zM12 6c2.76 0 5 2.24 5 5v7H7v-7c0-2.76 2.24-5 5-5zm0-4.5c-.83 0-1.5.67-1.5 1.5v1.17C7.36 4.85 5 7.65 5 11v6l-2 2v1h18v-1l-2-2v-6c0-3.35-2.36-6.15-5.5-6.83V3c0-.83-.67-1.5-1.5-1.5zM11 8h2v4h-2zm0 6h2v2h-2z"/>
+                    </svg>
+                </mat-icon>
+            </div>
+            <div fxFlex="50%" fxFill class="acme-sc-session-expired-message" fxLayoutAlign="center center">
+                <span>{{'SHARED_SESSION_EXPIRED_TITLE'|translate}}</span>
+            </div>
+            <div fxFlex="30%" fxFill>
+                <button class="acme-sc-login-button" fxFill (click)="gotoLoginPage()" mat-raised-button color="accent">Login</button>
+            </div>
+           
+        </div>
     </div>
-    <div fxFlex="50%" fxFill class="acme-sc-session-expired-message" fxLayoutAlign="center center">
-        <span>{{'SHARED_SESSION_EXPIRED_TITLE'|translate}}</span>
-    </div>
-    <div fxFlex="30%" fxFill>
-        <button class="acme-sc-login-button" fxFill (click)="gotoLoginPage()" mat-raised-button color="accent">Login</button>
-    </div>
-   
 </div>
+

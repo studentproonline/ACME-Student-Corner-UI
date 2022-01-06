@@ -1,21 +1,26 @@
-<div fxFlexFill fxLayout="column">
-    <div fxFlex="20%" fxFill fxLayoutAlign="center start" class="acme-cs-heading acme-sc-user-confirmation-heading">
-        <span>{{'SHARED_USER_CONFIRMATION_TITLE'|translate}}</span>
-    </div>
-    <div fxFlex="20%" fxFill fxLayoutAlign="center center" class="acme-sc-user-confirmation-message">
-        <span>{{data.message}}</span>
-    </div>
-    <div fxFlex="30%" fxFill fxLayoutAlign="center center" class="acme-sc-user-confirmation-text">
-        <span>{{'SHARED_USER_CONFIRMATION_CONFIRMATION'|translate}}</span>
-    </div>
+<div fxFlexFill fxLayout="column" [ngClass]="'dark-theme'">
     <div fxFlex fxFill>
-        <div fxFlexFill fxLayout="row">
-            <div fxFlex fxLayoutAlign="start end">
-                <button (click)="close()" mat-raised-button color="warn" class="acme-sc-user-confirmation-close-button">Cancel</button>
+        <div fxFlexFill fxLayout="column" class="acme-sc-user-confirmation-container">
+            <div fxFlex="20%" fxFill fxLayoutAlign="center start" class="acme-cs-heading acme-sc-user-confirmation-heading">
+                <span>{{'SHARED_USER_CONFIRMATION_TITLE'|translate}}</span>
             </div>
-            <div fxLayoutAlign="end end">
-                <button (click)="confirm()"  mat-raised-button color="warn" class="acme-sc-user-confirmation-confirm-button">Confirm</button>
+            <div fxFlex="20%" fxFill fxLayoutAlign="center center" class="acme-sc-user-confirmation-message">
+                <span>{{data.message}}</span>
+            </div>
+            <div fxFlex="30%" fxFill fxLayoutAlign="center center" class="acme-sc-user-confirmation-text">
+                <span>{{'SHARED_USER_CONFIRMATION_CONFIRMATION'|translate}}</span>
+            </div>
+            <div fxFlex fxFill>
+                <div fxFlexFill fxLayout="row">
+                    <div fxFlex fxLayoutAlign="start end">
+                        <button (click)="close()" mat-raised-button color="warn" class="acme-sc-user-confirmation-close-button">Cancel</button>
+                    </div>
+                    <div fxLayoutAlign="end end">
+                        <button (click)="confirm()"  mat-raised-button color="accent" class="acme-sc-user-confirmation-confirm-button">Confirm</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+

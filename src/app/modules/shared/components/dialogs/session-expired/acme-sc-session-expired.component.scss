@@ -1,10 +1,30 @@
-.acme-sc-session-expired-container{
-    height: 8vh;
+@import '../../../../shared/css/commom.scss';
+@import '../../../../shared/css/variables.scss';
+
+.dark-theme {
+    .acme-sc-session-expired-container{
+        height: 8vh;
+        background-color: $acme-sc-primary-backgound-dark;
+    }
+    .acme-sc-session-expired-message {
+        font-size: 1vw;
+        opacity: 0.7;
+        color: $acme-sc-text-color-dark
+    }
 }
-.acme-sc-session-expired-message {
-    font-size: 1vw;
-    opacity: 0.7;
+.light-theme {
+    .acme-sc-session-expired-container{
+        height: 8vh;
+        background-color: white;
+    }
+    .acme-sc-session-expired-message {
+        font-size: 1vw;
+        opacity: 0.7;
+        color: $acme-sc-text-color-light
+    }
+    
 }
+
 
 .acme-sc-login-button {
     font-size:1vw;

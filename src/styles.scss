@@ -21,6 +21,10 @@ body {
     .acme-sc-dialog-container {
         background-color: $acme-sc-primary-backgound-dark;
     }
+    .mat-dialog-container {
+        padding: 3vh !important;
+        background-color: $acme-sc-primary-backgound-dark !important;
+    }
     .acme-sc-dialog-box {
         padding:1vw !important;
         background-color: $acme-sc-primary-backgound-dark;
@@ -223,6 +227,10 @@ body {
     .acme-sc-error {
         color: darkorange !important
     }
+
+    .acme-sc-link-color {
+        color:goldenrod;
+    }
 }
 
 .light-theme {
@@ -238,7 +246,12 @@ body {
     }
     .acme-sc-custom-container .mat-dialog-container {
         border-radius: 1.3vw !important;
+        background-color: $acme-sc-primary-backgound-light;
      }
+     .mat-dialog-container {
+        padding: 3vh !important;
+        background-color: $acme-sc-primary-backgound-light !important;
+    }
     .acme-cs-heading {
         text-align: center;
         font-size: 1.5vw ;
@@ -427,6 +440,9 @@ body {
     }
     .acme-sc-error {
         color: red !important
+    }
+    .acme-sc-link-color {
+        color:purple;
     }
 }
 
