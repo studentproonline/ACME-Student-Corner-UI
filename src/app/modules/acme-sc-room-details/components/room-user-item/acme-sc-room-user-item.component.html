@@ -3,7 +3,7 @@
         <!--user icon-->
         <div fxFlex="2vw" fxFlexFill fxLayoutAlign="start center" style="padding-left: 0.4vw;">
             <div class="UserInfoCircle" fxLayoutAlign="center center">
-                <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" class="acme-cs-mat-icon">
+                <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" style="opacity: 0.5;">
                     <!--non admin-->
                     <svg *ngIf="!user.role || user.role !== 'Admin'" xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="1.5vw"
                         fill="#000000">

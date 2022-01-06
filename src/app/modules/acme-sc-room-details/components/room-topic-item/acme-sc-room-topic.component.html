@@ -1,4 +1,4 @@
-<div fxLayout="column" class="acme-sc-room-topic-item-container" [ngClass]="'dark-theme'">
+<div fxLayout="column" class="acme-sc-room-topic-item-container" >
     <div fxFlex fxFill>
         <div fxLayout="row" fxFlexFill fxLayoutGap="0.4vw">
             <!--votes and comments section-->
@@ -116,11 +116,11 @@
                             class="acme-sc-room-topic-row">
                             <!--created by-->
                             <div fxFlex="70%" fxLayoutAlign="start center" class="acme-sc-owner-label">
-                                <span>{{'ROOM_DETAILS_TOPIC_ITEM_CREATED_BY'|translate}}{{topic.ownerFirstName }}
+                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_CREATED_BY'|translate}}</b>{{topic.ownerFirstName }}
                                     {{topic.ownerLastName}}</span>
                             </div>
                             <div fxFlex="30%" fxLayoutAlign="end center" class="acme-sc-date-label">
-                                <span>{{'ROOM_DETAILS_TOPIC_ITEM_STARTED_ON'|translate}}{{topic.createdAt|date:'medium'}}</span>
+                                <span><b>{{'ROOM_DETAILS_TOPIC_ITEM_STARTED_ON'|translate}}</b>{{topic.createdAt|date:'medium'}}</span>
                             </div>
                         </div>
                     </div>

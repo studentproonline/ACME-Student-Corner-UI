@@ -1,0 +1,94 @@
+@import './commom.scss';
+@import './variables.scss';
+
+
+.dark-theme {
+    .acme-sc-room-assignment-title-container {
+        height: 9vh;
+        background-color: $acme-sc-secondary-background-dark;
+    }
+    .acme-sc-assignment-container {
+        background-color: $acme-sc-secondary-background-dark;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .acme-sc-assignment-not-active {
+        fill: darkorange !important;
+        opacity: 1 !important;
+    }
+
+    .acme-sc-assignment-active {
+        fill: seagreen !important;
+        opacity: 1 !important;
+    }
+    
+    .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
+    .acme-sc-assigment-status {
+        fill: yellowgreen !important;
+    }
+    
+   .acme-sc-custom-label {
+        color:yellowgreen;
+    }
+    .acme-sc-assignment-data-container {
+        background-color: #333333;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .ql-editor.ql-blank::before{
+        color:$acme-sc-text-color-dark !important;
+    }
+    .acme-sc-expiry-date-icon {
+        color: $acme-sc-text-color-dark;
+        opacity: 0.7;
+    }
+}
+
+.light-theme {
+    .acme-sc-room-assignment-title-container {
+        height: 9vh;
+        background-color: $acme-sc-room-inactive-background-color;
+    }
+    .acme-sc-assignment-container {
+        background-color: whitesmoke;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .acme-sc-assignment-not-active {
+        fill: red !important;
+    }
+
+    .acme-sc-assignment-active {
+        fill: darkgreen !important;
+    }
+    
+    .acme-sc-assigment-status {
+        fill: darkgreen !important;
+    }
+    
+    .acme-sc-assignment-data-container {
+        background-color: #d3d3d3;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .ql-editor {
+        color:black !important;
+    }
+    .acme-sc-custom-label {
+        color:$acme-sc-start-color;
+    }
+  
+    .ql-editor.ql-blank::before{
+        color:black !important;
+    }
+    .acme-sc-expiry-date-icon {
+        color: black;
+        opacity: 0.7;
+    }
+}

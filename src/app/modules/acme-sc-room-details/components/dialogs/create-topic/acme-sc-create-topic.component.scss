@@ -1,27 +1,9 @@
 @import '../../../../shared/css/commom.scss';
-@import '../../../../shared/css/variables.scss';
 
-.dark-theme {
-    .acme-sc-topic-chip {
-        padding-left:0.5vw;
-        font-size: 0.8vw;
-        min-height: 2vw;
-        background-color: #333333;
-        color:$acme-sc-text-color-dark;
-    }
-}
 
-.light-theme {
-    .acme-sc-topic-chip {
-        padding-left:0.5vw;
-        font-size: 0.8vw;
-        min-height: 2vw;
-    }
-}
 .acme-sc-topic-creation-close-button {
     background-color: darkorange !important;
 }
-
 
 .acme-sc-topic-chip-close-icon {
     padding-left: 1vw;

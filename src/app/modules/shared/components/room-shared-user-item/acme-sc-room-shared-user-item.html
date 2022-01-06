@@ -8,11 +8,11 @@
     <div fxFlex="1.5vw" fxLayoutAlign="center center"
         [ngClass]="selected===true?'acme-sc-content-item-icon-selected' : 'acme-cs-mat-icon acme-sc-user-row'">
         <div class="UserInfoCircle" fxLayoutAlign="center center">
-            <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center" class="acme-cs-mat-icon"
-                style="height:2vh;width:1vw;">
+            <mat-icon matTooltip={{user.userEmail}} fxLayoutAlign="center center"
+                style="height:2vh;width:1vw;opacity: 0.5;">
                 
                 <!--non admin-->
-                <svg *ngIf="!user.role || user.role !== 'Admin'" xmlns="http://www.w3.org/2000/svg" height="100%"
+                <svg class="acme-cs-mat-form-icon" *ngIf="!user.role || user.role !== 'Admin'" xmlns="http://www.w3.org/2000/svg" height="100%"
                     viewBox="0 0 24 24" width="100%" fill="#000000">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path

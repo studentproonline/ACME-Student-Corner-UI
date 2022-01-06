@@ -1,67 +1,6 @@
 @import '../../../shared/css/commom.scss';
 @import '../../../shared/css/variables.scss';
 
-
-.dark-theme {
-    .acme-sc-room-assignment-title-container {
-        height: 9vh;
-        background-color: $acme-sc-secondary-background-dark;
-    }
-    .acme-sc-assignment-container {
-        background-color: $acme-sc-secondary-background-dark;
-        border-radius: 0.4vw;
-        padding:0.4vw;
-        
-    }
-    .acme-sc-assignment-not-active {
-        fill: darkorange !important;
-        opacity: 1 !important;
-    }
-
-    .acme-sc-assignment-active {
-        fill: seagreen !important;
-        opacity: 1 !important;
-    }
-    
-    .acme-sc-assignment-data-container {
-        background-color: #333333;
-        border-radius: 0.4vw;
-        
-    }
-    ::ng-deep .ql-editor {
-        color:$acme-sc-text-color-dark !important;
-    }
-}
-
-.light-theme {
-    .acme-sc-room-assignment-title-container {
-        height: 9vh;
-        background-color: $acme-sc-room-inactive-background-color;
-    }
-    .acme-sc-assignment-container {
-        background-color: whitesmoke;
-        border-radius: 0.4vw;
-        padding:0.4vw;
-        
-    }
-    .acme-sc-assignment-not-active {
-        fill: red !important;
-    }
-
-    .acme-sc-assignment-active {
-        fill: darkgreen !important;
-    }
-    
-    .acme-sc-assignment-data-container {
-        background-color: lightgray;
-        border-radius: 0.4vw;
-        
-    }
-    ::ng-deep .ql-editor {
-        color:black !important;
-    }
-}
-
 .acme-sc-room-assignment-row {
     cursor: pointer;
 }

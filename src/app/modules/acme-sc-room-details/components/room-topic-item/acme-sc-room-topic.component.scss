@@ -1,31 +1,4 @@
 @import '../../../shared/css/commom.scss';
-@import '../../../shared/css/variables.scss';
-
-
-.dark-theme {
-    .acme-sc-room-topic-item {
-        background-color:  $acme-sc-secondary-background-dark;
-        border-radius: 0.4vw;
-    }
-    .acme-sc-topic-chip {
-        padding-left:0.5vw;
-        font-size: 0.7vw;
-        min-height: 0;
-        color:seagreen
-    }
-}
-.light-theme {
-    .acme-sc-room-topic-item {
-        background-color:  whitesmoke;
-        border-radius: 0.4vw;
-    }
-    .acme-sc-topic-chip {
-        padding-left:0.5vw;
-        font-size: 0.7vw;
-        min-height: 0;
-        color:purple
-    }
-}
 
 .acme-sc-topic-icon {
     fill: goldenrod
@@ -41,8 +14,6 @@
     padding-bottom: 0.4vw;
     border-radius: 0.4vw;
 }
-
-
 
 .acme-sc-room-topic-row {
     

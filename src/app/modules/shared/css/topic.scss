@@ -1,0 +1,74 @@
+@import './commom.scss';
+@import './variables.scss';
+
+
+.dark-theme {
+    
+    .acme-sc-topic-comment-container {
+        background-color:$acme-sc-secondary-background-dark;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .acme-sc-topic-commennt-useful-label {
+        font-size: 0.8vw;
+        color:$acme-sc-text-color-dark;
+    }
+    .acme-sc-title-container {
+        background-color: $acme-sc-primary-backgound-dark;
+
+    }
+    
+    .acme-sc-comments-loadmore{
+        font-size: 0.9vw;
+        font-weight: normal;
+        color: $acme-sc-text-color-dark;
+        cursor: pointer;
+    }
+
+    .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
+
+    .ql-editor {
+        color:$acme-sc-text-color-dark !important;
+    }
+    .ql-editor.ql-blank::before{
+        color:$acme-sc-text-color-dark !important;
+    }
+}
+
+.light-theme {
+    
+    .acme-sc-topic-comment-container {
+        background-color: whitesmoke;
+        border-radius: 0.4vw;
+        padding:0.4vw;
+        
+    }
+    .acme-sc-topic-commennt-useful-label {
+        font-size: 0.8vw;
+        color:purple;
+    }
+    .acme-sc-title-container {
+        background-color: white;
+    }
+    
+    .acme-sc-comments-loadmore{
+        font-size: 0.9vw;
+        font-weight: normal;
+        color: gray;
+        cursor: pointer;
+    }
+
+    .ql-editor {
+        color:black !important;
+    }
+
+    .ql-editor {
+        color:black !important;
+    }
+    .ql-editor.ql-blank::before{
+        color:black !important;
+    }
+}

@@ -1,4 +1,4 @@
-<div style="padding-top:0.4vw" [ngClass]="'dark-theme'">
+<div style="padding-top:0.4vw">
     <div class="acme-sc-topic-comment-container">
         <quill-view [content]="comment.data"></quill-view>
     </div>
@@ -11,7 +11,7 @@
                 </div>
                 <!--Vote up-->
                 <div fxFlex="2vw" class="acme-sc-topic-comment-vote" (click)="vote(1)">
-                    <mat-icon matTooltip="Useful" style="opacity:0.7" fxLayoutAlign="center end">
+                    <mat-icon matTooltip="Useful" fxLayoutAlign="center end">
                         <svg class="acme-cs-mat-icon-default acme-sc-topic-comment-vote-up " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green">
                             <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z" />
                             <path
@@ -24,7 +24,7 @@
                 </div>
                 <!--Vote down-->
                 <div fxFlex="2vw" class="acme-sc-topic-comment-vote" (click)="vote(0)">
-                    <mat-icon matTooltip="Not so useful" style="opacity:0.7" fxLayoutAlign="center end">
+                    <mat-icon matTooltip="Not so useful" fxLayoutAlign="center end">
                         <svg class="acme-cs-mat-icon-default acme-sc-topic-comment-vote-down " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="darkorange">
                             <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z" />
                             <path

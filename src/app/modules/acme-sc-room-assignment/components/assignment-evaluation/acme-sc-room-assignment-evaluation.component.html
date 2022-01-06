@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFlexFill fxLayoutGap="1vh" [ngClass]="'dark-theme'">
+<div fxLayout="column" fxFlexFill fxLayoutGap="1vh">
     <div *ngIf="isProgress" fxFlex fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
     </div>
@@ -8,11 +8,9 @@
         </acme-sc-navigation-bar>
     </div>
      <!--assignment not active-->
-     <div *ngIf="!isProgress" fxFlex="5vh" fxFill>
+     <div *ngIf="(roomStatus === 'Closed' || assignment.status === 'Closed' || assignment.status === 'Expired') && !isProgress" fxFlex="5vh" fxFill>
         <!--not active label-->
-        <div fxLayoutAlign="center center"
-            *ngIf="(roomStatus === 'Closed' || assignment.status === 'Closed' || assignment.status === 'Expired') && !isProgress"
-            fxFlex class="acme-sc-room-close-label">
+        <div fxLayoutAlign="center center" fxFlex class="acme-sc-room-close-label">
             <svg xmlns="http://www.w3.org/2000/svg" height="3vh" viewBox="0 0 24 24" width="3vw" fill="red">
                 <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
             </svg>

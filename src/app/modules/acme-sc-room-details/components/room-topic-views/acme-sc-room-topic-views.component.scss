@@ -1,26 +1,4 @@
 @import '../../../shared/css/commom.scss';
-@import '../../../shared/css/variables.scss';
-.dark-theme {
-    .acme-sc-room-topic-views-container {
-        background-color:  $acme-sc-secondary-background-dark;;
-        border-radius: 0.4vw;
-    }
-    .acme-sc-room-topic-views-count {
-        font-size: 0.9vw;
-        color:white;
-    }
-}
-.light-theme { 
-    .acme-sc-room-topic-views-container {
-        background-color: whitesmoke;
-        border-radius: 0.4vw;
-    }
-    .acme-sc-room-topic-views-count {
-        font-size: 0.9vw;
-        opacity: 0.5;
-    }
-}
-
 
 .acme-sc-room-topic-views-label {
     font-size: 0.7vw;

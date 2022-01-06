@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutGap="0.4vw" [ngClass]="'dark-theme'">
+<div fxLayout="column" fxLayoutGap="0.4vw">
     <div fxFlex fxFill>
         <div class="acme-sc-assignment-container">
             <div fxLayout="column" class="acme-sc-room-assignment-title-container" fxLayoutGap="vh">
@@ -30,7 +30,7 @@
                         <!--Submitted file-->
                         <div *ngIf="assignment.fileName !== 'undefined'" fxFlex="20vw" fxLayoutAlign="start center"
                             class="acme-sc-owner-label">
-                            <span>{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_FILE'|translate}}</span><span
+                            <span><b>{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_FILE'|translate}}</b></span><span
                                 (click)="GetAssignmentFile()" style="padding-left: 0.4vw;"
                                 class="acme-sc-custom-link acme-sc-custom-link-color">{{assignment.fileName}}</span>
                         </div>
@@ -45,7 +45,7 @@
                     <div fxLayout="row" fxLayoutGap="0.4vw" fxFill fxLayoutAlign="start start">
                         <div fxFlex fxFill fxLayoutAlign="start center">
                             <span
-                                class="acme-sc-owner-label">{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_CREATED_BY'|translate}}
+                                class="acme-sc-owner-label"><b>{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_CREATED_BY'|translate}}</b>
                                 {{assignment.ownerFirstName}}</span><span class="acme-sc-owner-label"
                                 style="padding-left:0.4vw">{{assignment.ownerLastName}}</span>
                         </div>
@@ -120,7 +120,7 @@
 
                         <div fxFlex="10vw" fxFill fxLayoutAlign="end center">
                             <span
-                                class="acme-sc-date-label">{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_CREATED_ON'|translate}}
+                                class="acme-sc-date-label"><b>{{'ROOM_ASSIGNMENT_ITEM_ASSIGNMENT_CREATED_ON'|translate}}</b>
                                 {{assignment.createdAt|date:'mediumDate'}}</span>
                         </div>
                     </div>
