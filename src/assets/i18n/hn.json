@@ -512,5 +512,7 @@
 
     "ROOM_CONFERENCE_ROOM_USER_LIST": "सम्मेलन उपयोगकर्ता",
 
-    "ROOM_CONFERENCE_ROOM_SELF_VIEW": "(मैं)"
+    "ROOM_CONFERENCE_ROOM_SELF_VIEW": "(मैं)",
+
+    "ROOM_CONFERENCE_ROOM_RESET_LAYOUT": "लेआउट रीसेट करें"
 }

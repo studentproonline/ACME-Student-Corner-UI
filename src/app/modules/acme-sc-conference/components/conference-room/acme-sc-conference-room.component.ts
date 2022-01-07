@@ -18,6 +18,14 @@ import { AcmeSCInformationComponent } from '../../../shared/components/dialogs/i
 //translation
 import { TranslateService } from '@ngx-translate/core';
 
+import {
+    CompactType,
+    DisplayGrid,
+    GridsterConfig,
+    GridsterItem,
+    GridType
+} from 'angular-gridster2';
+
 @Component({
     selector: 'acme-sc-conference-room',
     templateUrl: './acme-sc-conference-room.component.html',
@@ -28,6 +36,10 @@ export class AcmeSCConferenceRoomComponent {
     localCallId = 'agora_local';
     remoteCalls: string[] = [];
     connectedUsers: string[] = [];
+
+    options: GridsterConfig;
+    dashboard: Array<GridsterItem> = [];
+    dashboardOriginalLayout: Array<GridsterItem> = [];
 
     private client: AgoraClient;
     private screenShareStream: Stream;
@@ -92,6 +104,26 @@ export class AcmeSCConferenceRoomComponent {
                 this.isSuccessFull = true;
             });
         this.ngxAgoraService.AgoraRTC.Logger.setLogLevel(0);
+
+        this.options = {
+            gridType: GridType.Fit,
+            compactType: CompactType.None,
+            margin: 10,
+            draggable: {
+                enabled: true
+            },
+            resizable: {
+                enabled: true
+            },
+            swap: false,
+            pushItems: true,
+        }
+    }
+
+    ResetLayout() {
+        console.log(this.dashboard);
+        console.log(this.dashboardOriginalLayout);
+        this.dashboard = this.dashboardOriginalLayout;
     }
 
     /**
@@ -368,6 +400,10 @@ export class AcmeSCConferenceRoomComponent {
             const id = this.getRemoteId(stream);
             if (!this.remoteCalls.length) {
                 this.remoteCalls.push(id);
+                let dashboardItem: any = { cols: null, rows: null, y: 0, x: 0, remoteId: id }
+                this.dashboard.push(dashboardItem);
+                var cloneDashboardItem = Object.assign({}, dashboardItem);
+                this.dashboardOriginalLayout.push(cloneDashboardItem);
                 setTimeout(() => stream.play(id), 1000);
             }
         });

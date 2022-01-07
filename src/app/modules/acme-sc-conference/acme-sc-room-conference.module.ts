@@ -4,6 +4,7 @@ import { AcmeSCSharedModule } from '../shared/acme-sc-shared.module';
 import { AcmeSCRoomConferenceRoutingModule } from './acme-sc-room-conference.routing.module';
 
 import { NgxAgoraModule } from 'ngx-agora';
+import { GridsterModule } from 'angular-gridster2';
 
 //components
 import { AcmeSCConferenceRoomComponent } from './components/conference-room/acme-sc-conference-room.component';
@@ -27,6 +28,7 @@ export const agoraConfig: any = {
 
     imports: [FlexLayoutModule,
         AcmeSCSharedModule,
+        GridsterModule,
         AcmeSCRoomConferenceRoutingModule,
         NgxAgoraModule.forRoot(agoraConfig)],
 

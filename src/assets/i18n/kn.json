@@ -513,5 +513,7 @@
 
     "ROOM_CONFERENCE_ROOM_USER_LIST": "ಕಾನ್ಫರೆನ್ಸ್ ಬಳಕೆದಾರರು",
 
-    "ROOM_CONFERENCE_ROOM_SELF_VIEW": "(ನಾನು)"
+    "ROOM_CONFERENCE_ROOM_SELF_VIEW": "(ನಾನು)",
+
+    "ROOM_CONFERENCE_ROOM_RESET_LAYOUT": "ಲೇಔಟ್ ಅನ್ನು ಮರುಹೊಂದಿಸಿ"
  }
