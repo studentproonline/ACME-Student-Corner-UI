@@ -237,6 +237,9 @@ body {
     .acme-sc-link-color {
         color:goldenrod;
     }
+    .ng-scrollbar {
+        --scrollbar-thumb-color: gray !important;
+     }
     
 }
 
@@ -478,5 +481,3 @@ body {
 .mat-raised-button.mat-warn {
     background-color: darkorange !important;
 }
-
-
