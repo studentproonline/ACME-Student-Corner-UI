@@ -33,12 +33,6 @@
     .acme-sc-company-header-container {
         background-color: $acme-sc-secondary-background-dark;
     }
-    .acme-sc-topic-chip {
-        padding-left:0.5vw;
-        font-size: 0.8vw;
-        min-height: 2vh;
-        color:$acme-sc-text-color-dark;
-    }
 }
 .light-theme {
     .acme-sc-room-topic-item {
@@ -71,10 +65,5 @@
     }
     .acme-sc-company-header-container {
         background-color: whitesmoke;
-    }
-    .acme-sc-topic-chip {
-        padding-left:0.5vw;
-        font-size: 0.8vw;
-        min-height: 2vh;
     }
 }
