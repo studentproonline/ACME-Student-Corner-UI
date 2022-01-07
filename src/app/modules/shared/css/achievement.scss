@@ -1,0 +1,41 @@
+@import './commom.scss';
+@import './variables.scss';
+
+.dark-theme {
+    .acme-sc-room-achievements-container{
+        padding: 3vh;
+        background-color: $acme-sc-primary-backgound-dark;
+    }
+    .acme-sc-achievement-bar-card {
+        padding:0;
+        -webkit-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        -moz-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        background-color: $acme-sc-secondary-background-dark;
+    }
+      
+    .acme-sc-achievements-message {
+        font-size: 0.8vw;
+        padding: 1vw;
+        color:$acme-sc-text-color-dark;
+    }
+}
+
+.light-theme {
+    .acme-sc-room-achievements-container{
+        padding: 3vh;
+    }
+    .acme-sc-achievement-bar-card {
+        padding:0;
+        -webkit-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        -moz-box-shadow: 0 0 0.1vw 0.1vw lightgray;
+        box-shadow: 0 0 0.1vw 0.1vw lightgray;
+    }
+    
+    .acme-sc-achievements-message {
+        font-size: 0.8vw;
+        padding: 1vw;
+        color:black;
+    }
+
+}

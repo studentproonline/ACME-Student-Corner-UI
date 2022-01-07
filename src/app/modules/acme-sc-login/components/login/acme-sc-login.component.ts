@@ -149,9 +149,11 @@ export class AcmeSCLoginComponent {
                         const theme = localStorage.getItem('Theme');
                         if(!theme) {
                             this.acmeSCThemingService.setTheme('dark-theme');
+                            this.acmeSCAuthorizationService.setUiTheme('dark-theme');
                             localStorage.setItem('Theme', 'dark-theme');
                         } else {
                             this.acmeSCThemingService.setTheme(theme);
+                            this.acmeSCAuthorizationService.setUiTheme(theme);
                         }
                         this.router.navigateByUrl('/home?roomType=' + this.translateService.instant('EXPLORER_NAVIGATION_SIDE_BAR_MY_HOME'));
                         return;

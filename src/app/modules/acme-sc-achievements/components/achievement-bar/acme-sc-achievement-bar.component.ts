@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AcmeSCAuthorizationService } from '../../../../core/services/acme-sc-authorization.service';
 
 @Component({
     selector: 'acme-sc-achievement-bar',
@@ -15,11 +16,21 @@ export class AcmeSCAchievementBarComponent  implements OnInit {
 
     options: any;
     type = 'BarChart';
-    constructor() {
-      
+    chartBackgroundColor;
+    chartTextColor;
+    constructor(private acmeSCAuthorizationService: AcmeSCAuthorizationService) {
+     
     }
 
     ngOnInit() {
+
+        if(this.acmeSCAuthorizationService.uiTheme === 'dark-theme') {
+            this.chartBackgroundColor = '#333333';
+            this.chartTextColor = 'white';
+          } else{
+            this.chartBackgroundColor = 'white';
+            this.chartTextColor = 'black';
+        }
         this.createChartoptions();
     }
 
@@ -30,6 +41,12 @@ export class AcmeSCAchievementBarComponent  implements OnInit {
             chartArea: { height: '54'},
             legend: {position: 'none'},
             colors: [this.color],
+            backgroundColor: this.chartBackgroundColor,
+            titleTextStyle: {
+                bold: true,
+                fontSize: 12,
+                color: this.chartTextColor
+            },
             hAxis: {
                 title: this.chartTitle,
                 minValue: this.min,
@@ -38,12 +55,12 @@ export class AcmeSCAchievementBarComponent  implements OnInit {
                 textStyle: {
                     bold: true,
                     fontSize: 12,
-                    color: '#4d4d4d'
+                    color: this.chartTextColor
                 },
                 titleTextStyle: {
                     bold: true,
                     fontSize: 12,
-                    color: '#4d4d4d'
+                    color: this.chartTextColor
                 }
             }
         };

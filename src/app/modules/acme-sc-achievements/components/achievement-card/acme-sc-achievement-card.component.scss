@@ -1,10 +1,5 @@
 @import '../../../shared/css/commom.scss';
-.acme-sc-achievement-bar-card {
-    padding:0;
-    -webkit-box-shadow: 0 0 0.3vw 0.3vw lightgray;
-    -moz-box-shadow: 0 0 0.3vw 0.3vw lightgray;
-    box-shadow: 0 0 0.3vw 0.3vw lightgray;
-}
+
 
 .acme-sc-achievement-icon {
     height: 3vh;
@@ -14,12 +9,6 @@
 .acme-sc-achievement-bar-card-Title {
     font-size:large;
     opacity: 0.7;
-}
-
-.acme-sc-achievements-message {
-    font-size: 0.8vw;
-    padding: 1vw;
-    color:black;
 }
 
 .acme-sc-badge-earned {

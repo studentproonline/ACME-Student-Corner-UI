@@ -58,10 +58,12 @@ export class AcmeSCAuthguradServiceService {
 
     const theme = localStorage.getItem('Theme');
     if(!theme) {
+        this.acmeSCAuthorizationService.setUiTheme('dark-theme');
         this.acmeSCThemingService.setTheme('dark-theme');
         localStorage.setItem('Theme', 'dark-theme');
     } else {
         this.acmeSCThemingService.setTheme(theme);
+        this.acmeSCAuthorizationService.setUiTheme(theme);
     }
 
     if(language) {
