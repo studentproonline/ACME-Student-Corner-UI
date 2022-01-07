@@ -30,8 +30,10 @@ export class AcmeSCConferenceRoomComponent {
     connectedUsers: string[] = [];
 
     private client: AgoraClient;
+    private screenShareStream: Stream;
     private localStream: Stream;
     private uid: number;
+    private screenShareUid: number;
 
     loginEntity: ILoginEntity;
     nickName: string;
@@ -68,6 +70,7 @@ export class AcmeSCConferenceRoomComponent {
         public translateService: TranslateService) {
 
         this.uid = Math.floor(Math.random() * 100);
+        this.screenShareUid = Math.floor(Math.random() * 100);
 
         this.loginEntity = this.acmeSCAuthorizationService.getSession();
         const firstNameChar = (this.loginEntity.firstName.substring(0, 1)).toUpperCase();
@@ -103,8 +106,8 @@ export class AcmeSCConferenceRoomComponent {
     /**
     * Attempts to upload the created local A/V stream to a joined chat room.
     */
-    publish(): void {
-        this.client.publish(this.localStream, err => console.log('Publish local stream error: ' + err));
+    publish(stream): void {
+        this.client.publish(stream, err => console.log('Publish local stream error: ' + err));
         this.playing = true;
     }
 
@@ -186,9 +189,9 @@ export class AcmeSCConferenceRoomComponent {
         this.client.init(this.conferenceAppId);
         this.client.setClientRole(role);
         this.assignClientHandlers();
-        this.join(success =>{
+        this.join(success => {
             this.playing = true;
-            },error => {
+        }, error => {
             console.error(error);
         });
     }
@@ -197,14 +200,14 @@ export class AcmeSCConferenceRoomComponent {
 
         this.client = this.ngxAgoraService.createClient({ mode: mode, codec: 'h264' }, false);
         this.client.init(this.conferenceAppId);
-        if(mode === 'live') {
+        if (mode === 'live') {
             this.client.setClientRole(role);
         }
         this.assignClientHandlers();
         //Added in this step to initialize the local A/V stream
         this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
         this.assignLocalStreamHandlers();
-        this.initLocalStream(() => this.join(uid => this.publish(),
+        this.initLocalStream(() => this.join(uid => this.publish(this.localStream),
             error => {
                 console.error(error)
                 if (this.localStream) {
@@ -219,27 +222,37 @@ export class AcmeSCConferenceRoomComponent {
     }
 
     leaveCall() {
-              
+
         if (this.localStream) {
             this.client.unpublish(this.localStream);
             this.client.unsubscribe(this.localStream)
             this.localStream.stop();
             this.localStream.close();
         }
+        if (this.screenShareStream) {
+            this.client.unpublish(this.screenShareStream);
+            this.client.unsubscribe(this.screenShareStream)
+            this.screenShareStream.stop();
+            this.screenShareStream.close();
+        }
         this.client.leave();
         this.playing = false;
-        this.remoteCalls.length=0;
+        this.remoteCalls.length = 0;
         this.connectedUsers.length = 0;
     }
 
     ConnectToScreenShare() {
-        this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
+        /*this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' }, false);
         this.client.init(this.conferenceAppId);
-        this.assignClientHandlers();
+        this.assignClientHandlers();*/
         //Added in this step to initialize the local A/V stream
-        this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: false, screen: true });
-        this.assignLocalStreamHandlers();
-        this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
+        this.screenShareStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: false, screen: true });
+        this.initScreenShareStream(() => this.publish(this.screenShareStream));
+    }
+
+    connectToVideo() {
+        this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
+        this.initLocalStream(() => this.publish(this.localStream));
     }
 
     pauseVideo() {
@@ -269,12 +282,22 @@ export class AcmeSCConferenceRoomComponent {
         if (this.localStream) {
             if (this.pauseScreenShare) {
                 // switch to screen
-                this.leaveCall();
+                //this.leaveCall();
+                if (this.localStream) {
+                    this.client.unpublish(this.localStream);
+                    this.localStream.stop();
+                    this.localStream.close();
+                }
                 this.ConnectToScreenShare();
             } else {
                 // switch to video
-                this.leaveCall();
-                this.connectCall();
+                //this.leaveCall();
+                if (this.screenShareStream) {
+                    this.client.unpublish(this.screenShareStream);
+                    this.screenShareStream.stop();
+                    this.screenShareStream.close();
+                }
+                this.connectToVideo();
             }
         }
         this.pauseScreenShare = !this.pauseScreenShare;
@@ -296,6 +319,19 @@ export class AcmeSCConferenceRoomComponent {
             () => {
                 // The user has granted access to the camera and mic.
                 this.localStream.play(this.localCallId);
+                if (onSuccess) {
+                    onSuccess();
+                }
+            },
+            err => console.error('getUserMedia failed', err)
+        );
+    }
+
+    private initScreenShareStream(onSuccess?: () => any): void {
+        this.screenShareStream.init(
+            () => {
+                // The user has granted access to the camera and mic.
+                this.screenShareStream.play(this.localCallId);
                 if (onSuccess) {
                     onSuccess();
                 }
@@ -362,8 +398,10 @@ export class AcmeSCConferenceRoomComponent {
             // stop streaming if owner stops the streaming
             if (evt.uid.toLowerCase() === this.startedBy.toLowerCase() &&
                 evt.uid.toLowerCase() !== this.loginEntity.email.toLowerCase()) {
-                this.informConferenceStopped();
-                this.leaveCall();
+                if (this.mode !== 'Lecture') {
+                    this.informConferenceStopped();
+                    this.leaveCall();
+                }
             }
         });
         /*this.client.on(ClientEvent.VolumeIndicator, function(evt){
