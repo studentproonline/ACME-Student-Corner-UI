@@ -19,6 +19,9 @@
         padding: 1vw;
         color:$acme-sc-text-color-dark;
     }
+    .google-chart > div > div > div > svg >rect {
+        fill: #333333
+    }
 }
 
 .light-theme {
@@ -37,5 +40,7 @@
         padding: 1vw;
         color:black;
     }
-
+    .google-chart > div > div > div > svg >rect {
+        fill: white
+    }
 }
