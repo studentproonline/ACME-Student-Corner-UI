@@ -18,11 +18,13 @@
     color: darkgreen;
     text-decoration: underline;
     cursor: pointer;
+    opacity: 1 !important;
 }
 
 .acme-sc-room-user-pending-link {
     font-size: 0.7vw;
     color: darkgreen;
+    opacity: 1 !important;
 }
 .acme-sc-room-user-reject-link {
     font-size: 0.7vw;
@@ -30,4 +32,5 @@
     text-decoration: underline;
     cursor: pointer;
     padding-left: 2vw;
+    opacity: 1 !important;
 }

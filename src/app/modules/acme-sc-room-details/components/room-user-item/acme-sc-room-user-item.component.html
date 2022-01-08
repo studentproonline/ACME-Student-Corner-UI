@@ -18,14 +18,27 @@
             </div>
         </div>
         <!--user name-->
-        <div fxFlexFill fxFlex="11vw" fxLayoutAlign="start center"
-            class="acme-sc-navigation-side-bar-item-text-default">
-            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">{{user.userName}}  <br> 
-                <span (click)="approveRejectUser('Approved','Approve')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-approve-link">{{'ROOM_DETAILS_USER_ITEM_APPROVE'|translate}}</span>
-                <span (click)="approveRejectUser('Rejected', 'Reject')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-reject-link">{{'ROOM_DETAILS_USER_ITEM_REJECT'|translate}}</span>
-                <span *ngIf="user.status ==='Approved' && canRemoveUser" class="acme-sc-room-user-pending-link">{{'ROOM_DETAILS_USER_ITEM_WAITING_JOINING'|translate}}</span>
-            </span>
-              
+        <div fxFlexFill fxFlex="11vw" fxLayoutAlign="start center">
+            <div fxLayout="column" fxFlexFill fxLayoutAlign="start center">
+                <div fxFlex fxFill fxLayoutAlign="start center">
+                    <span class="acme-sc-navigation-side-bar-item-text-default" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis">
+                        {{user.userName}}
+                    </span> 
+                </div>
+                <div *ngIf="(user.status ==='Requested' && canRemoveUser)||(user.status ==='Approved' && canRemoveUser)" fxFlex fxFill>
+                    <div fxLayout="row" fxFlexFill>
+                        <div fxFlex fxFill>
+                            <span (click)="approveRejectUser('Approved','Approve')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-approve-link">{{'ROOM_DETAILS_USER_ITEM_APPROVE'|translate}}</span>
+                        </div>
+                        <div fxFlex fxFill>
+                            <span (click)="approveRejectUser('Rejected', 'Reject')" *ngIf="user.status ==='Requested' && canRemoveUser" class="acme-sc-room-user-reject-link">{{'ROOM_DETAILS_USER_ITEM_REJECT'|translate}}</span>
+                        </div>
+                    </div>
+                    <div fxFlex fxFill>
+                        <span *ngIf="user.status ==='Approved' && canRemoveUser" class="acme-sc-room-user-pending-link">{{'ROOM_DETAILS_USER_ITEM_WAITING_JOINING'|translate}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!--remove icon-->
