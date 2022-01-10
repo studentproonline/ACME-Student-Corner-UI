@@ -43,7 +43,8 @@ export class AcmeSCRoomTopicItemComponent implements OnInit {
             this.topicClosed = true;
         }
         const userRommRole = this.acmeSCAuthorizationService.getUserRoomRole();
-        if (userRommRole === 'Owner' || userRommRole === 'Admin') {
+        if (userRommRole === 'Owner' || userRommRole === 'Admin' ||
+            this.topic.owner.toUpperCase() === this.acmeSCAuthorizationService.getSession().email.toUpperCase()) {
             this.isTopicOrRoomOwner = true;
         }
     }
