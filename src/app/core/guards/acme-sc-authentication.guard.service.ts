@@ -44,7 +44,8 @@ export class AcmeSCAuthguradServiceService {
 
   getRoomDetailsAndUserRole() {
     if(this.router.routerState.snapshot.url === '/login' || 
-       this.router.routerState.snapshot.url.indexOf('/home')>=0) {
+       this.router.routerState.snapshot.url.indexOf('/home')>=0 ||
+       this.router.routerState.snapshot.url.indexOf('/achievements')>=0) {
       return true;
     }
     let roomDetails = JSON.parse(sessionStorage.getItem('RoomDetails'));
